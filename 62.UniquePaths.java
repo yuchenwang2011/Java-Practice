@@ -40,3 +40,24 @@ public class Solution {
         return result[m-1][n-1];
     }
 }
+
+//this is an optimized method from space complexity O(M*N) -> O(N)
+public class Solution {
+    public int uniquePaths(int m, int n) {
+        if(m*n ==0){
+            return 0;
+        }
+        int[] dp = new int[n]; 
+        dp[0] = 1;
+        for(int i = 0; i < m; i++) {
+            for(int j =0; j < n; j++){
+                if(j==0){
+                  dp[j] = 1;
+                } else {
+                  dp[j] = dp[j-1]+dp[j];
+                }
+            }
+        }
+        return dp[n-1];
+    }
+}
