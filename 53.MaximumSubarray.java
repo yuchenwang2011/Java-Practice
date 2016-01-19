@@ -33,3 +33,38 @@ public class Solution {
         return finalMax;
     }
 }
+
+//Divide and Conquer Method
+public class Solution {
+    public int maxSubArray(int[] nums) {
+        if(nums == null || nums.length == 0){
+            return 0;
+        }
+        int start = 0, end = nums.length-1;
+        int max = divideNConquer(nums,start,end);
+        return max;
+    }
+    
+    public int divideNConquer(int[] nums, int start, int end){
+        if(start == end){
+            return nums[start];
+        }
+        //first find left max and right max, then find the middle connection max sum array
+        int mid = start + (end -start)/2;
+        int leftMax = divideNConquer(nums,start,mid);
+        int rightMax = divideNConquer(nums,mid+1,end);
+        
+        int leftSum = Integer.MIN_VALUE, rightSum = Integer.MIN_VALUE;
+        int tmpSum = 0;
+        for(int i = mid; i >= start; i--) {
+            tmpSum = tmpSum + nums[i];
+            leftSum = Math.max(leftSum, tmpSum);
+        }
+        tmpSum = 0;
+        for(int i = mid+1; i <= end; i++){
+            tmpSum = tmpSum + nums[i];
+            rightSum = Math.max(rightSum, tmpSum);
+        }
+        return Math.max(Math.max(leftMax,rightMax),leftSum+rightSum);
+    }
+}
