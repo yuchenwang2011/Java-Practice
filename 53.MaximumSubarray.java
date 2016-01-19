@@ -68,3 +68,19 @@ public class Solution {
         return Math.max(Math.max(leftMax,rightMax),leftSum+rightSum);
     }
 }
+
+//Brute Force Method
+public int maxSubArray(int[] nums){
+    if(nums == null || nums.length == 0){
+        return 0;
+    }
+    int result = Integer.MIN_VALUE;
+    for(int i = 0; i < nums.length ; i++){
+        int tmpSum = 0;
+        for(int size = i; size < nums.length; size++){
+            tmpSum = tmpSum + nums[size];
+            result = Math.max(tmpSum,result);
+        }
+    }
+    return result;
+}
