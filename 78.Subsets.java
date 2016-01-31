@@ -72,3 +72,48 @@ public class Solution {
       return result;
     }
 }
+
+public class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+      //Inspired by this answer
+      //http://blog.csdn.net/u011095253/article/details/9158397
+      List<List<Integer>> result = new ArrayList<List<Integer>>();
+      if(nums.length == 0 || nums == null){
+          return result;
+      }
+      List<Integer> tmp = new ArrayList<Integer>();
+      result.add(tmp);
+      Arrays.sort(nums);
+      dfs(0,nums,result,tmp);
+      return result;
+    }
+    
+    public void dfs(int idx, int[] nums, List<List<Integer>> result, List<Integer> tmp){
+        for(int i = idx; i < nums.length; i++){
+            tmp.add(nums[i]);
+            result.add(new ArrayList<Integer>(tmp));
+            dfs(i+1,nums,result,tmp);
+            tmp.remove(tmp.size()-1);//remove the last one
+        }
+    }
+    
+}
+
+这道题是要求生成所有子集，那么首先我们有一个能返回所有子集的ArrayList res, 
+和一个临时变量ArrayList tmp, 当tmp满足一定条件的时候，往res里面添加结果
+Subset这道题的条件比较直观，就是每当我们添加了一个元素，都是一个新的子集。
+那么我们怎么保证不会出现重复集合呢。我们引入一个int pos用来记录此子集的起点在哪，
+比如当pos = 1的时候就是从第二个元素往后循环添加元素（0 base）,
+每次当此层用了第i个元素，那么下一层需要传入下一个元素的位置i+1 除此之外，
+当循环结束要返回上一层dfs的时候我们需要把这一层刚添加元素删去。
+
+比如输入集合为［1，2，3］应当是这么运行，
+[]
+[1]
+[1,2]
+[1,2,3] //最底层子循环到头返回删去3，上一层的子循环也到头删去2
+          //而此时，这一层循环刚到2，删去后还可以添加一个3
+[1,3] //删除3，删除1
+[2]
+[2,3] //删除3，删除2
+[3]
