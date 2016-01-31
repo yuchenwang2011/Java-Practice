@@ -44,3 +44,31 @@ public class Solution {
         return result;
     }
 }
+
+public class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+      //The second solution is inspired by these two solutions
+      //https://leetcode.com/discuss/9213/my-solution-using-bit-manipulation
+      //http://www.jiuzhang.com/solutions/subsets/
+      List<List<Integer>> result = new ArrayList<List<Integer>>();
+      if(nums == null || nums.length ==0){
+          result.add(new ArrayList<Integer>());
+          return result;
+      }
+      Arrays.sort(nums);
+      int n = nums.length;
+      for(int i = 0; i < (1<<n); i++){
+          List<Integer> tmp = new ArrayList<Integer>();
+          for(int j = 0; j < n; j++){
+              //here just to find the ith bit whether equal to 1
+              //because this case it happens to be,say 101 represents {1,3} for [1,2,3]
+              //here it can't be 1 because the result is 0100 something like that
+              if( (i&(1<<j)) != 0){ 
+                 tmp.add(nums[j]);
+              }
+          }
+          result.add(tmp);
+      }
+      return result;
+    }
+}
