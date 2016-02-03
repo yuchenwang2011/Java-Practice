@@ -32,3 +32,20 @@ public class Solution {
       return newHead;
     }
 }
+
+public class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head == null){
+            return head;
+        }
+        return recur(head,null);
+    }
+    public ListNode recur(ListNode head,ListNode newHead){
+        if(head == null) {
+            return newHead;
+        } 
+        ListNode next = head.next;
+        head.next = newHead;
+        return recur(next,head);
+    }
+}
