@@ -36,5 +36,15 @@ public class Solution {
     }
 }
 
+//Recursion
+public class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+        head.next = deleteDuplicates(head.next);
+        return head.val == head.next.val? head.next : head;
+        //It's better to draw the picture of layers, and remember the head in return, it's last one's next
+    }
+}
+
 
 
