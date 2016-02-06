@@ -93,3 +93,29 @@ public class Solution {
        return true;
     }
 }
+
+//This method uses recursion to solve.
+public class Solution {
+    //https://leetcode.com/discuss/49428/concise-o-n-o-n-java-solution-without-reversing-the-list
+    ListNode root;
+    public boolean isPalindrome(ListNode head) {
+       if(head == null || head.next == null) return true;
+       root = head;
+       return checkProcess(head);
+    }
+    
+    public boolean checkProcess(ListNode head){
+        boolean result = true;
+        if(head.next != null) { //make the pointer way back to the end of the list, so then we can compare
+            result = checkProcess(head.next);
+        }
+        if(result == true){
+          if(head.val == root.val){
+              root = root.next;
+          } else {
+              result = false;
+          }
+        }
+        return result;
+    }
+}
