@@ -50,3 +50,24 @@ public class Solution {
         return pre;
     }
 }
+
+//This answer uses the most simple 2-pass solution using stack to save all the values.
+public class Solution {
+    public boolean isPalindrome(ListNode head) {
+        //https://leetcode.com/discuss/49428/concise-o-n-o-n-java-solution-without-reversing-the-list
+        //https://leetcode.com/discuss/45830/accepted-java-solution-using-stack
+       if(head == null || head.next == null) return true;
+       Deque<Integer> stack = new ArrayDeque<Integer>();
+       ListNode tmp = head;
+       while(tmp != null){
+           stack.push(tmp.val);
+           tmp = tmp.next;
+       }
+       tmp = head;
+       while(tmp != null){
+           if(stack.pop() != tmp.val) return false;
+           tmp = tmp.next;
+       }
+       return true;
+    }
+}
