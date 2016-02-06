@@ -71,3 +71,25 @@ public class Solution {
        return true;
     }
 }
+
+//This method uses stack but also half list optimization way
+public class Solution {
+    public boolean isPalindrome(ListNode head) {
+       if(head == null || head.next == null) return true;
+       Deque<Integer> stack = new ArrayDeque<Integer>();
+       ListNode start = head, end = head;
+       while(end != null && end.next != null){
+           end = end.next.next;
+           stack.push(start.val);
+           start = start.next;
+       }
+       if(end != null) {
+           start = start.next;
+       }
+       while(start != null){
+           if(stack.pop() != start.val) return false;
+           start = start.next;
+       }
+       return true;
+    }
+}
