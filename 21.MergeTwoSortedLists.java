@@ -49,3 +49,18 @@ public class Solution {
         return l3;
     }
 }
+
+//This answer uses recursion, so brilliant!
+public class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+      //This will use recursion.
+      //https://leetcode.com/discuss/77201/java-recursive-solution-in-6-lines
+      //https://leetcode.com/discuss/53608/simple-recursive-java-solution
+      if(l1 == null) return l2;
+      if(l2 == null) return l1;
+      ListNode head = l1.val < l2.val? l1:l2;
+      ListNode nonhead = l1.val < l2.val? l2:l1;
+      head.next = mergeTwoLists(head.next,nonhead);
+      return head;
+    }
+}
