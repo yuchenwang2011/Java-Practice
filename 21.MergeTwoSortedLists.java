@@ -40,15 +40,10 @@ public class Solution {
             }
             tmp = tmp.next;
         }
-        while(l1 != null){
+        if(l1 != null){
             tmp.next = l1;
-            tmp = tmp.next;
-            l1 = l1.next;
-        }
-        while(l2 != null) {
+        } else {
             tmp.next = l2;
-            tmp = tmp.next;
-            l2 = l2.next;
         }
         
         return l3;
