@@ -22,3 +22,6 @@ public class Solution {
         return head = (head.val == val)? head.next : head;
     }
 }
+//多看了几个链表的recursion的解法，有点感悟，就是先一个if来return，其次就是处理下一个点，所以用的就是head.next = xxxx，
+//因为head是我们当前的这个函数需要去做的。所以最后当然返回的肯定也是head，因为是这个函数的任务。
+//所以这个函数其实做的就是 1 if处理，2 处理下一个循环所需要的input弄好了，3把return的这一轮弄好了
