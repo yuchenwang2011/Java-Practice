@@ -46,3 +46,34 @@ public class Solution {
     }
 }
 
+//Normal human beging should come up with this solution
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //https://leetcode.com/discuss/17177/concise-java-solution-o-1-memory-o-n-time
+        if(headA == null ||headB == null) return null;
+        int length1 = length(headA), length2 = length(headB);
+        while(length1 > length2){
+            headA = headA.next;
+            length1--;
+        }
+        while(length1 < length2){
+            headB = headB.next;
+            length2--;
+        }
+        while(headA != headB) {
+            headA = headA.next;
+            headB = headB.next;
+        }
+        return headA;
+    }
+    
+    public int length(ListNode head){
+        int count = 0;
+        if(head == null) return count;
+        while(head != null){
+            head = head.next;
+            count++;
+        }
+        return count;
+    }
+}
