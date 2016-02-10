@@ -46,6 +46,10 @@ public class Solution {
     }
 }
 
+//***Finally I understand why first return case has head.next == null, it's for 2 reasons
+//1st: for the 1st iteration, [1], just 1 element, so you want to return head directly
+//2nd: if the current head is the end of list, so head.next = delete(null) = null; it's ok here, but later, you need to compare
+//head.val and head.next.val, but null doesn't have null.val, it will return a nullPointer exception.
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         if(head == null || head.next == null) return head;
