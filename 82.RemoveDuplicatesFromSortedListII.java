@@ -16,11 +16,13 @@ Answer:
  *     ListNode(int x) { val = x; }
  * }
  */
+//First you need to understand question 83
+//Then it's better to draw the stack diagram of [1,2,2,4,4]
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        if(head == null) return head;
-        if(head.next != null && head.val == head.next.val) {
-            while(head.next != null && head.val == head.next.val ){
+        if (head == null || head.next == null) return head;
+        if(head.next != null && head.val == head.next.val){
+            while(head.next != null && head.val == head.next.val){
                 head = head.next;
             }
             return deleteDuplicates(head.next);
