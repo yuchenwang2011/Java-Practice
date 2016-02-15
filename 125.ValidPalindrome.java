@@ -29,6 +29,6 @@ public class Solution {
              start++;end--;
            }
         }
-        return start >= end;
+        return start >= end; //here it's totally ok to return true
     }
 }
