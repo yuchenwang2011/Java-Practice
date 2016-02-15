@@ -11,7 +11,7 @@ However, you may not engage in multiple transactions at the same time
 Anwer:
 public class Solution {
     public int maxProfit(int[] prices) {
-        //my test case 7 5 8 1 30 100 4 2 7 10 11
+        //my test case [7,5,8,1,30,100,4,2,7,10,11]
         if (prices == null || prices.length < 2) {
             return 0;
         }
@@ -21,17 +21,17 @@ public class Solution {
             while (i < prices.length && prices[i] <= lowPrice) { //first find the local lowest price
                 lowPrice = prices[i];
                 i++;   
-            } // i should be 3 now, lowPrice = prices[2] = 1;
+            } // i should be 2 now, lowPrice = prices[1] = 5;
             highPrice = lowPrice;
             while (i < prices.length && prices[i] > highPrice) { 
                 //Second, find the local highest price after the lowest price try to sell;
                 highPrice = prices[i];
                 i++;
             }
-            //now i=4 and highPrice = prices[4];
+            //now i=3 and highPrice = prices[2] = 8;
             profit = profit + (highPrice - lowPrice);
             lowPrice = highPrice;
-            i--;
+            i--; //Now we just loop through prices[2],8, but i is 3, next round it will be 4. We need check price[3]
         }
         return profit;
     }
