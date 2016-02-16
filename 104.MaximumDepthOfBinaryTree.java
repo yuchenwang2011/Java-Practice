@@ -30,3 +30,11 @@ public class Solution {
         return Math.max(depthLeft,depthRight);
     }
 }
+
+//This answer is from other people
+public class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        return Math.max(maxDepth(root.left)+1,maxDepth(root.right)+1);
+    }
+}
