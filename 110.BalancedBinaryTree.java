@@ -31,3 +31,21 @@ public class Solution {
         return Math.max(getDepth(root.left)+1,getDepth(root.right)+1);
     }
 }
+
+//Second method is actually just did some more during get the depth
+public class Solution {
+    public boolean isBalanced(TreeNode root) {
+        int depth = getHeight(root);
+        if(depth == -1) return false;
+        return true;
+    }
+    
+    public int getHeight(TreeNode root){
+        if(root == null) return 0;
+        int leftDepth = getHeight(root.left);
+        int rightDepth = getHeight(root.right);
+        if(Math.abs(leftDepth - rightDepth) > 1) return -1;
+        if(leftDepth == -1 || rightDepth == -1) return -1;
+        return Math.max(leftDepth,rightDepth)+1;
+    }
+}
