@@ -77,8 +77,9 @@ public class Solution {
       process(result, queue);
       return result;
     }
-    
-    public void process(List<List<Integer>> result,Queue queue){
+
+    //***********Remember!!!after Queue, you need give the <TreeNode>!!!!!    
+    public void process(List<List<Integer>> result,Queue<TreeNode> queue){
         if(queue.isEmpty()) return;
          List<Integer> tmp = new ArrayList<Integer>();
           int size = queue.size();
