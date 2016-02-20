@@ -45,3 +45,26 @@ public class Solution {
         process(root.right, result, tmp + root.val + "->");
     }
 }
+
+public class Solution {
+    public List<String> binaryTreePaths(TreeNode root){
+        List<String> result = new ArrayList<String>();
+        StringBuilder tmp = new StringBuilder();
+        process(root,result,tmp);
+        return result;
+    }
+    public void process(TreeNode root, List<String> result, StringBuilder tmp){
+        if(root == null) return;
+        int size = tmp.length();
+        if(root.left == null && root.right == null) {
+            tmp.append(root.val);
+            result.add(tmp.toString());
+            tmp.delete(size,tmp.length());
+            return;
+        }
+        tmp.append(root.val + "->");
+        process(root.left,result,tmp);
+        process(root.right,result,tmp);
+        tmp.delete(size,tmp.length());
+    }
+}
