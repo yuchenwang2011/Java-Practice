@@ -42,3 +42,30 @@ public class Solution {
         else return process(left.left, right.right) && process(left.right, right.left);
     }
 }
+
+//Got Inspired by this answer
+//https://leetcode.com/discuss/41807/short-and-clean-java-iterative-solution
+public class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null) return true;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root.left);
+        queue.offer(root.right);
+        boolean result = true;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            TreeNode current1 = queue.poll();
+            TreeNode current2 = queue.poll();
+            if(current1 == null && current2 == null) continue;
+            else if (current1 == null || current2 == null) return false;
+            else if (current1.val != current2.val) return false;
+            else {
+                queue.offer(current1.left);
+                queue.offer(current2.right);
+                queue.offer(current1.right);
+                queue.offer(current2.left);
+            }
+        }
+        return result;
+    }
+}
