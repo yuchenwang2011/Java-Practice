@@ -38,3 +38,22 @@ public class Solution {
         if(root.right != null) process(root.right,result);
     }
 }
+
+
+//The one in the hello world is wrong, it should push the right node to stack first
+//My test case is [1,2,3,4,5,6,7], you can manually count the stack and result to understand
+public class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        if(root == null) return result;
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode current = stack.pop();
+            result.add(current.val);
+            if(current.right != null) stack.push(current.right);
+            if(current.left != null) stack.push(current.left);
+        }
+        return result;
+    }
+}
