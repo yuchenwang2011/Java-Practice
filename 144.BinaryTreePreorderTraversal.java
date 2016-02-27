@@ -58,3 +58,23 @@ public class Solution {
         return result;
     }
 }
+
+//According to this answer, I can get an iterative template. It's a totally different idea
+//https://leetcode.com/discuss/71943/preorder-inorder-and-postorder-iteratively-summarization
+public class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        if(root == null) return result;
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        while(root != null || !stack.isEmpty() ){
+            if(root != null) {
+                stack.push(root);
+                result.add(root.val);
+                root = root.left;
+            } else {
+                root = stack.pop().right;
+            }
+        }
+        return result;
+    }
+}
