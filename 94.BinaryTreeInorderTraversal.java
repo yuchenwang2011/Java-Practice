@@ -23,6 +23,7 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
+//Inorder Traversal is [1,2,3,4,5,6,7] --> [4,2,5,1,6,3,7]
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();

@@ -24,6 +24,7 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
+//Preorder Traveral is [1,2,3,4,5,6,7]--> [1,2,4,5,3,6,7]
 public class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();

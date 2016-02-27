@@ -23,6 +23,7 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
+//Postorder Traversal [1,2,3,4,5,6,7] --> [4,5,2,6,7,3,1]
 public class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
@@ -35,5 +36,21 @@ public class Solution {
         if(root.left != null) process(root.left,result);
         if(root.right != null) process(root.right,result);
         result.add(root.val);
+    }
+}
+
+public class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        if(root == null) return result;
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode current = stack.pop();
+            result.add(0,current.val);
+            if(current.left != null) stack.push(current.left);
+            if(current.right != null) stack.push(current.right);
+        }
+        return result;
     }
 }
