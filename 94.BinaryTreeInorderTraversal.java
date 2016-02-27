@@ -38,3 +38,23 @@ public class Solution {
     }
     
 }
+
+
+
+//you need to use a testcase [1,2,3,4,5,6,7]
+public class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        while(root != null || !stack.isEmpty()){
+            while(root != null){
+                stack.push(root);
+                root = root.left;
+            }
+            TreeNode current = stack.pop();
+            result.add(current.val);
+            root = current.right;
+        }
+        return result;
+    }
+}
