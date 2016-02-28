@@ -47,4 +47,22 @@ public class Solution {
     }
 }
 
+//This solution will use in-order traversal recursion.
+//https://leetcode.com/discuss/68052/two-easiest-in-order-traverse-java
+public class Solution {
+    int count = 0;
+    int result = Integer.MAX_VALUE;
+    public int kthSmallest(TreeNode root, int k) {
+        inorderTraversal(root,k);
+        return result;
+    }
+    
+    public void inorderTraversal(TreeNode root, int k){
+        if(root == null) return;
+        if(root.left != null) inorderTraversal(root.left,k);
+        if(++count == k) {result = root.val; return;}
+        if(root.right != null) inorderTraversal(root.right,k);
+    }
+}
+
 
