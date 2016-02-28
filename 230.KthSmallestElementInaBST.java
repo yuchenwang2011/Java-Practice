@@ -65,4 +65,24 @@ public class Solution {
     }
 }
 
-
+//This solution will use in-order traversal iterative
+//https://leetcode.com/discuss/68052/two-easiest-in-order-traverse-java
+public class Solution {
+    public int kthSmallest(TreeNode root, int k) {
+        int count = 0;
+        int result = Integer.MAX_VALUE;
+        if(root == null) return result;
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        while(root != null || !stack.isEmpty() ){
+            if(root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                TreeNode current = stack.pop();
+                if(++count == k) return current.val;
+                root = current.right;
+            }
+        }
+        return result;
+    }
+}
