@@ -25,6 +25,8 @@ Answer:
  * }
  */
 //This is my own idea, it definitly has some issues to work out.
+//This one is same as mine but i feel it's better
+//https://leetcode.com/discuss/43277/java-top-down-o-n-2-solution
 public class Solution {
     public int kthSmallest(TreeNode root, int k) {
         while(k >= 1){
@@ -84,5 +86,48 @@ public class Solution {
             }
         }
         return result;
+    }
+}
+
+//This solution is what exactly Google is asking for -- to modify the TreeNode structure
+//First time it needs O(N) to rebuild the tree, but after that it will be binary search and O(logN)
+//https://leetcode.com/discuss/43464/what-if-you-could-modify-the-bst-nodes-structure
+public class Solution {
+    class TreeNode2 {
+        int val;
+        int count; //number of nodes of the tree
+        TreeNode2 left;
+        TreeNode2 right;
+        TreeNode2 (int val) {
+            this.val = val;
+            count = 1;
+        }
+    }
+    
+    public TreeNode2 updateTreeNode(TreeNode root){ 
+        if(root == null) return null;
+        TreeNode2 root2 = new TreeNode2(root.val);
+        if(root.left != null) root2.left = updateTreeNode(root.left);
+        if(root.right != null) root2.right = updateTreeNode(root.right);
+        if(root2.left != null) root2.count = root2.count + root2.left.count;
+        if(root2.right != null) root2.count = root2.count + root2.right.count;
+        return root2;
+    }
+
+    public int kthSmallest(TreeNode root, int k) {
+        TreeNode2 root2 = updateTreeNode(root);
+        return helper(root2,k);
+    }
+    
+    public int helper(TreeNode2 root2, int k){
+        if(k < 0 || root2 == null) return Integer.MAX_VALUE;
+        if(root2.left != null) {
+            if(root2.left.count+1 == k) return root2.val;
+            if(root2.left.count >= k) return helper(root2.left,k);
+            else return helper(root2.right,k - root2.left.count -1 );
+        } else {
+            if(k == 1) return root2.val;
+            return helper(root2.right, k - 1);
+        }
     }
 }
