@@ -31,3 +31,17 @@ public class Solution {
         return result;
     }
 }
+
+//This time I will do it recursively
+//This answer is good, it tells you how to do the predecessor
+//https://leetcode.com/discuss/59787/share-my-java-recursive-solution
+public class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        if(root == null || p == null) return null;
+        if(root.val > p.val) {
+            TreeNode leftResult = inorderSuccessor(root.left,p);
+            return leftResult == null? root: leftResult;
+        } 
+        return inorderSuccessor(root.right,p);
+    }
+}
