@@ -61,3 +61,17 @@ public class Solution {
         return result;
     }
 }
+
+//Got Inspired by this answer
+//https://leetcode.com/discuss/68979/java-solution-time-space-using-integer-object-null-pointer
+public class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return process(root,Long.MIN_VALUE,Long.MAX_VALUE);
+    }
+    
+    public boolean process(TreeNode root, long min, long max){
+        if(root == null) return true;
+        if(root.val <= min || root.val >= max) return false;
+        return process(root.left, min, root.val) && process(root.right, root.val, max);
+    }
+}
