@@ -75,3 +75,25 @@ public class Solution {
         return process(root.left, min, root.val) && process(root.right, root.val, max);
     }
 }
+
+//Got inspired by this answer
+//https://leetcode.com/discuss/22234/my-java-inorder-iteration-solution
+public class Solution {
+    public boolean isValidBST(TreeNode root) {
+        if(root == null) return true;
+        long tmp = Long.MIN_VALUE;
+        Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
+        while(root != null || !stack.isEmpty() ){
+            if(root != null){
+                stack.push(root);
+                root = root.left;
+            } else {
+                TreeNode current = stack.pop();
+                if(current.val <= tmp) return false;
+                else tmp = current.val;//as the values should be larger and larger
+                root = current.right;
+            }
+        }
+        return true;
+    }
+}
