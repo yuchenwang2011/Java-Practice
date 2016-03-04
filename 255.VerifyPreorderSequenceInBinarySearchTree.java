@@ -28,3 +28,21 @@ public class Solution {
         return true;
     }
 }
+
+public class Solution {
+    public boolean verifyPreorder(int[] preorder) {
+        if(preorder.length == 0) return true;
+        int low = Integer.MIN_VALUE; 
+        int stackSize = -1;
+        for(int p : preorder){
+            if(p < low) return false;
+            while(stackSize >= 0 && p > preorder[stackSize]){
+                low = preorder[stackSize];
+                stackSize--;
+            }
+            stackSize++;
+            preorder[stackSize] = p;
+        }
+        return true;
+    }
+}
