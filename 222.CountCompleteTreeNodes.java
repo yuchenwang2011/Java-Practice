@@ -62,3 +62,18 @@ public class Solution {
         return 1 + getHeight(root.left);
     }
 }
+
+public class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null) return 0;
+        int height =0;
+        TreeNode left = root, right = root;
+        while(right != null){
+            left = left.left;
+            right = right.right;
+            height++;
+        }
+        if(left == null) return 1 << height - 1; //means this is a full tree
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+}
