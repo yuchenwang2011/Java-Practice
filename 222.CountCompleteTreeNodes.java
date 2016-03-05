@@ -39,3 +39,26 @@ public class Solution {
         return 1 + getHeight(root.left);
     }
 }
+
+public class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null) return 0;
+        int count = 0;
+        while(root!= null){
+            int height = getHeight(root);
+            if(height == getHeight(root.right) + 1 ) {
+                count = count + (1 << (height-1)) ;
+                root = root.right;
+            } else {
+                count = count + (1 << (height-2)) ;
+                root = root.left;
+            }
+        }
+        return count;
+     }
+    
+    public int getHeight(TreeNode root){
+        if(root == null) return 0;
+        return 1 + getHeight(root.left);
+    }
+}
