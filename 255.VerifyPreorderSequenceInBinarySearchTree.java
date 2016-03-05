@@ -46,3 +46,25 @@ public class Solution {
         return true;
     }
 }
+
+//This method will use recursion. But it is O(N^2)
+public class Solution {
+    public boolean verifyPreorder(int[] preorder) {
+        if(preorder == null || preorder.length == 0) return true;
+        return process(preorder, 0, preorder.length-1);
+    }
+    public boolean process(int[] preorder, int start, int end){
+        if(start >= end) return true;
+        int root = preorder[start];
+        int rightChildIndex = -1;
+        for(int i = start+1; i <= end; i++){
+            if(rightChildIndex == -1 && preorder[i] > root) rightChildIndex = i;
+            if(rightChildIndex != -1 && preorder[i] < root) return false;
+        }
+        if(rightChildIndex == -1){
+            return process(preorder, start+1, end);
+        } else {
+            return process(preorder, start+1, rightChildIndex-1) && process(preorder, rightChildIndex, end);
+        }
+    }
+}
