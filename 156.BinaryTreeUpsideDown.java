@@ -49,3 +49,17 @@ public class Solution {
         return prevRoot;
     }
 }
+
+//Got inspired by this answer: it's hard to understand, you need to go through it on the paper
+//https://leetcode.com/discuss/44718/clean-java-solution
+public class Solution {
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        if(root == null || (root.left == null && root.right == null) ) return root;
+        TreeNode newRoot = upsideDownBinaryTree(root.left);
+        root.left.left = root.right;
+        root.left.right = root;
+        root.left = null;
+        root.right = null;
+        return newRoot;
+    }
+}
