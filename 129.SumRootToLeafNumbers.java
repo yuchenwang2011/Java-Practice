@@ -49,3 +49,6 @@ public class Solution {
         if(root.right != null) dfs(root.right, result, value);
     }
 }
+
+//This answer is better than mine
+//https://leetcode.com/discuss/20451/short-java-solution-recursion
