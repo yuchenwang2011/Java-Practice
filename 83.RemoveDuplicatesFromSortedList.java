@@ -61,4 +61,14 @@ public class Solution {
     }
 }
 
-
+//Moving the while condition to the from will be much more easier to understand
+public class Solution {
+     public ListNode deleteDuplicates(ListNode head) {
+         if(head == null || head.next == null) return head;
+         while(head.next != null && head.val == head.next.val){
+             head = head.next;
+          }
+         head.next = deleteDuplicates(head.next);
+         return head;
+     }
+ }
