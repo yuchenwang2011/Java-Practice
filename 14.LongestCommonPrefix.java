@@ -4,6 +4,8 @@ Write a function to find the longest common prefix string amongst an array of st
 
 Answer:
 public class Solution {
+    //To understand this question, go to first link
+    //https://leetcode.com/discuss/34186/what-does-longest-common-prefix-mean
     public String longestCommonPrefix(String[] strs) {
         if(strs == null || strs.length == 0) return "";
         if(strs.length == 1) return strs[0];
@@ -20,10 +22,33 @@ public class Solution {
             else max = Math.min(max, tmp);
         }
         if (max == -1) return "";
-        String result = "";
-        for(int i = 0; i <= max; i++) {
-            result = result + strs[0].charAt(i);
+        //System.out.println("abcd".substring(0,2));
+        return max == -1 ? "" : strs[0].substring(0,max+1);
+    }
+}
+
+public class Solution {
+    //Got inspired by this answer
+    //https://leetcode.com/discuss/20993/java-code-with-13-lines
+    public String longestCommonPrefix(String[] strs) {
+        if(strs == null || strs.length == 0) return "";
+        String result = strs[0];
+        for(int i = 0; i < strs.length; i++) {
+            //shrink the result by 1 each time, because it should begin index at 0
+            while(strs[i].indexOf(result) != 0) result = result.substring(0,result.length()-1);
         }
         return result;
+    }
+}
+
+public class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        //***********Remember the usage of StringBuilder API!!!!
+        if(strs == null || strs.length == 0 ) return "";
+        StringBuilder sb = new StringBuilder(strs[0]);
+        for(int i = 0; i < strs.length; i++){
+            while(!strs[i].startsWith(sb.toString()) ) sb.deleteCharAt(sb.length() -1 ); 
+        }
+        return sb.toString();
     }
 }
