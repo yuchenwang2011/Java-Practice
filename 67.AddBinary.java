@@ -15,28 +15,15 @@ public class Solution {
         
         int la = a.length(), lb = b.length();
         String c = ""; int carry = 0;
-        while(la != 0 && lb != 0){
-            int valA = a.charAt(la-1) - '0', valB = b.charAt(lb-1) - '0';
-            if(valA > 1 || Character.isLetterOrDigit(a.charAt(la-1)) == false) return "";
-            if(valB > 1 || Character.isLetterOrDigit(b.charAt(lb-1)) == false) return "";
+        while(la > 0 || lb > 0){
+            int valA = (la <=0)? 0 : a.charAt(la-1) - '0', valB = (lb <=0) ? 0: b.charAt(lb-1) - '0';
+            if(la > 0 && (valA > 1 || Character.isLetterOrDigit(a.charAt(la-1)) == false) ) return "";
+            if(lb > 0 && (valB > 1 || Character.isLetterOrDigit(b.charAt(lb-1)) == false) ) return "";
             int sum = valA + valB + carry;
             c = (sum%2) + c;
-            carry = sum >= 2? 1 : 0;
+            carry = sum /2;
             la--; lb--;
         }
-        while(la != 0){
-            int sum = a.charAt(la-1) - '0' + carry;
-            carry = sum >= 2? 1 : 0;
-            c = (sum%2) + c;
-            la --;
-        }
-        while(lb != 0){
-            int sum = b.charAt(lb-1) - '0' + carry;
-            carry = sum >= 2? 1 : 0;
-            c = (sum%2) + c;
-            lb --;
-        }
-        if(carry != 0) c = "1" + c;
-        return c;
+        return carry == 0? c : "1" + c;
     }
 }
