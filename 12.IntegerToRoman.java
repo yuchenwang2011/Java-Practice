@@ -52,3 +52,17 @@ public class Solution {
         return result;
     }
 }
+
+public class Solution {
+    public String intToRoman(int num) {
+        //I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000
+        //Got inspired by this link, it has many very good solutions in side.
+        //https://leetcode.com/discuss/1208/how-to-improve-code
+        if (num <=0 || num > 3999) return null;
+        String[] M = new String[]{"","M","MM","MMM"};
+        String[] C = new String[]{"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+        String[] X = new String[]{"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
+        String[] I = new String[]{"","I","II","III","IV","V","VI","VII","VIII","IX"};
+        return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
+    }
+}
