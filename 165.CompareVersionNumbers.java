@@ -36,3 +36,22 @@ public class Solution {
         else return process(v1,v2,++l1Dot,++l2Dot);
     }
 }
+
+public class Solution {
+    //Mine solution beats 87%, this is another solution idea beats 10%
+    //https://leetcode.com/discuss/32731/java-solution-with-fewer-if-logic
+    //***************Remember the usage of split!!!!!
+    public int compareVersion(String version1, String version2) {
+        String[] v1 = version1.split("\\.");
+        String[] v2 = version2.split("\\.");
+        
+        for(int i = 0; i < Math.max(v1.length, v2.length); i++ ) {
+            int val1 = (i < v1.length) ? Integer.parseInt(v1[i]) : 0;
+            int val2 = (i < v2.length) ? Integer.parseInt(v2[i]) : 0;
+            
+            if(val1 > val2) return 1;
+            if(val1 < val2) return -1;
+        }
+        return 0;
+    }
+}
