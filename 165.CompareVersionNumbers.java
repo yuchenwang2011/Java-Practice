@@ -20,22 +20,6 @@ public class Solution {
     }
     public int process(String v1, String v2, int l1Dot, int l2Dot){
         if(l1Dot > v1.length()-1 && l2Dot > v2.length()-1) return 0;
-        else if (l1Dot > v1.length() -1 || l2Dot > v2.length()-1) {
-            if(l1Dot > v1.length()-1) {
-                int result = 0;
-                for(;l2Dot <= v2.length()-1; l2Dot++) {
-                  if(v2.charAt(l2Dot) != '.') result += (v2.charAt(l2Dot) - '0');
-                }
-                return result == 0? 0 : -1;
-            } else {
-                int result = 0;
-                for(;l1Dot <= v1.length()-1; l1Dot++) {
-                  if(v1.charAt(l1Dot) != '.') result += (v1.charAt(l1Dot) - '0');
-                }
-                return result == 0? 0 : 1;
-            }
-        }
-        
         int l1Result = 0, l2Result = 0;
         while(l1Dot <= v1.length()-1){
             if(v1.charAt(l1Dot) == '.') break;
