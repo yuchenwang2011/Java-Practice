@@ -33,3 +33,21 @@ public class Solution {
         return dp[s.length()];
     }
 }
+
+
+public class Solution {
+    public int numDecodings(String s) {
+        if(s == null || s.length() == 0 || s.charAt(0) == '0') return 0;
+        int n1 = 1, n2 = 1, n3 = 0;
+        for(int i = 2; i <= s.length(); i++){
+            n3 = 0;
+            int oneStepVal = Integer.parseInt(s.substring(i-1,i));
+            int twoStepVal = Integer.parseInt(s.substring(i-2,i));
+            if(oneStepVal >= 1 && oneStepVal <= 9) n3 += n2;
+            if(twoStepVal >= 10 && twoStepVal <=26) n3 += n1;
+            n1 = n2;
+            n2 = n3;
+        }
+        return n2;
+    }
+}
