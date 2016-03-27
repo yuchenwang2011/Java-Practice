@@ -35,3 +35,20 @@ public class Solution {
         return true;
     }
 }
+
+public class Solution {
+    //Second answer is inpired by this answer to use array as a HashMap, hard to understand
+    //https://leetcode.com/discuss/33889/short-java-solution-without-maps
+    //Note: there are 256 characters in ASCII
+    public boolean isIsomorphic(String s, String t) {
+        if(s == null && t == null) return true;
+        if(s == null || t == null || s.length() != t.length()) return false;
+        int[] map = new int[512];
+        for(int i = 0; i < s.length(); i++){
+            int c1 = s.charAt(i), c2 = t.charAt(i);
+            if(map[c1] != map[c2 + 256]) return false;
+            map[c1] = map[c2 + 256] = i + 1;
+        }
+        return true;
+    }
+}
