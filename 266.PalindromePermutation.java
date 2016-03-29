@@ -42,3 +42,20 @@ public class Solution {
         return map.size() <=1;
     }
 }
+
+public class Solution {
+    public boolean canPermutePalindrome(String s) {
+        if(s == null || s.length() == 0 ) return true;
+        int[] result = new int[256];
+        for(int i = 0; i < s.length(); i++){
+            int num = s.charAt(i);
+            if(result[num] == 1) result[num]--;
+            else result[num]++;
+        }
+        int count = 0;
+        for(int i = 0; i < 256; i++){
+            if(result[i] %2 == 1) count ++;
+        }
+        return count <= 1;
+    }
+}
