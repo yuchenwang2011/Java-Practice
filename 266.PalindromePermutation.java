@@ -29,3 +29,16 @@ public class Solution {
         return oddCount <= 1;
     }
 }
+
+public class Solution {
+    public boolean canPermutePalindrome(String s) {
+        if(s == null || s.length() == 0 ) return true;
+        HashMap<Character, Integer> map = new HashMap<Character,Integer>();
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(map.containsKey(c)) map.remove(c);
+            else map.put(c,1);
+        }
+        return map.size() <=1;
+    }
+}
