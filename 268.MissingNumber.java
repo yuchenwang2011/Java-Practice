@@ -25,3 +25,14 @@ public class Solution {
     //just think, if you missed 0, you still have 1...n to xor 1...n, to be zero, then return zero;
     //if not zero, you have 1..n-1 to xor 1..n, that's 0^n=n, return n;
 }
+
+public class Solution {
+    public int missingNumber(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int result = 0; //more 0s in xor doesn't matter
+        for(int i = 0; i < nums.length; i++){
+            result = result ^ nums[i] ^ i;
+        }
+        return result ^ nums.length;
+    }
+}
