@@ -26,3 +26,15 @@ public class Solution {
         return true;
     }
 }
+
+public class Solution {
+    //****Remember: review this answer more!
+    //This is the second link's result, it's super smart
+    public boolean isStrobogrammatic(String num) {
+        if(num == null || num.length() ==0 ) return true;
+        for(int i = 0, j = num.length()-1; i <=j; i++, j--){
+            if("00 11 88 696".contains(num.charAt(i) + "" + num.charAt(j)) == false) return false;
+        }
+        return true;
+    }
+}
