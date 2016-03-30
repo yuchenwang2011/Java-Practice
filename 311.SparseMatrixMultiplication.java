@@ -47,6 +47,8 @@ public class Solution {
 }
 
 public class Solution {
+  //This image tells you how to do the matrix calculation
+  //https://patentimages.storage.googleapis.com/EP0480825A2/imgb0053.png
     public int[][] multiply(int[][] A, int[][] B) {
         if(A == null || B == null) return null;
         int aRow = A.length;
