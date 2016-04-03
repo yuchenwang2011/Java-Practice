@@ -34,3 +34,21 @@ public class Solution {
         return true;
     }
 }
+
+public class Solution {
+    //This method is to construct a reverse int of x
+    //Got inspired by this answer, the second link is to just compare a half of x
+    //https://leetcode.com/discuss/12693/neat-ac-java-code-o-n-time-complexity, I will do it next round
+    //https://leetcode.com/discuss/23563/line-accepted-java-code-without-the-need-handling-overflow
+    public boolean isPalindrome(int x) {
+        if(x < 0) return false;
+        int y = 0;
+        int backup = x;
+        while(x != 0){
+            y = y * 10 + x % 10;
+            x = x / 10;
+            System.out.println(y);
+        }
+        return backup == y;
+    }
+}
