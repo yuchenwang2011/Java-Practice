@@ -32,3 +32,20 @@ public class Solution {
         return result;
     }
 }
+
+public class Solution {
+    //Got inspired by this answer:
+    //https://leetcode.com/discuss/24116/the-way-i-come-up-with-my-solution
+    // n = 26x + r
+    // n - 1 = 26x + (r-1) 
+    // r -1 = (n -1) % 26 and x = (n - 1 - (r-1)) /26
+    public String convertToTitle(int n) {
+        String result = "";
+        while(n > 0){
+            int a = (n -1) % 26; 
+            result = (char) ('A' + a) + result;
+            n = (n - 1 - a) / 26;
+        }
+        return result;
+    }
+}
