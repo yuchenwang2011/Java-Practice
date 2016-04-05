@@ -18,3 +18,16 @@ public class Solution {
         return start;
     }
 }
+
+public class Solution {
+    //This answer uses Newton's method, but i don't think I can remember this
+    //Inspired by this answer:
+    //https://leetcode.com/discuss/58631/3-4-short-lines-integer-newton-every-language
+    public int mySqrt(int x) {
+        long r = x;
+        while(r * r > x){
+            r = (r + x/r) / 2; 
+        }
+        return (int) r;
+    }
+}
