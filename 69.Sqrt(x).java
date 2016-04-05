@@ -31,3 +31,19 @@ public class Solution {
         return (int) r;
     }
 }
+
+public class Solution {
+    //Got inspired by this answer and the following replies
+    //https://leetcode.com/discuss/8897/share-my-o-log-n-solution-using-bit-manipulation
+    public int mySqrt(int x) {
+        long bit = 1L << 16; //because bit ^2 needs to smaller than Integer.MAX_VALUE;
+        long result = 0;
+        while(bit > 0){
+            result = result | bit; //bit can't be zero, if zero, here is useless
+            //it's not the 1L << 0, it's bit == 0, bit can be 1L << 1
+            if(result * result > x) result = result ^ bit; //cancel this bit
+            bit = bit >> 1; //try next bit; here also bit can't be zero, 0 >> 1 = 0
+        }
+        return (int) result;
+    }
+}
