@@ -28,9 +28,11 @@ public class Solution {
         }
         //Third finish length from 3 to N, they can use loop to compare from start end to center
         for(int length = 3; length <= s.length(); length++){
-            for(int start = 0; start < s.length()-length+1; start++){  //i + j should < s.length()
+            for(int start = 0; start < s.length()-length+1; start++){
+                //because end = start + len - 1 < s.length() ==> start + len -1 < length ==> start < length - len +1
                 int end = start + length -1;  //Here you just want to compare once, not recursively, so end is the other side
                 if(s.charAt(start) == s.charAt(end) && result[start+1][end-1] == true) {
+                    //It's kinda recursively check if its true, must inner string is true and outside 2 value are equal
                     result[start][end] = true;
                     maxLength = length;
                     maxStart = start;
