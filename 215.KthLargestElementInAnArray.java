@@ -36,3 +36,40 @@ public class Solution {
         return pq.peek();
     }
 }
+
+public class Solution {
+    //Got from this link, but I really don't know why it can't work when i do as my quick sort template
+    //http://www.jiuzhang.com/solutions/kth-largest-element/
+    public int findKthLargest(int[] nums, int k) {
+        if(nums == null || nums.length == 0) return 0;
+        if(k <= 0) return k;
+        return helper(nums, 0, nums.length - 1, nums.length - k + 1);
+    }
+    
+    public int helper(int[] nums, int left, int right, int k){
+        if(left == right) return nums[left];
+        int position = partition(nums, left, right);  // the position of pivot
+        if(position + 1 == k) return nums[position];
+        else if (position + 1 < k) return helper(nums, position + 1, right, k);
+        else return helper(nums, left, position - 1, k);
+    }
+    
+    public int partition(int[] nums, int left, int right){
+        if(left == right) return left;
+        int pivot = nums[left];
+        //once left == right we can already return, so break
+        while(left < right){
+            while(left < right && nums[right] >= pivot) right --;
+            if(left < right) swap(left, right, nums);
+            while(left < right && nums[left] <= pivot) left ++;
+            if(left < right) swap(left, right, nums);
+        } //anyway, after 撸完 one round, left side all smaller than pivot, right side all bigger than pivot
+        return left;
+    }
+    
+    public void swap(int i, int j, int[] nums){
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+}
