@@ -31,3 +31,38 @@ public class Solution {
         return result;
     }
 }
+
+public class Solution {
+    //This is the most difficult question I have ever seen so far, must read the following explanation
+    //http://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
+    //https://leetcode.com/discuss/67546/share-java-o-n-logn-solution
+    public int lengthOfLIS(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int[] tails = new int[nums.length];
+        tails[0] = nums[0];
+        int tailLength = 1;
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i] < tails[0]) tails[0] = nums[i]; //equals to create a new list
+            else if(nums[i] > tails[tailLength - 1]) {
+                tails[tailLength] = nums[i];
+                tailLength ++;
+            } else {
+                //To search where nums[i] should locate to replace the old one
+                int replacePosition = binarySearch(tails, 0, tailLength - 1, nums[i]);
+                tails[replacePosition] = nums[i];
+            }
+        }
+        return tailLength;
+    }
+    
+    public int binarySearch(int[] tails, int start, int end, int key){
+        if(tails == null || tails.length == 0) return -1;
+        while(start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if(tails[mid] == key) return mid;
+            else if(tails[mid] < key) start = mid;
+            else end = mid;
+        }
+        return end;
+    }
+}
