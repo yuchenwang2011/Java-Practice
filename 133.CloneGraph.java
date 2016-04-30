@@ -56,3 +56,34 @@ public class Solution {
     }
     
 }
+
+//BFS
+//https://leetcode.com/discuss/14969/simple-java-iterative-bfs-solution-with-hashmap-and-queue
+public class Solution {
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if(node == null) return null;
+        HashMap<Integer, UndirectedGraphNode> map = new HashMap<Integer, UndirectedGraphNode>();
+        Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+        UndirectedGraphNode resultNode = new UndirectedGraphNode(node.label);
+        map.put(resultNode.label, resultNode);
+        queue.offer(node);
+        
+        //map is used to save new cloned nodes, and queue is to save old nodes
+        //each node in map will need to add all the new cloned node as new neighbor
+        
+        while(!queue.isEmpty()){
+            UndirectedGraphNode oldNode = queue.poll();
+            for(UndirectedGraphNode oldNei : oldNode.neighbors){
+                if(map.containsKey(oldNei.label) == false) {
+                    map.put(oldNei.label, new UndirectedGraphNode(oldNei.label));
+                    queue.offer(oldNei);
+                }
+                //because nodes are added in pairs to map and queue, so one oldNode corresponds to one newNode
+                UndirectedGraphNode newNode = map.get(oldNode.label);
+                UndirectedGraphNode newNei = map.get(oldNei.label);
+                newNode.neighbors.add(newNei);
+            }
+        }
+        return resultNode;
+    }
+}
