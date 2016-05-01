@@ -1,0 +1,32 @@
+1.Queue<Integer> queue = new LinkedList<Integer>(); 
+  queue.offer(); queue.poll();
+
+2.List<Integer> list = new ArrayList<Integer>();
+  list.add();
+
+3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+  map.put();map.containsKey();
+  
+4.
+
+5. Integer.MAX_VALUE;
+   Integer.MIN_VALUE;
+   
+6. int[][] array = new int[][];
+   int[] result = new int[]{0,0};
+   int row = array.length;
+   int col = array[0].length;
+
+7. Math.max(a,b);
+   Math.min(a,b);
+   Math.abs(a);
+   
+8. n = n >> 1;
+   n = n >> 1; //if n is a unsigned integer
+   val |= c.charAt(i) - 'a';
+   if(m & n == 0)
+   result = result ^ nums[i];
+   diff &= -diff; //get the right most 1
+   firstBit = (nums[i] >> j) & 1;
+   
+9. char c = string.charAt(i);
