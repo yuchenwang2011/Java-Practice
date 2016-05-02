@@ -10,7 +10,10 @@
 3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
   map.put();map.containsKey();
   
-4.
+4.StringBuilder sb = new StringBuilder();
+  for(int i = 0; i < strings.length; i++) {
+     sb.insert(0, strings[i]);
+  }
 
 5. Integer.MAX_VALUE;
    Integer.MIN_VALUE;
@@ -36,4 +39,13 @@
    
 9. char c = string.charAt(i);
 
-10.Arrays.sort();
+10.Arrays.sort(nums);
+   Arrays.sort(strings, new Comparator<String>() {
+       public int compare(String s1, String s2){
+          String a = s1 + s2;
+          String b = s2 + s1;
+          return a.compareTo(b);
+       }
+   });
+   Comparator<String> compare = new Comparator<String>(...);
+   Arrays.sort(strings, compare);
