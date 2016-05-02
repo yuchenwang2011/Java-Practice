@@ -28,5 +28,9 @@
    result = result ^ nums[i];
    diff &= -diff; //get the right most 1
    firstBit = (nums[i] >> j) & 1;
+   n = n & (n-1); //delete the right most 1
+   if(n > 0 && (n & (n-1) == 0) && (n & 0x55555555 == num)) //power of 4
    
 9. char c = string.charAt(i);
+
+10.Arrays.sort();
