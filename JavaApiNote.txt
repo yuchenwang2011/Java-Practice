@@ -62,3 +62,8 @@
    Arrays.sort(intervals, new Comparator<Interval>(){
          public int compare(Interval a, Interval b) {return a.start - b.start;}
    });
+
+12.public class NestedIterator implements Iterator<Integer> {
+   }
+   NestedIterator i = new NestedIterator(nestedList);
+   while(i.hasNext()) int num = i.next();
