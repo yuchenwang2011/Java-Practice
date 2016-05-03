@@ -2,10 +2,12 @@
   queue.offer(); queue.poll();
 
 2.List<Integer> list = new ArrayList<Integer>();
-  list.add();
+  list.add(); list.remove(list.size() - 1 );
   for(int i = 0; i < list.size(); i++){
      int num = list.get(i);
   }
+  List<List<Integer>> result = new ArrayList<List<Integer>>();
+  result.add(new ArrayList<Integer>(tmp));
 
 3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
   map.put();map.containsKey();
