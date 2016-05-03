@@ -17,9 +17,12 @@
   char[] c = string.toCharArray();
   return new String(c);
   return str1.equals(str2);
+  String[] strings = string.split(",");
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
-   stack.push(); stack.pop();
+   stack.push(); stack.pop(); stack.isEmpty();
+   int num = stack.peek();
+   int size = stack.size();
 
 6. Integer.MAX_VALUE;
    Integer.MIN_VALUE;
