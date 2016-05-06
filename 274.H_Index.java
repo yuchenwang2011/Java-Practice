@@ -39,28 +39,8 @@ public class Solution {
     }
 }
 
+//Can't understand second answer at all, so I delete it
+//Second answer inspired by this answer:
+//https://leetcode.com/discuss/66656/java-o-n-time-with-easy-explanation
+//https://leetcode.com/discuss/93819/java-bucket-sort-o-n-solution-with-detail-explanation
 
-public class Solution {
-    //Second answer inspired by this answer:
-    //https://leetcode.com/discuss/66656/java-o-n-time-with-easy-explanation
-    //https://leetcode.com/discuss/93819/java-bucket-sort-o-n-solution-with-detail-explanation
-    public int hIndex(int[] citations) {
-        int length = citations.length;
-        int[] array = new int[length+1];
-        //This is like a hashtable, put too large elemtents to the end
-        for(int i = 0 ; i < length; i++){
-            if(citations[i] > length) array[length] ++;
-            else array[citations[i]]++; 
-        }
-        int result = 0;
-        for(int i = array.length - 1; i >=0; i--){
-            result = result + array[i];
-            //Because array is actually from low to high,
-            //it means we now have enough papers with higher citations
-            //result here means the total number of papers that have more than i citations. i is h
-            //here if you can't understand, look at the image in the second link
-            if(result >= i) return i;
-        }
-        return 0;
-    }
-}
