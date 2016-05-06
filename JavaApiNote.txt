@@ -23,6 +23,9 @@
   String opponent = s.substring(0,i) + "--" + s.substring(i+2, s.length());
   String flip = s.substring(0,i) + "--";
   flip = (i+1 == s.length()-1) ? flip : flip + s.substring(i+2,s.length()); 
+  s = s.trim();
+  String part1 = s.substring(0,i); //ends at i - 1, part1/2 has no ith letter
+  String part2 = s.substring(i+1); //starts from i + 1 th 
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
    stack.push(); stack.pop(); stack.isEmpty();
@@ -79,3 +82,20 @@
    }
    NestedIterator i = new NestedIterator(nestedList);
    while(i.hasNext()) int num = i.next();
+
+14. char c = string.charAt(0);
+    switch(c) {
+      case '+': c = 'a'; break;
+      case '-': c = 'b'; break;
+      default:   c = 'c'; break;
+    }
+    int month = 8;  
+    String monthString;
+    switch (month) {
+        case 1:  monthString = "January";
+                 break;
+        case 2:  monthString = "February";
+                 break;
+        default: monthString = "Invalid month";
+                 break;
+    }
