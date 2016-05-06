@@ -27,9 +27,12 @@ public class Solution {
         for(int i = 0; i < nums.length; i++){
             pq.offer(nums[i]); //pq.add() is also ok
             
-            if(pq.size() > k){
+            if(pq.size() >= k + 1){
                 //because now, the size is actually k+1, so the kth largest must not be the first one, maybe the second one
                 //so remove the first element is absolutely safe
+                //Because it's a min priority queue, say k = 5, there are 4 others bigger than it. 
+                //the worst case is when the 5th largest one in front, and the other 4 bigger than it behind.
+                //when size becomes k + 1, the rest 1 must be smaller and infront of the 5th largest
                 pq.remove(); //pq.poll() is also ok
             }
         }
