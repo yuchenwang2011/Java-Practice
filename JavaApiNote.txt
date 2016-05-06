@@ -29,21 +29,24 @@
    int num = stack.peek();
    int size = stack.size();
 
-6. Integer.MAX_VALUE;
+6. PriorityQueue<Integer> pq = new PriorityQueue<Integer>(); //Java use min priority queue, smallest in front
+   pq.offer(); pq.add(); pq.remove(); pq.poll(); pq.peek();
+
+7. Integer.MAX_VALUE;
    Integer.MIN_VALUE;
    int num = Integer.valueOf(string);
    
-7. int[][] array = new int[][];
+8. int[][] array = new int[][];
    int[] result = new int[]{0,0};
    int row = array.length;
    int col = array[0].length;
 
-8. Math.max(a,b);
+9. Math.max(a,b);
    Math.min(a,b);
    Math.abs(a);
    int root = (int) Math.sqrt(n);
    
-9. n = n >> 1;
+10. n = n >> 1;
    n = n >> 1; //if n is a unsigned integer
    val |= c.charAt(i) - 'a';
    if(m & n == 0)
@@ -53,9 +56,12 @@
    n = n & (n-1); //delete the right most 1
    if(n > 0 && (n & (n-1) == 0) && (n & 0x55555555 == num)) //power of 4
    
-10. char c = string.charAt(i);
+11. char c = string.charAt(i);
+    char[] c = string.toCharArray();
+    if(c == 'a') {;}
+    int a = string.charAt(0) - 'a';
 
-11.Arrays.sort(nums);
+12.Arrays.sort(nums);
    Arrays.sort(strings, new Comparator<String>() {
        public int compare(String s1, String s2){
           String a = s1 + s2;
@@ -69,7 +75,7 @@
          public int compare(Interval a, Interval b) {return a.start - b.start;}
    });
 
-12.public class NestedIterator implements Iterator<Integer> {
+13.public class NestedIterator implements Iterator<Integer> {
    }
    NestedIterator i = new NestedIterator(nestedList);
    while(i.hasNext()) int num = i.next();
