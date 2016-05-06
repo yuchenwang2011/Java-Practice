@@ -21,6 +21,8 @@
   return str1.equals(str2);
   String[] strings = string.split(",");
   String opponent = s.substring(0,i) + "--" + s.substring(i+2, s.length());
+  String flip = s.substring(0,i) + "--";
+  flip = (i+1 == s.length()-1) ? flip : flip + s.substring(i+2,s.length()); 
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
    stack.push(); stack.pop(); stack.isEmpty();
