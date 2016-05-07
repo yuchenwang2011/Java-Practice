@@ -20,6 +20,7 @@ public class Solution {
         map.put('8','8');
         map.put('9','6');
         for(int i = 0 ; i < num.length(); i++){
+            //this containsKey condition is a must
             if(map.containsKey(num.charAt(i)) && map.get(num.charAt(i)) == num.charAt(num.length() -1 - i)) continue;
             else return false;
         }
