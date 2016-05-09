@@ -11,6 +11,8 @@
 
 3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
   map.put();map.containsKey();
+  HashSet<Integer> set = new HashSet<Integer>();
+  if(set.add(n) == false)
   
 4.StringBuilder sb = new StringBuilder();
   for(int i = 0; i < strings.length; i++) {
@@ -54,6 +56,7 @@
    //Below 2 lines to calculate sqrt
    int mid = start + (end - start)/2;
    if(mid == x / mid || mid < x/mid && (mid + 1) > x / (mid+1)) return mid;
+   int n = (int) Math.pow(num,2);
    
 10. n = n >> 1;
    n = n >> 1; //if n is a unsigned integer
