@@ -51,6 +51,9 @@
    Math.min(a,b);
    Math.abs(a);
    int root = (int) Math.sqrt(n);
+   //Below 2 lines to calculate sqrt
+   int mid = start + (end - start)/2;
+   if(mid == x / mid || mid < x/mid && (mid + 1) > x / (mid+1)) return mid;
    
 10. n = n >> 1;
    n = n >> 1; //if n is a unsigned integer
@@ -61,6 +64,8 @@
    firstBit = (nums[i] >> j) & 1;
    n = n & (n-1); //delete the right most 1
    if(n > 0 && (n & (n-1) == 0) && (n & 0x55555555 == num)) //power of 4
+   long r = x; while(r * r > x) {r = (r + x/r )/2;} return (int) r;  //Newton's Iteration
+   long bit = 1L << 16
    
 11. char c = string.charAt(i);
     char[] c = string.toCharArray();
