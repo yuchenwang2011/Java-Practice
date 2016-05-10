@@ -57,6 +57,7 @@
    int mid = start + (end - start)/2;
    if(mid == x / mid || mid < x/mid && (mid + 1) > x / (mid+1)) return mid;
    int n = (int) Math.pow(num,2);
+   return (Math.log10(n) / Math.log10(3)) % 1 ==0;
    
 10. n = n >> 1;
    n = n >> 1; //if n is a unsigned integer
@@ -74,6 +75,9 @@
     char[] c = string.toCharArray();
     if(c == 'a') {;}
     int a = string.charAt(0) - 'a';
+    long sum = 0; sum += s.charAt(i) - 'A' + 1;
+    String result = ""; result = (char) ('A' + a) + result;
+    String letter = (char) ('A' - 1 + a) + "";
 
 12.Arrays.sort(nums);
    Arrays.sort(strings, new Comparator<String>() {
