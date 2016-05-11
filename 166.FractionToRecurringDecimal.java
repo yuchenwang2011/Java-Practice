@@ -38,16 +38,16 @@ public class Solution {
         result.append(".");
         
         HashMap<Long, Integer> map = new HashMap<Long, Integer>();
-        while(!map.containsKey(remainder)){
+        while(!map.containsKey(remainder) && remainder != 0){
             map.put(remainder, result.length());
             result.append(10 * remainder / den);
             remainder = 10 * remainder % den;
         }
+        if(remainder == 0) return result.toString();
+        
         int index = map.get(remainder);
         result.insert(index, "(");
         result.append(")");
-        return result.toString().replace("(0)","");
-        
-        
+        return result.toString().replace("(0)",""); //for case 1/ 5 = 0.2(0)
     }
 }
