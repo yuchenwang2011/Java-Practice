@@ -33,6 +33,8 @@
   for(int i = 0, j = num.length()-1; i <=j; i++, j--){
     if("00 11 88 696".contains(num.charAt(i) + "" + num.charAt(j)) == false) return false;
   }
+  sb.insert(index,"("); //insert before index;
+  String s = sb.toString().replace("(0)","");
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
    stack.push(); stack.pop(); stack.isEmpty();
@@ -50,6 +52,7 @@
    int[] result = new int[]{0,0};
    int row = array.length;
    int col = array[0].length;
+   long a = 5; long b = 4; long c = a/b; //c == 1
 
 9. Math.max(a,b);
    Math.min(a,b);
