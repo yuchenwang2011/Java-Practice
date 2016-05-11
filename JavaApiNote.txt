@@ -63,6 +63,10 @@
    if(mid == x / mid || mid < x/mid && (mid + 1) > x / (mid+1)) return mid;
    int n = (int) Math.pow(num,2);
    return (Math.log10(n) / Math.log10(3)) % 1 ==0;
+   //this is how to do the matrix multiplication
+   https://patentimages.storage.googleapis.com/EP0480825A2/imgb0053.png
+   C[i][j] *= A[i][k] * B[k][j];
+   
    
 10. n = n >> 1;
    n = n >> 1; //if n is a unsigned integer
