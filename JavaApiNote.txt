@@ -35,6 +35,9 @@
   }
   sb.insert(index,"("); //insert before index;
   String s = sb.toString().replace("(0)","");
+  String letter = (char) ('A' - 1 + a) + "";
+  String result = ""; result = (char) ('A' + a) + result;
+  
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
    stack.push(); stack.pop(); stack.isEmpty();
