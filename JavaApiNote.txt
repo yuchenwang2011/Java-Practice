@@ -90,6 +90,7 @@
     long sum = 0; sum += s.charAt(i) - 'A' + 1;
     String result = ""; result = (char) ('A' + a) + result;
     String letter = (char) ('A' - 1 + a) + "";
+    int[] result = new int[256]; int num = s.charAt(i); result[num]++;
 
 12.Arrays.sort(nums);
    Arrays.sort(strings, new Comparator<String>() {
