@@ -10,11 +10,19 @@
   result.add(new ArrayList<Integer>(tmp));
 
 3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+  //hashtable operations are all O(1) complexity and the space complexity is O(N)
   map.put();map.containsKey();
+  for(char c : map.keySet()) {;}
   HashSet<Integer> set = new HashSet<Integer>();
   if(set.add(n) == false)
   HashSet<String> s = new HashSet<String>();
   return new ArrayList<String>(s);
+  map.put(number, map.containsKey(number) ? map.get(number) + 1 : 1);
+  for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+    int i = entry.getKey();
+    int j = entry.getValue();
+  }
+  
   
 4.StringBuilder sb = new StringBuilder();
   for(int i = 0; i < strings.length; i++) {
@@ -35,8 +43,11 @@
   }
   sb.insert(index,"("); //insert before index;
   String s = sb.toString().replace("(0)","");
-  String letter = (char) ('A' - 1 + a) + "";
-  String result = ""; result = (char) ('A' + a) + result;
+  s = s.trim().replaceAll("\\s+"," ");
+  String[] tmp = s.split("\\s");
+  while(path.indexOf("//") >= 0){
+     path = path.trim().replaceAll("//","/");
+  }
   
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
@@ -69,6 +80,10 @@
    //this is how to do the matrix multiplication
    https://patentimages.storage.googleapis.com/EP0480825A2/imgb0053.png
    C[i][j] *= A[i][k] * B[k][j];
+   for (int i = 2; i * i <= num; i++) {;} //for sqrt
+   int boxRowStart = 3 * (i/3), boxColStart = 3 * (i%3); 
+   char c = board[boxRowStart + j/3][boxColStart + j%3];
+   
    
    
 10. n = n >> 1;
