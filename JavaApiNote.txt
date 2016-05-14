@@ -63,6 +63,9 @@
 7. Integer.MAX_VALUE;
    Integer.MIN_VALUE;
    int num = Integer.valueOf(string);
+   //parseInt() returns primitive integer type (int), whereby valueOf returns java.lang.Integer, 
+   //which is the object representative of the integer. There are circumstances where you might want an Integer object, 
+   //instead of a primitive type.
    
 8. int[][] array = new int[][];
    int[] result = new int[]{0,0};
