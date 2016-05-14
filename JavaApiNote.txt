@@ -2,7 +2,7 @@
   queue.offer(); queue.poll();
 
 2.List<Integer> list = new ArrayList<Integer>();
-  list.add(); list.remove(list.size() - 1 );
+  list.add(); list.remove(list.size() - 1 ); 
   for(int i = 0; i < list.size(); i++){
      int num = list.get(i);
   }
@@ -48,6 +48,8 @@
   while(path.indexOf("//") >= 0){
      path = path.trim().replaceAll("//","/");
   }
+  int i = 0;
+  while(i < string.length()) {int slash = string.indexOf("/",i);}
   
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
@@ -142,3 +144,7 @@
         default: monthString = "Invalid month";
                  break;
     }
+
+15. //strs is a List<String>, coins is a int[]
+    for(String s : strs){;}
+    for(int coin : coins) {;}
