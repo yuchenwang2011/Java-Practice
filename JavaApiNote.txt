@@ -25,6 +25,7 @@
   
   
 4.StringBuilder sb = new StringBuilder();
+  sb.length();
   for(int i = 0; i < strings.length; i++) {
      sb.insert(0, strings[i]);
   }
@@ -50,6 +51,9 @@
   }
   int i = 0;
   while(i < string.length()) {int slash = string.indexOf("/",i);}
+  char[] c = str.toCharArray();
+  Arrays.sort(c);
+  String key = String.valueOf(c);
   
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
@@ -111,6 +115,7 @@
     String result = ""; result = (char) ('A' + a) + result;
     String letter = (char) ('A' - 1 + a) + "";
     int[] result = new int[256]; int num = s.charAt(i); result[num]++;
+    if(Character.isDigit(c)) {;}
 
 12.Arrays.sort(nums);
    Arrays.sort(strings, new Comparator<String>() {
@@ -125,6 +130,9 @@
    Arrays.sort(intervals, new Comparator<Interval>(){
          public int compare(Interval a, Interval b) {return a.start - b.start;}
    });
+   List<String> list = map.get(key);
+   Collections.sort(list);
+   
 
 13.public class NestedIterator implements Iterator<Integer> {
    }
@@ -147,6 +155,19 @@
         default: monthString = "Invalid month";
                  break;
     }
+    switch(val){
+      case 1: case 0: result = "";break;
+      case 2: result = "abc"; break;
+      case 3: result = "def"; break;
+      case 4: result ="ghi";  break;
+      case 5: result = "jkl"; break;
+      case 6: result = "mno"; break;
+      case 7: result = "pqrs";break;
+      case 8: result = "tuv"; break;
+      case 9: result = "wxyz";break;
+      default: break;
+    }
+    
 
 15. //strs is a List<String>, coins is a int[]
     for(String s : strs){;}
