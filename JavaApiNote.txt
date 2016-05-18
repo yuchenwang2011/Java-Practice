@@ -46,6 +46,7 @@
   String s = sb.toString().replace("(0)","");
   s = s.trim().replaceAll("\\s+"," ");
   String[] tmp = s.split("\\s");
+  String[] v1 = version1.split("\\.");
   while(path.indexOf("//") >= 0){
      path = path.trim().replaceAll("//","/");
   }
@@ -54,7 +55,12 @@
   char[] c = str.toCharArray();
   Arrays.sort(c);
   String key = String.valueOf(c);
-  
+  StringBuilder[] sb = new StringBuilder[numRows];
+  for(int i = 0; i < sb.length; i++) sb[i] = new StringBuilder();
+  return s.trim().length() -1 - s.trim().lastIndexOf(' ');
+  System.out.println(str.substring(len-1,len)); //is the end char of the string, where len = str.length();
+  while (strs[i].indexOf(result) != 0) result = result.substring(0, result.length() - 1);
+  while(!strs[i].startsWith(sb.toString()) ) sb.deleteCharAt(sb.length() -1 ); 
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
    stack.push(); stack.pop(); stack.isEmpty();
@@ -93,8 +99,6 @@
    int boxRowStart = 3 * (i/3), boxColStart = 3 * (i%3); 
    char c = board[boxRowStart + j/3][boxColStart + j%3];
    
-   
-   
 10. n = n >> 1;
    n = n >> 1; //if n is a unsigned integer
    val |= c.charAt(i) - 'a';
@@ -116,6 +120,7 @@
     String letter = (char) ('A' - 1 + a) + "";
     int[] result = new int[256]; int num = s.charAt(i); result[num]++;
     if(Character.isDigit(c)) {;}
+    if(Character.isLetterOrDigit(a.charAt(la-1)) == false) {;}
 
 12.Arrays.sort(nums);
    Arrays.sort(strings, new Comparator<String>() {
@@ -172,3 +177,6 @@
 15. //strs is a List<String>, coins is a int[]
     for(String s : strs){;}
     for(int coin : coins) {;}
+
+16. //Some smart answer
+    return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
