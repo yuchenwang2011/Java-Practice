@@ -42,6 +42,7 @@ public class Solution {
         boolean left = dfs(root.left);
         boolean right = dfs(root.right);
         if(left && right) {
+            //this if condition is very tricky, so better think about it
             if((root.left == null || root.left.val == root.val) && (root.right == null || root.right.val == root.val ) ){
               count++;
               return true;
