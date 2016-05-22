@@ -35,33 +35,6 @@ Answer:
  * }
  */
 //Test case [1,1], [3,null,30,10,null,null,15,null,45],[2147483644,-2147483648,2147483646,null,null,2147483645,2147483647]
-public class Solution {
-    public boolean isValidBST(TreeNode root) {
-        boolean result = true;
-        if(root == null) return result;
-        if(root.left != null) result = result && (root.val <= root.left.val? false: true);
-        if(root.right != null) result = result && (root.val >= root.right.val? false: true);
-        return result && helper(root.left,Long.MIN_VALUE,root.val) && helper(root.right, root.val, Long.MAX_VALUE);
-    }
-    
-    public boolean helper(TreeNode root, long lowerLimit, long upperLimit){
-        boolean result = true;
-        if(root == null) return true;
-        if(root.left != null) {
-            result = result && (root.val <= root.left.val ? false: true);
-            result = result && (root.left.val <= lowerLimit ? false : true);
-            result = result && helper(root.left,lowerLimit, Math.min(upperLimit,root.val));
-        }
-
-        if(root.right != null){
-            result = result && (root.right.val <= root.val? false: true);
-            result = result && (root.right.val >= upperLimit? false: true);
-            result = result && helper(root.right,Math.max(lowerLimit,root.val), upperLimit);
-        }
-        return result;
-    }
-}
-
 //Got Inspired by this answer
 //https://leetcode.com/discuss/68979/java-solution-time-space-using-integer-object-null-pointer
 public class Solution {
