@@ -178,5 +178,8 @@
     for(String s : strs){;}
     for(int coin : coins) {;}
 
-16. //Some smart answer
+16. Long.MIN_VALUE;
+    Long.MAX_VALUE;
+
+17. //Some smart answer
     return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
