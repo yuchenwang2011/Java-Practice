@@ -24,13 +24,10 @@ public class Solution {
         if(root == null) return 0;
         int height = getHeight(root);
         int rightHeight = getHeight(root.right);
-        if(height == 0) return 0;
-        else {
-            if(height == rightHeight+1){//it means the last node falls in the subtree of the right node
-                return (1 << (height-1)) -1 + 1 + countNodes(root.right); //1<<height equals 2^(h-1), left + root + right
-            } else {
-                return (1 << (height-2)) -1 + 1 + countNodes(root.left);
-            }
+        if(height == rightHeight+1){//it means the last node falls in the subtree of the right node
+            return (1 << (height-1)) -1 + 1 + countNodes(root.right); //1<<height equals 2^(h-1), left + root + right
+        } else {
+            return (1 << (height-2)) -1 + 1 + countNodes(root.left);
         }
     }
     
