@@ -181,9 +181,9 @@
 16. Long.MIN_VALUE;
     Long.MAX_VALUE;
 
-17. Preorder Traversal:
-    Inorder Traversal: [5,3,7,2,4,6,8] --> [2,3,4,5,6,7,8]
-    PostOrder Traversal: 
+17. Preorder Traversal:  [F,B,G,A,D,#,I,#,#,C,E,H,*] --> [F,B,A,D,C,E,G,I,H]
+    Inorder Traversal:   [F,B,G,A,D,#,I,#,#,C,E,H,*] --> [A,B,C,D,E,F,G,H,I]
+    PostOrder Traversal: [F,B,G,A,D,#,I,#,#,C,E,H,*] --> [A,C,E,D,B,H,I,G,F]
 
 18. //Some smart answer
     return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
