@@ -19,6 +19,10 @@ public class Solution {
         for(int i = 0; i < preorder.length; i++){
             if(preorder[i] < low) return false;
             //the stack.peek is to get the first element of the stack on the top, so [5,3,2,4,7] is 2,3,4,5 when i=3/4
+            //可以看一下link里面的解释。思路这样的：都放进stack里，如果小呢，肯定就是这个node的左分支嘛
+            //一旦发现比peek大，说明这个点肯定是个右分支，所以一直把stack里的值撸，把他的母节点撸没
+            //母节点的值也变成了low，因为后来比他小的是在他下面的，而他本身是一个右节点，所以所有的值都应该比母节点大
+            //一旦一个值又大了，又开始撸到母节点
             while(!stack.isEmpty() && preorder[i] > stack.peek()) {
                 System.out.println(i + " " + stack.peek());
                 low = stack.pop();
