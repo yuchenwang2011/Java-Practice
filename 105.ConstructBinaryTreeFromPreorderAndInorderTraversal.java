@@ -38,6 +38,9 @@ public class Solution {
         int inLength = inRoot - inStart + 1; 
         TreeNode root = new TreeNode(preorder[preStart]);
         root.left = construct(preStart+1, inStart, inRoot-1, preorder, inorder);
+        //As for why preStart must go to the other side? Why all elements before that are in left tree?
+        //Because preorder is to root first, left elements first, then right. So length of all left elements 
+        //must be the same as the inorder left elements length
         root.right = construct(preStart + inLength, inRoot + 1, inEnd, preorder, inorder);
         return root;
     }
