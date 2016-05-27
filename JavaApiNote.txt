@@ -123,7 +123,8 @@
     if(Character.isDigit(c)) {;}
     if(Character.isLetterOrDigit(a.charAt(la-1)) == false) {;}
 
-12.Arrays.sort(nums);
+12.//Sorting
+   Arrays.sort(nums);
    Arrays.sort(strings, new Comparator<String>() {
        public int compare(String s1, String s2){
           String a = s1 + s2;
@@ -189,3 +190,10 @@
 18. //Some smart answer
     The DFS template refer question 113
     return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
+
+19. //Arrays
+    Arrays.equals(a,b);
+    System.arraycopy(a,0,b,0,1); //copy from a to b, from index 0 to index 0, length == 1
+    int[] a = {1,2,3};
+    int[] b = a.clone();
+    
