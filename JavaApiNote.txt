@@ -196,4 +196,5 @@
     System.arraycopy(a,0,b,0,1); //copy from a to b, from index 0 to index 0, length == 1
     int[] a = {1,2,3};
     int[] b = a.clone();
+    System.out.println(Arrays.toString(a));
     
