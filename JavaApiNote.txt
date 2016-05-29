@@ -139,7 +139,7 @@
    });
    List<String> list = map.get(key);
    Collections.sort(list);
-   
+   Insertion Sort: Like playing card games: https://en.wikipedia.org/wiki/File:Insertion-sort-example-300px.gif
 
 13.public class NestedIterator implements Iterator<Integer> {
    }
