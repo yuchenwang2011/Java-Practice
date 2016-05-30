@@ -190,6 +190,8 @@
 18. //Some smart answer
     The DFS template refer question 113
     return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
+    while(listNode.next != null) listNode = listNode.next; // to delete node which val == num
+    if (listNode.next.val == num) listNode.next = listNode.next.next;
 
 19. //Arrays
     Arrays.equals(a,b);
@@ -198,3 +200,6 @@
     int[] b = a.clone();
     System.out.println(Arrays.toString(a));
     
+20. Things to ask before start to code, 
+    Is God an anagram of dog? Is whitespace significant?
+    Is this a singly linked list or a doubly linked list?
