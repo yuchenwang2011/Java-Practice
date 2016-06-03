@@ -46,3 +46,22 @@ public class Solution {
           nums[second] = tmp;
       }
 }
+
+
+//Here is the code I wrote in Second Round
+public class Solution {
+    public void sortColors(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        int zeros = 0, twos = nums.length - 1;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 0){
+                nums[i] = nums[zeros];
+                nums[zeros++] = 0;
+            } else if (nums[i] == 2 && twos >= i) {
+                nums[i] = nums[twos];
+                nums[twos--] = 2;
+                i--;
+            }
+        }
+    }
+}
