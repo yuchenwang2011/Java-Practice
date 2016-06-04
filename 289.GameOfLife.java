@@ -47,8 +47,8 @@ public class Solution {
                 if(live == 3 && board[i][j] ==0){
                     board[i][j] = 2; //it was 00 before, now make the second bit to 1, to be 10
                 }
-                //for dead to dead/live to live we don't need to do anything.
-                //so for live to dead, it was 01 before, so change second bit, now it's 11
+                //for dead to dead/live to dead we don't need to do anything.
+                //so for live to live, it was 01 before, so change second bit, now it's 11
                 if(board[i][j]==1 && (live >=2 && live <=3)){
                     board[i][j] = 3;
                 }
