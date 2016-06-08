@@ -9,6 +9,7 @@
   List<List<Integer>> result = new ArrayList<List<Integer>>();
   result.add(new ArrayList<Integer>(tmp));
   result.add(0,root.val); //for postorder traversal
+  result.add(Arrays.asList(nums[i],nums[start],nums[end]));
 
 3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
   //hashtable operations are all O(1) complexity and the space complexity is O(N)
