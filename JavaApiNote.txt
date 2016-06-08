@@ -62,6 +62,7 @@
   System.out.println(str.substring(len-1,len)); //is the end char of the string, where len = str.length();
   while (strs[i].indexOf(result) != 0) result = result.substring(0, result.length() - 1);
   while(!strs[i].startsWith(sb.toString()) ) sb.deleteCharAt(sb.length() -1 ); 
+  String s = Integer.toString(lower);
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
    stack.push(); stack.pop(); stack.isEmpty();
@@ -77,6 +78,7 @@
    //parseInt() returns primitive integer type (int), whereby valueOf returns java.lang.Integer, 
    //which is the object representative of the integer. There are circumstances where you might want an Integer object, 
    //instead of a primitive type.
+   String s = Integer.toString(lower);
    
 8. int[][] array = new int[][];
    int[] result = new int[]{0,0};
