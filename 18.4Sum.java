@@ -51,3 +51,32 @@ public class Solution {
     }
 }
 //test case: [0,1,1,1,2,2,2,2,2,3,3,3,4],10; [-1,-5,-5,-3,2,5,0,4],-7;
+
+//My answer second round
+public class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length < 4) return result; 
+        Arrays.sort(nums);
+        for(int first = 0; first < nums.length - 3; first ++){
+            if(first > 0 && nums[first] == nums[first - 1]) continue;
+            for(int second = first + 1; second < nums.length -2; second++){
+                //Be careful this line!!!!!!!!!
+                if(second > first + 1 && nums[second] == nums[second-1]) continue;
+                int start = second + 1, end = nums.length - 1;
+                while(start < end) {
+                    int val = nums[first] + nums[second] + nums[start] + nums[end];
+                    if(val > target) end--;
+                    else if (val < target) start++;
+                    else {
+                        while(start < end && nums[start] == nums[start+1]) start++;
+                        while(start < end && nums[end] == nums[end-1]) end--;
+                        result.add(Arrays.asList(nums[first], nums[second], nums[start], nums[end]));
+                        start++; end--;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}
