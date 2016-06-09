@@ -183,8 +183,10 @@
     for(String s : strs){;}
     for(int coin : coins) {;}
 
-16. Long.MIN_VALUE;
+16. //Other primitive type
+    Long.MIN_VALUE;
     Long.MAX_VALUE;
+    double target1 = target - 0.5, target2 = target + 0.5;
 
 17. Preorder Traversal:  [F,B,G,A,D,#,I,#,#,C,E,H,*] --> [F,B,A,D,C,E,G,I,H]
     Inorder Traversal:   [F,B,G,A,D,#,I,#,#,C,E,H,*] --> [A,B,C,D,E,F,G,H,I]
