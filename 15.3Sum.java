@@ -48,3 +48,28 @@ public class Solution {
         return result;
     }
 }
+
+//This is my answer second round
+public class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length < 3) return result;
+        Arrays.sort(nums);
+        for(int first = 0; first < nums.length - 2; first++){
+            int start = first + 1, end = nums.length -1;
+            if(first > 0 && nums[first] == nums[first-1]) continue;
+            while(start < end) {
+                int sum = nums[first] + nums[start] + nums[end];
+                if(sum > 0) end--;
+                else if (sum < 0) start++;
+                else {
+                    while(start < end && nums[start] == nums[start + 1]) start++;
+                    while(start < end && nums[end] == nums[end-1]) end--;
+                    result.add(Arrays.asList(nums[first], nums[start], nums[end]));
+                    start++; end--;
+                }
+            }
+        }
+        return result;
+    }
+}
