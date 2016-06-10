@@ -36,3 +36,20 @@ public class Solution {
         return profit;
     }
 }
+
+//this is my second round solution
+public class Solution{
+  public int maxProfit(int[] nums){
+    if(nums == null || nums.length <= 1) return 0;
+    int result = 0, i = 0;
+    while(i < nums.length){
+       while(i < nums.length-1 && nums[i+1] <= nums[i]) i++;
+       int min = nums[i];
+       while(i < nums.length-1 && nums[i+1] >= nums[i]) i++;
+       int max = nums[i];
+       result += max - min;
+       i++;
+    }
+    return result;
+  }
+}
