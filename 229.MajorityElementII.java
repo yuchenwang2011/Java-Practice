@@ -11,6 +11,7 @@ public class Solution {
         //this quesiton lets me understand that when if and else if conditions both true, carry out the first one
         //Still using Moore Voting Algorithm
         //https://leetcode.com/discuss/69126/concise-java-solution-based-on-moores-voting-algorithm
+        //你就想象，这是一部major1不停排挤major2的斗争撕逼史，好处全自己拿走，一点不留给major2，因为他俩有可能一样
         List<Integer> result = new ArrayList<Integer>();
         if (nums.length == 0 || nums == null) {
             return result;
