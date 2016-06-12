@@ -30,3 +30,18 @@ public class Solution {
         }
     }
 }
+
+//this is my second round solution
+public class Solution {
+    public void moveZeroes(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        int zeroPosition = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0) nums[zeroPosition++] = nums[i];
+        }
+        //all elements before zeroPosition are zero;
+        for(int i = zeroPosition; i < nums.length; i++){
+            nums[i] = 0;
+        }
+    }
+}
