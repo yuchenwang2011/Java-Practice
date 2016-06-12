@@ -87,6 +87,7 @@
    int row = array.length;
    int col = array[0].length;
    long a = 5; long b = 4; long c = a/b; //c == 1
+   System.arraycopy(from, fromStart, to, toStart, length);
 
 9. Math.max(a,b);
    Math.min(a,b);
