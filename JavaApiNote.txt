@@ -127,6 +127,7 @@
     int[] result = new int[256]; int num = s.charAt(i); result[num]++;
     if(Character.isDigit(c)) {;}
     if(Character.isLetterOrDigit(a.charAt(la-1)) == false) {;}
+    if (start < end && Character.toLowerCase(data[start]) != Character.toLowerCase(data[end]))
 
 12.//Sorting
    Arrays.sort(nums);
