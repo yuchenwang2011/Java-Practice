@@ -211,3 +211,6 @@
 20. Things to ask before start to code, 
     Is God an anagram of dog? Is whitespace significant?
     Is this a singly linked list or a doubly linked list?
+
+21. public class Dog extends Canine implements Pet{...}
+
