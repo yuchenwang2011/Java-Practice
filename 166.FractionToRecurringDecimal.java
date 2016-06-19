@@ -48,6 +48,6 @@ public class Solution {
         int index = map.get(remainder);
         result.insert(index, "(");
         result.append(")");
-        return result.toString().replace("(0)",""); //for case 1/ 5 = 0.2(0)
+        return result.toString(); 
     }
 }
