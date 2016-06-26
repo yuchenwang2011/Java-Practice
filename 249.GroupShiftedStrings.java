@@ -50,7 +50,7 @@ public class Solution {
         int offset = str.charAt(0) - 'a';
         for(int i = 0; i < str.length(); i++){
             char c = (char) (str.charAt(i) - offset);
-            if(c < 'a') c += 26;
+            if(c < 'a') c += 26; //here it must be 26, not 25, because "ba", it should become "az". a - 1 + 26 = z
             key = key + c;
         }
         return key;
