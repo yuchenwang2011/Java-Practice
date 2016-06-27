@@ -32,6 +32,7 @@
   for(int i = 0; i < strings.length; i++) {
      sb.insert(0, strings[i]);
   }
+  int length = sb.length(); sb.append("a"); sb.delete(length, sb.length());
   char[] c = string.toCharArray();
   return new String(c);
   return str1.equals(str2);
