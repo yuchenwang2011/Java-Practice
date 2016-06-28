@@ -41,3 +41,16 @@ public class Solution {
         return end + 1;
     }
 }
+
+//this is my third round answer
+public class Solution {
+    public int removeElement(int[] nums, int val) {
+        if(nums == null || nums.length == 0) return 0;
+        if(nums.length == 1) return nums[0] == val ? 0 : 1;
+        int size = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != val) nums[size++] = nums[i];
+        }
+        return size;
+    }
+}
