@@ -201,6 +201,7 @@
     return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
     while(listNode.next != null) listNode = listNode.next; // to delete node which val == num
     if (listNode.next.val == num) listNode.next = listNode.next.next;
+    H index: if(citations[i] >= length - i) return length - i;
 
 19. //Arrays
     Arrays.equals(a,b);
@@ -214,4 +215,3 @@
     Is this a singly linked list or a doubly linked list?
 
 21. public class Dog extends Canine implements Pet{...}
-
