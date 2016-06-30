@@ -15,7 +15,7 @@
 
 3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
   //hashtable operations are all O(1) complexity and the space complexity is O(N)
-  map.put(); map.containsKey(); map.remove(c);
+  map.put(); map.containsKey(); map.containsValue(); map.remove(c);
   for(char c : map.keySet()) {;}
   HashSet<Integer> set = new HashSet<Integer>();
   if(set.add(n) == false)
