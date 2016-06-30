@@ -1,4 +1,5 @@
 1.Queue<Integer> queue = new LinkedList<Integer>(); 
+  Queue<int[]> queue = new LinkedList<int[]>();
   queue.offer(); queue.poll();
 
 2.List<Integer> list = new ArrayList<Integer>();
