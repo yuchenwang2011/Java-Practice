@@ -191,6 +191,7 @@
 16. //Other primitive type
     Long.MIN_VALUE;
     Long.MAX_VALUE;
+    long a = Math.abs((long) dividend);
     double target1 = target - 0.5, target2 = target + 0.5;
 
 17. Preorder Traversal:  [F,B,G,A,D,#,I,#,#,C,E,H,*] --> [F,B,A,D,C,E,G,I,H]
