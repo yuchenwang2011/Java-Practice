@@ -30,3 +30,23 @@ public class Solution {
         return result;
     }
 }
+
+//this is my second round solution, maybe a little bit easier to understand
+public class Solution {
+    public String countAndSay(int n) {
+        if(n <= 0) return "";
+        if(n == 1) return "1";
+        String lastResult = countAndSay(n-1);
+        StringBuilder sb = new StringBuilder();
+        int count = 1;
+        for(int i = 0; i < lastResult.length(); i++){
+            if(i < lastResult.length() - 1 && lastResult.charAt(i) == lastResult.charAt(i+1)) {
+                count++; continue;
+            }
+            String tmp = count + "" + lastResult.charAt(i);
+            count = 1;
+            sb.append(tmp);
+        }
+        return sb.toString();
+    }
+}
