@@ -38,7 +38,7 @@ public class Solution {
         for(int i = idx; i < nums.length; i++){
             tmp.add(nums[i]);
             dfs(nums,target-nums[i],tmp,result,i+1);
-            while(i< nums.length-1 && nums[i+1] == nums[i]) i++;
+            while(i< nums.length-1 && nums[i+1] == nums[i]) i++; //this line can be put here and next line but not previous
             tmp.remove(tmp.size()-1);
         }
     }
