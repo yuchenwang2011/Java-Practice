@@ -217,3 +217,4 @@
     Is this a singly linked list or a doubly linked list?
 
 21. public class Dog extends Canine implements Pet{...}
+22. if(a instanceof String) int b = (String) a;
