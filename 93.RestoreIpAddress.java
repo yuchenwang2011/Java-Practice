@@ -15,7 +15,7 @@ public class Solution {
     //https://leetcode.com/discuss/19296/my-concise-ac-java-code
     public List<String> restoreIpAddresses(String str) {
         List<String> result = new ArrayList<String>();
-        if(str == null || str.length() < 4 || str.length() > 16) return result;
+        if(str == null || str.length() < 4 || str.length() > 12) return result;
         process(str, result, 0, 0, "");
         return result;
     }
@@ -42,7 +42,7 @@ public class Solution {
 public class Solution {
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<String>();
-        if(s == null || s.length() < 4 || s.length() > 16) return result;
+        if(s == null || s.length() < 4 || s.length() > 12) return result;
         int len = s.length();
         for(int i = 1; i <= 3 && i < len-2; i++){
             for(int j = i +1; j <=i+3 && j < len-1; j++){
