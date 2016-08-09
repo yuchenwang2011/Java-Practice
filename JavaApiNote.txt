@@ -153,6 +153,12 @@
    }
    NestedIterator i = new NestedIterator(nestedList);
    while(i.hasNext()) int num = i.next();
+   
+   ArrayList myList = new ArrayList();
+   Iterator iter = myList.iterator();
+   while(iter.hasNext()){
+      System.out.println(iter.next());
+   }
 
 14. char c = string.charAt(0);
     switch(c) {
