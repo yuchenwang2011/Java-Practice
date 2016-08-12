@@ -224,3 +224,16 @@
 
 21. public class Dog extends Canine implements Pet{...}
 22. if(a instanceof String) int b = (String) a;
+
+23. String filePath = "C:\\Stations.csv";
+    BufferedReader read = null;
+    String line = "";
+    try{
+      reader = new BufferedReader(new FileReader(filePath));
+      while( (line =  reader.readLine()) != null) {
+         String[] strings = lines.split(",");
+         System.out.println(Arrays.asList(strings));
+      }
+    } catch {IOException ex} {
+       ex.printStackTrace();
+    }
