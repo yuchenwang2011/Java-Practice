@@ -25,6 +25,7 @@ Answer:
 public class Solution {
     //This explains how Dijkstra algorithm works for shortest path question
     //https://www.youtube.com/watch?v=WN3Rb9wVYDY
+    //http://www.vogella.com/tutorials/JavaAlgorithmsDijkstra/article.html
     //This answer is copied from:
     //https://discuss.leetcode.com/topic/20965/java-solution-using-dijkstra-s-algorithm-with-explanation
     public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
