@@ -67,6 +67,7 @@
   while (strs[i].indexOf(result) != 0) result = result.substring(0, result.length() - 1);
   while(!strs[i].startsWith(sb.toString()) ) sb.deleteCharAt(sb.length() -1 ); 
   String s = Integer.toString(lower);
+  s.replaceAll("[\\.\\-\\;\\,]"," ");
 
 5. Deque<Integer> stack = new ArrayDeque<Integer>();
    stack.push(); stack.pop(); stack.isEmpty();
