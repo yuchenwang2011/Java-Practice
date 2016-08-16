@@ -109,7 +109,7 @@
    char c = board[boxRowStart + j/3][boxColStart + j%3];
    
 10. n = n >> 1;
-   n = n >> 1; //if n is a unsigned integer
+   n = n >>> 1; //if n is a unsigned integer
    val |= c.charAt(i) - 'a';
    if(m & n == 0)
    result = result ^ nums[i];
