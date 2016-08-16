@@ -110,7 +110,7 @@
    
 10. n = n >> 1;
    n = n >>> 1; //if n is a unsigned integer
-   val |= c.charAt(i) - 'a';
+   val |= 1 << (words[i].charAt(j) - 'a'); //give each appeared letter a '1' in the 32bits integer val
    if(m & n == 0)
    result = result ^ nums[i];
    diff &= -diff; //get the right most 1
