@@ -103,7 +103,7 @@
    return (Math.log10(n) / Math.log10(3)) % 1 ==0;
    //this is how to do the matrix multiplication
    https://patentimages.storage.googleapis.com/EP0480825A2/imgb0053.png
-   C[i][j] *= A[i][k] * B[k][j];
+   result[i][j] += A[i][k] * B[k][j];
    for (int i = 2; i * i <= num; i++) {;} //for sqrt
    int boxRowStart = 3 * (i/3), boxColStart = 3 * (i%3); 
    char c = board[boxRowStart + j/3][boxColStart + j%3];
