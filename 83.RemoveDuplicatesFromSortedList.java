@@ -72,3 +72,13 @@ public class Solution {
          return head;
      }
  }
+
+//My fourth round solution, I feel it can be more easier to understand
+public class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+        if(head.val == head.next.val) return deleteDuplicates(head.next);
+        head.next = deleteDuplicates(head.next);
+        return head;
+    }
+}
