@@ -28,6 +28,10 @@ public class Solution {
     //http://www.vogella.com/tutorials/JavaAlgorithmsDijkstra/article.html
     //This answer is copied from:
     //https://discuss.leetcode.com/topic/20965/java-solution-using-dijkstra-s-algorithm-with-explanation
+    
+    //就这个解法本身的理解，我感觉应该想象成先捞出一个起点string，然后把这个string咔咔一顿变，各种试，
+    //一点点整容，然后挨个和筐里的string们比，只要长一样的就先捞出来，捞完以后手头资源多了，原先那个就扔了
+    //然后接着整容这一批，最后循环到捞出来endWord
     public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
         if(beginWord == null || beginWord.length() == 0 || endWord == null || endWord.length() == 0 || wordList == null) return 0;
         int distance = 1;
