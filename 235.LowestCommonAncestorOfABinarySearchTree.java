@@ -29,20 +29,22 @@ Answer:
  * }
  */
 public class Solution {
-    //This solution is a few lines less than mine
-    //https://leetcode.com/discuss/66900/11ms-java-solution-3-lines
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        //if(p == q) return p;  //this is actually not necessary
-        if(root != null && p!= null && q!= null) {
-          if(root.val > p.val && root.val > q.val) {
-              return lowestCommonAncestor(root.left, p, q);
-          } else if(root.val < p.val && root.val < q.val) {
-              return lowestCommonAncestor(root.right, p, q);
-          } else {
-              return root; //Here you can't write root.val >= p.val && root.val <= q.val
-                            //because p might be bigger or q might be bigger
-          }
-        } 
-        return null;
+        if(root == null || root.val == p.val || root.val == q.val) return root;
+        if(root.val < p.val && root.val < q.val) return lowestCommonAncestor(root.right, p, q);
+        else if (root.val > p.val && root.val > q.val) return lowestCommonAncestor(root.left, p, q);
+        else return root;
+    }
+}
+
+public class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null || root.val == p.val || root.val == q.val) return root;
+        while(root != null){
+            if(root.val < q.val && root.val < p.val) root = root.right; 
+            else if (root.val > p.val && root.val > q.val) root = root.left;
+            else return root;
+        }
+        return root;
     }
 }
