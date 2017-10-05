@@ -21,3 +21,20 @@ public class Solution {
        return false;
     }
 }
+
+//The question is not super clear, so there might be a corner case, where there are three same element
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        if(nums == null || nums.length < 2 || k <= 0) return false;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int i = 0; i < nums.length; i++){
+            if(map.containsKey(nums[i])){
+                int diff = Math.abs(i - map.get(nums[i]));
+                if (diff <= k) return true;
+                else map.put(nums[i], i);
+            } 
+            map.put(nums[i], i);
+        }
+        return false;
+    }
+}
