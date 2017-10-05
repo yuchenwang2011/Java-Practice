@@ -35,3 +35,30 @@ public class Solution {
         return triangle;
     }
 }
+
+//Solution of Oct 5, 2017
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(numRows <= 0) return result;
+        generateHelper(result, numRows);
+        return result;
+    }
+    public void generateHelper(List<List<Integer>> result, int numRows){
+        if(numRows <= 1){
+            List<Integer> list = new ArrayList<Integer>();
+            list.add(1);
+            result.add(list);
+            return;
+        }
+        generateHelper(result, numRows - 1);
+        List<Integer> lastRow = result.get(numRows -1 - 1); //be careful here
+        List<Integer> thisRow = new ArrayList<Integer>();
+        thisRow.add(1);
+        for(int i = 1; i < lastRow.size(); i++){
+            thisRow.add(lastRow.get(i) + lastRow.get(i-1));
+        }
+        thisRow.add(1);
+        result.add(thisRow);
+    }
+}
