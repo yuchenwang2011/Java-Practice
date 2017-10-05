@@ -45,3 +45,21 @@ public class Solution {
         }
     }
 }
+
+//This is a little different from above solution, the idea is the same
+class Solution {
+    public void moveZeroes(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        int nonZero = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0) {
+                int tmp = nums[nonZero];
+                nums[nonZero] = nums[i];
+                nums[i] = tmp;
+                nonZero++;
+            }
+        }
+    }
+}
+
+//There is another solution is to have a while look, start, end, swichting and moving to the middle
