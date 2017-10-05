@@ -44,3 +44,22 @@ public class Solution {
         return result;
     }
 }
+
+//Another solution of myself, though performance is slow
+class Solution {
+    public int majorityElement(int[] nums) {
+        if(nums==null || nums.length==0) return Integer.MAX_VALUE;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int i = 0; i < nums.length; i++){
+            if(map.containsKey(nums[i])){
+                map.put(nums[i], map.get(nums[i])+1);
+                continue;
+            }
+            map.put(nums[i], 1);
+        }
+        for(int key : map.keySet()){
+            if(map.get(key) > nums.length/2) return key;
+        }
+        return nums[0];
+    }
+}
