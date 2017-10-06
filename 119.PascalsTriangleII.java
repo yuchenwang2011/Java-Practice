@@ -32,20 +32,15 @@ public class Solution {
 class Solution {
     public List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<Integer>();
-        if(rowIndex < 0) return result;
-        int[] row = new int[rowIndex+1];
+        rowIndex = Math.abs(rowIndex);
+        int[] tmp = new int[rowIndex+1];
         for(int i = 0; i <= rowIndex; i++){
-            for(int j = i ; j >= 0; j--){
-                if(j == 0 || j == i){
-                    row[j] = 1;
-                } else {
-                    row[j] = row[j] + row[j - 1];
-                }
-            }   
+            for(int j = i; j >= 0; j--){
+                if(j == i || j == 0) tmp[j] = 1;
+                else tmp[j] = tmp[j] + tmp[j-1];
+            }
         }
-        for(int i = 0; i < row.length; i++){
-            result.add(row[i]);
-        }
+        for(int i : tmp) result.add(i);
         return result;
     }
 }
