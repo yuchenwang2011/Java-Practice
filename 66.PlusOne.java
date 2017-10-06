@@ -67,11 +67,8 @@ class Solution {
             carry = sum / 10;
             if(carry == 0) return digits;
         }
-        if(carry == 1 && digits[0] == 0) {
-            int[] result = new int[digits.length+1];
-            result[0] = 1;
-            return result;
-        }
-        else return digits;
+        int[] result = new int[digits.length+1];
+        result[0] = 1;
+        return result;
     }
 }
