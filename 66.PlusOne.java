@@ -48,3 +48,30 @@ public class Solution{
     return digits;
   }
 }
+
+//This is a combination of first method and second method
+class Solution {
+    public int[] plusOne(int[] digits) {
+        if(digits == null || digits.length == 0) return new int[]{1};
+        int carry = 0, sum = 0;
+        for(int i = digits.length - 1; i >= 0; i--){
+            if(i == digits.length - 1){
+                sum = 1 + digits[i];
+                digits[i] = sum % 10;
+                carry = sum / 10;
+                if(carry == 0) return digits;
+                continue;
+            }
+            sum = digits[i] + carry;
+            digits[i] = sum % 10;
+            carry = sum / 10;
+            if(carry == 0) return digits;
+        }
+        if(carry == 1 && digits[0] == 0) {
+            int[] result = new int[digits.length+1];
+            result[0] = 1;
+            return result;
+        }
+        else return digits;
+    }
+}
