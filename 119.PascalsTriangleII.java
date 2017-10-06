@@ -27,3 +27,25 @@ public class Solution {
       return result;
     }
 }
+
+//Dynamic Programming Method Oct 5, 2017
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> result = new ArrayList<Integer>();
+        if(rowIndex < 0) return result;
+        int[] row = new int[rowIndex+1];
+        for(int i = 0; i <= rowIndex; i++){
+            for(int j = i ; j >= 0; j--){
+                if(j == 0 || j == i){
+                    row[j] = 1;
+                } else {
+                    row[j] = row[j] + row[j - 1];
+                }
+            }   
+        }
+        for(int i = 0; i < row.length; i++){
+            result.add(row[i]);
+        }
+        return result;
+    }
+}
