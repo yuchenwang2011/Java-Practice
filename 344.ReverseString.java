@@ -21,3 +21,16 @@ public class Solution {
         return new String(c);
     }
 }
+
+//Second Solution Oct 6, 2017
+class Solution {
+    public String reverseString(String s) {
+        if(s == null || s.length() == 0) return "";
+        StringBuilder sb = new StringBuilder();
+        for(int i = s.length() - 1; i >= 0; i--){
+            char c = s.charAt(i);
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+}
