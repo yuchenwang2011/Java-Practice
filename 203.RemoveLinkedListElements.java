@@ -26,7 +26,17 @@ public class Solution {
 //因为head是我们当前的这个函数需要去做的。所以最后当然返回的肯定也是head，因为是这个函数的任务。
 //所以这个函数其实做的就是 1 if处理，2 处理下一个循环所需要的input弄好了，3把return的这一轮弄好了
 
-//Second Round Solution Oct 7, 2017
+//Second Round Solution Oct7, 2017
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        if(head == null) return head;
+        if(head.val == val) return removeElements(head.next, val);
+        head.next = removeElements(head.next,val);
+        return head;
+    }
+}
+
+//Third Round Solution Oct 7, 2017
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
         if(head == null) return head;
