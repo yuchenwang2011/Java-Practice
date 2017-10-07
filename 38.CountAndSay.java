@@ -50,3 +50,29 @@ public class Solution {
         return sb.toString();
     }
 }
+
+//Third round Oct 6, 2017, similar to above two solutions
+class Solution {
+    public String countAndSay(int n) {
+        if(n < 0) return "";
+        if(n <= 1) return "1";
+        String last = countAndSay(n - 1);
+        String result = "";
+        int i = 0;
+        while(i < last.length()){
+            if(i < last.length() - 1 && last.charAt(i) == last.charAt(i+1)) {
+                int count = 1;
+                while(i < last.length() - 1 && last.charAt(i) == last.charAt(i+1)) {
+                    i++;
+                    count++;
+                }
+                result = result + count + last.charAt(i);
+                i++;
+                continue;
+            } 
+            result = result + "1" + last.charAt(i);
+            i++;
+        }
+        return result;
+    }
+}
