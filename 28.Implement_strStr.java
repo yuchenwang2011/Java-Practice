@@ -32,3 +32,25 @@ public class Solution {
         return index;
     }
 }
+
+//Solution Oct 6, 2017
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int result = -1;
+        if(haystack == null) return result;
+        if(needle == null || needle.length() > haystack.length() ) return result;
+        if(needle.length() == 0) {
+            result = 0;
+            return result;
+        }
+        int m = haystack.length(), n = needle.length();
+        for(int i = 0; i <= (m - n); i++){
+            String a = haystack.substring(i, i + n);
+            if(a.equals(needle)) {
+                result = i;
+                return result;
+            }
+        }
+        return result;
+    }
+}
