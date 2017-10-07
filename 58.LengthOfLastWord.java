@@ -29,9 +29,20 @@ public class Solution {
     }
 }
 
+//Second round other people's answer
 public class Solution {
     public int lengthOfLastWord(String s) {
         if(s == null || s.length() == 0) return 0;
         return s.trim().length() -1 - s.trim().lastIndexOf(' ');
+    }
+}
+
+//Third round my own answer at Oct6, 2017
+class Solution {
+    public int lengthOfLastWord(String s) {
+        if(s == null || s.length() == 0) return 0;
+        s = s.trim().replace("\\s+", " ");
+        String[] array = s.split(" ");
+        return array[array.length - 1].length();
     }
 }
