@@ -25,3 +25,21 @@ public class Solution {
 //多看了几个链表的recursion的解法，有点感悟，就是先一个if来return，其次就是处理下一个点，所以用的就是head.next = xxxx，
 //因为head是我们当前的这个函数需要去做的。所以最后当然返回的肯定也是head，因为是这个函数的任务。
 //所以这个函数其实做的就是 1 if处理，2 处理下一个循环所需要的input弄好了，3把return的这一轮弄好了
+
+//Second Round Solution Oct 7, 2017
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        if(head == null) return head;
+        ListNode tmp = new ListNode(-1);
+        tmp.next = head;
+        ListNode newHead = tmp;
+        while(tmp != null && tmp.next != null){
+            if(tmp.next.val == val) {
+                tmp.next = tmp.next.next;
+                continue;
+            }
+            tmp = tmp.next;
+        }
+        return newHead.next;
+    }
+}
