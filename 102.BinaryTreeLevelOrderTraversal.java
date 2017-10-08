@@ -62,7 +62,7 @@ public class Solution {
               if(current.right != null) queue.offer(current.right);
               tmp.add(current.val);
           }
-          result.add(new ArrayList<Integer>(tmp));
+          result.add(tmp);
       }
       return result;
     }
