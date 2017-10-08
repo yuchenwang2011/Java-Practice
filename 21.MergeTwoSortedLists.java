@@ -13,40 +13,25 @@ Answer:
  * }
  */
 
-//This is my first silly answer
-public class Solution {
+//Iterative Method
+class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode l3 = null;
-        if (l1 == null) return l2;
-        if (l2 == null) return l1;
-        if(l1 != null && l2 != null){
-            if(l1.val <= l2.val){
-                l3 = l1;
-                l1 = l1.next;
-            } else {
-                l3 = l2;
-                l2 = l2.next;
-            }
-        }
-        
-        ListNode tmp = l3;
+        if(l1 == null) return l2;
+        if(l2 == null) return l1;
+        ListNode l3 = new ListNode(-1);
+        ListNode newHead = l3;
         while(l1 != null && l2 != null){
             if(l1.val <= l2.val){
-                tmp.next = l1;
+                l3.next = l1;
                 l1 = l1.next;
             } else {
-                tmp.next = l2;
+                l3.next = l2;
                 l2 = l2.next;
             }
-            tmp = tmp.next;
+            l3 = l3.next;
         }
-        if(l1 != null){
-            tmp.next = l1;
-        } else {
-            tmp.next = l2;
-        }
-        
-        return l3;
+        l3.next = (l1 != null) ? l1 : l2;
+        return newHead.next;
     }
 }
 
