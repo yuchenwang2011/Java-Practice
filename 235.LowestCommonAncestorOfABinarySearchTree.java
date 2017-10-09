@@ -48,3 +48,19 @@ public class Solution {
         return root;
     }
 }
+
+//Some changes on last iterative solution
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null || p == null || q == null) return root;
+        if(p == q) return p;
+        if(root.val == p.val || root.val == q.val) return root;
+        
+        while(root.val != p.val && root.val != q.val){
+            if(root.val > p.val && root.val > q.val) root = root.left;
+            else if (root.val < p.val && root.val < q.val) root = root.right;
+            else return root;
+        }
+        return root;
+    }
+}
