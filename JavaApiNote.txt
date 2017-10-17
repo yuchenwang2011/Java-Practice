@@ -238,3 +238,10 @@
     } catch {IOException ex} {
        ex.printStackTrace();
     }
+
+24. Scanner sc = new Scanner(System.in);
+		String myLine = sc.nextLine();
+		System.out.println(myLine);
+		int a = sc.nextInt();
+		System.out.println(a);
+		sc.close();
