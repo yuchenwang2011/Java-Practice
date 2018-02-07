@@ -1,0 +1,39 @@
+This is the must review questions before taking an interview
+Array: 1.TwoSum
+
+
+
+
+LinkedList:
+
+
+
+Tree:
+
+
+
+Stack:
+
+
+
+Queue:
+
+
+
+Bit Manipulation:
+
+
+BinarySearch:
+  Template: https://github.com/yuchenwang2011/Hello_World/blob/master/DataStructure/BinarySearchTemplate.java
+
+
+
+BFS:
+
+
+
+DFS:
+
+
+
+
