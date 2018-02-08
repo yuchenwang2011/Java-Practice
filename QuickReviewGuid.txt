@@ -1,30 +1,71 @@
 This is the must review questions before taking an interview
-Array: 1.TwoSum
+Sorting:
+      1. Bubble Sort: https://github.com/yuchenwang2011/Hello_World/blob/master/DataStructure/Sorting/BubbleSort.java
+      2. Insertion Sort: https://github.com/yuchenwang2011/Hello_World/blob/master/DataStructure/Sorting/InsertionSorting.java
+      3. Selection Sort: https://github.com/yuchenwang2011/Hello_World/blob/master/DataStructure/Sorting/SelectionSort.java
+      4. Merge Sort: https://github.com/yuchenwang2011/Hello_World/blob/master/DataStructure/Sorting/MergeSort.java
+      5. Quick Sort: https://github.com/yuchenwang2011/Hello_World/blob/master/DataStructure/Sorting/QuickSort.java
 
+
+Array: 
+       1.TwoSum
+       15.3Sum
+
+TwoPointer:
+       11.ContainerWIthMostWater
+       243.ShortestWordDistance
+
+HashMap:
+       217.ContainsDuplicate
 
 
 
 LinkedList:
+      109.ConvertSortedListToBinarySearchTree
+      141.LinkedListCycle
+      147.InsertionSortList
+      203.RemoveLinkedListElements
+      206.ReverseLinkedList
 
 
 
 Tree:
+      100.SameTree
+      104.MaximumDepthOfBinaryTree
+      108.ConvertSortedArrayToBinarySearchTree
+      110.BalancedBinaryTree (111.MinimumDepthOfBinaryTree, 112.PathSum)
+      129.SumRootToLeafNumbers
+      235.LowestCommonAncestorOfABinarySearchTree
+      236.LowestCommonAncestorOfABinaryTree
 
 
 
 Stack:
+     150.EvaluateReversePolishNotation
+     155.MinStack
+     20.ValidParentheses
+     232.ImplementQueueUsingStacks
 
 
 
 Queue:
+     101.SymmetricTree
+     102.BinaryTreeLevelOrderTraversal
+     225.ImplementStackUsingQueues
 
 
 
 Bit Manipulation:
+     136.SingleNumber
+     268.MissingNumber
+     191.NumberOf1Bits
+     231.PowerofTwo
 
 
 BinarySearch:
   Template: https://github.com/yuchenwang2011/Hello_World/blob/master/DataStructure/BinarySearchTemplate.java
+      240.SearchA2DMatrixII
+      74.SearchA2DMatrix
 
 
 
@@ -33,7 +74,9 @@ BFS:
 
 
 DFS:
+    257.BinaryTreePaths
 
 
 
-
+Dynamic Programming:
+          120.TriangleMinimumPathSum
