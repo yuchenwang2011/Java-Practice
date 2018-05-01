@@ -218,15 +218,14 @@
     int[] a = {1,2,3};
     int[] b = a.clone();
     System.out.println(Arrays.toString(a));
-    
-20. Things to ask before start to code, 
-    Is God an anagram of dog? Is whitespace significant?
-    Is this a singly linked list or a doubly linked list?
 
-21. public class Dog extends Canine implements Pet{...}
-22. if(a instanceof String) int b = (String) a;
+20. public class Dog extends Canine implements Pet{...}
 
-23. String filePath = "C:\\Stations.csv";
+21. if(a instanceof String) int b = (String) a;
+
+22. I/O
+    Example 1:
+    String filePath = "C:\\Stations.csv";
     BufferedReader read = null;
     String line = "";
     try{
@@ -239,9 +238,21 @@
        ex.printStackTrace();
     }
 
-24. Scanner sc = new Scanner(System.in);
+    Example 2:
+    Scanner sc = new Scanner(System.in);
 		String myLine = sc.nextLine();
 		System.out.println(myLine);
 		int a = sc.nextInt();
 		System.out.println(a);
 		sc.close();
+
+23. Date
+    Example 1: 
+        public static final long SECOND_MILLIS = 1000;
+    	public static final long MINUTE_MILLIS = SECOND_MILLIS * 60;
+
+	public static int minutesDiff(Date first, Date second){
+	    if(first == null || second == null) return 0;
+	    int diff = (int) ((second.getTime() - first.getTime()) / MINUTE_MILLIS);
+	    return Math.abs(diff);
+	}
