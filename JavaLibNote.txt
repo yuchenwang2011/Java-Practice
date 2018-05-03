@@ -256,3 +256,15 @@
 	    int diff = (int) ((second.getTime() - first.getTime()) / MINUTE_MILLIS);
 	    return Math.abs(diff);
 	}
+	
+        @Test
+	public void testDiffInMins(){
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.set(2018, 01,01, 01,01);
+	    Date date1 = calendar.getTime();
+	    calendar.set(Calendar.MINUTE, 02);
+	    Date date2 = calendar.getTime();
+
+	    int diff = DateUtils.minutesDiff(date1, date2);
+	    assertEquals(diff, 1);
+	}
