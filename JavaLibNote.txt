@@ -12,6 +12,11 @@
   result.add(0,root.val); //for postorder traversal
   result.add(Arrays.asList(nums[i],nums[start],nums[end]));
   result.set(j,result.get(j-1)+result.get(j));
+  
+  To create a list of zero
+  Integer[] integers = new Integer[5];
+  Arrays.fill(integers, 0);
+  List<Integer> list = Arrays.asList(integers);
 
 3.HashMap<Character, Integer> map = new HashMap<Character, Integer>();
   //hashtable operations are all O(1) complexity and the space complexity is O(N)
