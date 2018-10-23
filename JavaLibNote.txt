@@ -273,3 +273,14 @@
 	    int diff = DateUtils.minutesDiff(date1, date2);
 	    assertEquals(diff, 1);
 	}
+	
+24. ... parameter
+      public void myMethod(String... strings){
+        // method body
+      }
+      https://stackoverflow.com/questions/3158730/java-3-dots-in-parameters
+    equals to: 
+      myMethod(); // Likely useless, but possible
+      myMethod("one", "two", "three");
+      myMethod("solo");
+      myMethod(new String[]{"a", "b", "c"});
