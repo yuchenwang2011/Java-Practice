@@ -229,6 +229,9 @@
 21. if(a instanceof String) int b = (String) a;
 
 22. I/O
+    In java8, you can do this
+    https://docs.oracle.com/javase/8/docs/technotes/guides/language/try-with-resources.html
+
     Example 1:
     String filePath = "C:\\Stations.csv";
     BufferedReader read = null;
