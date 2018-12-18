@@ -32,3 +32,66 @@ public class Solution {
         return result;
     }
 }
+
+
+=============================
+JavaScript Solution:
+/**
+    * @param {number[]} nums
+    * @param {number} target
+    * @param {number[]}
+*/
+var twoSum = function(nums, target){
+    var result = [];
+    
+    for(var i = 0; i < nums.length - 1; i++){
+        for(var j = i + 1; j < nums.length; j++){
+            if(nums[i] + nums[j] == target) {
+                result.push(i,j);
+            }
+        }
+    }
+        
+    return result;
+};
+
+
+two answers below are inspired by this
+https://leetcode.com/problems/two-sum/discuss/147/My-Simple-Javascript-Solution
+/**
+    * @param {number[]} nums
+    * @param {number} target
+    * @param {number[]}
+*/
+var twoSum = function(nums, target){
+    var result = [];
+    var exist = [];
+    
+    for(var i = 0; i < nums.length; i++){
+        var diff = target - nums[i];
+        if(typeof(exist[diff]) !== 'undefined'){
+           result.push(exist[diff],i);
+        }
+        exist[nums[i]] = i;
+    }
+    
+    return result;
+};
+
+
+var twoSum = function(nums, target) {
+    var result = [];
+    
+    nums.forEach(function(num,i){
+        var diff = target - num;
+        var j = nums.indexOf(diff);
+        if(j > -1 && j !== i){
+            result[0] = i;
+            result[1] = j;
+            return true;
+        }
+    });
+    
+    
+    return result;
+};
