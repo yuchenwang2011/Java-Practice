@@ -61,7 +61,7 @@ https://leetcode.com/problems/two-sum/discuss/147/My-Simple-Javascript-Solution
 /**
     * @param {number[]} nums
     * @param {number} target
-    * @param {number[]}
+    * @return {number[]}
 */
 var twoSum = function(nums, target){
     var result = [];
