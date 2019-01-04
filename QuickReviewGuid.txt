@@ -81,3 +81,7 @@ DFS:
 
 Dynamic Programming:
           120.TriangleMinimumPathSum
+          
+          
+如果是美国的面试
+“最终我觉得像word search12， word break12，word ladder12，LIS，sort color，LRU，insert & delete in O1，rob house123，234sum这种题要达到闭眼秒杀的程度，min/max heap，bucket sort，topological sort，binary pre/in/post/level 遍历，combination/permutation这种东西要做梦都梦到”
