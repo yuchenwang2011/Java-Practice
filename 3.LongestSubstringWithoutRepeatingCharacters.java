@@ -46,3 +46,27 @@ public class Solution {
         return result;
     }
 }
+
+//this is another optimized answer using HashSet from this link
+//https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1812/Share-my-Java-solution-using-HashSet
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if(s == null || s.length() == 0) return 0;
+        
+        int result = 1;
+        int start = 0;
+        int end = 0;
+        Set<Character> set = new HashSet<Character>();
+        
+        while(start <= end && end < s.length()){
+            if(set.contains(s.charAt(end))) {
+                set.remove(s.charAt(start++));
+            } else {
+                set.add(s.charAt(end));
+                result = Math.max(result, set.size());
+                end++;
+            }
+        }
+        return result;
+    }
+}
