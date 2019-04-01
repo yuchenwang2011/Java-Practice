@@ -42,3 +42,32 @@ public class Solution {
         return s.substring(maxStart, maxStart + maxLength);
     }
 }
+
+Second Answer is shorter:
+https://leetcode.com/problems/longest-palindromic-substring/discuss/3060/(AC)-relatively-short-and-very-clear-Java-solution
+class Solution {
+    public int longestPalindromeSubseq(String s) {
+        int result = 0;
+        int currentLength = 0;
+        if(s == null || s.length() == 0) return result;
+        for(int i = 0; i < s.length(); i++){
+            if(isPalindrome(s, i - currentLength - 1, i)){
+                currentLength += 2;
+                result = s.subString(s, i - currentLength - 1, i + 1);
+            } else if(isPalindrome(s, i - currentLength, i)){
+                currentLength++;
+                result = s.subString(s, i - currentLength, i+1);
+            }
+        }
+        
+        return result;
+    }
+    
+    public boolean isPalindrome(String s, int start, int end){
+        if(start < 0 || end > s.length || end < 0) return false;
+        while(start < end){
+            if(s.charAt(start++)!=s.charAt(end--)) return false;
+        }
+        return true;
+    }
+}
