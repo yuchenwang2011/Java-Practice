@@ -29,3 +29,10 @@ public class Solution {
         return (int) y;
     }
 }
+
+Answer2:
+https://leetcode.com/problems/reverse-integer/discuss/4060/My-accepted-15-lines-of-code-for-Java
+while(){
+  newResult = result * 10  + x % 10;
+  if( (newResult - x % 10) / 10 != result) return 0;
+}
