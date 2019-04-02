@@ -62,5 +62,10 @@ public boolean isPalindrome(int x) {
     	rev = rev*10 + x%10;
     	x = x/10;
     }
+    //Because a Palindrome Number's length() can be odd or even, 
+    //when it's odd(such as 121, x = 1, rev = 12), x should be rev/10 for making sure it is a Palindrome Number; 
+    //the same reason, when it's even(such as 1221, x = 12, rev = 12), x should be rev.
+
+
     return (x==rev || x==rev/10);
 }
