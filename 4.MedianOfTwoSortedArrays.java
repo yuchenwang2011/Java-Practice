@@ -73,7 +73,9 @@ class Solution {
         
         int start = 0;
         int end = length1;
-        
+        //关于这个start 和 end，别想太复杂，他们就代表着他们的左边有几个而已，start = 0就是start左边有0个
+        //所以5个元素，partition1 = 2， 就是左边有2个。如果往左挪，end = partition - 1 = 1， 就是end左边有1个
+        //如果往右挪，start = partition + 1 = 3. 就是start左边有三个。
         while(start <= end){
             int partition1 = start + (end - start) / 2;
             int partition2 = (length1 + length2 + 1) / 2 - partition1;
