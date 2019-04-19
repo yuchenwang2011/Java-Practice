@@ -53,3 +53,30 @@ public class Solution {
         return head;
     }
 }
+
+
+=========================One Round Solution But Cleaner========================
+//Better use test case [1,2,3,4,5] 2/5, and use 5 fingers to think
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if(head == null || n <= 0) return head;
+        ListNode prevHead = new ListNode(-1);
+        prevHead.next = head;
+        
+        ListNode iterator = head;
+        
+        int i = 0;
+        while(i < n && iterator.next != null){
+            iterator = iterator.next;
+            i++;
+        }
+        if(i < n) return head.next;
+        
+        while(iterator.next != null){
+            iterator = iterator.next;
+            head = head.next;
+        }
+        head.next = head.next.next;
+        return prevHead.next;
+    }
+}
