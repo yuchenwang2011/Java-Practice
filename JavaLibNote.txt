@@ -155,6 +155,9 @@
    Collections.sort(list);
    Insertion Sort: Like playing card games: https://en.wikipedia.org/wiki/File:Insertion-sort-example-300px.gif
 
+   java8:
+   Collecstions.sort(allNodes, (a,b) -> a.val - b.val);
+
 13.public class NestedIterator implements Iterator<Integer> {
    }
    NestedIterator i = new NestedIterator(nestedList);
