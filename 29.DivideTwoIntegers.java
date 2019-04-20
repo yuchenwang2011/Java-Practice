@@ -8,6 +8,7 @@ Answer:
 public class Solution {
     //Got inspired by this answer, it is probably the most clear answer
     //http://simpleandstupid.com/2014/10/21/divide-two-integers-leetcode-%E8%A7%A3%E9%A2%98%E7%AC%94%E8%AE%B0/
+    //这个就相当于先扣一块divisor，发现哎呀还剩挺多，干脆divisor * 2， 一次扣两块。一次扣4块，如此一来就变成1+2+4最后扣了7块。
     public int divide(int dividend, int divisor) {
         if(divisor == 0) return Integer.MAX_VALUE;
         if(dividend == 0 || divisor == 1) return dividend;
