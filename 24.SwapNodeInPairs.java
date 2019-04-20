@@ -44,3 +44,18 @@ public class Solution {
         return next;
     }
 }
+
+//did it April 19, 2019, my own solution, I feel it's much easier to understand
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode first = head;
+        ListNode second = first.next;
+        
+        first.next = second.next;
+        second.next = first;
+        first.next = swapPairs(first.next);
+        return second;
+    }
+}
+
