@@ -20,6 +20,7 @@ public class Solution {
        //I was inspired by this solution:
        //https://leetcode.com/discuss/72050/readable-code-without-confusing-i-j-and-with-explanation
        //0125330-->0135320-->0130235
+       //https://github.com/yuchenwang2011/Java-Practice/blob/master/31.NextPermutation.png
        if(nums == null || nums.length ==0){
            return;
        }
