@@ -57,3 +57,58 @@ public class Solution {
        }
     }
 }
+
+
+
+=========================second round my own solution according to same inspiration==================
+ class Solution {
+    public void nextPermutation(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        
+        int start = findUnscendingNum(nums);
+        if(start == 0) {
+            reverseArray(0, nums);
+            return;
+        }
+        findSmallestBiggerThanPivot(start, nums);
+        reverseArray(start, nums);
+    }
+    
+    public void findSmallestBiggerThanPivot(int start, int[] nums){
+        int tmp = nums[start - 1];
+        int smallestBiggerThanTmp = start;
+        while(smallestBiggerThanTmp < nums.length){
+            if(nums[smallestBiggerThanTmp] <= tmp) {
+                smallestBiggerThanTmp--;
+                break;
+            }
+            smallestBiggerThanTmp++;
+        }
+        if(smallestBiggerThanTmp == nums.length) smallestBiggerThanTmp--;
+        nums[start - 1] = nums[smallestBiggerThanTmp];
+        nums[smallestBiggerThanTmp] = tmp;
+    }
+    
+    public int findUnscendingNum(int[] nums){
+        for(int i = 0; i < nums.length; i++){
+            int j = i;
+            while(j < nums.length){
+                if(j > i && nums[j] > nums[j - 1]) break;
+                j++;
+            }
+            if(j == nums.length) return i;
+        }
+        return nums.length - 1;
+    }
+    
+    public void reverseArray(int start, int[] nums){
+        int end = nums.length - 1;
+        while(start < end){
+            int tmp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = tmp;
+            start++;
+            end--;
+        }
+    }
+}
