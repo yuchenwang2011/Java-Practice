@@ -27,3 +27,27 @@ public class Solution {
         process(n,result, tmp + ")", left, right+1);
     }
 }
+
+===============================
+//I feel above solution a little bit hard to understand, try to understand the second, then you can understand first
+//https://leetcode.com/problems/generate-parentheses/discuss/10100/Easy-to-understand-Java-backtracking-solution
+    class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
+        if(n <= 0) return result;
+        process(0,0,"",result,n);
+        return result;
+    }
+    
+    public void process(int left, int right, String tmp, List<String> result, int n){
+        if(left >= n && left == right) {
+            result.add(tmp);
+        }
+        if(left < n) {
+            process(left + 1, right, tmp + "(", result, n);
+        }
+        if(right < left) {
+            process(left, right + 1, tmp + ")", result, n);   
+        }
+    }
+}
