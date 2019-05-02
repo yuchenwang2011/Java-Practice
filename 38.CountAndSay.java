@@ -76,3 +76,26 @@ class Solution {
         return result;
     }
 }
+
+
+//Forget all above answers, my own solution May 1st 2019
+class Solution {
+    public String countAndSay(int n) {
+        if(n <= 1) return "1";
+        
+        String last = countAndSay(n - 1);
+        String result = "";
+        int start = 0;
+
+        while(start < last.length()){
+            int count = 0;
+            char c = last.charAt(start);
+            while(start < last.length() && last.charAt(start) == c) {
+                count++;
+                start++;
+            }
+            result = result + count + c;
+        }
+        return result;
+    }
+}
