@@ -38,7 +38,10 @@ public class Solution {
         for(int i = idx; i < nums.length; i++){
             tmp.add(nums[i]);
             dfs(nums,target-nums[i],tmp,result,i+1);
-            while(i< nums.length-1 && nums[i+1] == nums[i]) i++; //this line can be put here and next line but not previous
+            //this line can be put here and next line but not previous
+            //because you have to include the very first situation, which this tmp answer has many duplicates numbers
+            //but after that, this element should not be used anymore
+            while(i< nums.length-1 && nums[i+1] == nums[i]) i++; 
             tmp.remove(tmp.size()-1);
         }
     }
