@@ -17,6 +17,7 @@ A solution set is:
 
 Answer: 
 public class Solution {
+    //https://www.youtube.com/watch?v=5ybHmOt3-34&t=10s
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         List<Integer> tmp = new ArrayList<>();
@@ -36,6 +37,9 @@ public class Solution {
             return;
         }
         for(int i = idx; i < nums.length; i++){
+            //or use this line to remove duplicates
+            //if don't understand, refer 3sum / 4sum questions
+            //if(i > index && nums[i] == nums[i - 1]) continue;
             tmp.add(nums[i]);
             dfs(nums,target-nums[i],tmp,result,i+1);
             //this line can be put here and next line but not previous
