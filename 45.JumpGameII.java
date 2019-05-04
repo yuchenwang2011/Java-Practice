@@ -40,3 +40,29 @@ class Solution {
         return ret;
     }
 }
+
+
+//我的理解,比如5,1,3,1,1,1,1,1 结果是3 你先给了一个5,这个距离就老长了
+//然后你就开始一步一步地去走，可能这个期间这个maxLength就被偷偷地更新成8了
+//如果更新了，而且走到i=6时候，发现唉上次我缓存最大的那个最大5居然不够用了
+//现在最新科技都更新到8了，我都落伍了
+//没招了就得更新一下吧，步数也得加1了，也就是说你放弃了原来的走到第五步的走法
+//在你接受了最大值是8的时候，你实际上已经换成了先5跳到3，然后从3跳的这种方式
+class Solution {
+    public int jump(int[] nums) {
+        int result = 0;
+        int maxLength = 0;
+        int lastMaxLength = 0;
+        
+        if(nums == null || nums.length == 0) return result;
+        
+        for(int i = 0; i < nums.length; i++){
+            if(i > lastMaxLength){
+                lastMaxLength = maxLength;
+                result++;
+            }
+            maxLength = Math.max(maxLength, nums[i] + i);
+        }
+        return result;
+    }
+}
