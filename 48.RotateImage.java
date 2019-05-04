@@ -17,8 +17,7 @@ public class Solution {
         }
         int start = 0, end = row-1;
         while(start <= end){
-            int[] tmpRow = new int[column];
-            tmpRow = matrix[start];
+            int[] tmpRow = matrix[start];
             matrix[start] = matrix[end];
             matrix[end] = tmpRow;
             start ++; end--;
