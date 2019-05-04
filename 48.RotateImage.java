@@ -10,9 +10,7 @@ Could you do this in-place?
 Answer:
 public class Solution {
     public void rotate(int[][] matrix) {
-        //I was inspired by first answer, my own idea is same as second link
-        //https://leetcode.com/discuss/70200/an-clean-and-easy-java-code-with-1ms
-        //https://leetcode.com/discuss/70234/share-my-java-submission
+        //这个方法是先以一整行为单位，从头到尾颠倒一下。然后在对称的沿中线颠倒一下。
         int row = matrix.length, column = matrix[0].length;
         if(matrix == null || row != column || row == 0){
             return;
@@ -31,6 +29,36 @@ public class Solution {
                 int tmp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i] = tmp; 
+            }
+        }
+    }
+}
+
+//https://leetcode.com/problems/rotate-image/discuss/18879/AC-Java-in-place-solution-with-explanation-Easy-to-understand.
+class Solution {
+    public void rotate(int[][] matrix) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return;
+        int n = matrix.length;
+        int m = matrix[0].length;
+        if(m != n) return;
+        
+        for(int i = 0; i < n; i++){
+            for(int j = i; j < m; j++){
+                int tmp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = tmp;
+            }
+        }
+        
+        for(int i = 0; i < m; i++){
+            int start = 0;
+            int end = n - 1;
+            while(start < end){
+                int tmp = matrix[i][start];
+                matrix[i][start] = matrix[i][end];
+                matrix[i][end] = tmp;
+                start++;
+                end--;
             }
         }
     }
