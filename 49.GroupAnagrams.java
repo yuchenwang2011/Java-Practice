@@ -38,3 +38,31 @@ public class Solution {
         return result;
     }
 }
+
+
+class Solution {
+    //https://www.youtube.com/watch?v=YQbjqVjOESk
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> result = new ArrayList<List<String>>();
+        if(strs == null || strs.length == 0) return result;
+        
+        //integer saves which list it is in the final result
+        Map<String, Integer> map = new HashMap<>();
+        
+        for(String str : strs){
+            char[] ch = str.toCharArray();
+            Arrays.sort(ch);
+            String baseStr = String.valueOf(ch);
+            if(map.containsKey(baseStr)) {
+                List<String> list = result.get(map.get(baseStr));
+                list.add(str);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(str);
+                result.add(list);
+                map.put(baseStr, result.size() - 1);
+            }
+        }
+        return result;
+    }
+}
