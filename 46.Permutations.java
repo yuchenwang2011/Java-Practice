@@ -33,5 +33,29 @@ public class Solution {
             visited[i] = false;
         }
     }
+}
+
+//Second solution is not very time efficient
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length == 0) return result;
+        
+        List<Integer> tmp = new ArrayList<>();
+        helper(nums, result, tmp);
+        return result;
+    }
     
+    public void helper(int[] nums, List<List<Integer>> result, List<Integer> tmp){
+        if(tmp.size() >= nums.length){
+            result.add(new ArrayList<>(tmp));
+            return;
+        }
+        for(int i = 0; i < nums.length; i++){
+            if(tmp.contains(nums[i])) continue;
+            tmp.add(nums[i]);
+            helper(nums, result, tmp);
+            tmp.remove(tmp.size() - 1);
+        }
+    }
 }
