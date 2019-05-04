@@ -10,6 +10,7 @@ public class Solution {
         if(n == 1) return x;
         double half = myPow(x, n/2);
         double result = half * half;
+        //caution here, you can't use n % 2 == 1
         if(n % 2 != 0) result = (n <0) ? result/x : result * x;
         return result;
     }
