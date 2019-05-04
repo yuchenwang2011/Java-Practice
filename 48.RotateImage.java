@@ -43,6 +43,7 @@ class Solution {
         if(m != n) return;
         
         for(int i = 0; i < n; i++){
+            //caution here, j starts from i
             for(int j = i; j < m; j++){
                 int tmp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
