@@ -42,7 +42,7 @@ class Solution {
 }
 
 
-//我的理解,比如5,1,3,1,1,1,1,1 结果是3 你先给了一个5,这个距离就老长了
+//我对上面算法的理解,比如5,1,3,1,1,1,1,1 结果是3 你先给了一个5,这个距离就老长了
 //然后你就开始一步一步地去走，可能这个期间这个maxLength就被偷偷地更新成8了
 //如果更新了，而且走到i=6时候，发现唉上次我缓存最大的那个最大5居然不够用了
 //现在最新科技都更新到8了，我都落伍了
@@ -52,7 +52,7 @@ class Solution {
     public int jump(int[] nums) {
         int result = 0;
         int maxLength = 0;
-        int lastMaxLength = 0;
+        int lastMaxLength = maxLength;
         
         if(nums == null || nums.length == 0) return result;
         
