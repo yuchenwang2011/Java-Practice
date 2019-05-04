@@ -30,6 +30,9 @@ public class Solution {
             if(map.containsKey(key) == false) map.put(key, new ArrayList<String>());
             map.get(key).add(str);
         }
+      
+        //this is too tedious, use this
+        //https://leetcode.com/problems/group-anagrams/discuss/19176/Share-my-short-JAVA-solution
         for(String key : map.keySet()){
             List<String> list = map.get(key);
             Collections.sort(list);
