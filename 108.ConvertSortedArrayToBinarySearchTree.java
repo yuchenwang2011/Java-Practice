@@ -12,6 +12,12 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+//in the below link, someone calculated the space complexity. I personally agree with him
+//https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/discuss/35220/My-Accepted-Java-Solution
+// the time is O(n), since T(n) = 2T(n/2) + O(1).
+// The space is O(logn) since there are at most logn recursion stacks in the meantime.
+// Correct me if I am wrong.
 public class Solution {
     public TreeNode sortedArrayToBST(int[] nums) {
         if(nums == null || nums.length == 0) return null;
