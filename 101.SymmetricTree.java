@@ -37,9 +37,9 @@ public class Solution {
     }
     public boolean process(TreeNode left, TreeNode right){
         if(left == null && right == null) return true;
-        else if (left == null || right == null) return false;
-        else if (left.val != right.val) return false;
-        else return process(left.left, right.right) && process(left.right, right.left);
+        if (left == null || right == null) return false;
+        if (left.val != right.val) return false;
+        return process(left.left, right.right) && process(left.right, right.left);
     }
 }
 
