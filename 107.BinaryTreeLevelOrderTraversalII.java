@@ -63,3 +63,23 @@ public class Solution {
     }
 }
 
+
+//May5, 2019 my own solution
+class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(rooto == null) return result;
+        helper(root, result, 0);
+        return result;
+    }
+    
+    public void helper(TreeNode root, List<List<Integer>> result, int level){
+        if(root == null) return;
+        if(level >= result.size()) {
+            result.add(0, new ArrayList<>());
+        }
+        result.get(result.size() - level - 1).add(root.val);
+        helper(root.left, result, level + 1);
+        helper(root.right, result, level + 1);
+    }
+}
