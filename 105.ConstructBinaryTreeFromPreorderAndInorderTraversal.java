@@ -15,6 +15,11 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
+//记牢一个口诀，就是pre in post的这些order，都指的是"root"(重音！重音！重音！)的order，root分别在pre，inside，post的时候才会被遍历
+//pre，就是先从root开始撸，然后撸左右
+//In就是root在中间被撸，也就是先撸左边，再撸root，再撸右边
+//post就是先撸左右，再撸root。wikipedia上的例子图很好，其他网上的很多都是错的
+
 //Got inspired by this Indian video, which uses test cases as follow
 //https://www.youtube.com/watch?v=PAYG5WEC1Gs
 //https://leetcode.com/discuss/12179/my-accepted-java-solution
