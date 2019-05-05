@@ -22,6 +22,7 @@ public class Solution {
     }
     
     public TreeNode construct(int postStart, int inStart, int inEnd, int[] inorder, int[] postorder){
+        //caution here, postStart < 0
         if(postStart < 0 || inStart > inEnd) return null;
         int inRoot = 0;
         for(int i = inStart; i <= inEnd; i++){
@@ -30,10 +31,15 @@ public class Solution {
                 break;
             }
         }
+        //this is the length of inorder right side
+        //we need right length because post order counts from end, 
+        //first half postorder will go through, will be the right half
         int inLength = inEnd - inRoot + 1;
+        int postLeft = postStart - inLength;
+        
         TreeNode root = new TreeNode(postorder[postStart]);
         root.right = construct(postStart-1, inRoot+1, inEnd, inorder, postorder);
-        root.left = construct(postStart-inLength, inStart, inRoot-1, inorder, postorder);
+        root.left = construct(postLeft, inStart, inRoot-1, inorder, postorder);
         return root;
     }
 }
