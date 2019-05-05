@@ -14,23 +14,6 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-//First one is my own answer:
-public class Solution {
-    public int maxDepth(TreeNode root) {
-        if(root == null) return 0;
-        return findDepth(root,0);
-    }
-    
-    public int findDepth(TreeNode root, int depth){
-        if(root == null) return depth;
-        depth++;
-        //at first I made a mistake, i can't pass depth++ into the recursion, because it adds 1 twice
-        int depthLeft = findDepth(root.left,depth);
-        int depthRight = findDepth(root.right,depth);
-        return Math.max(depthLeft,depthRight);
-    }
-}
-
 //This answer is from other people
 public class Solution {
     public int maxDepth(TreeNode root) {
