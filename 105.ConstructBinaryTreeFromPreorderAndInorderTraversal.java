@@ -20,6 +20,15 @@ Answer:
 //In就是root在中间被撸，也就是先撸左边，再撸root，再撸右边
 //post就是先撸左右，再撸root。wikipedia上的例子图很好，其他网上的很多都是错的
 
+
+
+// The basic idea is here:
+// Say we have 2 arrays, PRE and IN.
+// Preorder traversing implies that PRE[0] is the root node.
+// Then we can find this PRE[0] in IN, say it's IN[5].
+// Now we know that IN[5] is root, so we know that IN[0] - IN[4] is on the left side, IN[6] to the end is on the right side.
+// Recursively doing this on subarrays, we can build a tree out of it :)
+
 //Got inspired by this Indian video, which uses test cases as follow
 //https://www.youtube.com/watch?v=PAYG5WEC1Gs
 //https://leetcode.com/discuss/12179/my-accepted-java-solution
