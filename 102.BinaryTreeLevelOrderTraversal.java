@@ -93,3 +93,31 @@ public class Solution {
         process(result, queue);
     }
 }
+
+
+//May5,2019 my own recursive solution
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(root == null) return result;
+        
+        helper(root, result, 0);
+        return result;
+    }
+    
+    public void helper(TreeNode root, List<List<Integer>> result, int level){
+        if(root == null){
+            return;
+        }
+        if(result.size() <= level) {
+            List<Integer> list = new ArrayList<>();
+            list.add(root.val);
+            result.add(list);
+        } else {
+            result.get(level).add(root.val);
+        }
+        
+        helper(root.left, result, level + 1);
+        helper(root.right, result, level + 1);
+    }
+}
