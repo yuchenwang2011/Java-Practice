@@ -96,6 +96,8 @@ public class Solution {
 
 
 //May5,2019 my own recursive solution
+//same as this solution, but it is better
+//https://leetcode.com/problems/binary-tree-level-order-traversal/discuss/33445/Java-Solution-using-DFS
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
@@ -111,11 +113,10 @@ class Solution {
         }
         if(result.size() <= level) {
             List<Integer> list = new ArrayList<>();
-            list.add(root.val);
             result.add(list);
-        } else {
-            result.get(level).add(root.val);
-        }
+        } 
+        
+        result.get(level).add(root.val);
         
         helper(root.left, result, level + 1);
         helper(root.right, result, level + 1);
