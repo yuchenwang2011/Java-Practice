@@ -44,7 +44,7 @@ public class Solution {
 }
 
 //Got Inspired by this answer
-//https://leetcode.com/discuss/41807/short-and-clean-java-iterative-solution
+//https://leetcode.com/problems/symmetric-tree/discuss/33152/Short-and-clean-java-iterative-solution
 public class Solution {
     public boolean isSymmetric(TreeNode root) {
         if(root == null) return true;
@@ -53,18 +53,17 @@ public class Solution {
         queue.offer(root.right);
         boolean result = true;
         while(!queue.isEmpty()){
-            int size = queue.size();
             TreeNode current1 = queue.poll();
             TreeNode current2 = queue.poll();
+            //caution here it's not return true, it's continue
             if(current1 == null && current2 == null) continue;
-            else if (current1 == null || current2 == null) return false;
-            else if (current1.val != current2.val) return false;
-            else {
-                queue.offer(current1.left);
-                queue.offer(current2.right);
-                queue.offer(current1.right);
-                queue.offer(current2.left);
-            }
+            if (current1 == null || current2 == null) return false;
+            if (current1.val != current2.val) return false;
+            
+            queue.offer(current1.left);
+            queue.offer(current2.right);
+            queue.offer(current1.right);
+            queue.offer(current2.left);
         }
         return result;
     }
