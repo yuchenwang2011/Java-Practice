@@ -20,32 +20,26 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
-    //These 2 answers are similar to my idea
-    //https://leetcode.com/discuss/42477/share-my-easy-understatnd-java-solution
-    //https://leetcode.com/discuss/83856/share-my-java-solution-1ms-very-short-and-concise
+//https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/discuss/35476/Share-my-JAVA-solution-1ms-very-short-and-concise.
+class Solution {
     public TreeNode sortedListToBST(ListNode head) {
         if(head == null) return null;
-        return process(head);
+        return helper(head, null);
     }
     
-    public TreeNode process(ListNode head){
-        TreeNode root = null;
-        if(head == null) return root;
-        ListNode preFirst = null;
-        ListNode first = head;
-        ListNode second = head.next;
-        while(second != null && second.next != null) { //1, 2, 3, 4 first = 2; 1,2,3,4,5 first = 3
-            preFirst = first;
-            first = first.next;
-            second = second.next.next;
+    public TreeNode helper(ListNode head, ListNode tail){
+        //that means, tail will never be used to build tree
+        //so that already used slow.val won't be reused
+        if(head == tail) return null;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != tail && fast.next != tail){
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        second = first.next;
-        if(preFirst != null) preFirst.next = null;
-        else head = null; //because first = head is already used.
-        root = new TreeNode(first.val);
-        root.left = process(head);
-        root.right = process(second);
+        TreeNode root = new TreeNode(slow.val);
+        root.left = helper(head, slow);
+        root.right = helper(slow.next, tail);
         return root;
     }
 }
