@@ -12,10 +12,26 @@ If you have figured out the O(n) solution, try coding another solution using the
 Answer:
 This is a very very good video tutorial, which introduces 3 methods, 
 https://www.youtube.com/watch?v=ohHWQf1HDfU
-1.Kadane's Algorithm O(N)
+0.DP method
+1.Kadane's Algorithm O(N) (improved DP method)
 2.Devide and Conquer O(Nlog(N))
 3.Brute Force O(N^2)
 
+//DP method
+class Solution {
+    public int maxSubArray(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        int result = nums[0];
+        for(int i = 1; i < nums.length; i++){
+            dp[i] = Math.max(nums[i], nums[i] + dp[i - 1]);
+            result = Math.max(result, dp[i]);
+        }
+        return result;
+    }
+}
+    
 //Kadane's Algorithm
 //This method has even smarter implementation of Kadane's Algorithm, don't need 1 positive elment
 //https://leetcode.com/discuss/51768/java-o-n-time-o-1-space-5-lines-of-code
