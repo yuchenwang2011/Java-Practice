@@ -35,19 +35,23 @@ public class Solution {
             }
             colEnd--;
             
+            //cautions here! rowStart and colEnd have changed
             if(rowStart <= rowEnd){
               for(int i = colEnd; i >= colStart; i--){
                   result.add(matrix[rowEnd][i]);
               }
+              rowEnd--;
             }
-            rowEnd--;
+            //it can be put outside
+            //rowEnd--;
             
             if(colStart <= colEnd){
               for(int i = rowEnd; i >=rowStart; i--){
                   result.add(matrix[i][colStart]);
               }
+              colStart++;
             }
-            colStart++;
+            //colStart++;
         }
         return result;
     }
