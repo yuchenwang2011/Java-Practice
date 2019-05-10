@@ -13,45 +13,41 @@ You should return the following matrix:
 ]
 
 Answer:
-public class Solution {
+class Solution {
     public int[][] generateMatrix(int n) {
-        //Still use the method of 
-        //https://leetcode.com/discuss/14079/my-super-simple-solution-can-used-for-both-spiral-matrix-and
+        if(n <= 0) return null;
         int[][] result = new int[n][n];
-        if(n <=0){
-            return result;
-        }
-        int rowStart = 0, colStart = 0;
-        int rowEnd = n-1, colEnd = n-1;
-        int value = 1;
-        while(value <= n*n){
-            for(int i = colStart; i <= colEnd; i++){
-                result[rowStart][i] = value;
-                value++;
+        
+        int rowStart = 0;
+        int rowEnd = n - 1;
+        int colStart = 0;
+        int colEnd = n - 1;
+        
+        int i = 1;
+        while(rowStart <= rowEnd && colStart <= colEnd){
+            for(int col = colStart; col <= colEnd; col++){
+                result[rowStart][col] = i++;
             }
             rowStart++;
             
-            for(int i = rowStart; i <= rowEnd; i++){
-                result[i][colEnd] = value;
-                value++;
+            for(int row = rowStart; row <= rowEnd; row++){
+                result[row][colEnd] = i++;
             }
             colEnd--;
             
-            //if(rowStart <= rowEnd){
-                for(int i = colEnd; i >= colStart; i--){
-                    result[rowEnd][i] = value;
-                    value++;
+            if(rowStart <= rowEnd) {
+                for(int col = colEnd; col >= colStart; col--){
+                    result[rowEnd][col] = i++;
                 }
-            //}
-            rowEnd--;
+                rowEnd--;
+            }
             
-            //if(colStart <= colEnd){
-                for(int i = rowEnd; i >= rowStart; i--){
-                    result[i][colStart] = value;
-                    value++;
+            if(colStart <= colEnd){
+                for(int row = rowEnd; row >= rowStart; row--){
+                    result[row][colStart] = i++;
                 }
-            //}
-            colStart++;
+                colStart++;
+            }
         }
         return result;
     }
