@@ -8,22 +8,27 @@ b = "1"
 Return "100".
 
 Answer:
-public class Solution {
+//https://leetcode.com/problems/add-binary/discuss/24488/Short-AC-solution-in-Java-with-explanation
+class Solution {
     public String addBinary(String a, String b) {
-        if(a == null || b == null) return a == null? b : a;
-        if(a.length() == 0 || b.length() == 0) return a.length() ==0 ? b : a;
+        if(a == null || a.length() == 0) return b;
+        if(b == null || b.length() == 0) return a;
         
-        int la = a.length(), lb = b.length();
-        String c = ""; int carry = 0;
-        while(la > 0 || lb > 0){
-            int valA = (la <=0)? 0 : a.charAt(la-1) - '0', valB = (lb <=0) ? 0: b.charAt(lb-1) - '0';
-            if(la > 0 && (valA > 1 || Character.isLetterOrDigit(a.charAt(la-1)) == false) ) return "";
-            if(lb > 0 && (valB > 1 || Character.isLetterOrDigit(b.charAt(lb-1)) == false) ) return "";
-            int sum = valA + valB + carry;
-            c = (sum%2) + c;
-            carry = sum /2;
-            la--; lb--;
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        
+        StringBuilder sb = new StringBuilder();
+        while(i >=0 || j >=0){
+            int sum = carry;
+            if(i >= 0) sum += a.charAt(i) - '0';
+            if(j >= 0) sum += b.charAt(j) - '0';
+            sb.append(sum%2);
+            carry = sum / 2;
+            i--;
+            j--;
         }
-        return carry == 0? c : "1" + c;
+        if(carry == 1) sb.append(1);
+        return sb.reverse().toString();
     }
 }
