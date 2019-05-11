@@ -19,54 +19,34 @@ The total number of unique paths is 2.
 Note: m and n will be at most 100.
 
 Answer:
-public class Solution {
+//my own solution
+class Solution {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        //I got inspired by these two methods:
-        //https://leetcode.com/discuss/29816/short-java-solution
-        //https://leetcode.com/discuss/69907/ac-solution-with-little-modification-based-on-unique-path-i
-        //First implementation is the O(M*N) one and second O(N) one
-        if(obstacleGrid == null){
-           return 0;    
-        }
-        int row = obstacleGrid.length;
-        int column = obstacleGrid[0].length;
-        if (row * column == 0){
-            return 0;
-        }
-        if (obstacleGrid[0][0] == 1) {
-            return 0;
-            
-        }
-        int[][] dp = new int[row][column];
-        for(int i = 0; i < column; i++) {
-            if(obstacleGrid[0][i] == 1){
-//supoose ob[0][3]=1 then not only res[0][3]=0 but all grids behind it are also zeros(res[0][4], etc)
-                //dp[0][i] = 0;
-                break;
-            } else {
-                dp[0][i] = 1;
-            }
+        if(obstacleGrid == null || obstacleGrid.length == 0 || obstacleGrid[0].length == 0) return 0;
+        if(obstacleGrid[0][0] == 1) return 0;
+        int[][] dp = new int[obstacleGrid.length][obstacleGrid[0].length];
+        dp[0][0] = 1;
+        
+        for(int i = 0; i < dp[0].length; i++){
+            if(obstacleGrid[0][i] == 1) break;
+            dp[0][i] = 1;
         }
         
-        for(int i = 0; i < row; i++){
-            if(obstacleGrid[i][0] == 1) {
-                //dp[i][0] = 0;
-                break;
-            } else {
-                dp[i][0]=1;
-            }
+        for(int i = 0; i < dp.length; i++){
+            if(obstacleGrid[i][0] == 1) break;
+            dp[i][0] = 1;
         }
         
-        for(int i =1; i < row; i++) {
-            for(int j = 1; j < column; j++){
-                if(obstacleGrid[i][j] == 1){
+        for(int i = 1; i < dp.length; i++){
+            for(int j = 1; j < dp[0].length; j++){
+                if(obstacleGrid[i][j] == 1) {
                     dp[i][j] = 0;
-                } else {
-                    dp[i][j] = dp[i-1][j] + dp[i][j-1];
+                    continue;
                 }
+                dp[i][j] = dp[i-1][j] + dp[i][j-1];
             }
         }
-        return dp[row-1][column-1];
+        return dp[dp.length - 1][dp[0].length - 1];
     }
 }
 
