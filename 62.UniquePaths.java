@@ -55,14 +55,32 @@ public class Solution {
 //New math solution!
 //https://leetcode.com/problems/unique-paths/discuss/22981/My-AC-solution-using-formula
 int uniquePaths(int m, int n) {
-            int N = n + m - 2;// how much steps we need to do
-            int k = m - 1; // number of steps that need to go down
-            double res = 1;
-            // here we calculate the total possible path number 
-            // Combination(N, k) = n! / (k!(n - k)!)
-            // reduce the numerator and denominator and get
-            // C = ( (n - k + 1) * (n - k + 2) * ... * n ) / k!
-            for (int i = 1; i <= k; i++)
-                res = res * (N - k + i) / i;
-            return (int)res;
+    int N = n + m - 2;// how much steps we need to do
+    int k = m - 1; // number of steps that need to go down
+    double res = 1;
+    // here we calculate the total possible path number 
+    // Combination(N, k) = n! / (k!(n - k)!)
+    // reduce the numerator and denominator and get
+    // C = ( (n - k + 1) * (n - k + 2) * ... * n ) / k!
+    for (int i = 1; i <= k; i++)
+        res = res * (N - k + i) / i;
+    return (int)res;
+ }
+
+//And this is the my own implementation
+class Solution {
+    public int uniquePaths(int m, int n) {
+        if(m <= 0 || n <= 0) return 0;
+        int down = n - 1;
+        int right = m - 1;
+        int totalStep = down + right;
+        double result = 1;
+        
+        //can use C(9,4) as an example to try to understand
+        //right and down, use either one is ok. in math it's the same
+        for(int i = 1; i <= right; i++){
+            result = result * (totalStep - right + i) / i;
         }
+        return (int) result;
+    }
+}
