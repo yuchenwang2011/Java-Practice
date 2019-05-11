@@ -56,3 +56,6 @@ class Solution {
     }
 }
 //[[1]],[[1,3,1],[1,5,1],[4,2,1]]
+
+//Another solution just use the original matrix as the dp matrix
+https://leetcode.com/problems/minimum-path-sum/discuss/23647/My-8-lines-simple-solution
