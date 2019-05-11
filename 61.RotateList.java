@@ -41,3 +41,36 @@ public class Solution {
         return newHead;
     }
 }
+
+//This is my own solution 3 years laster, May10,2019, very similar to above one
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        if(head == null || head.next == null || k <= 0) return head;
+        ListNode tmp = head;
+        int count = 0;
+        while(tmp != null){
+            tmp = tmp.next;
+            count++;
+        }
+        k = k % count;
+        if(k == 0) return head;
+        
+        ListNode first = head;
+        ListNode second = head;
+        while(k > 0){
+            second = second.next;
+            k--;
+        }
+
+        while(second != null && second.next != null){
+            first = first.next;
+            second = second.next;
+        }
+        
+        ListNode newHead = first.next;
+        first.next = null;
+        second.next = head;
+        return newHead;
+    }
+}
+
