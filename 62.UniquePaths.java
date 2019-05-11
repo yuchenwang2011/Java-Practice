@@ -12,32 +12,22 @@ Above is a 3 x 7 grid. How many possible unique paths are there?
 Note: m and n will be at most 100.
 
 Answer: 
-public class Solution {
+//my own solution
+class Solution {
     public int uniquePaths(int m, int n) {
-        //there is a calculation method to use permutation and combinations, here are two website explaining them
-        //https://www.mathsisfun.com/combinatorics/combinations-permutations.html
-        //http://math.stackexchange.com/questions/208377/combination-with-repetitions
-        //such as 3*4, there will be 5 steps to go from start to end, in which 2 steps to go down
-        //so the result = C(5,2)=5!/(2!*(5-2)!)=5*4/2=10
-        //I will use Dynamic Programming to solve this problem
-        //*******Remember the syntax to create a 2d array
-        if(m*n ==0){
-            return 0;
-        }
-        int[][] result = new int[m][n];
-        for(int i = 0; i < n; i++) {
-            result[0][i] = 1;
-        }
-        for(int i = 0; i< m; i++){
-            result[i][0] = 1;
-        }
-        
-        for(int i = 1; i < m; i++){
-            for (int j = 1; j < n; j++) {
-                result[i][j] = result[i][j-1] + result[i-1][j]; 
+        if(m <= 0 || n <= 0) return 0;
+        int[][] dp = new int[m][n];
+        dp[0][0] = 1;
+        for(int i = 0; i < dp.length; i++){
+            for(int j = 0; j < dp[0].length; j++){
+                if(i == 0 || j == 0) {
+                    dp[i][j] = 1;
+                    continue;
+                }
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
             }
         }
-        return result[m-1][n-1];
+        return dp[m - 1][n - 1];
     }
 }
 
