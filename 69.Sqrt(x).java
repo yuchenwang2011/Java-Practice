@@ -57,6 +57,9 @@ public class Solution {
 }
 
 public class Solution {
+    //To understand this solution, try a big number, and print out the result value in binary
+    //就是先从最大可能的一位开始撸，如果太大了，就不要了算了从下一个位撸。还是大就再取消，再试下一位
+    //突然有一次，哎，咋太小了呢，说明这回第一位是对了。那就从下一位开始重复操作。
     //Got inspired by this answer and the following replies
     //https://leetcode.com/discuss/8897/share-my-o-log-n-solution-using-bit-manipulation
     public int mySqrt(int x) {
@@ -64,6 +67,7 @@ public class Solution {
         long result = 0;
         while(bit > 0){
             result = result | bit; //bit can't be zero, if zero, here is useless
+            System.out.println(Integer.toBinaryString(result));
             //it's not the 1L << 0, it's bit == 0, bit can be 1L << 1
             if(result * result > x) result = result ^ bit; //cancel this bit
             bit = bit >> 1; //try next bit; here also bit can't be zero, 0 >> 1 = 0
