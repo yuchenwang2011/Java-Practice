@@ -38,7 +38,11 @@ class Solution {
     }
 }
 
-
+//我感觉这么记忆，牛顿喝多了，先拿了很大一个数，然后呢就开始往回找补
+//怎么的都得是处理r啊，先把r变大一点点，然后除以2变小一点点。
+//就这么不断的变大一点点，然后变小一点点，就对了
+//至于r + x /r 怎么记，就记x是比较大的，x除以r就能在变大一点点的过程中大一点
+//不然除以2变小的过程太快了
 public class Solution {
     //This answer uses Newton's method, but i don't think I can remember this
     //Inspired by this answer:
