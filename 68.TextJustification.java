@@ -77,6 +77,7 @@ class Solution {
             StringBuilder sb = new StringBuilder();
             
             //count：该行所有单词累计总长度
+            //ALERT: here must be words[start]
             int count = words[start].length();
             //last:该行最后一个词的index
             int last = start + 1;
@@ -113,7 +114,7 @@ class Solution {
                 int spacesLeft = (maxWidth - count) % intervals;
                 //here i is from start + 1 because we have inserted first word
                 for(int i = start + 1; i < last; i++){
-                    for(int k = spaces - 1; k >= 0; k--){
+                    for(int j = 0; j < spaces; j++){
                         sb.append(" ");
                     }
                     if(spacesLeft > 0) {
