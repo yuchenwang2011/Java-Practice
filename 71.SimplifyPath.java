@@ -38,3 +38,28 @@ public class Solution {
     }
 }
 //Test case: "/a/./c/../b/", "/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"
+
+//updated May12 2019
+class Solution {
+    public String simplifyPath(String path) {
+        String result = "";
+        if(path == null || path.length() == 0) return "/" + result;
+        
+        String[] paths = path.split("/+");
+        Deque<String> stack = new ArrayDeque<>();
+        
+        for(String s : paths){
+            if(s.equals("..")) {
+                if(!stack.isEmpty()) stack.pop();
+            } else if(s.equals(".") || s.length() == 0){
+                continue;
+            } else {
+                stack.push(s);
+            }
+        }
+        while(!stack.isEmpty()){
+            result = "/" + stack.pop() + result;
+        }
+        return result.length() == 0? "/" : result;
+    }
+}
