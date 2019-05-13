@@ -22,21 +22,21 @@ class Solution {
     }
 }
 
-public class Solution {
-    //This O(1) space solution maybe hard to understand, it's derived from the O(N) solution
+class Solution {
     public int climbStairs(int n) {
-        if(n == 0) return 0;
+        if(n <= 2) return n;
         
-        int result = 1; 
-        int oneStep = 1, twoStep = 1;
+        int result = 0;
         
-        //calcuate how many ways to get to the ith step
+        int oneStepBefore = 1;
+        int twoStepBefore = 1;
+        
         for(int i = 2; i <= n; i++){
-            result = oneStep + twoStep;
-            twoStep = oneStep;
-            oneStep = result;
+            result = oneStepBefore + twoStepBefore;
+            twoStepBefore = oneStepBefore;
+            oneStepBefore = result;
         }
-        
+    
         return result;
     }
 }
