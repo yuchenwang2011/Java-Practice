@@ -65,3 +65,27 @@ public class Solution {
         }
     }
 }
+
+//update on May13 2019
+//I totally don't understand my own answer above, here is my new answer
+class Solution {
+    public void sortColors(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        
+        int zeroStarts = 0;
+        int twoEnds = nums.length - 1;
+
+        int i = 0;
+        while(i <= twoEnds){
+            if(i > zeroStarts && nums[i] == 0){
+                nums[i] = nums[zeroStarts];
+                nums[zeroStarts++] = 0;
+            } else if(i < twoEnds && nums[i] == 2){
+                nums[i] = nums[twoEnds];
+                nums[twoEnds--] = 2;
+            } else {
+                i++;
+            }
+        }
+    }
+}
