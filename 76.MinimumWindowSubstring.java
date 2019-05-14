@@ -36,6 +36,41 @@ Answer:
 //And use counter for the number of chars of t to be found in s. The key part is m[s[end]]--;. 
 //We decrease count for each char in s. If it does not exist in t, the count will be negative.
 
+
+=====================My digested version======================
+    public String minWindow(String s, String t) {
+        int[] map = new int[128];
+        for(char c : t.toCharArray()){
+            map[c]++;
+        }
+
+        int left = 0;
+        int right = 0;
+        int resultStart = 0;
+        int resultLength = Integer.MAX_VALUE;
+        int count = t.length();
+
+        while(right < s.length()){
+            if(map[s.charAt(right++)]-- > 0){
+                count--;
+            }
+            while(count == 0){
+                if(right - left < resultLength){
+                    resultLength = right - left;
+                    resultStart = left;
+                }
+                if(map[s.charAt(left++)]++ == 0){
+                    count++;
+                }
+            }
+        }
+        return resultLength == Integer.MAX_VALUE ? "" : s.substring(resultStart, resultStart + resultLength);
+    }
+
+
+==================================================================
+
+
 class Solution {
     public String minWindow(String s, String t) {
         int[] map = new int[128];
