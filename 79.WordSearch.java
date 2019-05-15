@@ -41,12 +41,12 @@ public class Solution {
         if(board[i][j] == word.charAt(idx)){
           idx++;
           char tmp = board[i][j];
-          board[i][j] = '#';
+          board[i][j] = '#'; //here we can also board[i][j] ^= 256
           boolean result = search(board,i,j-1,word,idx) ||
              search(board,i,j+1,word,idx) ||
              search(board,i-1,j,word,idx) ||
              search(board,i+1,j,word,idx);
-          board[i][j] = tmp;
+          board[i][j] = tmp;  //board[i][j] ^= 256
           return result;
         }
         return false;
