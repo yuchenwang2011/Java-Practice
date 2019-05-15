@@ -11,28 +11,6 @@ with the first five elements of nums being 1, 1, 2, 2 and 3.
 It doesn't matter what you leave beyond the new length.
 
 Answer:
-public class Solution {
-    public int removeDuplicates(int[] nums) {
-        int size = 0; int duplicateCount = 0;
-        if(nums == null || nums.length ==0){
-            return size;
-        }
-
-        for(int i =0; i < nums.length; i++){
-            if(nums[i] != nums[size]){
-                   nums[++size] = nums[i]; 
-                   duplicateCount=0;
-            } else if (i > 0 && nums[i] == nums[size]){
-                duplicateCount++;
-                if(duplicateCount < 2){
-                    nums[++size] = nums[i]; 
-                }
-            }
-        }
-        return size+1;
-    }
-}
-
 //this is my second round solution
 public class Solution {
     public int removeDuplicates(int[] nums) {
@@ -49,5 +27,22 @@ public class Solution {
             }
         }
         return size;
+    }
+}
+
+
+//may14 2019 from the video
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int result = 2;
+        if(nums.length <= 2) return result;
+        
+        for(int i = 2; i < nums.length; i++){
+            if(nums[i] != nums[result - 2]) {
+                nums[result++] = nums[i];
+            }
+        }
+        return result;
     }
 }
