@@ -62,3 +62,26 @@ So the idea is that:
 3(The bar that i points to) is always the first bar lower than (the top bar in stack) on the right.
 4After step 2 and 3, we know the left and right boundaries, then know the width, then know the area.
 
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        int maxArea = 0;
+        if(heights == null || heights.length == 0) return maxArea;
+        
+        Deque<Integer> stack = new ArrayDeque<>();
+        
+        //Alert: here you must use <= 
+        for(int i = 0; i <= heights.length; i++){
+            int currentHeight = i == heights.length ? 0 : heights[i];
+            
+            while(!stack.isEmpty() && currentHeight < heights[stack.peek()]){
+                int top = stack.pop();
+                int length = stack.isEmpty() ? i : i - 1 - stack.peek();
+                maxArea = Math.max(maxArea, heights[top] * length);
+            }
+            
+            stack.push(i);
+        }
+        
+        return maxArea;
+    }
+}
