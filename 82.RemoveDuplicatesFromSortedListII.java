@@ -55,3 +55,27 @@ public class Solution {
         return newHead.next;
     }
 }
+
+//Third round may16 2019, basically same as above answer
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode newHead = new ListNode(-1);
+        newHead.next = head;
+        
+        ListNode prev = newHead;
+        while(head != null && head.next != null){
+            if(head.val != head.next.val) {
+                prev = head;
+                head = head.next;
+                continue;
+            }
+            while(head != null && head.next != null && head.val == head.next.val){
+                head = head.next;
+            }
+            if(head != null) head = head.next;
+            prev.next = head;
+        }
+        return newHead.next;
+    }
+}
