@@ -85,3 +85,31 @@ class Solution {
         return maxArea;
     }
 }
+
+class Solution {
+    public int maximalRectangle(char[][] matrix) {
+        int result = 0;
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return result;
+        
+        int[] height = new int[matrix[0].length + 1];
+        for(int i = 0; i < matrix.length; i++){
+            Deque<Integer> stack = new ArrayDeque<>();
+            
+            for(int j = 0; j < matrix[0].length; j++){
+                if(matrix[i][j] == '1') height[j]++;
+                else height[j] = 0;
+            }
+            
+            for(int j = 0; j < height.length; j++){
+                int currentHeight = height[j];
+                while(!stack.isEmpty() && height[stack.peek()] > currentHeight){
+                    int top = stack.pop();
+                    int length = stack.isEmpty()? j : (j - 1 - stack.peek());
+                    result = Math.max(result, height[top] * length);
+                }
+                stack.push(j);
+            }
+        }
+        return result;
+    }
+}
