@@ -14,7 +14,30 @@ Input:
 Output: 6
 
 Answer:
-//自己多跑几个例子
+//for the given example, try calculate by yourself the left, right, height, result values
+example:
+1 0 1 0 0 
+1 0 1 1 1
+1 1 1 1 1
+1 0 0 1 0
+  
+height:
+1 0 1 0 0
+2 0 2 1 1 
+3 1 3 2 2
+4 0 0 3 0
+  
+left:
+0 0 2 0 0
+0 0 2 2 2
+0 0 2 2 2
+0 0 0 3 0
+  
+right:
+1 5 3 5 5
+1 5 3 5 5
+1 5 3 5 5
+1 5 5 4 5
 class Solution {
     public int maximalRectangle(char[][] matrix) {
         int result = 0;
