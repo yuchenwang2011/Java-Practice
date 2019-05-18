@@ -43,3 +43,32 @@ public void process(ListNode head,int x, ListNode[] result){
     process(head.next,x,result);
   }
 }
+
+
+//my own iterative solution May18 2019
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        if(head == null ||head.next == null) return head;
+        
+        ListNode head1 = new ListNode(-1);
+        ListNode head2 = new ListNode(-1);
+        
+        ListNode tmp1 = head1;
+        ListNode tmp2 = head2;
+        while(head != null){
+            if(head.val < x) {
+                tmp1.next = head;
+                tmp1 = tmp1.next;
+            } else {
+                tmp2.next = head;
+                tmp2 = tmp2.next;
+            }
+            
+            head = head.next;
+        }
+        //alert: this is a must!
+        tmp2.next = null;
+        tmp1.next = head2.next;
+        return head1.next;
+    }
+}
