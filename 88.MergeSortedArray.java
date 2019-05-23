@@ -8,28 +8,19 @@ to hold additional elements from nums2. The number of elements initialized in nu
 and nums2 are m and n respectively.
 
 Answer: 
-public class Solution {
+class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if(nums1.length < m+n || m < 0 || n < 0 || nums2.length != n) {
-            return;
+        if(nums1 == null || nums2 == null || nums1.length < m + n || m < 0 || n < 0) return;
+        int firstEnd = m - 1;
+        int secondEnd = n - 1;
+        int mergeEnd = m + n - 1;
+        
+        while(firstEnd >= 0 && secondEnd >= 0){
+            nums1[mergeEnd--] = nums1[firstEnd] > nums2[secondEnd] ? nums1[firstEnd--] : nums2[secondEnd--];
         }
-        int i = m-1, j = n-1;
-        while(i >= 0 && j >=0){
-            if(nums1[i] <= nums2[j]){
-              nums1[i+j+1] = nums2[j];
-              j--;
-            } else {
-              nums1[i+j+1] = nums1[i];
-              i--;
-            }
-        }
-        while(j>=0){
-            nums1[j] = nums2[j];
-            j--;
-        }
-        while(i>=0){
-            nums1[i] = nums1[i];
-            i--;
+        
+        while(secondEnd >= 0){
+            nums1[mergeEnd--] = nums2[secondEnd--];
         }
     }
 }
