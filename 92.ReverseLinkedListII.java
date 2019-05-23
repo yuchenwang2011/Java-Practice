@@ -46,3 +46,34 @@ public class Solution {
       return newHead.next;
     }
 }
+
+
+//same idea as above, but i feel this makes more sense
+class Solution {
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if(head == null || head.next == null) return head;
+        if(m > n || m < 0 || n < 0) return head;
+        
+        ListNode prev = new ListNode(-1);
+        prev.next = head;
+        
+        ListNode tmp = prev;
+        int i = 0;
+        while(i < m - 1 && tmp != null){
+            tmp = tmp.next;
+            i++;
+        }
+        
+        ListNode current = tmp.next;
+        i = 0;
+        while(i < n - m && current != null && current.next != null){
+            ListNode next = current.next;
+            current.next = next.next;
+            next.next = tmp.next;
+            tmp.next = next;
+            i++;
+        }
+        
+        return prev.next;
+    }
+}
