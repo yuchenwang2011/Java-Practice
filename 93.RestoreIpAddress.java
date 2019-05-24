@@ -25,7 +25,6 @@ public class Solution {
             result.add(tmp);
             return;
         }
-        if(count > 4 || idx > str.length()) return;
         
         for(int i = 1; i <=3 ; i++){
             if(idx + i > str.length()) break;
