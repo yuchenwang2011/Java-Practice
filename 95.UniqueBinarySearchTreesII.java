@@ -46,10 +46,12 @@ public class Solution {
     
     public List<TreeNode> process(int start, int end){
         List<TreeNode> result = new ArrayList<TreeNode>();
+        //alert! here can't equal
         if(start > end) {
             result.add(null);
             return result;
         }
+        //alert! here <=
         for(int rootValue = start; rootValue <= end; rootValue++){
             List<TreeNode> leftTrees = process(start, rootValue-1);
             List<TreeNode> rightTrees = process(rootValue+1,end);
