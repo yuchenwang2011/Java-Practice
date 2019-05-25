@@ -32,3 +32,34 @@ public class Solution {
         else return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);
     }
 }
+
+
+class Solution {
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root == null) return false;
+        
+        Stack<TreeNode> nodeStack = new Stack<>();
+        Stack<Integer> sumStack = new Stack<>();
+        
+        nodeStack.push(root);
+        sumStack.push(sum);
+        
+        while(!nodeStack.isEmpty()){
+            TreeNode node = nodeStack.pop();
+            int currentSum = sumStack.pop();
+            if(node.left == null && node.right == null && node.val == currentSum) return true;
+            
+            if(node.right != null) {
+                nodeStack.push(node.right);
+                sumStack.push(currentSum - node.val);
+            }
+            
+            if(node.left != null) {
+                nodeStack.push(node.left);
+                sumStack.push(currentSum - node.val);
+            }
+        }
+        
+        return false;
+    }
+}
