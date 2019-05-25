@@ -73,3 +73,23 @@ public class Solution {
         return prevRoot;
     }
 }
+
+
+
+//this is really smart, use example in question to manually go through it twice you will understand
+//https://leetcode.com/problems/flatten-binary-tree-to-linked-list/discuss/36991/Accepted-simple-Java-solution-iterative
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            if(node.right != null) stack.push(node.right);
+            if(node.left != null) stack.push(node.left);
+            
+            if(!stack.isEmpty()) node.right = stack.peek();
+            node.left = null; //this is really important
+        }
+    }
+}
