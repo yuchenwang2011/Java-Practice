@@ -54,6 +54,7 @@ public class Solution {
 public class Solution {
     public boolean isValidBST(TreeNode root) {
         if(root == null) return true;
+        //you can also use TreeNode pre = null; instead
         long tmp = Long.MIN_VALUE;
         Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
         while(root != null || !stack.isEmpty() ){
@@ -63,7 +64,8 @@ public class Solution {
             } else {
                 TreeNode current = stack.pop();
                 if(current.val <= tmp) return false;
-                else tmp = current.val;//as the values should be larger and larger
+                //Since Inoder tranversal of BST is in sorted order, we need not check the other case of right side .
+                tmp = current.val;//as the values should be larger and larger
                 root = current.right;
             }
         }
