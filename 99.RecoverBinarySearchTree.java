@@ -81,3 +81,31 @@ class Solution {
         }
     }
 }
+
+
+class Solution {
+    TreeNode first = null;
+    TreeNode second = null;
+    TreeNode prev = null;
+    
+    public void recoverTree(TreeNode root) {
+        if(root == null) return;
+        helper(root);
+        if(first != null) {
+            int tmp = first.val;
+            first.val = second.val;
+            second.val = tmp;
+        }
+    }
+    
+    public void helper(TreeNode root){
+        if(root == null) return;
+        helper(root.left);
+        if(prev != null && prev.val >= root.val) {
+            if(first == null) first = prev;
+            second = root;
+        }
+        prev = root;
+        helper(root.right);
+    }
+}
