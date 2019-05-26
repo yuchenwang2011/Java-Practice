@@ -40,26 +40,24 @@ Answer:
  */
 //The answer below is more decent
 //https://leetcode.com/discuss/7327/a-simple-accepted-solution
-public class Solution {
-    public void connect(TreeLinkNode root) {
-        if(root == null) return;
-        if(root.left == null && root.right == null) {
-            root.next = null;
-            return;
-        }
-        TreeLinkNode current = root, secondLevel = root.left;
-        while(current != null && secondLevel != null) {
-            current.left.next = current.right;
-            TreeLinkNode tmpRight = current.right;
-            current = current.next;
-            if(current == null){
-                tmpRight.next = null;
-                current = secondLevel;
-                secondLevel = secondLevel.left;
+class Solution {
+    public Node connect(Node root) {
+        if(root == null) return root;
+        
+        Node rootBackUp = root;
+        Node secondLevel = root.left;
+        while(root != null && secondLevel != null){
+            if(root.left != null) root.left.next = root.right;
+            Node lastRight = root.right;
+            if(root.next != null) {
+                root = root.next;
+                lastRight.next = root.left;
             } else {
-                tmpRight.next = current.left;
+                root = secondLevel;
+                secondLevel = root.left;
             }
         }
+        return rootBackUp;
     }
 }
 
@@ -77,5 +75,64 @@ public class Solution {
         }
         connect(root.left);
         connect(root.right);
+    }
+}
+
+//May25 2019, the method signature has changed, below are my own 3 solutions
+class Solution {
+    public Node connect(Node root) {
+        helper(root, null);
+        return root;
+    }
+    
+    public void helper(Node first, Node second){
+        if(first == null) return;
+        first.next = second;
+        
+        helper(first.left, first.right);
+        if(second != null) helper(first.right, second.left);
+        if(second != null) helper(second.left, second.right);
+    }    
+}
+
+class Solution {
+    public Node connect(Node root) {
+        if(root == null) return root;
+        
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            while(size > 0){
+                Node node = queue.poll();
+                size--;
+                if(size > 0) node.next = queue.peek();
+                if(node.left != null) queue.offer(node.left);
+                if(node.right != null) queue.offer(node.right);
+            }
+        }
+        return root;
+    }
+}
+
+class Solution {
+    public Node connect(Node root) {
+        if(root == null) return root;
+        
+        Node rootBackUp = root;
+        Node secondLevel = root.left;
+        while(root != null && secondLevel != null){
+            if(root.left != null) root.left.next = root.right;
+            Node lastRight = root.right;
+            if(root.next != null) {
+                root = root.next;
+                lastRight.next = root.left;
+            } else {
+                root = secondLevel;
+                secondLevel = root.left;
+            }
+        }
+        return rootBackUp;
     }
 }
