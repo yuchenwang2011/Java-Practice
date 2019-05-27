@@ -25,3 +25,24 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 Answer:
+//from the comment under this link
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/39611/Is-it-Best-Solution-with-O(n)-O(1).
+class Solution {
+    public int maxProfit(int[] prices) {
+        if(prices == null || prices.length < 2) return 0;
+        int firstBuyPrice = prices[0]; // can be Integer.MAX_VALUE;
+        int secondBuyPrice = prices[0]; // can be Integer.MAX_VALUE;
+        int firstProfit = 0;
+        int secondProfit = 0;
+        
+        for(int price : prices){
+            firstBuyPrice = Math.min(firstBuyPrice, price);
+            firstProfit = Math.max(firstProfit, price - firstBuyPrice);
+            //the higher firstProfit, the lower the cost of second trade
+            secondBuyPrice = Math.min(secondBuyPrice, price - firstProfit);
+            secondProfit = Math.max(secondProfit, price - secondBuyPrice);
+            
+        }
+        return secondProfit;
+    }
+}
