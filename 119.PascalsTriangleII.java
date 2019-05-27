@@ -9,38 +9,17 @@ Note:
 Could you optimize your algorithm to use only O(k) extra space?
 
 Answer: 
-public class Solution {
-    public List<Integer> getRow(int rowIndex) {
-      //answer of https://leetcode.com/discuss/9411/here-is-my-o-n-solution-and-the-proof
-      //answer of https://leetcode.com/discuss/8364/here-is-my-brief-o-k-solution
-      //loop j from back, each time a[j-1]+a[j] = b, replace a[j] with b
-      //it's better to list each level and list i and j out
-      List<Integer> result = new ArrayList<Integer>();
-      rowIndex = Math.abs(rowIndex);
-      result.add(1);
-      for(int i =1; i <= rowIndex ; i++) {
-          for(int j = i-1; j >= 1; j--){
-             result.set(j,result.get(j-1)+result.get(j));
-          }
-          result.add(1);
-      }
-      return result;
-    }
-}
-
-//Dynamic Programming Method Oct 5, 2017
+//https://leetcode.com/problems/pascals-triangle-ii/discuss/38478/My-accepted-java-solution-any-better-code
 class Solution {
     public List<Integer> getRow(int rowIndex) {
-        List<Integer> result = new ArrayList<Integer>();
-        rowIndex = Math.abs(rowIndex);
-        int[] tmp = new int[rowIndex+1];
+        List<Integer> result = new ArrayList<>();
+        if(rowIndex < 0) return result;
         for(int i = 0; i <= rowIndex; i++){
-            for(int j = i; j >= 0; j--){
-                if(j == i || j == 0) tmp[j] = 1;
-                else tmp[j] = tmp[j] + tmp[j-1];
+            result.add(0,1);
+            for(int j = 1; j < result.size() - 1; j++){
+                result.set(j, result.get(j) + result.get(j + 1));
             }
         }
-        for(int i : tmp) result.add(i);
         return result;
     }
 }
