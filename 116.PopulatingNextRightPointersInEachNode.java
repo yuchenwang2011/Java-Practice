@@ -115,24 +115,3 @@ class Solution {
         return root;
     }
 }
-
-class Solution {
-    public Node connect(Node root) {
-        if(root == null) return root;
-        
-        Node rootBackUp = root;
-        Node secondLevel = root.left;
-        while(root != null && secondLevel != null){
-            if(root.left != null) root.left.next = root.right;
-            Node lastRight = root.right;
-            if(root.next != null) {
-                root = root.next;
-                lastRight.next = root.left;
-            } else {
-                root = secondLevel;
-                secondLevel = root.left;
-            }
-        }
-        return rootBackUp;
-    }
-}
