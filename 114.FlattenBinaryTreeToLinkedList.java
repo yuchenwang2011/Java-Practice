@@ -1,3 +1,5 @@
+这题三个方法，口诀是
+先撸到左，再撸到右，再左右左右
 114. Flatten Binary Tree to Linked List My Submissions Question
 Total Accepted: 76526 Total Submissions: 249527 Difficulty: Medium
 Given a binary tree, flatten it to a linked list in-place.
