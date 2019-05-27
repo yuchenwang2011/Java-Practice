@@ -17,6 +17,11 @@ Bonus point if you are able to do this using only O(n) extra space,
 where n is the total number of rows in the triangle.
 
 Answer:
+//result:  [4 1 8 3 0]
+//result:  [7 6 10]
+//result:  [9 10]
+//result:  [2]
+
 public class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         //1st link has a very good explanation but i still have a few questions
