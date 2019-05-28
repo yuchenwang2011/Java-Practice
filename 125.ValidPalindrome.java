@@ -9,26 +9,20 @@ This is a good question to ask during an interview.
 For the purpose of this problem, we define empty string as valid palindrome.
 
 Answer:
-public class Solution {
+class Solution {
     public boolean isPalindrome(String s) {
-        char[] data = s.toCharArray();
-        int start = 0; int end = data.length-1;
-        if(data.length == 0) {
-            return true;
-        } else {
-           while(start < end) {
-             while(start < end && Character.isLetterOrDigit(data[start]) == false){
-                start++;
-             }
-             while(start < end && Character.isLetterOrDigit(data[end]) == false){
-                end--;
-             }
-             if (start < end && Character.toLowerCase(data[start]) != Character.toLowerCase(data[end])) {  
-                return false;
-             }   
-             start++;end--;
-           }
+        if(s == null || s.length() == 0) return true;
+        s = s.toLowerCase();
+        
+        int start = 0;
+        int end = s.length() - 1;   
+        while(start < end){
+            while(start < end && !Character.isLetterOrDigit(s.charAt(start))) start++;
+            while(end > start && !Character.isLetterOrDigit(s.charAt(end))) end--;
+            if(s.charAt(start) != s.charAt(end)) return false;
+            start++;
+            end--;
         }
-        return start >= end; //here it's totally ok to return true
+        return true;
     }
 }
