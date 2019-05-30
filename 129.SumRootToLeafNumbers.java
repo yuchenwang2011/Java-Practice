@@ -28,25 +28,26 @@ Answer:
  * }
  */
 public class Solution {
+    int total;
+    
     public int sumNumbers(TreeNode root) {
-        List<Integer> result = new ArrayList<Integer>();
-        if(root == null) return 0;
-        int value = 0;
-        dfs(root, result, value);
-        for(int i = 0; i < result.size(); i++) {
-            value = value + result.get(i);
-        }
-        return value;
+        total = 0;
+        helper(root, 0);
+        return total;
     }
     
-    public void dfs(TreeNode root, List<Integer> result, int value){
-        value = value*10 + root.val;
-        if(root.left == null && root.right == null) {
-            result.add(value);
+    void helper(TreeNode root, int sum) {
+        if (root == null) return;
+        
+        sum = sum * 10 + root.val;
+        
+        if (root.left == null && root.right == null) {
+            total += sum;
             return;
         }
-        if(root.left != null) dfs(root.left, result, value);
-        if(root.right != null) dfs(root.right, result, value);
+        
+        helper(root.left, sum);
+        helper(root.right, sum);
     }
 }
 
