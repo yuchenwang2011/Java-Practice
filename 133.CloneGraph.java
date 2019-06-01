@@ -93,6 +93,24 @@ class Solution {
     }
 }
 
+//DFS another version
+class Solution {
+    Map<Node, Node> map = new HashMap<>();
+    public Node cloneGraph(Node node) {
+        if(node == null) return node;
+        if(map.containsKey(node)) return map.get(node);
+        Node dup = new Node(node.val, new ArrayList<>());
+        map.put(node, dup);
+        for(Node nei : node.neighbors){
+            Node neiDup = cloneGraph(nei);
+            dup.neighbors.add(neiDup);
+        }
+        return dup;
+    }
+}
+
+
+
 //BFS
 class Solution {
     public Node cloneGraph(Node node) {
