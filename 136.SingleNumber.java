@@ -19,3 +19,14 @@ public class Solution {
         return result;
     }
 }
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        int result = 0;
+        if(nums == null || nums.length == 0) return result;
+        for(int i : nums){
+            result = result ^ i;
+        }
+        return result;
+    }
+}
