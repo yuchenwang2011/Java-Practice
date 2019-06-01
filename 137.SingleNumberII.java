@@ -6,23 +6,7 @@ Note:
 Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
 Answer:
-public class Solution {
-    public int singleNumber(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
-        int[] count = new int[32];
-        for(int i = 0; i < 32; i++){
-            for(int j = 0; j < nums.length; j++){
-                count[i] += (nums[j] >> i) & 1; 
-            }
-            count[i] = count[i] % 3;
-        }
-        int result = 0;
-        for(int i = 0; i < 32; i++){
-            result |=  count[i] << i;
-        }
-        return result;
-    }
-}
+//此题还有另外一个算法但是不像下一个可以通用到K
 
 public class Solution {
     //Got inspired by these 2 answers, very hard to understand, you have to use examples to go through the code
