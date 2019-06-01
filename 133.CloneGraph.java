@@ -26,16 +26,10 @@ Visually, the graph looks like the following:
               
               
 New version of question:
+
 133. Clone Graph
 Medium
 
-771
-
-830
-
-Favorite
-
-Share
 Given a reference of a node in a connected undirected graph, 
 return a deep copy (clone) of the graph. Each node in the graph 
 contains a val (int) and a list (List[Node]) of its neighbors.
@@ -100,32 +94,29 @@ class Solution {
 }
 
 //BFS
-//https://leetcode.com/discuss/14969/simple-java-iterative-bfs-solution-with-hashmap-and-queue
-public class Solution {
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-        if(node == null) return null;
-        HashMap<Integer, UndirectedGraphNode> map = new HashMap<Integer, UndirectedGraphNode>();
-        Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
-        UndirectedGraphNode resultNode = new UndirectedGraphNode(node.label);
-        map.put(resultNode.label, resultNode);
+class Solution {
+    public Node cloneGraph(Node node) {
+        if(node == null) return node;
+        
+        Node newNode = new Node(node.val, new ArrayList<>());
+        Map<Node, Node> map = new HashMap<>();
+        map.put(node, newNode);
+        
+        Queue<Node> queue = new LinkedList<>();
         queue.offer(node);
         
-        //map is used to save new cloned nodes, and queue is to save old nodes
-        //each node in map will need to add all the new cloned node as new neighbor
-        
         while(!queue.isEmpty()){
-            UndirectedGraphNode oldNode = queue.poll();
-            for(UndirectedGraphNode oldNei : oldNode.neighbors){
-                if(map.containsKey(oldNei.label) == false) {
-                    map.put(oldNei.label, new UndirectedGraphNode(oldNei.label));
-                    queue.offer(oldNei);
+            Node current = queue.poll();
+            for(Node nei : current.neighbors){
+                //拼了命把所有点都塞进map里
+                if(!map.containsKey(nei)) {
+                   map.put(nei, new Node(nei.val, new ArrayList<>()));   
+                   queue.offer(nei);
                 }
-                //because nodes are added in pairs to map and queue, so one oldNode corresponds to one newNode
-                UndirectedGraphNode newNode = map.get(oldNode.label);
-                UndirectedGraphNode newNei = map.get(oldNei.label);
-                newNode.neighbors.add(newNei);
+                //相当于把上面的那些哪怕是刚加进map里的nei的dup都放进current的dup里
+                map.get(current).neighbors.add(map.get(nei));
             }
         }
-        return resultNode;
+        return newNode;
     }
 }
