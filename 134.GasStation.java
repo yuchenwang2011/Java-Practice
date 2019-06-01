@@ -35,6 +35,7 @@ public class Solution {
             tank = tank + gas[i] - cost[i];
             sum = sum + gas[i] - cost[i];
             if(tank < 0){
+                //why starts from i + 1? because for ith, my tank even < 0, how i can choose you?
                start = i + 1;
                tank = 0;
             } 
