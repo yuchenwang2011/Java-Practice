@@ -74,3 +74,23 @@ class Solution {
         return false;
     }
 }
+
+
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return false;
+        boolean[] result = new boolean[s.length() + 1];
+        result[0] = true;
+        for(int i = 1; i <= s.length(); i++){
+            for(int j = 0; j < i; j++){
+                String s1 = s.substring(j, i);
+                if(result[j] && wordDict.contains(s1)) {
+                    result[i] = true;
+                    break;
+                }
+            }
+        }
+        
+        return result[result.length - 1];
+    }
+}
