@@ -48,26 +48,27 @@ class Solution {
     }
 }
 
-//i changed other solutions, but i myself don't understand why it works
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return false;
-        
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(0);
-        Set<Integer> invalidIdx = new HashSet<>();
+        
+        Set<Integer> visited = new HashSet<>();
         
         while(!queue.isEmpty()){
             int idx = queue.poll();
-            if(invalidIdx.contains(idx)) continue;
             for(int i = idx + 1; i <= s.length(); i++){
+                if(visited.contains(i)) continue;
                 String s1 = s.substring(idx, i);
                 if(wordDict.contains(s1)) {
                     if(i == s.length()) return true;
                     queue.offer(i);
+                    //比如等于10这个idx已经存进来了。下一次queue里的idx=8时候，还要loop一下10
+                    //但这时loop10没有意义了，因为再进来以后方法查contains都是一样的，没必要再来
+                    visited.add(i);
                 }
             }
-            invalidIdx.add(idx);
         }
         
         return false;
