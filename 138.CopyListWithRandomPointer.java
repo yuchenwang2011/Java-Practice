@@ -76,3 +76,27 @@ class Solution {
         return newHead.next;
     }
 }
+
+
+class Solution {
+    public Node copyRandomList(Node head) {
+        if(head == null) return head;
+        Map<Node, Node> map = new HashMap<>();
+        Node tmp = head;
+        while(tmp != null){
+            Node copy = new Node();
+            copy.val = tmp.val;
+            map.put(tmp, copy);
+            tmp = tmp.next;
+        }
+        
+        tmp = head;
+        while(tmp != null){
+            Node copy = map.get(tmp);
+            copy.next = map.get(tmp.next);
+            copy.random = map.get(tmp.random);
+            tmp = tmp.next;
+        }
+        return map.get(head);
+    }
+}
