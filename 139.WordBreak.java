@@ -47,3 +47,29 @@ class Solution {
         return false;
     }
 }
+
+//i changed other solutions, but i myself don't understand why it works
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return false;
+        
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
+        Set<Integer> invalidIdx = new HashSet<>();
+        
+        while(!queue.isEmpty()){
+            int idx = queue.poll();
+            if(invalidIdx.contains(idx)) continue;
+            for(int i = idx + 1; i <= s.length(); i++){
+                String s1 = s.substring(idx, i);
+                if(wordDict.contains(s1)) {
+                    if(i == s.length()) return true;
+                    queue.offer(i);
+                }
+            }
+            invalidIdx.add(idx);
+        }
+        
+        return false;
+    }
+}
