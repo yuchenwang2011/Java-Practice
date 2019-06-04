@@ -19,6 +19,7 @@ Answer:
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
+        //how to prove it https://blog.csdn.net/xy010902100449/article/details/48995255
         //Finally I understand why use faster and slower 2 pointers instead of just comparing 
         //faster and head. The cycle may not just start and end at head, but also a cycle like Q
         //say the cycle starts at the 3rd node
