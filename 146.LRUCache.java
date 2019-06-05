@@ -58,19 +58,7 @@ class LRUCache {
         if(node == null) {
             return -1;
         } 
-        if(node != tail) {
-            if(node == head) {
-                head = head.next;
-                head.prev = null;
-            } else {
-                node.prev.next = node.next;
-                node.next.prev = node.prev;
-            }
-            tail.next = node;
-            node.prev = tail;
-            node.next = null;
-            tail = tail.next;
-        }
+        reOrder(node);
         return node.val;
     }
     
@@ -79,19 +67,7 @@ class LRUCache {
         Node node = map.get(key);
         if(node != null) {
             node.val = value;
-            if(node != tail) {
-                if(node == head) {
-                    head = head.next;
-                    head.prev = null;
-                } else {
-                    node.prev.next = node.next;
-                    node.next.prev = node.prev;
-                }
-                tail.next = node;
-                node.prev = tail;
-                node.next = null;
-                tail = tail.next;
-            }
+            reOrder(node);
         } else {
             Node newNode = new Node(key, value);
             if(capacity == 0) {
@@ -114,7 +90,22 @@ class LRUCache {
             capacity--;
         }
     }
+    
+    private void reOrder(Node node){
+        if(node != tail) {
+            if(node == head) {
+                head = head.next;
+                head.prev = null;
+            } else {
+                node.prev.next = node.next;
+                node.next.prev = node.prev;
+            }
+            tail.next = node;
+            node.prev = tail;
+            node.next = null;
+            tail = tail.next;
+        }
+    }
 }
-
  
  
