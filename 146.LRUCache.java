@@ -30,17 +30,89 @@ cache.get(4);       // returns 4
  * obj.put(key,value);
  */
 class LRUCache {
-
+    class Node{
+        int key;
+        int val;
+        Node prev;
+        Node next;
+        public Node(int key, int val){
+            this.key = key;
+            this.val = val;
+        }
+    }
+    
+    private int capacity;
+    private Map<Integer, Node> map;
+    private Node head;
+    private Node tail;
+    
     public LRUCache(int capacity) {
-        
+        map = new HashMap<>();
+        this.capacity = capacity;
+        head = null;
+        tail = null;
     }
     
     public int get(int key) {
-        
+        Node node = map.get(key);
+        if(node == null) {
+            return -1;
+        } 
+        if(node != tail) {
+            if(node == head) {
+                head = head.next;
+                head.prev = null;
+            } else {
+                node.prev.next = node.next;
+                node.next.prev = node.prev;
+            }
+            tail.next = node;
+            node.prev = tail;
+            node.next = null;
+            tail = tail.next;
+        }
+        return node.val;
     }
     
+    //we put most recent used node at tail, remove node at head;
     public void put(int key, int value) {
-        
+        Node node = map.get(key);
+        if(node != null) {
+            node.val = value;
+            if(node != tail) {
+                if(node == head) {
+                    head = head.next;
+                    head.prev = null;
+                } else {
+                    node.prev.next = node.next;
+                    node.next.prev = node.prev;
+                }
+                tail.next = node;
+                node.prev = tail;
+                node.next = null;
+                tail = tail.next;
+            }
+        } else {
+            Node newNode = new Node(key, value);
+            if(capacity == 0) {
+                Node tmp = head;
+                head = head.next;
+                //here we can't have head.prev = null; 
+                //it throughs null pointer
+                map.remove(tmp.key);
+                capacity++;
+            }
+            if(head == null && tail == null) {
+                head = newNode;
+            } else {
+                tail.next = newNode;
+                newNode.prev = tail;
+                newNode.next = null;
+            }
+            tail = newNode;
+            map.put(key, newNode);
+            capacity--;
+        }
     }
 }
 
