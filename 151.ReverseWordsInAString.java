@@ -20,32 +20,6 @@ How about multiple spaces between two words?
 Reduce them to a single space in the reversed string.
 
 Answer:
-//My first answer is silly, because I used the way when dealing with int arrays
-//But this is a string, so just do it in the method of second one
-public class Solution {
-    public String reverseWords(String s) {
-        s = s.trim().replaceAll("\\s+"," ");
-        if(s == null || s.length() == 0) return "";
-        String[] tmp = s.split("\\s");
-        String result = revert(tmp[0]);
-        for(int i = 1; i < tmp.length; i++){
-            result = result + " " + revert(tmp[i]);
-        }
-        return revert(result);
-    }
-    public String revert(String str){
-        char[] c = str.toCharArray();
-        int start = 0, end = c.length-1;
-        while(start < end){
-            char tmp = c[start];
-            c[start] = c[end];
-            c[end] = tmp;
-            start ++; end--;
-        }
-        return new String(c);
-    }
-}
-
 public class Solution {
     public String reverseWords(String s) {
         s = s.trim().replaceAll("\\s+"," ");
