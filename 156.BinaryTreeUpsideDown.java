@@ -50,8 +50,8 @@ public class Solution {
     }
 }
 
-//Got inspired by this answer: it's hard to understand, you need to go through it on the paper
-//https://leetcode.com/discuss/44718/clean-java-solution
+//Got inspired by this answer: it's hard to understand, see picture below
+//https://github.com/yuchenwang2011/Java-Practice/blob/master/156.BinaryTreeUpsideDown.png
 public class Solution {
     public TreeNode upsideDownBinaryTree(TreeNode root) {
         if(root == null || (root.left == null && root.right == null) ) return root;
