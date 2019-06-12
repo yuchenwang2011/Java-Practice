@@ -41,3 +41,39 @@ public class Solution extends Reader4 {
         return total;
     }
 }
+
+
+//this is my own answer June 11 2019
+/**
+ * The read4 API is defined in the parent class Reader4.
+ *     int read4(char[] buf);
+ */
+public class Solution extends Reader4 {
+    /**
+     * @param buf Destination buffer
+     * @param n   Number of characters to read
+     * @return    The number of actual characters read
+     */
+    //the question is stupid because the read4 shouldn't use same buf parameter name
+    //read4's buf is to save, the read buf is a final result, different things
+    public int read(char[] buf, int n) {
+        int result = 0;
+        if(buf == null || n <= 0) return result;
+        
+        char[] tmp = new char[4];
+        int oneRound = read4(tmp);
+        while(oneRound == 4){
+            for(int i = 0; i < oneRound; i++){
+               if(result == n) return result; 
+               buf[result++] = tmp[i];
+            }
+            oneRound = read4(tmp);
+        }
+        for(int i = 0; i < oneRound; i++){
+            if(result == n) return result; 
+            buf[result++] = tmp[i];
+        }
+        
+        return result;
+    }
+}
