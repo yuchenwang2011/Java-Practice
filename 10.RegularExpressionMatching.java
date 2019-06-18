@@ -52,7 +52,8 @@ class Solution {
                     result[i][j] = result[i - 1][j - 1];
                 } else if(j >= 2 && b == '*'){
                     result[i][j] = result[i][j-2];
-                    if(a == p.charAt(j - 2) || p.charAt(j -2) == '.'){
+                    char c = p.charAt(j - 2);
+                    if(a == c || c == '.'){
                         //the last || result[i][j-1] is not necessary
                         result[i][j] = result[i][j] || result[i - 1][j] || result[i][j-1];
                     }
