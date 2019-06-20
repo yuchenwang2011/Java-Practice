@@ -82,6 +82,7 @@ public class Solution extends Reader4 {
     
     public int read(char[] buf, int n) {
         int idx = 0;
+        if(buf == null || n <= 0) return idx;
         while(idx < n){
             //这个题的意思就是，如果你上次读的数没有用光的话，就不能再读了
             //然后留着tmpPointer，因为要接着上次的tmpPointer接着读
