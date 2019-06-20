@@ -65,39 +65,6 @@ The read function will only be called once for each test case.
 You may assume the destination buffer array, buf, is guaranteed to have enough space for storing n characters.
 
 Answer:
-/* The read4 API is defined in the parent class Reader4.
-      int read4(char[] buf); */
-//It was really hard for me to understand this question, even after reading the code
-//But this answer is very good and read its explanation
-//https://leetcode.com/discuss/19573/accepted-clean-java-solution
-public class Solution extends Reader4 {
-    /**
-     * @param buf Destination buffer
-     * @param n   Maximum number of characters to read
-     * @return    The number of characters read
-     */
-    //this question asks to read n chars from a file and write into buf array, then return the index;
-    //but you can only read 4 letters a time
-    public int read(char[] buf, int n) {
-        int total = 0;
-        char[] smallBuf = new char[4];
-        boolean eof = false;
-        
-        while (eof == false  && total < n) {
-            int actualNum = read4(smallBuf); //to write 4 letters into newBuf
-            if(actualNum < 4) eof = true;
-            //write data into buf from smallBuf to buf
-            int count = Math.min(actualNum, n-total);
-            for(int i = 0; i < count; i++){
-                buf[total] = smallBuf[i];
-                total++;
-            }
-        }
-        return total;
-    }
-}
-
-
 //this is my own answer June 11 2019
 /**
  * The read4 API is defined in the parent class Reader4.
@@ -112,23 +79,19 @@ public class Solution extends Reader4 {
     //the question is stupid because the read4 shouldn't use same buf parameter name
     //read4's buf is to save, the read buf is a final result, different things
     public int read(char[] buf, int n) {
-        int result = 0;
-        if(buf == null || n <= 0) return result;
+        int idx = 0;
+        if(buf == null || n <= 0) return idx;
         
+        int oneRoundCount = 0;
         char[] tmp = new char[4];
-        int oneRound = read4(tmp);
-        while(oneRound == 4){
-            for(int i = 0; i < oneRound; i++){
-               if(result == n) return result; 
-               buf[result++] = tmp[i];
+        while(idx < n){
+            oneRoundCount = read4(tmp);
+            if(oneRoundCount == 0) break;
+            int i = 0;
+            while(idx < n && i < oneRoundCount){
+                buf[idx++] = tmp[i++];
             }
-            oneRound = read4(tmp);
-        }
-        for(int i = 0; i < oneRound; i++){
-            if(result == n) return result; 
-            buf[result++] = tmp[i];
-        }
-        
-        return result;
+        } 
+        return idx;
     }
 }
