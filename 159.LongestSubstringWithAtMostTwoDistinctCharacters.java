@@ -13,6 +13,7 @@ Output: 5
 Explanation: t is "aabbb" which its length is 5.
 
 Answer:
+//跟着例子走一遍就行
 class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         int result = 0;
