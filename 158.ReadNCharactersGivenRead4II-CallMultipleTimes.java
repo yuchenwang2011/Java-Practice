@@ -57,3 +57,44 @@ Please remember to RESET your class variables declared in Solution,
 as static/class variables are persisted across multiple test cases. Please see here for more details.
 You may assume the destination buffer array, buf, is guaranteed to have enough space for storing n characters.
 It is guaranteed that in a given test case the same buffer buf is called by read.
+
+    
+Answer:
+/**
+ * The read4 API is defined in the parent class Reader4.
+ *     int read4(char[] buf); 
+ */
+public class Solution extends Reader4 {
+    /**
+     * @param buf Destination buffer
+     * @param n   Number of characters to read
+     * @return    The number of actual characters read
+     */
+    
+    private int oneRoundCount;
+    private int tmpPointer;
+    private char[] tmp;
+    
+    public Solution(){
+        oneRoundCount = 0;
+        tmpPointer = 0;
+        tmp = new char[4];
+    }
+    
+    public int read(char[] buf, int n) {
+        int idx = 0;
+        while(idx < n){
+            if(tmpPointer == 0){
+                oneRoundCount = read4(tmp);
+            }
+            if(oneRoundCount == 0) break;
+            while(idx < n && tmpPointer < oneRoundCount){
+                buf[idx++] = tmp[tmpPointer++];
+            }
+            if(tmpPointer == oneRoundCount) tmpPointer = 0;
+        }
+        
+        
+        return idx;
+    }
+}
