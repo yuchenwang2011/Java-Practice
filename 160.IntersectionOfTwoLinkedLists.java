@@ -77,3 +77,47 @@ public class Solution {
         return count;
     }
 }
+
+
+
+//My own solution June 20, 2019 to in case two lists have no intersections
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null || headB == null) return null;
+        
+        ListNode a = headA;
+        ListNode b = headB;
+        int chanceA = 1;
+        int chanceB = 1;
+
+        while(a != b){
+            if(a == null) {
+                if(chanceA == 0) break;
+                a = headB;
+                chanceA--;
+            } else {
+                a = a.next;
+            }
+            
+            if(b == null) {
+                if(chanceB == 0) break;
+                b = headA;
+                chanceB--;
+            } else {
+                b = b.next;
+            }
+        }
+        return a;
+    }
+}
