@@ -29,6 +29,7 @@ public class Solution {
             HashSet<Character> box = new HashSet<Character>();
             //think about i increase from 0 to 9, the box moves first right then down
             //so the final index for box is: 00, 03, 06, 30, 33, 36, 60, 63, 66
+            //记住口诀：先除再余
             int boxRowStart = 3 * (i/3), boxColStart = 3 * (i%3);
             for(int j = 0; j < board[0].length; j++){
                 if(board[i][j] != '.' && row.add(board[i][j]) == false) return false;
