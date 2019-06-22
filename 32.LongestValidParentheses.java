@@ -15,7 +15,7 @@ Explanation: The longest valid parentheses substring is "()()"
 (()) is 4, (()()) is 6, 
 
 Solution:
-//First read through this video
+//这个题的意思是string里只有括号的符号，没乱七八糟的其他东西。First read through this video
 //Try go through those examples using the method on paper, you will understand this method.
 //1. "("  2. ")"   3. "(("  4. "))"  5. "))("   6. "))()"    7. "()"
 //8. "))(()"   9. "))(())"    10. "())"     11. "(()(())"    12. "(()(()("     13. "(()())"
