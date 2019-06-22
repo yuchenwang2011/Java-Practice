@@ -36,8 +36,10 @@ class Solution {
                 } else {
                     stack.pop();
                     if(stack.isEmpty()){
+                        //")()())"
                         result = Math.max(result, i - start);
                     } else {
+                        //"(()"
                         result = Math.max(result, i - stack.peek());
                     }
                 }
