@@ -15,34 +15,6 @@ For the return value, each inner list's elements must follow the lexicographic o
 All inputs will be in lower-case.
 
 Answer:
-public class Solution {
-    //Got inspired by this answer and some knowledge from question 249
-    //https://leetcode.com/discuss/58561/share-my-short-java-solution
-    public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> result = new ArrayList<List<String>>();
-        if(strs == null || strs.length == 0) return result;
-        HashMap<String, List<String>> map = new HashMap<String, List<String>>();
-        
-        for(String str : strs){
-            char[] c = str.toCharArray();
-            Arrays.sort(c);
-            String key = String.valueOf(c);
-            if(map.containsKey(key) == false) map.put(key, new ArrayList<String>());
-            map.get(key).add(str);
-        }
-      
-        //this is too tedious, use this
-        //https://leetcode.com/problems/group-anagrams/discuss/19176/Share-my-short-JAVA-solution
-        for(String key : map.keySet()){
-            List<String> list = map.get(key);
-            Collections.sort(list);
-            result.add(list);
-        }
-        return result;
-    }
-}
-
-
 class Solution {
     //https://www.youtube.com/watch?v=YQbjqVjOESk
     public List<List<String>> groupAnagrams(String[] strs) {
