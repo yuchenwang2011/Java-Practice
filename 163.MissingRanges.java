@@ -7,48 +7,28 @@ For example, given [0, 1, 3, 50, 75], lower = 0 and upper = 99,
 return ["2", "4->49", "51->74", "76->99"].
 
 Answer:
-public class Solution {
-    public List<String> findMissingRanges(int[] nums, int lower, int higher) {
-        List<String> result = new ArrayList<String>();
-        if(nums == null || lower > higher){
-            return result;
-        }
-        if(nums.length == 0){
-            if(higher == lower){
-              result.add(Integer.toString(lower));
-            } else {
-              result.add(Integer.toString(lower) + "->" + Integer.toString(higher));
+class Solution {
+    public List<String> findMissingRanges(int[] nums, int lower, int upper) {
+        List<String> result = new ArrayList<>();
+        if(lower > upper) return result;
+        long left = (long) lower;
+        
+        for(int num : nums){
+            if(num == left) {
+                left++;
+                continue;
+            } else if(left < num){
+                if(left + 1 == num) {
+                    result.add(String.valueOf(left));
+                } else {
+                    result.add(left + "->" + (num - 1));
+                }
+                left = (long) num + 1;
             }
-            return result;
         }
-        //Arrays.sort(nums);
-        String s = "";
-        if(nums[0] != lower){
-            if(nums[0] == lower+1){
-                s = Integer.toString(lower);
-            } else {
-                s = Integer.toString(lower) + "->" + Integer.toString(nums[0]-1);
-            }
-            result.add(s);
-        }
-        for(int i =1; i < nums.length; i++){
-          if(nums[i] != nums[i-1]+1){
-              if(nums[i] == nums[i-1]+2){
-                 s= Integer.toString(nums[i-1]+1);
-              } else {
-                 s= Integer.toString(nums[i-1]+1) + "->" + Integer.toString(nums[i]-1);
-              }
-              result.add(s);
-          }
-        }
-        if(nums[nums.length-1] != higher){
-            if(nums[nums.length-1] == higher-1){
-                s = Integer.toString(higher);
-            } else {
-                s = Integer.toString(nums[nums.length-1]+1) + "->" + Integer.toString(higher);
-            }
-            result.add(s);
-        }
+        if(left == upper) result.add(String.valueOf(left));
+        else if(left < upper) result.add(left + "->" + (upper));
+        
         return result;
     }
 }
