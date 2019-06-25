@@ -35,14 +35,14 @@ class Solution {
             }
             colEnd--;
             
-            if(rowStart <= rowEnd) {
+            if(rowStart <= rowEnd && colStart <= colEnd) {
                 for(int col = colEnd; col >= colStart; col--){
                     result[rowEnd][col] = i++;
                 }
                 rowEnd--;
             }
             
-            if(colStart <= colEnd){
+            if(rowStart <= rowEnd && colStart <= colEnd){
                 for(int row = rowEnd; row >= rowStart; row--){
                     result[row][colStart] = i++;
                 }
