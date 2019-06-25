@@ -5,7 +5,6 @@ return all elements of the matrix in spiral order.
 
 For example,
 Given the following matrix:
-
 [
  [ 1, 2, 3 ],
  [ 4, 5, 6 ],
@@ -16,8 +15,6 @@ You should return [1,2,3,6,9,8,7,4,5].
 Answer: 
 public class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        //I got inspired by this answer
-        //https://leetcode.com/discuss/12228/super-simple-and-easy-to-understand-solution
         List<Integer> result = new ArrayList<Integer>();
         if(matrix == null || matrix.length ==0){
             return result;
@@ -36,22 +33,19 @@ public class Solution {
             colEnd--;
             
             //cautions here! rowStart and colEnd have changed
-            if(rowStart <= rowEnd){
+            if(rowStart <= rowEnd && colStart <= colEnd){
               for(int i = colEnd; i >= colStart; i--){
                   result.add(matrix[rowEnd][i]);
               }
               rowEnd--;
             }
-            //it can be put outside
-            //rowEnd--;
             
-            if(colStart <= colEnd){
+            if(rowStart <= rowEnd && colStart <= colEnd){
               for(int i = rowEnd; i >=rowStart; i--){
                   result.add(matrix[i][colStart]);
               }
               colStart++;
             }
-            //colStart++;
         }
         return result;
     }
