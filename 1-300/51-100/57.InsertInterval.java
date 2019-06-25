@@ -23,12 +23,14 @@ class Solution {
         
         for(int i = 0; i < intervals.length; i++){
             int[] oldInterval = intervals[i];
-            //new before old
+            //      old|_____|
+            //new|__|    
             if(newInterval[1] < oldInterval[0]){
                 result.add(newInterval);
                 newInterval = oldInterval;
             } else if(newInterval[0] > oldInterval[1]){
-                //new after old
+            //old|____|
+            //           new|___|
                 result.add(oldInterval);
             } else {
                 //have overlapping
