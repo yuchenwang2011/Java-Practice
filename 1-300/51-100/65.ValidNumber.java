@@ -40,7 +40,7 @@ class Solution {
         for(int i=0; i<s.length(); i++) {
             if('0' <= s.charAt(i) && s.charAt(i) <= '9') {
                 numberValid = true;
-                numberAfterE = true;
+                if(numberAfterESeen == false) numberAfterE = true;
             } else if(s.charAt(i) == '.') {
                 if(eSeen || pointSeen) {
                     return false;
