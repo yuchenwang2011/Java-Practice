@@ -53,9 +53,8 @@ class Solution {
                 numberAfterE = false;
                 eSeen = true;
             } else if(s.charAt(i) == '-' || s.charAt(i) == '+') {
-                if(i != 0 && s.charAt(i-1) != 'e') {
-                    return false;
-                }
+                if(i == 0 || s.charAt(i - 1) == 'e') continue;
+                return false;
             } else {
                 return false;
             }
