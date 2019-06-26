@@ -35,11 +35,11 @@ class Solution {
 
         boolean pointSeen = false;
         boolean eSeen = false;
-        boolean numberSeen = false;
+        boolean numberValid = false;
         boolean numberAfterE = true;
         for(int i=0; i<s.length(); i++) {
             if('0' <= s.charAt(i) && s.charAt(i) <= '9') {
-                numberSeen = true;
+                numberValid = true;
                 numberAfterE = true;
             } else if(s.charAt(i) == '.') {
                 if(eSeen || pointSeen) {
@@ -47,7 +47,7 @@ class Solution {
                 }
                 pointSeen = true;
             } else if(s.charAt(i) == 'e') {
-                if(eSeen || !numberSeen) {
+                if(eSeen || !numberValid) {
                     return false;
                 }
                 numberAfterE = false;
@@ -61,6 +61,6 @@ class Solution {
             }
         }
 
-        return numberSeen && numberAfterE;
+        return numberValid && numberAfterE;
     }
 }
