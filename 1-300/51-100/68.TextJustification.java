@@ -79,7 +79,8 @@ class Solution {
             //count：该行所有单词累计总长度
             //ALERT: here must be words[start]
             int count = words[start].length();
-            //last:该行最后一个词的index
+            //last:该行最后一个词的index，但是当这个while break时，last已经多了一个1
+            //也就是为什么下面intervals = last - start - 1
             int last = start + 1;
             while(last < words.length){
                 if(words[last].length() + count + 1 > maxWidth) break;
