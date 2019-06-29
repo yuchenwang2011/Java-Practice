@@ -27,6 +27,7 @@ class Solution {
             int mid = start + (end - start) / 2;
             if(nums[mid] == target) return true;
             
+            //[1,3,1,1,1] 3
             if(nums[start] == nums[mid] && nums[mid] == nums[end]){
                 start++;
                 end--;
