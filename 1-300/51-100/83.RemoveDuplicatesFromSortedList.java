@@ -15,22 +15,14 @@ Answer:
  *     ListNode(int x) { val = x; }
  * }
  */
-public class Solution {
-//There is another 3 line elegant solution, but i don't understand
-//https://leetcode.com/discuss/37323/3-line-java-recursive-solution
+//iterative
+class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        if(head == null ||head.next == null){
-            return head;
-        }
+        if(head == null || head.next == null) return head;
         ListNode tmp = head;
-        while(tmp.next != null){
-            if(tmp.val == tmp.next.val){
-                ListNode tmp2 = tmp.next;
-                tmp.next = tmp.next.next;
-                tmp2.next = null;
-            } else {
-                tmp = tmp.next;
-            }
+        while(tmp != null && tmp.next != null){
+            if(tmp.val == tmp.next.val) tmp.next = tmp.next.next;
+            else tmp = tmp.next;
         }
         return head;
     }
