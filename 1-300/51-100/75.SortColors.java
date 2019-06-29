@@ -77,7 +77,7 @@ class Solution {
 
         int i = 0;
         while(i <= twoEnds){
-            if(i > zeroStarts && nums[i] == 0){
+            if(i >= zeroStarts && nums[i] == 0){
                 nums[i] = nums[zeroStarts];
                 nums[zeroStarts++] = 0;
             } else if(i <= twoEnds && nums[i] == 2){
