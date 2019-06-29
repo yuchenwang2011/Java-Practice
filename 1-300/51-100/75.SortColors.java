@@ -80,7 +80,7 @@ class Solution {
             if(i > zeroStarts && nums[i] == 0){
                 nums[i] = nums[zeroStarts];
                 nums[zeroStarts++] = 0;
-            } else if(i < twoEnds && nums[i] == 2){
+            } else if(i <= twoEnds && nums[i] == 2){
                 nums[i] = nums[twoEnds];
                 nums[twoEnds--] = 2;
             } else {
