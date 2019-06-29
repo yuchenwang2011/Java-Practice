@@ -16,38 +16,6 @@ then 1's and followed by 2's.
 Could you come up with an one-pass algorithm using only constant space?
 
 Answer:
-public class Solution {
-    public void sortColors(int[] nums) {
-      //At first I wrote a quick sort, but i still have some problems
-      //https://leetcode.com/discuss/17000/share-my-one-pass-constant-space-10-line-solution
-      //https://leetcode.com/discuss/73086/concise-1-pass-java-solution
-      if(nums == null || nums.length ==0){
-          return;
-      }
-      
-      int zeroPointer = 0, twoPointer = nums.length-1;
-      for(int i = 0; i < nums.length; i++){
-          if(nums[i] == 0){
-              if(i != zeroPointer){
-                swap(nums,i,zeroPointer); 
-              }
-              zeroPointer++;
-          }
-          if(nums[i] == 2 && i < twoPointer){
-              swap(nums,i,twoPointer);
-              i--; twoPointer--; //wait 1 more round at current place, if it's still a 2, swap again
-          }
-      }
-      
-    }
-      public void swap(int[] nums, int first, int second){
-          int tmp = nums[first];
-          nums[first] = nums[second];
-          nums[second] = tmp;
-      }
-}
-
-
 //Here is the code I wrote in Second Round
 public class Solution {
     public void sortColors(int[] nums) {
