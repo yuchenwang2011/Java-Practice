@@ -45,30 +45,22 @@ public class Solution {
     }
 }
 
-public class Solution {
+class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-      //Inspired by this answer
-      //http://blog.csdn.net/u011095253/article/details/9158397
-      List<List<Integer>> result = new ArrayList<List<Integer>>();
-      if(nums.length == 0 || nums == null){
-          return result;
-      }
-      List<Integer> tmp = new ArrayList<Integer>();
-      result.add(tmp);
-      Arrays.sort(nums);
-      dfs(0,nums,result,tmp);
-      return result;
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length == 0) return result;
+        helper(nums, result, new ArrayList<Integer>(), 0) ;
+        return result;
     }
     
-    public void dfs(int idx, int[] nums, List<List<Integer>> result, List<Integer> tmp){
-        for(int i = idx; i < nums.length; i++){
+    public void helper(int[] nums, List<List<Integer>> result, List<Integer> tmp, int index){
+        result.add(new ArrayList<>(tmp));
+        for(int i = index; i < nums.length; i++){
             tmp.add(nums[i]);
-            result.add(new ArrayList<Integer>(tmp));
-            dfs(i+1,nums,result,tmp);
-            tmp.remove(tmp.size()-1);//remove the last one
+            helper(nums, result, tmp, i + 1);
+            tmp.remove(tmp.size() - 1);
         }
     }
-    
 }
 
 这道题是要求生成所有子集，那么首先我们有一个能返回所有子集的ArrayList res, 
