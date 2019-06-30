@@ -40,8 +40,9 @@ public class Solution {
         HashMap<Long, Integer> map = new HashMap<Long, Integer>();
         while(!map.containsKey(remainder) && remainder != 0){
             map.put(remainder, result.length());
-            result.append(10 * remainder / den);
-            remainder = 10 * remainder % den;
+            remainder = remainder * 10;
+            result.append(remainder / den);
+            remainder = remainder % den;
         }
         if(remainder == 0) return result.toString();
         
