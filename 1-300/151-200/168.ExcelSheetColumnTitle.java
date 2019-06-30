@@ -13,39 +13,18 @@ For example:
     28 -> AB 
     
 Answer:
-public class Solution {
-    public String convertToTitle(int n) {
-        if(n <= 0) return "";
-        String result = "";
-        while(n > 0){
-            int a = n % 26;
-            if(a == 0) {
-                result = "Z" + result;
-                a += 26;
-            }
-            else {
-                String letter = (char) ('A' - 1 + a) + "";
-                result = letter + result;
-            }
-            n = (n - a) / 26;
-        }
-        return result;
-    }
-}
-
-public class Solution {
-    //Got inspired by this answer:
-    //https://leetcode.com/discuss/24116/the-way-i-come-up-with-my-solution
-    // n = 26x + r
-    // n - 1 = 26x + (r-1) 
-    // r -1 = (n -1) % 26 and x = (n - 1 - (r-1)) /26
+class Solution {
     public String convertToTitle(int n) {
         String result = "";
-        while(n > 0){
-            int a = (n -1) % 26; 
-            result = (char) ('A' + a) + result;
-            n = (n - 1 - a) / 26;
+        if(n <= 0) return result;
+        
+        while(n != 0){
+            n--;
+            String letter = (char) ('A' + n % 26) + "";
+            result = letter + result;
+            n = n / 26;
         }
+        
         return result;
     }
 }
