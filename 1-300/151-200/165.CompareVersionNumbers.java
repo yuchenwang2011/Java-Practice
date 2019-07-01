@@ -15,29 +15,6 @@ Special thanks to @ts for adding this problem and creating all test cases.
 
 Answer:
 public class Solution {
-    public int compareVersion(String v1, String v2) {
-        return process(v1,v2,0,0);
-    }
-    public int process(String v1, String v2, int l1Dot, int l2Dot){
-        if(l1Dot > v1.length()-1 && l2Dot > v2.length()-1) return 0;
-        int l1Result = 0, l2Result = 0;
-        while(l1Dot <= v1.length()-1){
-            if(v1.charAt(l1Dot) == '.') break;
-            l1Result = l1Result * 10 + (v1.charAt(l1Dot) - '0');
-            l1Dot++;
-        }
-        while(l2Dot <= v2.length()-1){
-            if(v2.charAt(l2Dot) == '.') break;
-            l2Result = l2Result * 10 + (v2.charAt(l2Dot) - '0');
-            l2Dot++;
-        }
-        if(l1Result > l2Result) return 1;
-        else if (l1Result < l2Result) return -1;
-        else return process(v1,v2,++l1Dot,++l2Dot);
-    }
-}
-
-public class Solution {
     //Mine solution beats 87%, this is another solution idea beats 10%
     //https://leetcode.com/discuss/32731/java-solution-with-fewer-if-logic
     //***************Remember the usage of split!!!!!
