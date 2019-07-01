@@ -27,25 +27,6 @@ public class Solution {
     }
 }
 
-//this is my second round answer
-public class Solution {
-    public int majorityElement(int[] nums) {
-        if(nums == null || nums.length == 0) return Integer.MIN_VALUE;
-        int result = nums[0], votes = 1;
-        for(int i = 1; i < nums.length; i++){
-            if(votes == 0) {
-                result = nums[i];
-                votes++;
-                continue;
-            }
-            if(nums[i] == result) votes++;
-            else votes--;
-        }
-        return result;
-    }
-}
-
-//Another solution of myself, though performance is slow
 class Solution {
     public int majorityElement(int[] nums) {
         if(nums==null || nums.length==0) return Integer.MAX_VALUE;
