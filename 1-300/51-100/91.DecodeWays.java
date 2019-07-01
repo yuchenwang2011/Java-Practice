@@ -15,9 +15,6 @@ The number of ways decoding "12" is 2.
 
 Answer:
 public class Solution {
-    //Inspired by these 2 answers, they are pretty the same but first O(N) space, second O(1) space
-    //https://leetcode.com/discuss/83547/java-clean-dp-solution-with-explanation
-    //https://leetcode.com/discuss/54579/simple-java-solution-with-o-1-space
     public int numDecodings(String s) {
         if(s == null || s.length() == 0 || s.charAt(0) == '0' ) return 0;
         int[] dp = new int[s.length()+1];
@@ -33,29 +30,6 @@ public class Solution {
         return dp[s.length()];
     }
 }
-
-//my space O(n) solution May22 2019
-class Solution {
-    public int numDecodings(String s) {
-        if(s == null || s.length() == 0 || s.charAt(0) == '0') return 0;
-        
-        int[] result = new int[s.length() + 1];
-        result[0] = 1;
-        result[1] = 1;
-        
-        for(int i = 1; i < s.length(); i++){
-            int val = s.charAt(i) - '0';
-            if(val >= 1 && val <= 9) result[i + 1] += result[i];
-            
-            int twoDigit = val + (s.charAt(i - 1) - '0') * 10;
-            if(twoDigit >= 10 && twoDigit <= 26) result[i + 1] += result[i - 1];
-        }
-        return result[result.length - 1];
-    }
-}
-
-
-
 
 public class Solution {
     public int numDecodings(String s) {
