@@ -42,11 +42,7 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-//Got inspired by these 2 answers: only 1 BFS solution, can be implemented by iterative and recursive
-//https://dowshawu.gitbooks.io/technical-interview-tutorial/content/binary_tree_&_divide_and_conquer/binary_tree_level_order_traversal.html
-//http://ryanleetcode.blogspot.ca/2015/04/binary-tree-level-order-traversal-bfs.html
 public class Solution {
-    //as long as you know queue is FIFO, you will understand
     public List<List<Integer>> levelOrder(TreeNode root) {
       List<List<Integer>> result = new ArrayList<List<Integer>>();
       if(root == null) return result;
@@ -67,33 +63,6 @@ public class Solution {
       return result;
     }
 }
-
-public class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) {
-      List<List<Integer>> result = new ArrayList<List<Integer>>();
-      if(root == null) return result;
-      Queue<TreeNode> queue = new LinkedList<TreeNode>();
-      queue.offer(root);
-      process(result, queue);
-      return result;
-    }
-
-    //***********Remember!!!after Queue, you need give the <TreeNode>!!!!!    
-    public void process(List<List<Integer>> result,Queue<TreeNode> queue){
-        if(queue.isEmpty()) return;
-         List<Integer> tmp = new ArrayList<Integer>();
-          int size = queue.size();
-        for(int i = 0; i < size; i++) {
-              TreeNode current = queue.poll();
-              if(current.left != null) queue.offer(current.left);
-              if(current.right != null) queue.offer(current.right);
-              tmp.add(current.val);
-        }
-        result.add(new ArrayList<Integer>(tmp));
-        process(result, queue);
-    }
-}
-
 
 //May5,2019 my own recursive solution
 //same as this solution, but it is better
