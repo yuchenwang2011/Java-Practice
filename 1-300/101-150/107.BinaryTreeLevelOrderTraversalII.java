@@ -1,6 +1,7 @@
 107. Binary Tree Level Order Traversal II My Submissions Question
 Total Accepted: 70377 Total Submissions: 212602 Difficulty: Easy
-Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
+Given a binary tree, return the bottom-up level order traversal of its nodes' values. 
+    (ie, from left to right, level by level from leaf to root).
 
 For example:
 Given binary tree {3,9,20,#,#,15,7},
@@ -68,7 +69,7 @@ public class Solution {
 class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
-        if(rooto == null) return result;
+        if(root == null) return result;
         helper(root, result, 0);
         return result;
     }
