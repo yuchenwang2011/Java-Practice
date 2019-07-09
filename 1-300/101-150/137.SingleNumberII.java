@@ -6,11 +6,9 @@ Note:
 Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
 Answer:
-//此题还有另外一个算法但是不像下一个可以通用到K
-
+//这个题没有什么难的，就这么记。就第一个ones需要点难度是用^，这个^是之前类似题都用过的了
+//剩下的所有的东西都是用&来求的。
 public class Solution {
-    //Got inspired by these 2 answers, very hard to understand, you have to use examples to go through the code
-    //https://leetcode.com/discuss/857/constant-space-solution
     public int singleNumber(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         int ones = 0, twos = 0, threes = 0;
