@@ -36,6 +36,7 @@ class Solution {
         //     System.out.print(i);
         // }
         
+        //[1,0,2]
         for(int i = ratings.length - 2; i >= 0; i--){
             if(ratings[i] > ratings[i + 1] && result[i] <= result[i + 1]) {
                 result[i] = result[i + 1] + 1;
