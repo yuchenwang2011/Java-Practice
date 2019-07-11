@@ -10,8 +10,9 @@ Credits:
 Special thanks to @ts for adding this problem and creating all test cases.
 
 Answer:
+//same template as in question 144
 /**
- * Definition for binary tree
+ * Definition for a binary tree node.
  * public class TreeNode {
  *     int val;
  *     TreeNode left;
@@ -19,38 +20,35 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-
-public class BSTIterator {
-
-    Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
-
-    public BSTIterator(TreeNode root){
-        pushStack(root);
+class BSTIterator {
+    TreeNode iter;
+    private Stack<TreeNode> stack;
+    public BSTIterator(TreeNode root) {
+        iter = root;
+        stack = new Stack<>();
     }
-
-    /** @return whether we have a next smallest number */
-    public boolean hasNext() {
-        return !stack.isEmpty();
-    }
-
+    
     /** @return the next smallest number */
     public int next() {
-        TreeNode min = stack.pop();
-        pushStack(min.right);
-        return min.val;
-    }
-    
-    public void pushStack(TreeNode root){
-        while(root != null) {
-            stack.push(root);
-            root = root.left;
+        while(iter != null){
+            stack.push(iter);
+            iter = iter.left;
         }
+        TreeNode node = stack.pop();
+        iter = node.right;
+        return node.val;
     }
     
+    /** @return whether we have a next smallest number */
+    public boolean hasNext() {
+        if(iter != null || !stack.isEmpty()) return true;
+        return false;
+    }
 }
 
 /**
- * Your BSTIterator will be called like this:
- * BSTIterator i = new BSTIterator(root);
- * while (i.hasNext()) v[f()] = i.next();
+ * Your BSTIterator object will be instantiated and called as such:
+ * BSTIterator obj = new BSTIterator(root);
+ * int param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
  */
