@@ -5,17 +5,18 @@ Given an integer n, return the number of trailing zeroes in n!.
 Note: Your solution should be in logarithmic time complexity.
 
 Answer:
-public class Solution {
-    //Got inspired by this answer, first link for explanation and second for java
-    //https://leetcode.com/discuss/19847/simple-c-c-solution-with-detailed-explaination
-    //https://leetcode.com/discuss/65458/3-lines-of-java-o-logn-time-o-1-space
+//think this way: 12345,678910. only 5 x 2 makes a zero. and there are way more 2s than 5s.
+//so actually just to count how many 5s there are. so 5, 10, 15, 20, 25, 30....125.
+//they have 1,1,1,1,2 number of fives, every 5 number has an extra 5.
+class Solution {
     public int trailingZeroes(int n) {
-        if(n <= 4) return 0;
-        int sum = 0;
-        while(n >= 5){
-            sum = sum + n/5;
-            n = n / 5;
+        int result = 0;
+        if(n <= 0) return 0; 
+        
+        while(n != 0){
+            result += n / 5;
+            n /= 5;
         }
-        return sum;
+        return result;
     }
 }
