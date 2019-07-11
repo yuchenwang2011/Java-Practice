@@ -21,27 +21,29 @@ Answer:
  * }
  */
 class BSTIterator {
-    TreeNode iter;
-    private Stack<TreeNode> stack;
+    TreeNode root;
+    private Deque<TreeNode> stack;
     public BSTIterator(TreeNode root) {
-        iter = root;
-        stack = new Stack<>();
+        stack = new ArrayDeque<>();
+        //remember to use this
+        this.root = root;
     }
     
     /** @return the next smallest number */
     public int next() {
-        while(iter != null){
-            stack.push(iter);
-            iter = iter.left;
+        while(root != null){
+            stack.push(root);
+            root = root.left;
         }
+        //the question said it will always be valid
         TreeNode node = stack.pop();
-        iter = node.right;
+        root = node.right;
         return node.val;
     }
     
     /** @return whether we have a next smallest number */
     public boolean hasNext() {
-        if(iter != null || !stack.isEmpty()) return true;
+        if(root != null || !stack.isEmpty()) return true;
         return false;
     }
 }
