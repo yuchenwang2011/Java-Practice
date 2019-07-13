@@ -10,13 +10,12 @@ Answer:
 public class Solution {
     //1234567-->7654321-->(567)(1234)
     public void rotate(int[] nums, int k) {
-       if (k <= 0) {
-           return;
-       } else {
-           k = k % nums.length;
-           reverseArray(nums,0,nums.length-1);
-           reverseArray(nums,0,k-1);
-           reverseArray(nums,k,nums.length-1);
+       if (k <= 0) return;
+      
+       k = k % nums.length;
+       reverseArray(nums,0,nums.length-1);
+       reverseArray(nums,0,k-1);
+       reverseArray(nums,k,nums.length-1);
        }
     }
     
@@ -33,4 +32,3 @@ public class Solution {
         }
     }
 }
-
