@@ -7,6 +7,23 @@ Try to come up as many solutions as you can, there are at least 3
 different ways to solve this problem.
 
 Answer:
+//two methods
+class Solution {
+    public void rotate(int[] nums, int k) {
+        if(nums == null || k <= 0) return;
+        k = k % nums.length;
+        int[] temp = new int[nums.length];
+        for(int i = 0; i < nums.length; i++){
+            if(i < k) temp[i] = nums[nums.length - k + i];
+            else temp[i] = nums[i - k];
+        }
+        for(int i = 0; i < nums.length; i++){
+            nums[i] = temp[i];
+        }
+    }
+}
+
+
 public class Solution {
     //1234567-->7654321-->(567)(1234)
     public void rotate(int[] nums, int k) {
