@@ -5,6 +5,7 @@ Given an integer n, return the number of trailing zeroes in n!.
 Note: Your solution should be in logarithmic time complexity.
 
 Answer:
+//你除以5，第一遍就是发现有多少个5；你再除以5，第二遍就是发现有多少个25。再多少个125.。。
 class Solution {
     public int trailingZeroes(int n) {
         return n == 0 ? 0 : n / 5 +  trailingZeroes(n / 5);
