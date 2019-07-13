@@ -24,7 +24,6 @@ For the above table, Joe is the only employee who earns more than his manager.
 +----------+
 
 Answer:
-select e.Name as Employee
-from Employee e, Employee m
-where e.ManagerId is not NULL and
-e.ManagerId = m.ID and e.Salary > m.Salary
+select E1.Name as Employee 
+from Employee as E1
+where Salary > (select Salary from Employee where E1.ManagerId = Id)
