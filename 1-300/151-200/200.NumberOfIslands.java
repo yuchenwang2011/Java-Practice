@@ -26,30 +26,31 @@ Output: 3
 Answer:
 //DFS + BFS + Union Find, you must know all of the 3 methods
 //DFS:
-public class Solution {
+class Solution {
     public int numIslands(char[][] grid) {
-        int count = 0;
+        int result = 0;
+        if(grid == null || grid.length == 0 || grid[0].length == 0) return result;
         
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] == '1') {
-                    count++;
-                    clearRestOfLand(grid, i, j);
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == '1') {
+                    result++;
+                    helper(grid, i, j);
                 }
             }
         }
-        return count;
+        
+        return result;
     }
     
-    private void clearRestOfLand(char[][] grid, int i, int j) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[i].length || grid[i][j] == '0') return;
-        
+    public void helper(char[][] grid, int i, int j){
+        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0') return;
+        //be careful, here is '0'
         grid[i][j] = '0';
-        clearRestOfLand(grid, i+1, j);
-        clearRestOfLand(grid, i-1, j);
-        clearRestOfLand(grid, i, j+1);
-        clearRestOfLand(grid, i, j-1);
-        return;
+        helper(grid, i - 1, j);
+        helper(grid, i + 1, j);
+        helper(grid, i, j - 1);
+        helper(grid, i, j + 1);
     }
 }
 
