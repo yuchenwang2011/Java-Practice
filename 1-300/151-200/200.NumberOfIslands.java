@@ -136,37 +136,34 @@ class Solution {
         return uf.count;
     }
     
-    class UnionFind{
+    public class UnionFind{
+        int count;
         int[] parent;
-        int count = 0;
-        UnionFind(char[][] grid){
-            int row = grid.length;
-            int col = grid[0].length;
-            parent = new int[row * col];
-            for(int i = 0; i < row; i++){
-                for(int j = 0; j < col; j++){
-                    if(grid[i][j] == '1') {
-                        int id = i * col + j;
+        public UnionFind(char[][] grid){
+            count = 0;
+            parent = new int[grid.length * grid[0].length];
+            for(int i = 0; i < grid.length; i++){
+                for(int j = 0; j < grid[0].length; j++){
+                    if(grid[i][j] == '1'){
+                        int id = i * grid[0].length + j;
                         parent[id] = id;
                         count++;
                     }
                 }
             }
-        }
-        public int find(int node){
-            //if this is the root already
-            if(node == parent[node]) {
-                return node;
+        }        
+        public int find(int id){
+            if(id == parent[id]) {
+                return id;
             }
-            //set the parent node to root btw during finding node's root
-            parent[node] = find(parent[node]);
-            return parent[node];
+            parent[id] = find(parent[id]);
+            return parent[id];
         }
-        public void union(int node1, int node2){
-            int find1 = find(node1);
-            int find2 = find(node2);
-            if(find1 != find2) {
-                parent[find1] = find2;
+        public void union(int id1, int id2){
+            int root1 = find(id1);
+            int root2 = find(id2);
+            if(root1 != root2) {
+                parent[root1] = root2;
                 count--;
             }
         }
