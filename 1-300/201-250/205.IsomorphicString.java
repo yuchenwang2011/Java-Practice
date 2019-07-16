@@ -18,19 +18,19 @@ Note:
 You may assume both s and t have the same length.
 
 Answer:
-public class Solution {
+class Solution {
     public boolean isIsomorphic(String s, String t) {
         if(s == null && t == null) return true;
         if(s == null || t == null || s.length() != t.length()) return false;
-        HashMap<Character, Character> map = new HashMap<Character, Character>();
+        Map<Character, Character> map = new HashMap<>();
         for(int i = 0; i < s.length(); i++){
-            char c = s.charAt(i);
+            char c1 = s.charAt(i);
             char c2 = t.charAt(i);
-            if(map.containsKey(c)){
-                if(map.get(c) != c2) return false;
+            if(map.containsKey(c1)) {
+                if(map.get(c1) != c2) return false;
             } else {
                 if(map.containsValue(c2)) return false;
-                map.put(c,c2);
+                map.put(c1, c2);
             }
         }
         return true;
@@ -49,6 +49,28 @@ class Solution {
             //这里加1是为了不想它等于0，因为如果有array空的地方没有轮到也是等于0的
             map[c1] = map[c2 + 256] = i + 1;
         }
+        return true;
+    }
+}
+
+class Solution {
+    //Note: there are 256 characters in ASCII
+    public boolean isIsomorphic(String s, String t) {
+        if(s == null && t == null) return true;
+        if(s == null || t == null || s.length() != t.length()) return false;
+        
+        int[] chars1 = new int[256];
+        int[] chars2 = new int[256];
+        for(int i = 0; i < s.length(); i++){
+            char c1 = s.charAt(i);
+            //here always make typo mistake
+            char c2 = t.charAt(i);
+            if(chars1[c1] != chars2[c2]) return false;
+            //这里加1是为了不想它等于0，因为如果有array空的地方没有轮到也是等于0的
+            chars1[c1] = i + 1;
+            chars2[c2] = i + 1;
+        }
+        
         return true;
     }
 }
