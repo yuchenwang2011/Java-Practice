@@ -4,7 +4,8 @@ Given two strings s and t, determine if they are isomorphic.
 
 Two strings are isomorphic if the characters in s can be replaced to get t.
 
-All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
+All occurrences of a character must be replaced with another character 
+while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
 
 For example,
 Given "egg", "add", return true.
@@ -36,9 +37,7 @@ public class Solution {
     }
 }
 
-public class Solution {
-    //Second answer is inpired by this answer to use array as a HashMap, hard to understand
-    //https://leetcode.com/discuss/33889/short-java-solution-without-maps
+class Solution {
     //Note: there are 256 characters in ASCII
     public boolean isIsomorphic(String s, String t) {
         if(s == null && t == null) return true;
@@ -47,6 +46,7 @@ public class Solution {
         for(int i = 0; i < s.length(); i++){
             int c1 = s.charAt(i), c2 = t.charAt(i);
             if(map[c1] != map[c2 + 256]) return false;
+            //这里加1是为了不想它等于0，因为如果有array空的地方没有轮到也是等于0的
             map[c1] = map[c2 + 256] = i + 1;
         }
         return true;
