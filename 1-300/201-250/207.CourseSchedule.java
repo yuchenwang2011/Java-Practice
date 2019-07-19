@@ -36,3 +36,37 @@ Topological sort could also be done via BFS.
 
 Answer:
 //very good tutorial video what is topoligy sort https://www.youtube.com/watch?v=ddTC4Zovtbc
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        //numCourses can be smaller than prerequisites
+        if(numCourses < 0) return false;
+        if(prerequisites == null || prerequisites.length == 0) return true;
+        
+        int[] indegree = new int[numCourses];
+        int result = numCourses;
+        for(int[] course: prerequisites){
+            indegree[course[0]]++;
+        }
+        
+        Queue<Integer> queue = new LinkedList<>();
+        for(int i = 0; i < indegree.length; i++){
+            if(indegree[i] == 0) queue.offer(i);
+        }
+        
+        while(!queue.isEmpty()){
+            int num = queue.poll();
+            result--;
+            for(int[] course : prerequisites){
+                if(course[1] == num) {
+                    indegree[course[0]]--;
+                    //be careful! the if below should be inside of this if condition!
+                    if(indegree[course[0]] == 0) {
+                        queue.offer(course[0]);
+                    }
+                }
+            }
+        }
+        
+        return result == 0;
+    }
+}
