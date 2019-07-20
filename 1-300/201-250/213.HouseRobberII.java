@@ -14,24 +14,25 @@ the amount of money of each house, determine the maximum amount
 of money you can rob tonight without alerting the police.
 
 Answer:
-public class Solution {
-    //Just 2 solutions, don't rob last one, don't rob first one, so the quesion becomes two lines
-    //https://leetcode.com/discuss/36544/simple-ac-solution-in-java-in-o-n-with-explanation
+//either don't rob last one, either don't rob first one, so the quesion becomes two options
+//the helper is same as question 1
+class Solution {
     public int rob(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
-        int length = nums.length;
-        if(length == 1) return nums[0];
-        return Math.max( robHelper(nums, 0, length - 2), robHelper(nums, 1, length -1 ) );
+        if(nums.length == 1) return nums[0];
+        if(nums.length == 2) return Math.max(nums[0], nums[1]);
+        return Math.max(helper(nums, 0, nums.length - 1), helper(nums, 1, nums.length));
     }
     
-    public int robHelper(int[] nums, int i, int j){
-        if(j - i < 1) return nums[i];
-        int first = nums[i], second = Math.max(nums[i], nums[i+1]);
-        for(int a = i+2; a <= j; a++){
-            int result = Math.max(first + nums[a], second + 0);
+    public int helper(int[] nums, int start, int end){
+        int first = nums[start];
+        int second = Math.max(nums[start], nums[start + 1]);
+        int result = second;
+        for(int i = start + 2; i < end; i++){
+            result = Math.max(first + nums[i], second);
             first = second;
             second = result;
         }
-        return second;
+        return result;
     }
 }
