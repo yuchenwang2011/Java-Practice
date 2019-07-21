@@ -44,6 +44,7 @@ class Solution {
             //反正要返回一个pivot，左边大于它，右边小于它，如果碰巧它就是k，满足条件返回呗，剩下的烂摊子不管了
             if(pos + 1 == k) return nums[pos];
             //说明左边的数还不够多，要找的k的位置在现在这个pivot position右边，所以移动左边的start
+            //alert: here start must plus 1!
             else if(pos + 1 < k) start = pos + 1;
             //pos + 1 > k
             else end = pos - 1;
@@ -54,6 +55,7 @@ class Solution {
         if(start == end) return start;
         int pivot = nums[start];
         while(start < end){
+            //alert: here must first process end, second start, because we need return start at end
             while(start < end && nums[end] <= pivot) end--;
             if(start < end) swap(nums, start, end);
             while(start < end && nums[start] >= pivot) start++;
