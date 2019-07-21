@@ -12,11 +12,6 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 Answer:
 public class Solution {
     //The first answer uses priority queue to solve it
-    //https://leetcode.com/discuss/36966/solution-explained
-    //https://leetcode.com/discuss/36931/java-ac-solution-using-heap-or-priorityqueue
-    //https://leetcode.com/discuss/36913/solutions-java-having-worst-time-complexity-with-explanation
-    //https://leetcode.com/discuss/37959/java-priorityqueue-o-n-log-k
-    //http://blog.csdn.net/pointbreak1/article/details/46657341 this one gives me some help with understanding
     public int findKthLargest(int[] nums, int k) {
         //As for priority queue, each time poll(), it will get out the first element -- the minimum value in the pq
         //From Oracle's document, each time offer, or poll, the time complexity is O(lgN)
