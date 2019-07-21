@@ -37,3 +37,4 @@ For instance, [...[2 3], [4 5], [7 5], [11 5], [12 7]...] is not acceptable;
 the three lines of height 5 should be merged into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 Answer:
+//this is the best video https://www.youtube.com/watch?v=GSBLe8cKu0s
