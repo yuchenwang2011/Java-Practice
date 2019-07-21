@@ -32,37 +32,39 @@ public class Solution {
     }
 }
 
-public class Solution {
-    //http://www.jiuzhang.com/solutions/kth-largest-element/
+class Solution {
+    //this answer sorts from big to small
     public int findKthLargest(int[] nums, int k) {
-        if(k <= 0 || nums == null || nums.length == 0) return 0;
-        return helper(nums, 0, nums.length - 1, nums.length - k + 1);
+        if(k <= 0 || nums == null || nums.length == 0 || k > nums.length) return 0;
+        int start = 0;
+        int end = nums.length - 1;
+        while(true){
+            int pos = partition(nums, start, end);
+            //k is not array index
+            //反正要返回一个pivot，左边大于它，右边小于它，如果碰巧它就是k，满足条件返回呗，剩下的烂摊子不管了
+            if(pos + 1 == k) return nums[pos];
+            //说明左边的数还不够多，要找的k的位置在现在这个pivot position右边，所以移动左边的start
+            else if(pos + 1 < k) start = pos + 1;
+            //pos + 1 > k
+            else end = pos - 1;
+        }
     }
     
-    public int helper(int[] nums, int left, int right, int k){
-        if(left == right) return nums[left];
-        int position = partition(nums, left, right);  // the position of pivot
-        if(position + 1 == k) return nums[position];
-        else if (position + 1 < k) return helper(nums, position + 1, right, k);
-        else return helper(nums, left, position - 1, k);
+    public int partition(int[] nums, int start, int end){
+        if(start == end) return start;
+        int pivot = nums[start];
+        while(start < end){
+            while(start < end && nums[end] <= pivot) end--;
+            if(start < end) swap(nums, start, end);
+            while(start < end && nums[start] >= pivot) start++;
+            if(start < end) swap(nums, start, end);
+        }
+        return start;
     }
     
-    public int partition(int[] nums, int left, int right){
-        if(left == right) return left;
-        int pivot = nums[left];
-        //once left == right we can already return, so break
-        while(left < right){
-            while(left < right && nums[right] >= pivot) right --;
-            if(left < right) swap(left, right, nums);
-            while(left < right && nums[left] <= pivot) left ++;
-            if(left < right) swap(left, right, nums);
-        } //anyway, after 撸完 one round, left side all smaller than pivot, right side all bigger than pivot
-        return left;
-    }
-    
-    public void swap(int i, int j, int[] nums){
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
+    public void swap(int[] nums, int start, int end){
+        int tmp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = tmp;
     }
 }
