@@ -33,11 +33,9 @@ public class Solution {
 }
 
 public class Solution {
-    //Got from this link, but I really don't know why it can't work when i do as my quick sort template
     //http://www.jiuzhang.com/solutions/kth-largest-element/
     public int findKthLargest(int[] nums, int k) {
-        if(nums == null || nums.length == 0) return 0;
-        if(k <= 0) return k;
+        if(k <= 0 || nums == null || nums.length == 0) return 0;
         return helper(nums, 0, nums.length - 1, nums.length - k + 1);
     }
     
