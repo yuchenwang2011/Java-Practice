@@ -13,24 +13,21 @@ Answer:
 public class Solution {
     //The first answer uses priority queue to solve it
     public int findKthLargest(int[] nums, int k) {
-        //As for priority queue, each time poll(), it will get out the first element -- the minimum value in the pq
         //From Oracle's document, each time offer, or poll, the time complexity is O(lgN)
         //so this solution is time: O(N*logN), spaec: O(k), in java, pq is min first
-        //so i can say, and actually it is true, that in java, priority queue is a min heap
+        //in java, priority queue is a min heap
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
         
         for(int i = 0; i < nums.length; i++){
             pq.offer(nums[i]); //pq.add() is also ok
             
-            if(pq.size() >= k + 1){
-                //because now, the size is actually k+1, so the kth largest must not be the first one, maybe the second one
-                //so remove the first element is absolutely safe
-                //Because it's a min priority queue, say k = 5, there are 4 others bigger than it. 
-                //the worst case is when the 5th largest one in front, and the other 4 bigger than it behind.
-                //when size becomes k + 1, the rest 1 must be smaller and infront of the 5th largest
+            if(pq.size() > k){
+                //这么想，不用管中间过程，最后你就留下了K个最大的数，因为min在前，所以每次都把小的撸出去了
+                //最后剩下k个值，肯定是k个最大的，最后你再撸一下，肯定是第k个最大的。
                 pq.remove(); //pq.poll() is also ok
             }
         }
+        //return pq.poll()也行
         return pq.peek();
     }
 }
