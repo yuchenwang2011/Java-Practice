@@ -5,18 +5,12 @@ Your function should return true if any value appears at least twice in the arra
 and it should return false if every element is distinct.
 
 Answer: 
-public class Solution {
+class Solution {
     public boolean containsDuplicate(int[] nums) {
-        int size = nums.length;
-        if(nums == null || size ==0 || size ==1) {
-            return false;
-        }
-        
-        HashSet<Integer> myHashSet = new HashSet<Integer>();
-        for(int i =0; i < size ; i++) {
-            if(myHashSet.add(nums[i]) == false) {
-                return true;
-            }
+        if(nums == null || nums.length <= 1) return false;
+        Set<Integer> set = new HashSet<>();
+        for(int num : nums){
+            if(!set.add(num)) return true;
         }
         return false;
     }
