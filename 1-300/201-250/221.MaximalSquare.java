@@ -12,9 +12,14 @@ For example, given the following matrix:
 Return 4.
 
 Answer:
+dp:
+0 0 0 0 0 0
+0 1 0 1 0 0
+0 1 0 1 1 1
+0 1 1 1 2 2
+0 1 0 0 1 0
+
 public class Solution {
-    //Got inspired by this answer
-    //https://leetcode.com/discuss/45207/accepted-clean-java-dp-solution
     public int maximalSquare(char[][] matrix) {
         if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
         int row = matrix.length, col = matrix[0].length;
