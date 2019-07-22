@@ -38,3 +38,34 @@ the three lines of height 5 should be merged into one in the final output as suc
 
 Answer:
 //this is the best video https://www.youtube.com/watch?v=GSBLe8cKu0s
+class Solution {
+    public List<List<Integer>> getSkyline(int[][] buildings) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<int[]> height = new ArrayList<>();
+        for(int[] b:buildings) {
+            height.add(new int[]{b[0], -b[2]});
+            height.add(new int[]{b[1], b[2]});
+        }
+        //alert: a - b, test case: [0,2,3],[2,5,3]
+        Collections.sort(height, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
+        Queue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+        pq.offer(0);
+        int prev = 0;
+        for(int[] h:height) {
+            if(h[1] < 0) {
+                pq.offer(-h[1]);
+            } else {
+                pq.remove(h[1]);
+            }
+            int cur = pq.peek();
+            if(prev != cur) {
+                List<Integer> tmp = new ArrayList<>();
+                tmp.add(h[0]);
+                tmp.add(cur);
+                result.add(tmp);
+                prev = cur;
+            }
+        }
+        return result;
+    }
+}
