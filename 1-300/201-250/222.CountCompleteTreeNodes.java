@@ -55,23 +55,23 @@ class Solution {
     }
 }
 
-public class Solution {
+class Solution {
     public int countNodes(TreeNode root) {
-        if(root == null) return 0;
-        int count = 0;
-        while(root!= null){
-            int height = getHeight(root);
-            if(height == getHeight(root.right) + 1 ) {
-                count = count + (1 << (height-1)) ;
+        int result = 0;
+        if(root == null) return result;
+        while(root != null){
+            int hLeft = getHeight(root.left);
+            int hRight = getHeight(root.right);
+            if(hLeft == hRight) {
+                result += 1 + (1 << hLeft) - 1;
                 root = root.right;
             } else {
-                count = count + (1 << (height-2)) ;
+                result += 1 + (1 << hRight) - 1;
                 root = root.left;
-            }
+            }            
         }
-        return count;
-     }
-    
+        return result;
+    }
     public int getHeight(TreeNode root){
         if(root == null) return 0;
         return 1 + getHeight(root.left);
