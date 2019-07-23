@@ -10,21 +10,18 @@ Rectangle Area
 Assume that the total area is never beyond the maximum possible value of int.
 
 Answer:
-public class Solution {
+class Solution {
     public int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
-        //First add rec1's area, second add rec2's area, then delete the collapse area
-        //Got inspired by this answer, when you want to do it in the silly way, it means you are wrong!!
-        //https://leetcode.com/discuss/39188/an-easy-to-understand-solution-in-java
         int sum = 0;
+        if(A > C || B > D || E > G || F > H) return sum;
         sum += (C - A) * (D - B);
         sum += (G - E) * (H - F);
-        if(A >= G || E >= C || B >= H || F >= D) {   //when no overlap
-            return sum;
-        }
+        
+        if(A >= G || B >= H || C <= E || D <= F) return sum;
         
         int length = Math.min(C,G) - Math.max(A,E);
-        int height = Math.min(D,H) - Math.max(B,F);
+        int width = Math.min(D,H) - Math.max(B,F);
         
-        return sum - length * height;
+        return sum - length * width;
     }
 }
