@@ -17,23 +17,41 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-//Got inspired by this answer, but note his getHeight method is stupid and misleading
-//https://leetcode.com/discuss/38930/concise-java-solutions-o-log-n-2
-public class Solution {
+//this is the best answer for myself
+class Solution {
     public int countNodes(TreeNode root) {
         if(root == null) return 0;
-        int height = getHeight(root);
-        int rightHeight = getHeight(root.right);
-        if(height == rightHeight+1){//it means the last node falls in the subtree of the right node
-            return (1 << (height-1)) -1 + 1 + countNodes(root.right); //1<<height equals 2^(h-1), left + root + right
-        } else {
-            return (1 << (height-2)) -1 + 1 + countNodes(root.left);
+        int level = 1;
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+
+        while(left != null && right != null){
+            left = left.left;
+            right = right.right;
+            level++;
         }
+        if(left == null && right == null) return (1 << level) - 1;
+        return countNodes(root.left) + 1 + countNodes(root.right);
+    }
+}
+
+class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null) return 0;
+        int hLeft = getHeight(root.left);
+        int hRight = getHeight(root.right);
+        if(hLeft == hRight) return 1 + (1 << hLeft) - 1 + countNodes(root.right);
+        return 1 + countNodes(root.left) + (1 << hRight) - 1;
     }
     
     public int getHeight(TreeNode root){
+        int h = 0;
         if(root == null) return 0;
-        return 1 + getHeight(root.left);
+        while(root != null){
+            root = root.left;
+            h++;
+        }
+        return h;
     }
 }
 
@@ -57,22 +75,5 @@ public class Solution {
     public int getHeight(TreeNode root){
         if(root == null) return 0;
         return 1 + getHeight(root.left);
-    }
-}
-
-class Solution {
-    public int countNodes(TreeNode root) {
-        if(root == null) return 0;
-        int level = 0;
-        TreeNode left = root;
-        TreeNode right = root;
-
-        while(right != null){
-            left = left.left;
-            right = right.right;
-            level++;
-        }
-        if(left == null) return (1 << level) - 1;
-        return countNodes(root.left) + 1 + countNodes(root.right);
     }
 }
