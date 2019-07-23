@@ -60,17 +60,19 @@ public class Solution {
     }
 }
 
-public class Solution {
+class Solution {
     public int countNodes(TreeNode root) {
         if(root == null) return 0;
-        int height =0;
-        TreeNode left = root, right = root;
+        int level = 0;
+        TreeNode left = root;
+        TreeNode right = root;
+
         while(right != null){
             left = left.left;
             right = right.right;
-            height++;
+            level++;
         }
-        if(left == null) return 1 << height - 1; //means this is a full tree
-        return 1 + countNodes(root.left) + countNodes(root.right);
+        if(left == null) return (1 << level) - 1;
+        return countNodes(root.left) + 1 + countNodes(root.right);
     }
 }
