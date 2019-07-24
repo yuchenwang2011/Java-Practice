@@ -27,29 +27,54 @@ tion for a binary tree node.
  *     TreeNode(int x) { val = x; }
  * }
  */
-//I solved by myself, and most people solve it the same way. but they are usually using 1 less line. You can refer to 
-//https://leetcode.com/discuss/70704/java-1ms-recursive-solution
-//https://leetcode.com/discuss/42059/my-simple-recursion-java-solution
-public class Solution {
+//三种解法
+class Solution {
     public TreeNode invertTree(TreeNode root) {
         if(root == null) return root;
-        //Below 3 lines can be put both before the recursion and after the recursion
         TreeNode tmp = root.left;
         root.left = root.right;
         root.right = tmp;
         
-        root.left = invertTree(root.left);
-        root.right = invertTree(root.right);
+        invertTree(root.left);
+        invertTree(root.right);
+        
         return root;
     }
 }
 
-public class Solution {
+class Solution {
     public TreeNode invertTree(TreeNode root) {
         if(root == null) return root;
-        TreeNode tmp = invertTree(root.left);
-        root.left = invertTree(root.right);
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+        
+        TreeNode tmp = left;
+        root.left = right;
         root.right = tmp;
+        return root;
+    }
+}
+
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null) return root;
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            TreeNode tmp = node.left;
+            //be careful!! all below not root anymore, usu node!!!
+            node.left = node.right;
+            node.right = tmp;
+            
+            if(node.left != null) {
+                queue.offer(node.left);
+            }
+            if(node.right != null) {
+                queue.offer(node.right);
+            }
+        }
         return root;
     }
 }
