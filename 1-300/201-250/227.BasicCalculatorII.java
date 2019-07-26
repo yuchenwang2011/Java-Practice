@@ -2,7 +2,8 @@
 Total Accepted: 19443 Total Submissions: 79940 Difficulty: Medium
 Implement a basic calculator to evaluate a simple expression string.
 
-The expression string contains only non-negative integers, +, -, *, / operators and empty spaces . The integer division should truncate toward zero.
+The expression string contains only non-negative integers, +, -, *, / operators and empty spaces . 
+    The integer division should truncate toward zero.
 
 You may assume that the given expression is always valid.
 
@@ -32,6 +33,7 @@ public class Solution {
     public int calculate(String s) {
         int result = 0;
         if(s == null || s.length() == 0) return result;
+        //这行必须得加才能过
         s = s.trim().replaceAll("\\s+","");
         int num = 0 ;
         char sign = '+';
@@ -41,8 +43,7 @@ public class Solution {
             if(Character.isDigit(c)){
                 num = num * 10 + (c - '0');
             }
-            //whenever find a sign, put num into stack, then update the sign and num
-            //at end of string, no more new sign behind, so you have to put num into stack
+            //这里总是先用前面得到的sign，然后再更新成最新的
             if(Character.isDigit(c) == false || i == s.length()-1){
                 if(sign == '+') stack.push(num);
                 if(sign == '-') stack.push(-num);
