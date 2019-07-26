@@ -37,6 +37,7 @@ class Solution {
             if(Character.isDigit(c)) {
                 number = number * 10 + c - '0';
             } else if (c == '+'){
+                //这里和227题一样，sign都是前面留下的，用过了之后再用当前值更新sign
                 result += number * sign;
                 sign = 1;
                 number = 0;
