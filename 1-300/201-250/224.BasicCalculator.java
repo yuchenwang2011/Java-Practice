@@ -46,6 +46,7 @@ class Solution {
                 sign = -1;
                 number = 0;
             } else if (c == '(') {
+                //一旦出现括号，前面的全都存起来不要了，一切从新再来
                 stack.push(result);
                 stack.push(sign);
                 sign = 1;
