@@ -6,7 +6,8 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
 
 Follow up:
-What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
+What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? 
+    How would you optimize the kthSmallest routine?
 
 Hint:
 
@@ -24,33 +25,8 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-//This is my own idea, it definitly has some issues to work out.
-//This one is same as mine but i feel it's better
-//https://leetcode.com/discuss/43277/java-top-down-o-n-2-solution
-public class Solution {
-    public int kthSmallest(TreeNode root, int k) {
-        while(k >= 1){
-          int leftCount = countNode(root.left);
-          int rightCount = countNode(root.right);
-          if(k == leftCount+1) return root.val;
-          else if (k <= leftCount) root = root.left;
-          else {
-              root = root.right;
-              k = k - leftCount -1;
-          }
-        }
-        return root.val;
-    }
-    
-    public int countNode(TreeNode root){
-        if(root == null) return 0;
-        if(root.left == null && root.right == null) return 1;
-        return countNode(root.left) + countNode(root.right) +1; 
-    }
-}
-
-//This solution will use in-order traversal recursion.
-//https://leetcode.com/discuss/68052/two-easiest-in-order-traverse-java
+//这题需要掌握下面三种做法
+//in-order traversal recursive.
 public class Solution {
     int count = 0;
     int result = Integer.MAX_VALUE;
@@ -62,13 +38,13 @@ public class Solution {
     public void inorderTraversal(TreeNode root, int k){
         if(root == null) return;
         if(root.left != null) inorderTraversal(root.left,k);
-        if(++count == k) {result = root.val; return;}
+        count++;
+        if(count == k) {result = root.val; return;}
         if(root.right != null) inorderTraversal(root.right,k);
     }
 }
 
-//This solution will use in-order traversal iterative
-//https://leetcode.com/discuss/68052/two-easiest-in-order-traverse-java
+//in-order traversal iterative
 public class Solution {
     public int kthSmallest(TreeNode root, int k) {
         int count = 0;
@@ -81,7 +57,8 @@ public class Solution {
                 root = root.left;
             } else {
                 TreeNode current = stack.pop();
-                if(++count == k) return current.val;
+                count++;
+                if(count == k) return current.val;
                 root = current.right;
             }
         }
@@ -91,7 +68,6 @@ public class Solution {
 
 //This solution is what exactly Google is asking for -- to modify the TreeNode structure
 //First time it needs O(N) to rebuild the tree, but after that it will be binary search and O(logN)
-//https://leetcode.com/discuss/43464/what-if-you-could-modify-the-bst-nodes-structure
 public class Solution {
     class TreeNode2 {
         int val;
