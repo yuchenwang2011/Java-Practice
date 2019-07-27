@@ -67,6 +67,7 @@ public class Solution {
 }
 
 //This solution is what exactly Google is asking for -- to modify the TreeNode structure
+//这个题里的count就不是第几个了，而是一共有多少个node，跟前面两个解法的代表意义不同了
 //First time it needs O(N) to rebuild the tree, but after that it will be binary search and O(logN)
 public class Solution {
     class TreeNode2 {
