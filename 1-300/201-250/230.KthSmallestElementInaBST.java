@@ -69,42 +69,59 @@ public class Solution {
 //This solution is what exactly Google is asking for -- to modify the TreeNode structure
 //这个题里的count就不是第几个了，而是一共有多少个node，跟前面两个解法的代表意义不同了
 //First time it needs O(N) to rebuild the tree, but after that it will be binary search and O(logN)
-public class Solution {
-    class TreeNode2 {
+class Solution {
+    class TreeNode2{
         int val;
-        int count; //number of nodes of the tree
+        int count;
         TreeNode2 left;
         TreeNode2 right;
-        TreeNode2 (int val) {
-            this.val = val;
+        TreeNode2(int x){
+            val = x;
             count = 1;
         }
     }
     
-    public TreeNode2 updateTreeNode(TreeNode root){ 
+    public TreeNode2 updateTree(TreeNode root){
         if(root == null) return null;
         TreeNode2 root2 = new TreeNode2(root.val);
-        if(root.left != null) root2.left = updateTreeNode(root.left);
-        if(root.right != null) root2.right = updateTreeNode(root.right);
-        if(root2.left != null) root2.count = root2.count + root2.left.count;
-        if(root2.right != null) root2.count = root2.count + root2.right.count;
+        if(root.left != null) {
+            root2.left = updateTree(root.left);
+            root2.count += root2.left.count;
+        }
+        if(root.right != null) {
+            root2.right = updateTree(root.right);
+            root2.count += root2.right.count;
+        }
         return root2;
     }
+    
+    private int result = Integer.MAX_VALUE;
 
     public int kthSmallest(TreeNode root, int k) {
-        TreeNode2 root2 = updateTreeNode(root);
-        return helper(root2,k);
+        if(root == null || k <= 0) return result;
+        TreeNode2 root2 = updateTree(root);
+        helper(root2, k);
+        return result;
     }
     
-    public int helper(TreeNode2 root2, int k){
-        if(k < 0 || root2 == null) return Integer.MAX_VALUE;
-        if(root2.left != null) {
-            if(root2.left.count+1 == k) return root2.val;
-            if(root2.left.count >= k) return helper(root2.left,k);
-            else return helper(root2.right,k - root2.left.count -1 );
+    public void helper(TreeNode2 root, int k){
+        if(root == null || k <= 0) return;
+        if(root.left != null) {
+            if(root.left.count + 1 == k) {
+                result = root.val;
+                return;
+            } else if (root.left.count >= k){
+                helper(root.left, k);
+            } else {
+                helper(root.right, k - 1 - root.left.count);
+            }
         } else {
-            if(k == 1) return root2.val;
-            return helper(root2.right, k - 1);
+            if(k == 1) {
+                result = root.val;
+                return;
+            } else {
+                helper(root.right, k - 1);
+            }
         }
     }
 }
