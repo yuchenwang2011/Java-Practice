@@ -82,6 +82,7 @@ class Solution {
     }
     
     public TreeNode2 updateTree(TreeNode root){
+        //注意下行必须return null，如果return root，type不对
         if(root == null) return null;
         TreeNode2 root2 = new TreeNode2(root.val);
         if(root.left != null) {
