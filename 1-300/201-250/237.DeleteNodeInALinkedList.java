@@ -19,9 +19,7 @@ Answer:
 public class Solution {
     public void deleteNode(ListNode node) {
         if(node == null || node.next == null) return;
-        
         node.val = node.next.val;
         node.next = node.next.next;
-        //Don't need to make a new node = node.next, newNode.next = null, because node.next will be GC.
     }
 }
