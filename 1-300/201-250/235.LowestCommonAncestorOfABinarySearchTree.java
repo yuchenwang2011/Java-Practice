@@ -19,15 +19,6 @@ Another example is LCA of nodes 2 and 4 is 2,
 since a node can be a descendant of itself according to the LCA definition.
 
 Answer:
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null || root.val == p.val || root.val == q.val) return root;
@@ -43,22 +34,6 @@ public class Solution {
         while(root != null){
             if(root.val < q.val && root.val < p.val) root = root.right; 
             else if (root.val > p.val && root.val > q.val) root = root.left;
-            else return root;
-        }
-        return root;
-    }
-}
-
-//Some changes on last iterative solution
-class Solution {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null || p == null || q == null) return root;
-        if(p == q) return p;
-        if(root.val == p.val || root.val == q.val) return root;
-        
-        while(root.val != p.val && root.val != q.val){
-            if(root.val > p.val && root.val > q.val) root = root.left;
-            else if (root.val < p.val && root.val < q.val) root = root.right;
             else return root;
         }
         return root;
