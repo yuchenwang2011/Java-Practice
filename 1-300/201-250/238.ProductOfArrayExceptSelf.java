@@ -9,22 +9,22 @@ Could you solve it with constant space complexity? (Note: The output array does 
 for the purpose of space complexity analysis.)
 
 Answer:
-public class Solution {
-    //use nums = [2,3,4,5,6] to try it out on paper you will understand
+//result里每一个数都等于左边的数组乘积再乘以右边的数组乘积
+//所有比如12345，3那个位置的结果，就是左边12再乘以右边的45。5的话就相当于1234相乘
+class Solution {
     public int[] productExceptSelf(int[] nums) {
+        if(nums == null || nums.length == 0) return new int[0]; 
         int[] result = new int[nums.length];
-        int multiplier = 1;
-        if(nums == null || nums.length ==0) {
-            return null;
+        Arrays.fill(result, 1);
+        
+        for(int i = 1; i < nums.length; i++){
+            result[i] = result[i - 1] * nums[i - 1];
         }
-        for(int left=0; left < nums.length; left++) {
-            result[left] = multiplier;
-            multiplier *= nums[left];
-        }
-        multiplier = 1;
-        for(int right=nums.length-1; right >= 0; right--){
-            result[right] *= multiplier;
-            multiplier *= nums[right];
+        
+        int right = 1;
+        for(int i = nums.length - 1; i >= 0; i--){
+            result[i] *= right;
+            right *= nums[i];
         }
         return result;
     }
