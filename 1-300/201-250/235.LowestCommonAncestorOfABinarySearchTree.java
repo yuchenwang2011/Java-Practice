@@ -19,12 +19,11 @@ Another example is LCA of nodes 2 and 4 is 2,
 since a node can be a descendant of itself according to the LCA definition.
 
 Answer:
-public class Solution {
+class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null || root.val == p.val || root.val == q.val) return root;
-        if(root.val < p.val && root.val < q.val) return lowestCommonAncestor(root.right, p, q);
-        else if (root.val > p.val && root.val > q.val) return lowestCommonAncestor(root.left, p, q);
-        else return root;
+        if(root.val > p.val && root.val > q.val) return lowestCommonAncestor(root.left, p, q);
+        else if (root.val < p.val && root.val < q.val) return lowestCommonAncestor(root.right, p, q);
+        return root;
     }
 }
 
