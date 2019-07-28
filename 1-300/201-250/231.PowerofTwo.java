@@ -14,9 +14,10 @@ class Solution {
     }
 }
 
-public class Solution {
+class Solution {
     public boolean isPowerOfTwo(int n) {
-        //because if is power of two, it should has only 1 zero in the start of the number, in binary
-        return n > 0 && (n & (n-1) ) == 0;
+        if(n <= 0) return false;
+        //alert! below must be in a bracket
+        return (n & (n - 1)) == 0;
     }
 }
