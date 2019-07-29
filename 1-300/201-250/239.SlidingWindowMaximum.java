@@ -26,21 +26,28 @@ Could you solve it in linear time?
 Answer:
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int n = nums.length;
-        if (n == 0) {
-            return nums;
-        }
-        int[] result = new int[n - k + 1];
-        LinkedList<Integer> dq = new LinkedList<>();
-        for (int i = 0; i < n; i++) {
-            if (!dq.isEmpty() && dq.peek() == i - k) {
+        if(nums == null || nums.length == 0 || k <= 0) return new int[0];
+        int[] result = new int[nums.length - (k - 1)];
+        //这里其实用LinkedList都可以
+        Deque<Integer> dq = new LinkedList<>();
+        for(int i = 0; i < nums.length; i++){
+            //3再写这一行
+            //here means it's time to change a bracket, so need to remove the first element, if it's still not yet removed by 2nd while
+            if(!dq.isEmpty() && dq.peek() == i - k) {
                 dq.poll();
             }
-            while (!dq.isEmpty() && nums[i] >= nums[dq.peekLast()]) {
+
+            //2再写这一行
+            //就跟猴子摘玉米似的，就是里面的小元素全都不要了，就要大的
+            while(!dq.isEmpty() && nums[dq.peekLast()] < nums[i]){
                 dq.pollLast();
             }
+            //1先写这一行
             dq.offer(i);
-            if (i - k + 1 >= 0) {
+
+            //4最后写这行，为什么i - k + 1呢，因为result.length是n - k + 1啊
+            //同时假如k == 2，就是意味着当i == 2 的时候，也就是第三个数，第一个bracket成型的时候，就更新result了
+            if(i - k + 1>= 0) {
                 result[i - k + 1] = nums[dq.peek()];
             }
         }
