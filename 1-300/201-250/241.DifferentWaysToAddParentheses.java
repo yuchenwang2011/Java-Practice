@@ -23,34 +23,29 @@ Input: "2*3-4*5"
 Output: [-34, -14, -10, -10, 10]
 
 Answer:
-public class Solution {
-    //Got inspired by these 2 answers
-    //https://leetcode.com/discuss/48477/a-recursive-java-solution-284-ms
-    //https://leetcode.com/discuss/60626/share-a-clean-and-short-java-solution
+class Solution {
     public List<Integer> diffWaysToCompute(String input) {
-        List<Integer> result = new ArrayList<Integer>();
-        input = input.trim();
-        for(int i = 0; i < input.length(); i++){
+        List<Integer> result = new ArrayList<>();
+        if(input == null || input.length() == 0) return result;
+        
+        for(int i = 1; i < input.length(); i++){
             char c = input.charAt(i);
             if(c == '+' || c == '-' || c == '*') {
-                String part1 = input.substring(0,i);
-                String part2 = input.substring(i+1);
-                List<Integer> part1Ret = diffWaysToCompute(part1);
-                List<Integer> part2Ret = diffWaysToCompute(part2);
-                for(int p1 : part1Ret){
-                    for(int p2 : part2Ret){
-                        int tmp = 0;
-                        switch(c) {
-                            case '+': tmp = p1 + p2; break;
-                            case '-': tmp = p1 - p2; break;
-                            case '*': tmp = p1 * p2; break;
-                        }
-                        result.add(tmp);
+                List<Integer> left = diffWaysToCompute(input.substring(0,i));
+                List<Integer> right = diffWaysToCompute(input.substring(i + 1));
+                for(int x : left){
+                    for(int y : right){
+                        if(c == '+') result.add(x + y);
+                        if(c == '-') result.add(x - y);
+                        if(c == '*') result.add(x * y);
                     }
                 }
             }
         }
-        if(result.size() == 0) result.add(Integer.valueOf(input));
+        if(result.size() == 0) {
+            result.add(Integer.valueOf(input));
+        }     
+        
         return result;
     }
 }
