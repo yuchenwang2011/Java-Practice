@@ -12,40 +12,25 @@ Hint:
 Try to use recursion and notice that it should recurse with n - 2 instead of n - 1.
 
 Answer:
-public class Solution {
+class Solution {
     public List<String> findStrobogrammatic(int n) {
-        List<String> result = new ArrayList<String>();
-        if(n <=0) {
-            result.add("");
-            return result;
-        }
-        if(n == 1){
-            result.add("0");
-            result.add("1");
-            result.add("8");
-            return result;
-        }
-        if(n % 2 == 1) process(n, result, "", n/2, n/2);
-        else process(n, result, "", n/2-1, n/2);
-        return result;
+        return helper(n, n);
     }
     
-    public void process(int n, List<String> result, String tmp, int start, int end){
-        if(start < 0 && end >= n){
-            result.add(tmp);
-            return;
+    public List<String> helper(int idx, int n){
+        if(idx == 0) return Arrays.asList("");
+        if(idx == 1) {
+            return Arrays.asList(new String[]{"0", "1", "8"});
         }
-        
-        if(start == end){
-            process(n, result, "0", start-1, end+1);
-            process(n, result, "1", start-1, end+1);
-            process(n, result, "8", start-1, end+1);
-        } else {
-            if(start != 0) process(n, result, "0" + tmp + "0", start-1, end+1);
-            process(n, result, "1" + tmp + "1", start-1, end+1);
-            process(n, result, "6" + tmp + "9", start-1, end+1);
-            process(n, result, "8" + tmp + "8", start-1, end+1);
-            process(n, result, "9" + tmp + "6", start-1, end+1);
+        List<String> last = helper(idx - 2, n);
+        List<String> result = new ArrayList<>();
+        for(String s : last){
+            if(idx != n) result.add("0" + s + "0");
+            result.add("1" + s + "1");
+            result.add("6" + s + "9");
+            result.add("8" + s + "8");
+            result.add("9" + s + "6");
         }
+        return result;
     }
 }
