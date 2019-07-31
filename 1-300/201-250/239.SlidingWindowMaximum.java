@@ -31,7 +31,7 @@ class Solution {
         //这里其实用LinkedList都可以
         Deque<Integer> dq = new LinkedList<>();
         for(int i = 0; i < nums.length; i++){
-            //3再写这一行
+            //4最后写这一行
             //here means it's time to change a bracket, so need to remove the first element, if it's still not yet removed by 2nd while
             if(!dq.isEmpty() && dq.peek() == i - k) {
                 dq.poll();
@@ -45,7 +45,7 @@ class Solution {
             //1先写这一行
             dq.offer(i);
 
-            //4最后写这行，为什么i - k + 1呢，因为result.length是n - k + 1啊
+            //3再写这行，为什么i - k + 1呢，因为result.length是n - k + 1啊
             //同时假如k == 2，就是意味着当i == 2 的时候，也就是第三个数，第一个bracket成型的时候，就更新result了
             if(i - k + 1>= 0) {
                 result[i - k + 1] = nums[dq.peek()];
