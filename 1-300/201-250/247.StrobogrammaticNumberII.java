@@ -25,6 +25,7 @@ class Solution {
         List<String> last = helper(idx - 2, n);
         List<String> result = new ArrayList<>();
         for(String s : last){
+            //意思这不是最外围那层，因为test case不让两边是零
             if(idx != n) result.add("0" + s + "0");
             result.add("1" + s + "1");
             result.add("6" + s + "9");
