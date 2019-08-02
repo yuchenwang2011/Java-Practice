@@ -23,32 +23,22 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-//Inspired by this answer:
-//https://leetcode.com/discuss/73746/clean-dfs-solution
-public class Solution {
-    int count = 0;
+class Solution {
+    private int count = 0;
     public int countUnivalSubtrees(TreeNode root) {
-        if(root == null) return 0;
-        dfs(root);
+        helper(root);
         return count;
     }
-    
-    public boolean dfs(TreeNode root){
+    public boolean helper(TreeNode root){
         if(root == null) return true;
-        if(root.left == null && root.right == null) {
+        boolean left = helper(root.left);
+        boolean right = helper(root.right);
+        if(left != right) return false;
+        else {
+            if(root.left != null && root.left.val != root.val) return false;
+            if(root.right != null && root.right.val != root.val) return false;
             count++;
-            return true;
         }
-        boolean left = dfs(root.left);
-        boolean right = dfs(root.right);
-        if(left && right) {
-            //this if condition is very tricky, so better think about it
-            if((root.left == null || root.left.val == root.val) && (root.right == null || root.right.val == root.val ) ){
-              count++;
-              return true;
-            }
-        }
-        return false;
+        return true;
     }
-    
 }
