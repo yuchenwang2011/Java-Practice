@@ -8,35 +8,29 @@ Given [[0, 30],[5, 10],[15, 20]],
 return 2.
 
 Answer:
-/**
- * Definition for an interval.
- * public class Interval {
- *     int start;
- *     int end;
- *     Interval() { start = 0; end = 0; }
- *     Interval(int s, int e) { start = s; end = e; }
- * }
- */
-public class Solution {
-    //Got inspired by this answer: think very hard to understand, just read the explanation 3 times
-    //https://leetcode.com/discuss/82292/explanation-super-easy-java-solution-beats-from-%40pinkfloyda
-    public int minMeetingRooms(Interval[] intervals) {
-        if(intervals == null || intervals.length == 0) return 0;
-        int[] start = new int[intervals.length];
-        int[] end   = new int[intervals.length];
-        for(int i = 0; i < intervals.length; i++){
-            start[i] = intervals[i].start;
-              end[i] = intervals[i].end;
-        }
-        Arrays.sort(start);
-        Arrays.sort(end);
+//这题这么理解：start和end时间都打散了以后排序。
+//凡是有一个start比end小，那就意味着需要一个屋子啊
+//如果有两个start都比end小，那就更证明了有两个屋子时间上有冲突，就更需要两个屋子了
+class Solution {
+    public int minMeetingRooms(int[][] intervals) {
+        int result = 0;
+        if(intervals == null || intervals.length == 0 || intervals[0].length == 0) return result;
         
-        int rooms = 0;
-        int endPos = 0;
+        int[] starts = new int[intervals.length];
+        int[] ends = new int[intervals.length];
         for(int i = 0; i < intervals.length; i++){
-            if(start[i] < end[endPos]) rooms++;
-            else  endPos ++;
+            starts[i] = intervals[i][0];
+            ends[i] = intervals[i][1];
         }
-        return rooms;
-     }
+        Arrays.sort(starts);
+        Arrays.sort(ends);
+        
+        int end = 0;
+        for(int i = 0; i < starts.length; i++){
+            if(starts[i] < ends[end]) result++;
+            else end++;
+        }
+        
+        return result;
+    }
 }
