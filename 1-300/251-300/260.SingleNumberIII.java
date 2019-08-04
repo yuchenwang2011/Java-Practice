@@ -29,6 +29,7 @@ public class Solution {
             //another with the aforementinoed bit unset. Two different numbers we need to find must fall into thte two distrinct groups. 
             //XOR numbers in each group, we can find a number in either group.
             //用那一位是否是1还是0，把数字分成两组。如果不是想要的数字，因为他们有两个，^以后最后变成0了，只剩下我们想要的数字了
+            //注意：位运算一般都是要拿括号括起来的
             if((num & diff) == 0) result[0] ^= num;
             else result[1] ^= num;
         }
