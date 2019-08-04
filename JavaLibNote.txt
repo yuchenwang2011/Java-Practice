@@ -157,6 +157,7 @@
 
    java8:
    Collecstions.sort(allNodes, (a,b) -> a.val - b.val);
+   Arrays.sort(intervals, (a,b) -> a[0] - b[0]);
 
 13.public class NestedIterator implements Iterator<Integer> {
    }
