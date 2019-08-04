@@ -13,8 +13,6 @@ Your algorithm should run in linear runtime complexity. Could you implement it u
 
 Answer:
 public class Solution {
-    //Got inspired by this answer, impossible to think up an answer by myself
-    //https://leetcode.com/discuss/52351/accepted-java-space-easy-solution-with-detail-explanations
     public int[] singleNumber(int[] nums) {
         int[] result = new int[2];
         if(nums == null || nums.length < 2) return result;
@@ -30,6 +28,7 @@ public class Solution {
             //In the second pass, we divide all numbers into two groups, one with the aforementioned bit set, 
             //another with the aforementinoed bit unset. Two different numbers we need to find must fall into thte two distrinct groups. 
             //XOR numbers in each group, we can find a number in either group.
+            //用那一位是否是1还是0，把数字分成两组。如果不是想要的数字，因为他们有两个，^以后最后变成0了，只剩下我们想要的数字了
             if((num & diff) == 0) result[0] ^= num;
             else result[1] ^= num;
         }
