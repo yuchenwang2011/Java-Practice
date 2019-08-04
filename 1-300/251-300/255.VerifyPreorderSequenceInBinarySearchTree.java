@@ -27,14 +27,15 @@ Answer:
 //第一个解法是用stack，第二个是升级版直接在原来的input数组上开练
 class Solution {
     public boolean verifyPreorder(int[] preorder) {
-        int low = Integer.MIN_VALUE;
-        Stack<Integer> path = new Stack();
-        for (int p : preorder) {
-            if (p < low)
-                return false;
-            while (!path.empty() && p > path.peek())
-                low = path.pop();
-            path.push(p);
+        if(preorder == null || preorder.length == 0) return true;
+        int min = Integer.MIN_VALUE;
+        Deque<Integer> stack = new ArrayDeque<>();
+        for(int num : preorder){
+            if(num < min) return false;
+            while(!stack.isEmpty() && num > stack.peek()){
+                min = stack.pop();
+            }
+            stack.push(num);
         }
         return true;
     }
