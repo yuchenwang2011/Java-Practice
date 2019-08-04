@@ -37,3 +37,36 @@ Follow up:
 As an added challenge, try to code it using only iterators in C++ or iterators in Java.
 
 Answer:
+class Vector2D {
+    List<Integer> list;
+    Iterator<Integer> iterator;
+
+    public Vector2D(int[][] v) {
+        list = new ArrayList<>();
+        
+        for (int i = 0; i < v.length; i++) {
+            //alert!! this row can be null
+            for (int j = 0; j < v[i].length; j++) {
+                list.add(v[i][j]);
+            }
+        }
+        
+        iterator = list.iterator();
+        
+    }
+    
+    public int next() {
+       return iterator.next(); 
+    }
+    
+    public boolean hasNext() {
+        return iterator.hasNext();
+    }
+}
+
+/**
+ * Your Vector2D object will be instantiated and called as such:
+ * Vector2D obj = new Vector2D(v);
+ * int param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
