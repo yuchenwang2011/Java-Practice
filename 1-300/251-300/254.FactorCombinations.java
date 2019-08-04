@@ -36,35 +36,26 @@ output:
 ]
 
 Answer:
-public class Solution {
-    //First answer is very easy to understand but slow.
-    //https://leetcode.com/discuss/51250/my-recursive-dfs-java-solution
-    //Second one is fast but hard to understand, doesn't fit my template
-    //https://leetcode.com/discuss/58828/a-simple-java-solution
+class Solution {
     public List<List<Integer>> getFactors(int n) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
         if(n <= 3) return result;
-        List<Integer> tmp = new ArrayList<Integer>();
-        process(n, result, tmp, -1);
+        helper(result, new ArrayList<>(), n, 2);
         return result;
     }
     
-    public void process(int n, List<List<Integer>> result, List<Integer> tmp, int start){
-        if(start != -1) {
-            tmp.add(n);
-            result.add(new ArrayList<Integer>(tmp));
-            tmp.remove(tmp.size() -1 );
-        }
-        
-        int upper = (int) Math.sqrt(n);
-        int lower = Math.max(start, 2);
-        
-        for(int i = lower; i <= upper; i++){
-            if(n % i == 0) {
-                tmp.add(i);
-                process(n/i, result, tmp, i);
-                tmp.remove(tmp.size()-1);
+    public void helper(List<List<Integer>> result, List<Integer> tmp, int n, int start){
+        if(n == 1) {
+            if(tmp.size() > 1) {
+                result.add(new ArrayList<>(tmp));
             }
+            return;
+        }
+        for(int i = start; i <= n; i++){
+            if(n % i != 0) continue;
+            tmp.add(i);
+            helper(result, tmp, n / i, i);
+            tmp.remove(tmp.size() - 1);
         }
     }
 }
