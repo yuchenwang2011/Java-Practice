@@ -43,13 +43,16 @@ class Solution {
 
 class Solution {
     public boolean verifyPreorder(int[] preorder) {
-        int low = Integer.MIN_VALUE, i = -1;
-        for (int p : preorder) {
-            if (p < low)
-                return false;
-            while (i >= 0 && p > preorder[i])
-                low = preorder[i--];
-            preorder[++i] = p;
+        if(preorder == null || preorder.length == 0) return true;
+        
+        int i = -1;
+        int min = Integer.MIN_VALUE;
+        for(int num : preorder){
+            if(num < min) return false;
+            while(i >= 0 && num > preorder[i]){
+                min = preorder[i--];
+            }
+            preorder[++i] = num;
         }
         return true;
     }
