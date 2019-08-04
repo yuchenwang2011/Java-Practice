@@ -12,28 +12,26 @@ Follow up:
 Could you solve it in O(n2) runtime?
 
 Answer:
-import java.util.*;
-public class Solution {
-    //I was inspired by this answer 
-    //https://leetcode.com/discuss/63016/accepted-and-simple-java-solution-with-detailed-explanation
-    //*******Remember the syntax for Arrays.sort(nums)
+class Solution {
     public int threeSumSmaller(int[] nums, int target) {
-      int count = 0;
-      if(nums.length < 3 || nums == null) {
-        return 0;   
-      }
-      Arrays.sort(nums);
-      for (int i =0; i <= nums.length-3; i++) {
-         int low = i+1; int hi = nums.length-1;
-         while(low < hi) {
-           if(nums[i] + nums[low] + nums[hi] < target) {
-             count = count + (hi - low); 
-             low++;
-           } else {
-             hi--;  
-           }
-         }
-      }
-      return count;
+        int result = 0;
+        if(nums == null || nums.length < 3) return result;
+        
+        Arrays.sort(nums);
+        for(int first = 0; first < nums.length - 2; first++){
+            int second = first + 1;
+            int third = nums.length - 1;
+            while(second < third){
+                if(nums[first] + nums[second] + nums[third] >= target) third--;
+                else {
+                    //注意：这里最重要
+                    result += third - second;
+                    //加1了以后就没准比target大了，所以也是要重新来一遍的
+                    second++;
+                }
+            }
+        }
+        
+        return result;
     }
 }
