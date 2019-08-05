@@ -6,56 +6,44 @@ For example,
 "code" -> False, "aab" -> True, "carerac" -> True.
 
 Hint:
-
-Consider the palindromes of odd vs even length. What difference do you notice?
-Count the frequency of each character.
-If each character occurs even number of times, then it must be a palindrome. 
-How about character which occurs odd number of times?
+1. Consider the palindromes of odd vs even length. What difference do you notice? 
+2. Count the frequency of each character.
+3. If each character occurs even number of times, then it must be a palindrome. 
+    How about character which occurs odd number of times?
 
 Answer:
-public class Solution {
+//必须掌握两种方法
+class Solution {
     public boolean canPermutePalindrome(String s) {
-        if(s == null || s.length() == 0 ) return true;
-        HashMap<Character, Integer> map = new HashMap<Character,Integer>();
+        if(s == null || s.length() == 0) return true;    
+        Set<Character> set = new HashSet<>();
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
-            if(map.containsKey(c)) map.put(c,map.get(c) + 1);
-            else map.put(c,1);
-        }
-        int oddCount = 0;
-        for(char c : map.keySet()){
-            if(map.get(c) % 2 == 1) oddCount++;
-        }
-        return oddCount <= 1;
+            if(set.contains(c)) {
+                set.remove(c);
+            } else {
+                set.add(c);
+            }
+        }      
+        return set.size() <= 1;
     }
 }
 
-public class Solution {
+class Solution {
     public boolean canPermutePalindrome(String s) {
-        if(s == null || s.length() == 0 ) return true;
-        HashMap<Character, Integer> map = new HashMap<Character,Integer>();
-        for(int i = 0; i < s.length(); i++){
-            char c = s.charAt(i);
-            if(map.containsKey(c)) map.remove(c);
-            else map.put(c,1);
+        if(s == null || s.length() == 0) return true;
+        int[] count = new int[256];
+        for(char c : s.toCharArray()){
+            if(count[c] > 0) {
+                count[c]--;
+            } else {
+                count[c]++;
+            }
         }
-        return map.size() <=1;
-    }
-}
-
-public class Solution {
-    public boolean canPermutePalindrome(String s) {
-        if(s == null || s.length() == 0 ) return true;
-        int[] result = new int[256];
-        for(int i = 0; i < s.length(); i++){
-            int num = s.charAt(i);
-            if(result[num] == 1) result[num]--;
-            else result[num]++;
+        int result = 0;
+        for(int i = 0; i < count.length; i++){
+            if(count[i] != 0) result++;
         }
-        int count = 0;
-        for(int i = 0; i < 256; i++){
-            if(result[i] %2 == 1) count ++;
-        }
-        return count <= 1;
+        return result <= 1;
     }
 }
