@@ -21,3 +21,34 @@ Hint:
 In other words, any connected graph without simple cycles is a tree.”
 
 Answer:
+//这题必须会，是个图的题，第一个dfs，第二个union find
+class Solution {
+    public boolean validTree(int n, int[][] edges) {
+        //第一行不用测试null和0啥的
+        List<List<Integer>> graph = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            graph.add(new ArrayList<>());
+        }
+        for(int i = 0; i < edges.length; i++){
+            graph.get(edges[i][0]).add(edges[i][1]);
+            graph.get(edges[i][1]).add(edges[i][0]);
+        }
+        Set<Integer> visited = new HashSet<>();
+        visited.add(0);
+        boolean result = helper(graph, visited, 0, - 1);
+        if(result == false) return false;
+        return visited.size() == n ? true: false;
+    }
+    
+    public boolean helper(List<List<Integer>> graph, Set<Integer> visited, int current, int parent){
+        List<Integer> nodes = graph.get(current);
+        for(int node : nodes){
+            if(node == parent) continue;
+            if(visited.contains(node)) return false;
+            visited.add(node);
+            boolean result = helper(graph, visited, node, current);
+            if(result == false) return false;
+        }
+        return true;
+    }
+}
