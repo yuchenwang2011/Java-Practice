@@ -10,29 +10,23 @@ Your algorithm should run in linear runtime complexity.
 Could you implement it using only constant extra space complexity?
 
 Answer:
-public class Solution {
+//需要掌握两种方法
+class Solution {
     public int missingNumber(int[] nums) {
-      //https://leetcode.com/discuss/56174/3-different-ideas-xor-sum-binary-search-java-code
-      //Bit Manipulation Method: n ^ n = 0 and n ^ 0 = n 
-      //I willl do a binary search method next round
-    int result = 0;
-    for (int i = 1; i <= nums.length; i++) {
-        result = result ^ nums[i-1];
-        result = result ^ i;
+        int result = nums.length;    
+        for(int i = 0; i < nums.length; i++){
+            result ^= i ^ nums[i];
+        }
+        return result;
     }
-    return result;
-    }
-    //just think, if you missed 0, you still have 1...n to xor 1...n, to be zero, then return zero;
-    //if not zero, you have 1..n-1 to xor 1..n, that's 0^n=n, return n;
 }
 
-public class Solution {
+class Solution {
     public int missingNumber(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
-        int result = 0; //more 0s in xor doesn't matter
+        int result = nums.length;   
         for(int i = 0; i < nums.length; i++){
-            result = result ^ nums[i] ^ i;
-        }
-        return result ^ nums.length;
+            result += i - nums[i];
+        }     
+        return result;
     }
 }
