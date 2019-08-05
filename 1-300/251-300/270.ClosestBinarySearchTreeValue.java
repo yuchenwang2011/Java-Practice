@@ -16,19 +16,28 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+//掌握两种做法
+class Solution {
     public int closestValue(TreeNode root, double target) {
-        TreeNode closeNode = root;
+        if(root == null) return 0;
+        int result = root.val;
         while(root != null){
-          if(Math.abs(target-(double) root.val) < Math.abs(target-(double) closeNode.val)){
-              closeNode = root;
-          }
-          if(target >= (double)root.val){
-              root = root.right;
-          } else {
-              root = root.left;
-          }
+            if(Math.abs(target - root.val) < Math.abs(target - result)) result = root.val;
+            root = target > root.val ? root.right : root.left;
         }
-        return closeNode.val;
+        return result;
+    }
+}
+
+class Solution {
+    public int closestValue(TreeNode root, double target) {
+        return helper(root, target, root.val);
+    }
+    
+    public int helper(TreeNode root, double target, int result){
+        if(root == null) return result;
+        if(Math.abs(root.val - target) < Math.abs(result - target)) result = root.val;
+        root = target > root.val ? root.right : root.left;
+        return helper(root, target, result);
     }
 }
