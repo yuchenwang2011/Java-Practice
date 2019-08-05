@@ -52,3 +52,32 @@ class Solution {
         return true;
     }
 }
+
+
+class Solution {
+    //https://www.geeksforgeeks.org/union-find
+    public boolean validTree(int n, int[][] edges) {
+        if(n == 1 && edges.length == 0) return true;
+        if(n < 1 || edges == null || edges.length != n - 1) return false;
+        int[] roots = new int[n];
+        Arrays.fill(roots, -1);
+        for(int[] pair : edges){
+            int x = find(roots, pair[0]);
+            int y = find(roots, pair[1]);
+            // if two vertices happen to be in the same set
+            // then there's a cycle
+            if (x == y) return false;
+            
+            // union
+            roots[x] = y;
+        }
+        return true;
+    }
+    
+    public int find(int[] roots, int i){
+        while(roots[i] != -1){
+            i = roots[i];
+        }
+        return i;
+    }
+}
