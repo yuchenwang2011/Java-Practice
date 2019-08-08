@@ -10,10 +10,12 @@ Note:
 n and k are non-negative integers.
 
 Answer:
+//第一种是DP解法，第二种是同样的解法就是老方法优化了一维dp
 public class Solution {
     public int numWays(int n, int k) {
         if(n == 0 || k == 0) return 0;
-        else if (n == 1) return k;
+        if (n == 1) return k;
+        
         int dp[] = new int[n];
         dp[0] = k;
         dp[1] = dp[0] * k;
@@ -29,8 +31,7 @@ public class Solution {
 public class Solution {
     public int numWays(int n, int k) {
         if(n == 0 || k ==0) return 0;
-        else if (n == 1) return k;
-        else if (n == 2) return k * k;
+        if (n == 1) return k;
         
         int first = k;
         int second = k * k;
