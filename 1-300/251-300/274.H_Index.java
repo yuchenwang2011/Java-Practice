@@ -50,6 +50,7 @@ For example, given array [3,0,6,5,1], we have 6 buckets to contain how many pape
 meaning that we have the index number of papers that have reference greater than or equal to the index. 
 Which will be our h-index result. The reason to scan from the end of the array is that we are looking for the greatest h-index. 
 
+result就是引用n次的文章有n篇
 class Solution {
     public int hIndex(int[] citations) {
         int n = citations.length;
