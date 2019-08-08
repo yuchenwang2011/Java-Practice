@@ -29,33 +29,29 @@ Do not use class member/global/static variables to store states. Your encode and
 Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.
 
 Answer:
+//这题必会，substring的练习题
 public class Codec {
-
-    // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {
-        StringBuilder sb = new StringBuilder();
-        for(String st : strs){
-            sb.append(st.length()).append("/").append(st);
+        String result = "";
+        if(strs == null || strs.size() == 0) return result;
+        for(String s : strs){
+            result += s.length() + "/" + s;
         }
-        return sb.toString();
+        return result;
     }
 
-    // Decodes a single string to a list of strings.
     public List<String> decode(String s) {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if(s == null || s.length() == 0) return result;
         int i = 0;
         while(i < s.length()){
-            int slash = s.indexOf("/",i);
-            int len = Integer.valueOf(s.substring(i,slash));
-            String st = s.substring(slash+1,slash+len+1);
-            result.add(st);
-            i = slash + len + 1;
+            //这题练习的就是substring的用法
+            int slash = s.indexOf("/", i);
+            int length = Integer.valueOf(s.substring(i, slash));
+            String str = s.substring(slash + 1, slash + 1 + length);
+            result.add(str);
+            i = slash + 1 + length;
         }
         return result;
     }
 }
-
-// Your Codec object will be instantiated and called as such:
-// Codec codec = new Codec();
-// codec.decode(codec.encode(strs));
