@@ -6,33 +6,36 @@ Given a positive integer n, find the least number of perfect square numbers
 For example, given n = 12, return 3 because 12 = 4 + 4 + 4; given n = 13, return 2 because 13 = 4 + 9.
 
 Answer:
+
+// dp[0] = 0 
+// dp[1] = dp[0]+1 = 1
+// dp[2] = dp[1]+1 = 2
+// dp[3] = dp[2]+1 = 3
+// dp[4] = Min{ dp[4-1*1]+1, dp[4-2*2]+1 } 
+//       = Min{ dp[3]+1, dp[0]+1 } 
+//       = 1				
+// dp[5] = Min{ dp[5-1*1]+1, dp[5-2*2]+1 } 
+//       = Min{ dp[4]+1, dp[1]+1 } 
+//       = 2
+// dp[13] = Min{ dp[13-1*1]+1, dp[13-2*2]+1, dp[13-3*3]+1 } 
+//        = Min{ dp[12]+1, dp[9]+1, dp[4]+1 } 
+//        = 2
+// dp[n] = Min{ dp[n - i*i] + 1 },  n - i*i >=0 && i >= 1
+
 public class Solution {
-    //I will use BFS to solve it next round, this round is dynamic programming
-    //https://leetcode.com/discuss/57850/explanation-of-the-dp-solution
-    //https://leetcode.com/discuss/62526/an-easy-understanding-dp-solution-in-java
-    //https://leetcode.com/discuss/72205/java-dp-solution-with-explanation
     public int numSquares(int n) {
-        if(n < 0) return 0;
-        int[] dp = new int[n+1];
-        //dp[0] = 1;
-        for(int i = 1; i <= n; i++){
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for(int i = 1; i <= n; ++i) {
             int min = Integer.MAX_VALUE;
-            int sqrt = (int) Math.sqrt(i);
-            
-            if(i == sqrt * sqrt) {
-                dp[i] = 1;
-                continue;
+            int j = 1;
+            while(i - j*j >= 0) {
+                min = Math.min(min, dp[i - j*j] + 1);
+                ++j;
             }
-            
-            for(int j = 1; j * j < i; j++){
-                min = Math.min(min, dp[i - j * j] + dp[j * j]);
-            }
-            dp[i] = min; 
-        }
-        //I finally understand why each time is dp[i - j * j] + 1, the 1 here means dp[j * j], it's smallest value must be 1
-        //because itself is a square. To make a dp[] as small as possible, the minimum value is to delete a square from it
-        //so dp[i - j*j] is guaranteed to be the smallest value already, the smallest possible value for dp[i]
-        //is to add dp[i-j*j] + this dpp[j * j](1)
+            dp[i] = min;
+        }		
         return dp[n];
     }
 }
