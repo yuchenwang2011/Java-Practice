@@ -1,6 +1,7 @@
 271. Encode and Decode Strings My Submissions Question
 Total Accepted: 5987 Total Submissions: 22247 Difficulty: Medium
-Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
+Design an algorithm to encode a list of strings to a string. 
+  The encoded string is then sent over the network and is decoded back to the original list of strings.
 
 Machine 1 (sender) has the function:
 
@@ -24,9 +25,12 @@ strs2 in Machine 2 should be the same as strs in Machine 1.
 Implement the encode and decode methods.
 
 Note:
-The string may contain any possible characters out of 256 valid ascii characters. Your algorithm should be generalized enough to work on any possible characters.
-Do not use class member/global/static variables to store states. Your encode and decode algorithms should be stateless.
-Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.
+The string may contain any possible characters out of 256 valid ascii characters. 
+  Your algorithm should be generalized enough to work on any possible characters.
+Do not use class member/global/static variables to store states. 
+  Your encode and decode algorithms should be stateless.
+Do not rely on any library method such as eval or serialize methods. 
+  You should implement your own encode/decode algorithm.
 
 Answer:
 //这题必会，substring的练习题
