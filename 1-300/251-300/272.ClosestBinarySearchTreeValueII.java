@@ -32,3 +32,26 @@ getSuccessor(N), which returns the next larger node to N.
 4. You would need two stacks to track the path in finding predecessor and successor node separately.
 
 Answer:
+//一看到bst就想到inorder，因为这样能利用从小到大遍历
+class Solution {
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        LinkedList<Integer> result = new LinkedList<>();
+        if(root == null || k <= 0) return result;
+        helper(root, target, k, result);
+        return result;
+    } 
+    
+    public void helper(TreeNode root, double target, int k, LinkedList<Integer> result){
+        if(root == null) return;
+        helper(root.left, target, k, result);
+        
+        if(result.size() == k){
+            if(Math.abs(root.val - target) < Math.abs(result.peek() - target)) {
+                result.poll();
+            } else return; //注意这里，如果没有更小的而且存满了，说明后面的也没戏了，就不继续了
+        }
+        result.add(root.val);
+        
+        helper(root.right, target, k, result);
+    }
+}
