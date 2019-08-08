@@ -28,3 +28,35 @@ Hint:
    (middle chunk is zero and should not be printed out)
    
 Answer:
+class Solution {
+    private String[] less20 = new String[]{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
+                                           , "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+    private String[] tens = new String[]{"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+    
+    private String[] thousands = new String[]{"", "Thousand", "Million", "Billion"};
+    
+    public String numberToWords(int num) {
+        if(num <= 0) return "Zero";
+        String result = "";
+        
+        int i = 0; 
+        while(num != 0){
+            if(num % 1000 != 0) {
+                result = helper(num % 1000) + thousands[i] + " " + result;
+            }
+            num /= 1000;
+            i++;
+        }
+        
+        return result.trim();
+    }
+    
+    public String helper(int n){
+        if(n <= 0) return "";
+        if(n < 20) return less20[n % 20] + " ";
+        else if (n < 100) return tens[n / 10] + " " + helper(n % 10);
+        else {
+            return less20[n / 100] + " Hundred " + helper(n % 100);
+        }
+    }
+}
