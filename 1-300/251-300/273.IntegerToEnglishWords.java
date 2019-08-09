@@ -51,9 +51,12 @@ class Solution {
         return result.trim();
     }
     
+   //这里的解法把空格的重任都放在了小于20的if里，也就是为什么主函数里thousand之前没有空格，因为默认这里有一个空格结尾
+   //同时也是为什么最后结果要trim一下，因为结尾多一个空格
     public String helper(int n){
         if(n <= 0) return "";
         if(n < 20) return less20[n % 20] + " ";
+       //这里之所以用helper而不是less20，是因为helper能给结尾加上一个空格,让空格风格统一
         else if (n < 100) return tens[n / 10] + " " + helper(n % 10);
         else {
             return less20[n / 100] + " Hundred " + helper(n % 100);
