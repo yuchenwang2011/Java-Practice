@@ -47,6 +47,7 @@ class Solution {
         }
         for(int i = pos; i < num.length(); i++){
             if(i != pos && num.charAt(pos) == '0') break;
+            //这里不懂
             long cur = Long.parseLong(num.substring(pos, i + 1));
             if(pos == 0){
                 helper(rst, path + cur, num, target, i + 1, cur, cur);
@@ -60,6 +61,7 @@ class Solution {
                 //now your eval is 6 right? If you want to add a * between 3 and 4, you would take 3 as the digit to be multiplied,
                 //so you want to take it out from the existing eval. You have 1 + 2 + 3 * 4 
                 //and the eval now is (1 + 2 + 3) - 3 + (3 * 4).
+                //这里不懂
                 helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur );
             }
         }
