@@ -5,36 +5,24 @@ Given a binary search tree and a node in it, find the in-order successor of that
 Note: If the given node has no in-order successor in the tree, return null.
 
 Answer:
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-//Attention this question is asking BST, so [5,3,7,2,4,6,8] --> [2,3,4,5,6,7,8]
-//Got inspired by this answer:
-//https://leetcode.com/discuss/77805/java-5ms-short-code-with-explanations
-public class Solution {
+//这题必须掌握下面三种解法, iterative, recursive + Predecessor
+class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        if(root == null || p == null) return root;
         TreeNode result = null;
+        
         while(root != null){
-            if(root.val > p.val){ //means root can be a candidate, goes to left node for futher comparision
-                 result = root;
-                 root = root.left;
-            } else {
-                 root = root.right;   
+            if(root.val <= p.val) root = root.right;
+            else {
+                result = root;
+                root = root.left;
             }
         }
+        
         return result;
     }
 }
 
-//This time I will do it recursively
-//This answer is good, it tells you how to do the predecessor
-//https://leetcode.com/discuss/59787/share-my-java-recursive-solution
 public class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if(root == null || p == null) return null;
