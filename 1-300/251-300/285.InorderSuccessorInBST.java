@@ -23,17 +23,6 @@ class Solution {
     }
 }
 
-public class Solution {
-    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        if(root == null || p == null) return null;
-        if(root.val > p.val) {
-            TreeNode leftResult = inorderSuccessor(root.left,p);
-            return leftResult == null? root: leftResult;
-        } 
-        return inorderSuccessor(root.right,p);
-    }
-}
-
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if(root == null || p == null) return root;
@@ -46,3 +35,14 @@ class Solution {
     }
 }
 
+public TreeNode predecessor(TreeNode root, TreeNode p) {
+  if (root == null)
+    return null;
+
+  if (root.val >= p.val) {
+    return predecessor(root.left, p);
+  } else {
+    TreeNode right = predecessor(root.right, p);
+    return (right != null) ? right : root;
+  }
+}
