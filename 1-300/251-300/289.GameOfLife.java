@@ -1,3 +1,4 @@
+//别看这题字数多，答案长，其实很简单
 289. Game of Life My Submissions Question
 Total Accepted: 11919 Total Submissions: 35824 Difficulty: Medium
 According to the Wikipedia's article: "The Game of Life, 
@@ -23,7 +24,6 @@ which would cause problems when the active area encroaches the border of the arr
 How would you address these problems?
 
 Answer:
-//别看答案长，其实很简单
 //由于细胞只有两种状态0和1，因此可以使用二进制来表示细胞的生存状态
 //更新细胞状态时，将细胞的下一个状态用高位进行存储
 //全部更新完毕后，将细胞的状态右移一位
@@ -44,16 +44,12 @@ public class Solution {
         for(int i = 0; i < row; i++){
             for(int j = 0; j < column; j++){
                 int live = countLife(board,i,j);
-                //at beginning, all the second bits are 0
-                //so we only need to take care of when 0 --> 1 for second bit
-                //There are 4 cases:
-                //from dead to dead, from live to dead, from live to live, from dead to live
-                //so only the third one, from dead to live
+                //at beginning, all the second bits are 0, so we need set second bit to 1
+                //dead to live, live to live, these 2 need second bit to be 1
+                //dead to dead, live to dead, these 2 we don't need to do anything.
                 if(live == 3 && board[i][j] ==0){
                     board[i][j] = 2; //it was 00 before, now make the second bit to 1, to be 10
                 }
-                //for dead to dead/live to dead we don't need to do anything.
-                //so for live to live, it was 01 before, so change second bit, now it's 11
                 if(board[i][j]==1 && (live >=2 && live <=3)){
                     board[i][j] = 3;
                 }
