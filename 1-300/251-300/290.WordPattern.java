@@ -17,21 +17,23 @@ Special thanks to @minglotus6 for adding this problem and creating all test case
 
 Answer:
 //参考205题
-public class Solution {
+class Solution {
     public boolean wordPattern(String pattern, String str) {
         String[] words = str.split(" ");
         if(pattern.length() != words.length) return false;
         
-        Map<Character, String> map = new HashMap<Character, String>();
+        Map<Character, String> map = new HashMap<>();
         for(int i = 0; i < words.length; i++){
             char c = pattern.charAt(i);
+            String word = words[i];
+            
             if(map.containsKey(c)) {
-                if(map.get(c).equals(words[i]) == false) return false;
+                if(!map.get(c).equals(word)) return false;
             } else {
-                if(map.containsValue(words[i]) == true) return false;
-                map.put(c,words[i]);
+                if(map.containsValue(word)) return false;
+                map.put(c, word);
             }
-        }
+        }     
         return true;
     }
 }
