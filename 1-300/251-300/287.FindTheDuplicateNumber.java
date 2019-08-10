@@ -20,7 +20,7 @@ Note:
 Accepted 207,922 Submissions 411,412
 
 Answer:
-//两种方法都需要掌握，二分法logn，然后还有two pointer
+//两种方法都需要掌握，二分法n * logn，然后还有two pointer O(n)
 //这次的二分没法用模板
 //我们一直不是在寻找这个多余的数字到底在哪个位置idx，
 //而是一直在算这个多余的数字到底是多少，因为值是固定的在1到n之间的。
@@ -46,5 +46,23 @@ class Solution {
             else end = mid;
         }
         return start;
+    }
+}
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        if(nums == null || nums.length == 0) return -1;
+        int slow = nums[0];
+        int fast = nums[nums[0]];
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        fast = 0;
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
     }
 }
