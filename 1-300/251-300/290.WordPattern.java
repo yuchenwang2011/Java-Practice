@@ -16,16 +16,13 @@ Credits:
 Special thanks to @minglotus6 for adding this problem and creating all test cases.
 
 Answer:
+//参考205题
 public class Solution {
-    //the first line is very short but I just can't understand
-    //I will try to understand it next round when I know better about HashMap
-    //https://leetcode.com/discuss/62374/8-lines-simple-java
-    //Copied the method of second link, second one is easy to understand
-    //https://leetcode.com/discuss/62876/very-fast-3ms-java-solution-using-hashmap
     public boolean wordPattern(String pattern, String str) {
         String[] words = str.split(" ");
         if(pattern.length() != words.length) return false;
-        HashMap<Character, String> map = new HashMap<Character, String>();
+        
+        Map<Character, String> map = new HashMap<Character, String>();
         for(int i = 0; i < words.length; i++){
             char c = pattern.charAt(i);
             if(map.containsKey(c)) {
