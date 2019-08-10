@@ -65,6 +65,7 @@ class Solution {
         int count = 0;
         for(int i = n; i >= 0; i--) {
             count += buckets[i];
+            //有n篇文章，至少被引用了n次
             if(count >= i) {
                 return i;
             }
