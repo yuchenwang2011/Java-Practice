@@ -51,8 +51,9 @@ class Solution {
             return;
         }
         for(int i = pos; i < num.length(); i++){
-            if(i != pos && num.charAt(pos) == '0') break;
             //这里不懂
+            if(i != pos && num.charAt(pos) == '0') break;
+            //就像我给的例子["1+23"]，是可以有多位的
             long cur = Long.parseLong(num.substring(pos, i + 1));
             if(pos == 0){
                 helper(rst, path + cur, num, target, i + 1, cur, cur);
