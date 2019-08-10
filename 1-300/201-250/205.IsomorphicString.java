@@ -17,6 +17,7 @@ Given "paper", "title", return true.
 Note:
 You may assume both s and t have the same length.
 
+//这题跟290要一起复习
 Answer:
 class Solution {
     public boolean isIsomorphic(String s, String t) {
