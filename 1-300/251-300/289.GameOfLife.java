@@ -23,9 +23,14 @@ which would cause problems when the active area encroaches the border of the arr
 How would you address these problems?
 
 Answer:
+//别看答案长，其实很简单
 //由于细胞只有两种状态0和1，因此可以使用二进制来表示细胞的生存状态
 //更新细胞状态时，将细胞的下一个状态用高位进行存储
 //全部更新完毕后，将细胞的状态右移一位
+// - 00  dead (current) -> dead (next)
+// - 01  live (current) -> dead (next)  
+// - 10  dead (current) -> live (next) 
+// - 11  live (current) -> live (next)  
 //怎么想出来的：
 // 1. If I want to reuse the existing space, I'd need to store both the old and new states in each cell.
 // 2. There are 4 combinations of old and new values: 00, 01, 10, 11.
