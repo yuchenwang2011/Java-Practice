@@ -7,25 +7,6 @@ For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5
 Answer:
 public class Solution {
     public void wiggleSort(int[] nums) {
-      if (nums.length <= 1 ) {
-        return;
-      }
-      for (int i = 1; i < nums.length; i++) {
-          int preValue = nums[i-1];
-          if(i%2 == 1 && preValue > nums[i]) {
-              nums[i-1] = nums[i];
-              nums[i] = preValue;
-          } else if(i%2 == 0 && preValue < nums[i]){
-              nums[i-1] = nums[i];
-              nums[i] = preValue;
-          }
-      }
-    }
-}
-
-//this is my second round answer
-public class Solution {
-    public void wiggleSort(int[] nums) {
         if(nums == null || nums.length <= 1) return;
         for(int i = 1; i < nums.length; i++){
             if(i % 2 == 0 && nums[i-1] < nums[i]) swap(nums, i - 1, i);
