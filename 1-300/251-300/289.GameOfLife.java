@@ -36,7 +36,7 @@ Answer:
 // 2. There are 4 combinations of old and new values: 00, 01, 10, 11.
 // 3. I can either use the first or second bit for the old value.
 // 4. I tried both. Both work. Using the first bit for the old value, however, use 1 fewer loop.
-public class Solution {
+class Solution {
     public void gameOfLife(int[][] board) {
         if(board == null || board.length ==0) return;
         int row = board.length, column = board[0].length;
@@ -45,13 +45,13 @@ public class Solution {
             for(int j = 0; j < column; j++){
                 int live = countLife(board,i,j);
                 //at beginning, all the second bits are 0, so we need set second bit to 1
-                //dead to live, live to live, these 2 need second bit to be 1
-                //dead to dead, live to dead, these 2 we don't need to do anything.
-                if(live == 3 && board[i][j] ==0){
-                    board[i][j] = 2; //it was 00 before, now make the second bit to 1, to be 10
+                //live to live, live to dead, these 2 need second bit to be 1
+                //live to dead, live to live, these 2 we don't need to do anything.
+                if(live >=2 && live <=3 && board[i][j]==1){
+                    board[i][j] = 3; // from binary 01 to 11
                 }
-                if(board[i][j]==1 && (live >=2 && live <=3)){
-                    board[i][j] = 3;
+                if(live == 3 && board[i][j] ==0){
+                    board[i][j] = 2; // from binary 00 to 10
                 }
             }
         }
@@ -65,11 +65,11 @@ public class Solution {
     public int countLife(int[][] board,int i, int j){
         int live = 0;
         for(int x = Math.max(i-1,0); x <= Math.min(i+1,board.length-1); x++){
-            for(int y = Math.max(0,j-1); y <= Math.min(j+1, board[0].length-1); y++){
-                live = live + (board[x][y] & 1);
+            for(int y = Math.max(j-1, 0); y <= Math.min(j+1, board[0].length-1); y++){
+                live += board[x][y] & 1;
             }
         }
-        if(board[i][j] == 1) live--;
+        live -= board[i][j] & 1;
         return live;
     }
 }
