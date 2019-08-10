@@ -22,9 +22,29 @@ Accepted 207,922 Submissions 411,412
 Answer:
 //两种方法都需要掌握，二分法logn，然后还有two pointer
 //这次的二分没法用模板
-我们一直不是在寻找这个多余的数字到底在哪个位置idx，而是一直在算这个多余的数字到底是多少，因为值是固定的在1到n之间的。
- 1 3 4 2 2  start = 0, end = 5 => mid = 2, count = 3 > mid => 有不少数都比中间值小，那么这个重复的值肯定是在2或者2以下 
-            start = 0, high = 2 => mid = 1, count = 1 > mid => 意味着没有数比中间值小，也就是很多数都比中间值大，那么这个重复的值肯定是在1以上的
-            start = 2, high = 2, return 2
-return low, mid实际上一直以来不是idx而是就是个1到n的值
-Answer:
+//我们一直不是在寻找这个多余的数字到底在哪个位置idx，
+//而是一直在算这个多余的数字到底是多少，因为值是固定的在1到n之间的。
+// 1 3 4 2 2  
+//start = 0, end = 5 => mid = 2, count = 3 > mid => 有不少数都比中间值小，那么这个重复的值肯定是在2或者2以下 
+//start = 0, high = 2 => mid = 1, count = 1 > mid => 意味着没有数比中间值小，也就是很多数都比中间值大，那么这个重复的值肯定是在1以上的
+//start = 2, high = 2, return 2
+//return low
+class Solution {
+    public int findDuplicate(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int start = 0;
+        int end = nums.length - 1;
+        while(start < end){
+            int mid = (end - start) / 2 + start;
+            int count = 0;
+            for(int i = 0; i < nums.length; i++){
+                if(nums[i] <= mid) count++;
+            }
+            //说明mid值选的不好，比mid小的数字太少了，mid不够大
+            if(count <= mid) start = mid + 1; 
+            //说明重复的数字肯定在[1,mid]，因为数出来的count多了起码一个
+            else end = mid;
+        }
+        return start;
+    }
+}
