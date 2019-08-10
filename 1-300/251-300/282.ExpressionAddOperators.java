@@ -51,7 +51,8 @@ class Solution {
             return;
         }
         for(int i = pos; i < num.length(); i++){
-            //这里不懂
+            //这里注意是pos等于0，而且i不等于pos，也就是说第一位是pos，然后取几位数
+            //也就是说这一段的首位是0开头的数字，所以当然是不允许的
             if(i != pos && num.charAt(pos) == '0') break;
             //就像我给的例子["1+23"]，是可以有多位的
             long cur = Long.parseLong(num.substring(pos, i + 1));
