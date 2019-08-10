@@ -59,14 +59,8 @@ class Solution {
                 helper(rst, path + cur, num, target, i + 1, cur, cur);
             }
             else{
-                helper(rst, path + "+" + cur, num, target, i + 1, eval + cur , cur);
-                
-                helper(rst, path + "-" + cur, num, target, i + 1, eval -cur, -cur);
-                
-                //for example, if you have a sequence of 12345 and you have proceeded to 1 + 2 + 3, 
-                //now your eval is 6 right? If you want to add a * between 3 and 4, you would take 3 as the digit to be multiplied,
-                //so you want to take it out from the existing eval. You have 1 + 2 + 3 * 4 
-                //and the eval now is (1 + 2 + 3) - 3 + (3 * 4).
+                helper(rst, path + "+" + cur, num, target, i + 1, eval + cur , cur);         
+                helper(rst, path + "-" + cur, num, target, i + 1, eval -cur, -cur);     
                 //比如之前的循环是1+2，所以mul是2，val是3, 结果到了下一轮，你却想1+2*3
                 //那么你val就得回复原来的3-2=1了。然后mul*cur就放到下一轮的mul，以备乘法运算用
                 helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur );
