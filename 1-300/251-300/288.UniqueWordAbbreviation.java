@@ -25,42 +25,30 @@ isUnique("cane") -> false
 isUnique("make") -> true
 
 Answer:
-public class ValidWordAbbr {
-    //Inspired by this answer:
-    //https://leetcode.com/discuss/71652/java-solution-with-hashmap-string-string-beats-submissions
-    //https://leetcode.com/discuss/86526/let-me-explain-the-question-with-better-examples
-    HashMap<String, String> map = new HashMap<String, String>();
-
-    public ValidWordAbbr(String[] dic) {
-        for(int i = 0; i < dic.length; i++){
-            String key = generateKey(dic[i]);
-            // If there is more than one string belong to the same key
-            // then the key will be invalid, we set the value to ""
+class ValidWordAbbr {
+    private Map<String, String> map;
+    
+    public ValidWordAbbr(String[] dictionary) {
+        map = new HashMap<>();
+        for(String s : dictionary){
+            String key = getKey(s);
             if(map.containsKey(key)){
-                if(map.get(key).equals(dic[i]) == false) map.put(key,"");
+                //只循序同样的string重复，但是不需要出现不同的s但是同样的key
+                if(!map.get(key).equals(s)) {
+                    map.put(key, "");
+                }
             } else {
-                map.put(key,dic[i]);
+                map.put(key, s);
             }
         }
     }
-
+    
     public boolean isUnique(String word) {
-        String key = generateKey(word);
-        if(!map.containsKey(key)) return true;;
-        if(map.get(key).equals(word)) return true; //because only when there is only 1 key 1 value, not 1 key 2 values. 
-        //if 1 key multiple values, value is set to "", so when equals word, means value is not "", it's 1 key 1 value
-        return false;
+        String key = getKey(word);
+        return !map.containsKey(key) || map.get(key).equals(word);
     }
     
-    //The key for this problem is d1g, value is dog
-    public String generateKey(String s){
-        if(s.length() <= 2) return s;
-        return s.charAt(0) + Integer.toString(s.length() -2 ) + s.charAt(s.length()-1);
+    public String getKey(String s){
+        return s.length() <= 2 ? s : s.charAt(0) + "" + (s.length() - 2) + s.charAt(s.length() - 1);
     }
 }
-
-
-// Your ValidWordAbbr object will be instantiated and called as such:
-// ValidWordAbbr vwa = new ValidWordAbbr(dictionary);
-// vwa.isUnique("Word");
-// vwa.isUnique("anotherWord");
