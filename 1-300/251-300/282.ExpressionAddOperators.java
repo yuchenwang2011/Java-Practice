@@ -32,6 +32,8 @@ overflow: we use a long type once it is larger than Integer.MAX_VALUE or minimum
 0 sequence: because we can't have numbers with multiple digits started with zero, we have to deal with it too.
 a little trick is that we should save the value that is to be multiplied in the next recursion.
 
+// Input: num = "123", target = 24
+// Output: ["1+23"] 
 class Solution {
     public List<String> addOperators(String num, int target) {
         List<String> rst = new ArrayList<String>();
