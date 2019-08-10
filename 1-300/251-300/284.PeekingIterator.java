@@ -30,8 +30,8 @@ class PeekingIterator implements Iterator<Integer> {
 	public PeekingIterator(Iterator<Integer> iterator) {
 	    this.iterator = iterator;
 	    if(iterator.hasNext()) {
-            next = iterator.next();
-        }
+            	next = iterator.next();
+            }
 	}
 
 	public Integer peek() {
