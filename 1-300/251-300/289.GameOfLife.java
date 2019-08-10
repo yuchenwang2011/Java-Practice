@@ -23,19 +23,19 @@ which would cause problems when the active area encroaches the border of the arr
 How would you address these problems?
 
 Answer:
+//由于细胞只有两种状态0和1，因此可以使用二进制来表示细胞的生存状态
+//更新细胞状态时，将细胞的下一个状态用高位进行存储
+//全部更新完毕后，将细胞的状态右移一位
+//怎么想出来的：
+// 1. If I want to reuse the existing space, I'd need to store both the old and new states in each cell.
+// 2. There are 4 combinations of old and new values: 00, 01, 10, 11.
+// 3. I can either use the first or second bit for the old value.
+// 4. I tried both. Both work. Using the first bit for the old value, however, use 1 fewer loop.
 public class Solution {
     public void gameOfLife(int[][] board) {
-        //this question is really hard for me to understand
-        //Got inspired by this answer:
-        //https://leetcode.com/discuss/68352/easiest-java-solution-with-explanation
-        //And this sentence:
-        //由于细胞只有两种状态0和1，因此可以使用二进制来表示细胞的生存状态
-        //更新细胞状态时，将细胞的下一个状态用高位进行存储
-        //全部更新完毕后，将细胞的状态右移一位
-        if(board == null || board.length ==0) {
-            return;
-        }
+        if(board == null || board.length ==0) return;
         int row = board.length, column = board[0].length;
+        
         for(int i = 0; i < row; i++){
             for(int j = 0; j < column; j++){
                 int live = countLife(board,i,j);
@@ -56,23 +56,19 @@ public class Solution {
         }
         for(int i =0; i < row; i++){
             for(int j = 0; j < column; j++){
-                //board[i][j] = board[i][j] >> 1;
                 board[i][j] >>= 1;
             }
         }
     }
+    
     public int countLife(int[][] board,int i, int j){
         int live = 0;
-        //int i is row, int j is column
         for(int x = Math.max(i-1,0); x <= Math.min(i+1,board.length-1); x++){
             for(int y = Math.max(0,j-1); y <= Math.min(j+1, board[0].length-1); y++){
-                live = live + (board[x][y] & 1); //add all the 9 elements together
+                live = live + (board[x][y] & 1);
             }
         }
-        //*********************************
-        //Remember! &1 must be in parenthesis! or you can do live -= a & b;
-        //*********************************
-        live = live - (board[i][j] & 1); //we shouldn't count [i][j], so remove it, 8 elements left
+        if(board[i][j] == 1) live--;
         return live;
     }
 }
