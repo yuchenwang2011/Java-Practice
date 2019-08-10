@@ -34,6 +34,9 @@ a little trick is that we should save the value that is to be multiplied in the 
 
 // Input: num = "123", target = 24
 // Output: ["1+23"] 
+    
+// Inpuut: num = "105" target = 5
+// Output: ["1*0+5","10-5"]
 class Solution {
     public List<String> addOperators(String num, int target) {
         List<String> rst = new ArrayList<String>();
