@@ -32,27 +32,28 @@ After running your function, the 2D grid should be:
                 if(rooms[i][j] == 0) queue.offer(new int[]{i, j});
             }
         }
-        
+        //先把0附近的INF干掉，这样最近的一批房间全都没了
+        //再把这批房间附近的INF也干掉。如此循环，所有能通过INF到达gate的房间都没了
         while(!queue.isEmpty()){
             int[] position = queue.poll();
             int row = position[0];
             int col = position[1];
-            
+            //上边是不是房间，是就+1，同时把这个房间存起来，因为房间是相同的
             if(row >= 1 && rooms[row-1][col] == Integer.MAX_VALUE) {
                 rooms[row-1][col] = rooms[row][col] + 1;
                 queue.offer(new int[]{row-1, col});
             }
-            
+            //下面是不是房间
             if(row < rooms.length -1 && rooms[row+1][col] == Integer.MAX_VALUE) {
                 rooms[row+1][col] = rooms[row][col] + 1;
                 queue.offer(new int[]{row+1,col});
             }
-            
+            //左边是不是房间
             if(col >=1 && rooms[row][col-1] == Integer.MAX_VALUE) {
                 rooms[row][col-1] = rooms[row][col] + 1;
                 queue.offer(new int[]{row,col-1});
             }
-            
+            //右边是不是房间
             if(col < rooms[0].length -1 && rooms[row][col+1] == Integer.MAX_VALUE){
                 rooms[row][col+1] = rooms[row][col] + 1;
                 queue.offer(new int[]{row,col+1});
