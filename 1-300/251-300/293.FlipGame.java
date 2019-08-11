@@ -17,6 +17,7 @@ For example, given s = "++++", after one move, it may become one of the followin
 If there is no valid move, return an empty list [].
 
 Answer:
+//2019/Aug/11：以后不许修改和增添任何答案，这个是我自己的答案
 //注意，substring(i,start) start最低是0,这时候啥都没有
 //如果substring(start), start最大是s.length()
 //也就是说substring接受的最大范围就是0到s.length()
