@@ -17,20 +17,22 @@ For example, given s = "++++", after one move, it may become one of the followin
 If there is no valid move, return an empty list [].
 
 Answer:
-public class Solution {
-    //************Remember the usage of subString!!!!!!
-    //One more syntax to remember: char[] result = s.toCharArray();
+//注意，substring(i,start) start最低是0,这时候啥都没有
+//如果substring(start), start最大是s.length()
+//也就是说substring接受的最大范围就是0到s.length()
+class Solution {
     public List<String> generatePossibleNextMoves(String s) {
-        List<String> result = new ArrayList<String>();
-        if(s == null || s.length() <= 1) return result;
-        for(int i = 0; i < s.length(); i++){
-            if(i < s.length()-1 && s.charAt(i) == '+' && s.charAt(i+1) == '+'){
-                String flip = s.substring(0,i) + "--";
-                flip = (i+1 == s.length()-1) ? flip : flip + s.substring(i+2,s.length()); 
-                result.add(flip);
-            }
+        List<String> result = new ArrayList<>();
+        if(s == null || s.length() < 2) return result;
+        
+        int i = 0;
+        while(i < s.length() && s.indexOf("++", i) != -1){
+            int start = s.indexOf("++", i);
+            if (start == s.length() - 1) result.add(s.substring(0, start) + "--");
+            else result.add(s.substring(0,start) + "--" + s.substring(start + 2));
+            i = start + 1;
         }
+        
         return result;
     }
 }
-//Test case: "", "+","-+","++","+++","+-+","++235x-"
