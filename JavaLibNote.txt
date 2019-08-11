@@ -43,6 +43,9 @@
   return new String(c);
   return str1.equals(str2);
   String[] strings = string.split(",");
+  //注意，substring(i,start) start最低是0,这时候啥都没有
+  //如果substring(start), start最大是s.length()
+  //也就是说substring接受的最大范围就是0到s.length()
   String opponent = s.substring(0,i) + "--" + s.substring(i+2, s.length());
   String flip = s.substring(0,i) + "--";
   flip = (i+1 == s.length()-1) ? flip : flip + s.substring(i+2,s.length()); 
