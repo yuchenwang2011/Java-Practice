@@ -13,28 +13,25 @@ Follow up:
 Derive your algorithm's runtime complexity.
 
 Answer:
-public class Solution {
-    //Got inspired by this answer
-    //https://leetcode.com/discuss/64291/share-my-java-backtracking-solution
+class Solution {
     public boolean canWin(String s) {
         if(s == null || s.length() < 2) return false;
-        HashMap<String, Boolean> map = new HashMap<String, Boolean>();
-        return canWin(s,map);
+        Set<String> set = new HashSet<>();
+        return canWin(s, set);
     }
     
-    public boolean canWin(String s, HashMap<String, Boolean> map){
-        if(map.containsKey(s)) return map.get(s);
-        for(int i = 0; i < s.length() - 1; i++){
-            if(s.charAt(i) == '+' && s.charAt(i+1) == '+') {
-                String opponent = s.substring(0,i) + "--" + s.substring(i+2, s.length());
-                if(!canWin(opponent,map)){
-                    map.put(s,true);
-                    return true;
-                }
-            }
+    public boolean canWin(String s, Set<String> set){
+        if(set.contains(s)) return false;
+        int i = 0;
+        while(i < s.length() && s.indexOf("++", i) != -1){
+            int start = s.indexOf("++", i);
+            String flip = "";
+            if(start == s.length() - 1) flip = s.substring(start) + "--";
+            else flip = s.substring(0, start) + "--" + s.substring(start + 2);
+            if(!canWin(flip, set)) return true;
+            i = start + 1;
         }
-        map.put(s,false);
+        set.add(s);
         return false;
     }
-    
 }
