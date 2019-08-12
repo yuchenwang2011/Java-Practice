@@ -21,3 +21,39 @@ Explanation: Given three people living at (0,0), (0,4), and (2,2):
              of 2+2+2=6 is minimal. So return 6.
              
 Accepted 26,784 Submissions 48,215
+
+Answer:
+class Solution {
+    public int minTotalDistance(int[][] grid) {
+        if(grid == null || grid.length == 0 || grid[0].length == 0) return 0;
+        List<Integer> rowList = new ArrayList<>();
+        List<Integer> colList = new ArrayList<>();
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == 1) {
+                    rowList.add(i);
+                }
+            }
+        }
+
+        for(int i = 0; i < grid[0].length; i++){
+            for(int j = 0; j < grid.length; j++){
+                if(grid[j][i] == 1) {
+                    colList.add(i);
+                }
+            }
+        }
+        return getMin(rowList) + getMin(colList);
+    }
+
+    public int getMin(List<Integer> list){
+        if(list == null || list.size() == 0) return 0;
+        int start = 0;
+        int end = list.size() - 1;
+        int result = 0;
+        while(start < end){
+            result += list.get(end--) - list.get(start++);
+        }
+        return result;
+    }
+}
