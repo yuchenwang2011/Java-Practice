@@ -27,14 +27,8 @@ Special thanks to @jeantimex for adding this problem and creating all test cases
 
 Answer:
 public class Solution {
-    //********Remember how to use array as a HashTable!!!!
-    //This question was so hard for me to understand, but if you try to write 1234 and 4321/abcd on paper, you will get it
-    //This OJ has some probem, it doesn't consider the case "1234" "123"
-    //https://leetcode.com/discuss/67031/one-pass-java-solution
     public String getHint(String secret, String guess) {
-        if(secret == null || secret.length() == 0 || guess == null || guess.length() == 0) return "0A0B";
-        if(secret.length() < guess.length()) return "";//OJ doesn't have this case
-        int[] map = new int[10]; //to save the frequency for number 0,1...9
+        int[] count = new int[10]; //to save the frequency for number 0,1...9
         int bull = 0, cow = 0;
         for(int i = 0; i < secret.length(); i ++){
             if(secret.charAt(i) == guess.charAt(i)) {
@@ -42,11 +36,11 @@ public class Solution {
             }
             else {
                 //when secret finds it's element's frequency got changed, means guess 捷足先登了
-                if(map[secret.charAt(i) - '0'] < 0) cow++;
+                if(count[secret.charAt(i) - '0'] < 0) cow++;
                 //when guess finds it's element is bigger than 0, 只有当guess里有这个字母的时候才能去查这个字母的频率啊
-                if(map[guess.charAt(i) - '0'] > 0) cow++;
-                map[secret.charAt(i) - '0']++;
-                map[guess.charAt(i) - '0'] --;
+                if(count[guess.charAt(i) - '0'] > 0) cow++;
+                count[secret.charAt(i) - '0']++;
+                count[guess.charAt(i) - '0'] --;
             }
         }
         return bull + "A" + cow + "B";
