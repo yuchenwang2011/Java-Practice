@@ -15,6 +15,7 @@ Answer:
 public class Solution {
     //Got inspired by this answer: time complexity O(N^2)
     //https://www.youtube.com/watch?v=CE2b_-XfVDk
+    //[3,4,-1,0,6,1,2] result is -1 0 1 2 => 4
     public int lengthOfLIS(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         int result = 1;
