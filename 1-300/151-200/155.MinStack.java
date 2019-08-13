@@ -8,47 +8,25 @@ top() -- Get the top element.
 getMin() -- Retrieve the minimum element in the stack.
 
 Answer:
-class MinStack {
-    //Got inspired by this answer
-    //https://leetcode.com/discuss/21071/java-accepted-solution-using-one-stack
-    
-    private Deque<Integer> stack = new ArrayDeque<Integer>();
-    private int min = Integer.MAX_VALUE;
-    
-    public void push(int x) {
-        if(x <= min) {
-            stack.push(min);
-            min = x;
-        }
-        stack.push(x);
-    }
+//一道题怎么会想到用stack呢？就是你从左往右撸的时候，你还总得往回看
+//需要一个东西记录一下左边的东西当内存用。这个时候就得用stack
+//做这个题之前，顺便写一个stack的其他相关题目,因为不知道记在哪里
+how to sort using stack？ 
 
-    public void pop() {
-        if(stack.peek() == min) {
-            stack.pop();
-            min = stack.peek();
-        }
-        stack.pop();
-        if(stack.isEmpty()) min = Integer.MAX_VALUE;
-    }
-
-    public int top() {
-        return stack.peek();
-    }
-
-    public int getMin() {
-        return min;
-    }
+public static void stackSorting(Stack<Integer> stack) {
+ Stack<Integer> t = new Stack<>();
+  while(!stack.isEmpty()) {
+        int item = stack.pop();
+        while(!t.isEmpty() && t.peek() > item) stack.push(t.pop());
+        t.push(item);   
+  }   
+  while(!t.isEmpty()) stack.push(t.pop());
 }
 
-
-//My answer June 2019 based on above solution but I feel easier to understand
 class MinStack {
-
     private int min;
     private Deque<Integer> stack;
     
-    /** initialize your data structure here. */
     public MinStack() {
         stack = new ArrayDeque<>();
         min = Integer.MAX_VALUE;
@@ -82,13 +60,3 @@ class MinStack {
         return min;
     }
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(x);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.getMin();
- */
-
