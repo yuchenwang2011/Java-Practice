@@ -30,13 +30,47 @@ Your serialize and deserialize algorithms should be stateless.
 Accepted 204,241 Submissions 486,103
 
 Answer:
+//两种方法都要掌握，一种iterative，一种recursive
 public class Codec {
-
     public String serialize(TreeNode root) {
-        
+        if(root == null) return "";
+        StringBuilder sb = new StringBuilder();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            if(node == null) {
+                sb.append("null ");
+            } else {
+                queue.offer(node.left);
+                queue.offer(node.right);
+                sb.append(node.val + " ");
+            }
+        }
+        return sb.toString();
     }
 
     public TreeNode deserialize(String data) {
-        
+        if (data == "") return null;
+        String[] values = data.split(" ");
+        TreeNode root = new TreeNode(Integer.valueOf(values[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        for(int i = 1; i < values.length; i++){
+            TreeNode node = queue.poll();
+            if(!values[i].equals("null")) {
+                TreeNode left = new TreeNode(Integer.valueOf(values[i]));
+                node.left = left;
+                queue.offer(left);
+            }
+            //之前按照一对一对加进来的，所以这里不会溢出
+            i++;
+            if(!values[i].equals("null")) {
+                TreeNode right = new TreeNode(Integer.valueOf(values[i]));
+                node.right = right;
+                queue.offer(right);
+            }
+        }
+        return root;
     }
 }
