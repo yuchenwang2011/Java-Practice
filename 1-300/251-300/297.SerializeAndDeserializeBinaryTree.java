@@ -74,3 +74,31 @@ public class Codec {
         return root;
     }
 }
+
+
+public class Codec {
+    public String serialize(TreeNode root) {
+        return serial(new StringBuilder(), root).toString();
+    }
+    
+    private StringBuilder serial(StringBuilder str, TreeNode root) {
+        if (root == null) return str.append("null");
+        str.append(root.val).append(" ");
+        serial(str, root.left).append(" ");
+        serial(str, root.right);
+        return str;
+    }
+
+    public TreeNode deserialize(String data) {
+        return deserial(new LinkedList<>(Arrays.asList(data.split(" "))));
+    }
+    
+    private TreeNode deserial(Queue<String> q) {
+        String val = q.poll();
+        if ("null".equals(val)) return null;
+        TreeNode root = new TreeNode(Integer.valueOf(val));
+        root.left = deserial(q);
+        root.right = deserial(q);
+        return root;
+    }
+}
