@@ -52,7 +52,8 @@ class MinStack {
     }
     
     public int top() {
-        if(stack.isEmpty()) return min;
+        //判断是否为空其实不需要
+        //if(stack.isEmpty()) return min;
         return stack.peek();
     }
     
