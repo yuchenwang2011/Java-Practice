@@ -32,7 +32,11 @@ Answer:
  *     }
  * }
  */
- /*say A length = a + c, B length = b + c, after switching pointer, pointer A will move another b + c steps, pointer B will move a + c more steps, since a + c + b + c = b + c + a + c, it does not matter what value c is. Pointer A and B must meet after a + c + b (b + c + a) steps. If c == 0, they meet at NULL */
+ /*say A length = a + c, B length = b + c, after switching pointer, 
+ pointer A will move another b + c steps, pointer B will move a + c more steps, 
+ since a + c + b + c = b + c + a + c, it does not matter what value c is. 
+ 
+ Pointer A and B must meet after a + c + b (b + c + a) steps. If c == 0, they meet at NULL */
  //a1 a2 c1 c2 c3 b1 b2 b3 c1 c2 c3, b1 b2 b3 c1 c2 c3 a1 a2 c1 c2 c3
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
@@ -45,39 +49,6 @@ public class Solution {
         return a;
     }
 }
-
-//Normal human beging should come up with this solution
-public class Solution {
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        //https://leetcode.com/discuss/17177/concise-java-solution-o-1-memory-o-n-time
-        if(headA == null ||headB == null) return null;
-        int length1 = length(headA), length2 = length(headB);
-        while(length1 > length2){
-            headA = headA.next;
-            length1--;
-        }
-        while(length1 < length2){
-            headB = headB.next;
-            length2--;
-        }
-        while(headA != headB) {
-            headA = headA.next;
-            headB = headB.next;
-        }
-        return headA;
-    }
-    
-    public int length(ListNode head){
-        int count = 0;
-        if(head == null) return count;
-        while(head != null){
-            head = head.next;
-            count++;
-        }
-        return count;
-    }
-}
-
 
 
 //My own solution June 20, 2019 to in case two lists have no intersections
