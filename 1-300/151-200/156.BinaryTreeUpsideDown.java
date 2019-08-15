@@ -20,39 +20,6 @@ return the root of the binary tree [4,5,2,#,#,3,1].
    3   1  
 
 Answer:
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-//Got inspired by this answer: very hard to understand, you just need to go with the while loop one step by one step
-//https://leetcode.com/discuss/18410/easy-o-n-iteration-solution-java
-public class Solution {
-    public TreeNode upsideDownBinaryTree(TreeNode root) {
-        if(root == null) return null;
-        TreeNode current = root;
-        TreeNode nextRoot = null;
-        TreeNode prevRoot = null;
-        TreeNode rightToLeft = null;
-        
-        while(current != null){
-            //save current.left first to another node
-            nextRoot = current.left;
-            current.left = rightToLeft;
-            //save current.right first to another node
-            rightToLeft = current.right;
-            current.right = prevRoot;
-            prevRoot = current;
-            current = nextRoot;
-        }
-        return prevRoot;
-    }
-}
-
 //Got inspired by this answer: it's hard to understand, see picture below
 //https://github.com/yuchenwang2011/Java-Practice/blob/master/156.BinaryTreeUpsideDown.png
 public class Solution {
