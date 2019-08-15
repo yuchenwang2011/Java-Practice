@@ -48,7 +48,8 @@ class MinStack {
         if(val == min) {
             min = stack.pop();
         }
-        if(stack.isEmpty()) min = Integer.MAX_VALUE;
+        //判断是否为空其实不需要
+        //if(stack.isEmpty()) min = Integer.MAX_VALUE;
     }
     
     public int top() {
