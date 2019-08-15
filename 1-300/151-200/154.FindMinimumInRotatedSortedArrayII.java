@@ -40,8 +40,7 @@ class Solution {
             } else if (nums[mid] < nums[end]){
                 end = mid;
             } else {
-                //at least left of mid side are not the smallest
-                start = mid + 1;
+                start = mid;
             }
         }
         
