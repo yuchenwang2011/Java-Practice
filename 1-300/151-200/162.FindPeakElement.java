@@ -27,7 +27,8 @@ public class Solution {
             int mid = start + (end - start) / 2;
             if(nums[mid] > nums[mid - 1] && nums[mid] > nums[mid + 1]){
                 return mid;
-            } else if(nums[mid] > nums[mid - 1] && nums[mid] < nums[mid + 1]){
+            //这里其实跟start和end比都可以
+            } else if(nums[mid] < nums[mid + 1]){
                 start = mid;
             } else {
                 end = mid;
