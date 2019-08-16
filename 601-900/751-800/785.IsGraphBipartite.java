@@ -1,13 +1,6 @@
 785. Is Graph Bipartite?
 Medium
 
-738
-
-92
-
-Favorite
-
-Share
 Given an undirected graph, return true if and only if it is bipartite.
 
 Recall that a graph is bipartite if we can split it's set of nodes 
@@ -67,6 +60,33 @@ class Solution {
         colors[idx] = color;
         for(int next : graph[idx]){
             if(!helper(graph, colors, -color, next)) return false;
+        }
+        return true;
+    }
+}
+
+
+class Solution {
+    public boolean isBipartite(int[][] graph) {
+        int[] colors = new int[graph.length];
+
+        for(int i = 0; i < graph.length; i++){
+            if(colors[i] != 0) continue;
+            colors[i] = 1;
+            Queue<Integer> queue = new LinkedList<>();
+            queue.offer(i);
+            
+            while(!queue.isEmpty()) {
+                int node = queue.poll();
+                for(int next : graph[node]){
+                    if(colors[next] == 0) {
+                        colors[next] = -colors[node];
+                        queue.offer(next);
+                    } else if (colors[next] != -colors[node]){
+                        return false;
+                    }
+                }
+            }
         }
         return true;
     }
