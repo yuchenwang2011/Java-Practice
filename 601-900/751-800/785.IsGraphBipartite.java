@@ -43,6 +43,7 @@ The graph is undirected: if any element j is in graph[i], then i will be in grap
 Accepted 52,419 Submissions 118,547
 
 //DFS + BFS两种方法都要掌握
+//大概就是思路就是每个点，要是你已经被染色了，滚。不然二话不说就把你染成1.然后彻底搜身
 Answer:
 class Solution {
     public boolean isBipartite(int[][] graph) {
