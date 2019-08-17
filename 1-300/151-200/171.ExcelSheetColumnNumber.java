@@ -26,20 +26,3 @@ public class Solution {
         return (sum > Integer.MAX_VALUE)? Integer.MAX_VALUE : (int)sum;
     }
 }
-
-class Solution {
-    public int titleToNumber(String s) {
-        long result = 0;
-        if(s == null || s.length() == 0) return (int) result;
-        
-        int digit = 0;
-        while(s.length() != 0){
-            char c = s.charAt(s.length() - 1);
-            result += (c - 'A' + 1) * Math.pow(26, digit);
-            digit++;
-            s = s.substring(0,s.length() - 1);
-        }
-        
-        return result > Integer.MAX_VALUE? Integer.MAX_VALUE : (int) result;
-    }
-}
