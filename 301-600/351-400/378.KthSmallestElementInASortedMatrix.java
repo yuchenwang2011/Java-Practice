@@ -53,3 +53,27 @@ class Solution {
         }
     }
 }
+
+
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int start = matrix[0][0];
+        int end = matrix[row - 1][col - 1];
+        
+        while(start < end){
+            int mid = (end - start) / 2 + start;
+            int count = 0;
+            int j = col - 1;
+            for(int i = 0; i < row; i++){
+                while(j >= 0 && matrix[i][j] > mid) j--;
+                if(j >= 0) count += j + 1;
+            }
+            if(count < k) start = mid + 1;
+            else end = mid;
+        }
+        return start;
+    }
+}
