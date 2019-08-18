@@ -24,7 +24,7 @@ Input:
 Output: 3
 
 Answer:
-//DFS + BFS + Union Find, you must know all of the 3 methods
+//DFS + BFS + Union Find, you must know all of the 3 methods.同时要复习1162的解法
 //DFS:
 class Solution {
     public int numIslands(char[][] grid) {
