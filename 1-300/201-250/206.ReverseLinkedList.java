@@ -8,18 +8,7 @@ Hint:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 
 Answer:
-//First Answer is iterative, second is recursive
-//Inspired by this answer
-//https://leetcode.com/discuss/34474/in-place-iterative-and-recursive-java-solution
-
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
+//千万注意，两个方法都用到一个pre node
 public class Solution {
     public ListNode reverseList(ListNode head) {
       ListNode newHead = null;
