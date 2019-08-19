@@ -43,7 +43,7 @@ class Solution {
         if(prerequisites == null || prerequisites.length == 0) return true;
         
         int[] indegree = new int[numCourses];
-        int result = numCourses;
+        int result = 0;
         for(int[] course: prerequisites){
             indegree[course[0]]++;
         }
@@ -55,7 +55,7 @@ class Solution {
         
         while(!queue.isEmpty()){
             int num = queue.poll();
-            result--;
+            result++;
             for(int[] course : prerequisites){
                 if(course[1] == num) {
                     indegree[course[0]]--;
@@ -67,6 +67,6 @@ class Solution {
             }
         }
         
-        return result == 0;
+        return result == numCourses;
     }
 }
