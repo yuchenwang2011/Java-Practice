@@ -43,6 +43,7 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         List<int[]> height = new ArrayList<>();
         for(int[] b:buildings) {
+            //这里就是用了一个小技巧区分一下起始点和终结点
             height.add(new int[]{b[0], -b[2]});
             height.add(new int[]{b[1], b[2]});
         }
