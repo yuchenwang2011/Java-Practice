@@ -47,17 +47,23 @@ class Solution {
             height.add(new int[]{b[1], b[2]});
         }
         //alert: a - b, test case: [0,2,3],[2,5,3]
+        //这里是为了如果两个点x一样，但是高不一样。如果循环经过pq的时候，小的在前，就下面循环中加到result里了
+        //但是这是不对的，我们只要两个里的高的，所以就把高的放在前面
         Collections.sort(height, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
+        //pq要大的放前面，因为要看peek第一个值，因为最大值变了，就是我们要找的点
         Queue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
         pq.offer(0);
         int prev = 0;
         for(int[] h:height) {
             if(h[1] < 0) {
+                //小于零，代表着这个数是起点啊，起点就意味着这个高度还没有进过pq
                 pq.offer(-h[1]);
             } else {
+                //大于零，代表这个数是终点，也就是这个高度值曾经进过pq，我们用完了就不要了
                 pq.remove(h[1]);
             }
             int cur = pq.peek();
+            //这里就是说，一旦cur和pre不一样，也就是高度有变化了，就需要把点放进result里
             if(prev != cur) {
                 List<Integer> tmp = new ArrayList<>();
                 tmp.add(h[0]);
