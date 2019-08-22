@@ -24,9 +24,12 @@ class Solution {
         
         TreeSet<Long> set = new TreeSet<>();
         for(int i = 0; i < nums.length; i++){
+            //floor 就是找一个小于等于这个数的element
+            //ceiling就是找一个大于等于这个数的element
             Long floor = set.floor((long) nums[i] + t);
             Long ceiling = set.ceiling((long) nums[i] - t);
             
+            //floor是一个小于等于+t的值，但是它没准比nums[i]也小呢，那这样的话，他们之间的距离就不只是t了
             if((floor != null && floor >= nums[i]) 
               || (ceiling != null && ceiling <= nums[i])) return true; 
             
