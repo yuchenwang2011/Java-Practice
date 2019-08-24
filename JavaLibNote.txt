@@ -19,7 +19,9 @@
   List<Integer> list = Arrays.asList(integers);
 
 3.
-  //讲hashmap怎么工作的https://www.youtube.com/watch?v=c3RVW3KGIIE 
+  //讲hashmap怎么工作的https://www.youtube.com/watch?v=c3RVW3KGIIE
+  //必会的hashmap design题
+  //https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/706.DesignHashMap.java
   HashMap<Character, Integer> map = new HashMap<Character, Integer>();
   //hashtable operations are all O(1) complexity and the space complexity is O(N)
   map.put(); map.containsKey(); map.containsValue(); map.remove(c);
