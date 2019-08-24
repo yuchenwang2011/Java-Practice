@@ -28,7 +28,8 @@ class Solution {
         List<Integer> result = new ArrayList<>();
         if(input == null || input.length() == 0) return result;
         
-        for(int i = 1; i < input.length(); i++){
+        //i从1开始也行。0其实是没用的，不过我改成0就是为了好记
+        for(int i = 0; i < input.length(); i++){
             char c = input.charAt(i);
             if(c == '+' || c == '-' || c == '*') {
                 List<Integer> left = diffWaysToCompute(input.substring(0,i));
