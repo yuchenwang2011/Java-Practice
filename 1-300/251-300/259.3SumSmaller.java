@@ -24,7 +24,7 @@ class Solution {
             while(second < third){
                 if(nums[first] + nums[second] + nums[third] >= target) third--;
                 else {
-                    //注意：这里最重要
+                    //注意：这里最重要。从third现在这里，third一直往前走到second的后一位，sum全都小于target
                     result += third - second;
                     //加1了以后就没准比target大了，所以也是要重新来一遍的
                     second++;
