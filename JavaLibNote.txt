@@ -89,8 +89,8 @@
 6. PriorityQueue<Integer> pq = new PriorityQueue<Integer>(); //Java use min priority queue, smallest in front
    pq.offer(); pq.add(); pq.remove(); pq.poll(); pq.peek();
 
-7. Integer.MAX_VALUE;
-   Integer.MIN_VALUE;
+7. Integer.MAX_VALUE; //2^31 - 1
+   Integer.MIN_VALUE; //-2^31
    int num = Integer.valueOf(string);
    //parseInt() returns primitive integer type (int), whereby valueOf returns java.lang.Integer, 
    //which is the object representative of the integer. There are circumstances where you might want an Integer object, 
