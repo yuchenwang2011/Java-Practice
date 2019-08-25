@@ -1,21 +1,16 @@
 1172. Dinner Plate Stacks
 Hard
 
-2
-
-0
-
-Favorite
-
-Share
-You have an infinite number of stacks arranged in a row and numbered (left to right) from 0, each of the stacks has the same maximum capacity.
+You have an infinite number of stacks arranged in a row and numbered (left to right) from 0, 
+each of the stacks has the same maximum capacity.
 
 Implement the DinnerPlates class:
-
 DinnerPlates(int capacity) Initializes the object with the maximum capacity of the stacks.
 void push(int val) pushes the given positive integer val into the leftmost stack with size less than capacity.
-int pop() returns the value at the top of the rightmost non-empty stack and removes it from that stack, and returns -1 if all stacks are empty.
-int popAtStack(int index) returns the value at the top of the stack with the given index and removes it from that stack, and returns -1 if the stack with that given index is empty.
+int pop() returns the value at the top of the rightmost non-empty stack and removes it from that stack, 
+and returns -1 if all stacks are empty.
+int popAtStack(int index) returns the value at the top of the stack 
+with the given index and removes it from that stack, and returns -1 if the stack with that given index is empty.
 Example:
 
 Input: 
