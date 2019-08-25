@@ -46,6 +46,7 @@ class Solution {
     
     public void helper(List<List<Integer>> result, List<Integer> tmp, int n, int start){
         if(n == 1) {
+            //这里必须size大于1是题里说的，比如37，就必须没有结果
             if(tmp.size() > 1) {
                 result.add(new ArrayList<>(tmp));
             }
