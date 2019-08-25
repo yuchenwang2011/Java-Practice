@@ -25,6 +25,12 @@ Constraints:
 queries[i][j], words[i][j] are English lowercase letters.
 Accepted 2,328 Submissions 3,684
 
+Hint:
+1. For each string from words calculate the leading count and store it in an array, then sort the integer array.
+2. For each string from queries calculate the leading count "p" 
+and in base of the sorted array calculated on the step 1 
+do a binary search to count the number of items greater than "p"
+	
 Answer:
 class Solution {
     public int[] numSmallerByFrequency(String[] queries, String[] words) {
