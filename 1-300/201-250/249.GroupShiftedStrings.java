@@ -1,6 +1,7 @@
 249. Group Shifted Strings My Submissions Question
 Total Accepted: 7631 Total Submissions: 24559 Difficulty: Easy
-Given a string, we can "shift" each of its letter to its successive letter, for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
+Given a string, we can "shift" each of its letter to its successive letter, 
+for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
 
 "abc" -> "bcd" -> ... -> "xyz"
 Given a list of strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
