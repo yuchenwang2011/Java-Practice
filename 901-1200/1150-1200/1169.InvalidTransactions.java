@@ -1,15 +1,8 @@
 1169. Invalid Transactions
 Easy
 
-6
 
-95
-
-Favorite
-
-Share
 A transaction is possibly invalid if:
-
 the amount exceeds $1000, or;
 if it occurs within (and including) 60 minutes of another transaction with the same name in a different city.
 Each transaction string transactions[i] consists of comma separated values 
