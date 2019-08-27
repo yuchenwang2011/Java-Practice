@@ -33,7 +33,10 @@ public class Solution {
             //that means all the numbers in front of this element, including their length, the number of rests is h
             //because they now all have a value >= h, and all the elements in front have values no bigger than C[i]
             //If they have one bigger than C[i], it will become the new C[i]. 
-            //其实这里是从后往前想的，突然发现自己比后面的那堆的长度大了，说明后面的数都比这个长度大，根据定义这个长度就是h
+            //其实这里是从后往前想的，所谓从后往前想，
+            //是说发现了length - i这么个数，他们本身都是比citation[i - 1]大的。到了i这里，才被超过
+            //h index就是说，至少有h个数字，他们的引用不少于就是大于等于h个引用
+            突然发现自己比后面的那堆的长度大了，说明后面的数都比这个长度大，根据定义这个长度就是h
             if(citations[i] >= length - i) return length - i;
         }
         return 0;
