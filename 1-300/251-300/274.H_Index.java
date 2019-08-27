@@ -70,6 +70,7 @@ class Solution {
         for(int i = n; i >= 0; i--) {
             count += buckets[i];
             //有n篇文章，至少被引用了n次
+            //为什么返回i不是count呢，因为想要返回最小的可能的h值
             if(count >= i) {
                 return i;
             }
