@@ -39,15 +39,15 @@ a little trick is that we should save the value that is to be multiplied in the 
 // Output: ["1*0+5","10-5"]
 class Solution {
     public List<String> addOperators(String num, int target) {
-        List<String> rst = new ArrayList<String>();
-        if(num == null || num.length() == 0) return rst;
-        helper(rst, "", num, target, 0, 0, 0);
-        return rst;
+        List<String> result = new ArrayList<String>();
+        if(num == null || num.length() == 0) return result;
+        helper(result, "", num, target, 0, 0, 0);
+        return result;
     }
-    public void helper(List<String> rst, String path, String num, int target, int pos, long eval, long multed){
+    public void helper(List<String> result, String tmp, String num, int target, int pos, long val, long multed){
         if(pos == num.length()){
-            if(target == eval)
-                rst.add(path);
+            if(target == val)
+                result.add(tmp);
             return;
         }
         for(int i = pos; i < num.length(); i++){
@@ -57,14 +57,14 @@ class Solution {
             //就像我给的例子["1+23"]，是可以有多位的
             long cur = Long.parseLong(num.substring(pos, i + 1));
             if(pos == 0){
-                helper(rst, path + cur, num, target, i + 1, cur, cur);
+                helper(result, tmp + cur, num, target, i + 1, cur, cur);
             }
             else{
-                helper(rst, path + "+" + cur, num, target, i + 1, eval + cur , cur);         
-                helper(rst, path + "-" + cur, num, target, i + 1, eval -cur, -cur);     
+                helper(result, tmp + "+" + cur, num, target, i + 1, val + cur , cur);         
+                helper(result, tmp + "-" + cur, num, target, i + 1, val -cur, -cur);     
                 //比如之前的循环是1+2，所以mul是2，val是3, 结果到了下一轮，你却想1+2*3
                 //那么你val就得回复原来的3-2=1了。然后mul*cur就放到下一轮的mul，以备乘法运算用
-                helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur );
+                helper(result, tmp + "*" + cur, num, target, i + 1, val - multed + multed * cur, multed * cur );
             }
         }
     }
