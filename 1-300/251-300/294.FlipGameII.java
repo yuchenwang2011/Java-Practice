@@ -25,9 +25,7 @@ class Solution {
         int i = 0;
         while(i < s.length() && s.indexOf("++", i) != -1){
             int start = s.indexOf("++", i);
-            String flip = "";
-            if(start == s.length() - 1) flip = s.substring(start) + "--";
-            else flip = s.substring(0, start) + "--" + s.substring(start + 2);
+            String flip = s.substring(0, start) + "--" + s.substring(start + 2);
             if(!canWin(flip, set)) return true;
             i = start + 1;
         }
