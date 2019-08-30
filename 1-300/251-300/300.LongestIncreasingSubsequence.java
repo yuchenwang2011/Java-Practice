@@ -12,17 +12,17 @@ Your algorithm should run in O(n2) complexity.
 Follow up: Could you improve it to O(n log n) time complexity?
 
 Answer:
-public class Solution {
-    //Got inspired by this answer: time complexity O(N^2)
-    //https://www.youtube.com/watch?v=CE2b_-XfVDk
-    //[3,4,-1,0,6,1,2] result is -1 0 1 2 => 4
+//Got inspired by this answer: time complexity O(N^2)
+//https://www.youtube.com/watch?v=CE2b_-XfVDk
+//[3,4,-1,0,6,1,2] result is -1 0 1 2 => 4
+class Solution {
     public int lengthOfLIS(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         int result = 1;
         int[] dp = new int[nums.length];
+        Arrays.fill(dp, 1);
         
         for(int i = 0; i < dp.length; i++){
-            dp[i] = 1;
             for(int j = 0; j < i; j++){
                 if(nums[j] < nums[i]) dp[i] = Math.max(dp[i], dp[j] + 1);
             }
