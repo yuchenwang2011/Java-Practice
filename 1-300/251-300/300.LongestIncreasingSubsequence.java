@@ -33,37 +33,39 @@ class Solution {
     }
 }
 
-public class Solution {
-    //This is the most difficult question I have ever seen so far, must read the following explanation
-    //http://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
-    //https://leetcode.com/discuss/67546/share-java-o-n-logn-solution
-    public int lengthOfLIS(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
-        int[] tails = new int[nums.length];
-        tails[0] = nums[0];
-        int tailLength = 1;
-        for(int i = 1; i < nums.length; i++){
-            if(nums[i] < tails[0]) tails[0] = nums[i]; //equals to create a new list
-            else if(nums[i] > tails[tailLength - 1]) {
-                tails[tailLength] = nums[i];
-                tailLength ++;
-            } else {
-                //To search where nums[i] should locate to replace the old one
-                int replacePosition = binarySearch(tails, 0, tailLength - 1, nums[i]);
-                tails[replacePosition] = nums[i];
-            }
-        }
-        return tailLength;
-    }
+
+tails is an array storing the smallest tail of all increasing subsequences with length i+1 in tails[i].
+For example, say we have nums = [4,5,6,3], then all the available increasing subsequences are:
+
+len = 1   :      [4], [5], [6], [3]   => tails[0] = 3
+len = 2   :      [4, 5], [5, 6]       => tails[1] = 5
+len = 3   :      [4, 5, 6]            => tails[2] = 6
+We can easily prove that tails is a increasing array. Therefore it is possible to do a binary search 
+in tails array to find the one needs update.
+
+Each time we only do one of the two:
+
+(1) if x is larger than all tails, append it, increase the size by 1
+(2) if tails[i-1] < x <= tails[i], update tails[i]
+Doing so will maintain the tails invariant. The the final answer is just the size.
     
-    public int binarySearch(int[] tails, int start, int end, int key){
-        if(tails == null || tails.length == 0) return -1;
-        while(start + 1 < end) {
-            int mid = start + (end - start) / 2;
-            if(tails[mid] == key) return mid;
-            else if(tails[mid] < key) start = mid;
-            else end = mid;
+https://leetcode.com/problems/longest-increasing-subsequence/discuss/74824/JavaPython-Binary-search-O(nlogn)-time-with-explanation
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int[] tails = new int[nums.length];
+        int size = 0;
+        for (int x : nums) {
+            int i = 0, j = size;
+            while (i != j) {
+                int m = (i + j) / 2;
+                if (tails[m] < x)
+                    i = m + 1;
+                else
+                    j = m;
+            }
+            tails[i] = x;
+            if (i == size) ++size;
         }
-        return end;
+        return size;
     }
 }
