@@ -29,11 +29,9 @@ class Solution {
         int i = 0;
         while(i < s.length() && s.indexOf("++", i) != -1){
             int start = s.indexOf("++", i);
-            if (start == s.length() - 1) result.add(s.substring(0, start) + "--");
-            else result.add(s.substring(0,start) + "--" + s.substring(start + 2));
+            result.add(s.substring(0,start) + "--" + s.substring(start + 2));
             i = start + 1;
         }
-        
         return result;
     }
 }
