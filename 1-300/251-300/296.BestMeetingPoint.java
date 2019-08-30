@@ -36,6 +36,9 @@ class Solution {
             }
         }
 
+        //这里这样做是为了加进两个list的值都是有序的
+        //第一个大循环就是一横条一横条的扫，所以加进去的row值是从小到大的
+        //第二个大循环就是一竖条一竖条的扫，所以家进入的col值是从小到大的
         for(int i = 0; i < grid[0].length; i++){
             for(int j = 0; j < grid.length; j++){
                 if(grid[j][i] == 1) {
