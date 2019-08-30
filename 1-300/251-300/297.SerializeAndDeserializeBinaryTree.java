@@ -38,13 +38,16 @@ public class Codec {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while(!queue.isEmpty()){
-            TreeNode node = queue.poll();
-            if(node == null) {
-                sb.append("null ");
-            } else {
-                queue.offer(node.left);
-                queue.offer(node.right);
-                sb.append(node.val + " ");
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                TreeNode node = queue.poll(); 
+                if(node == null) {
+                    sb.append("null ");
+                } else {
+                    queue.offer(node.left);
+                    queue.offer(node.right);
+                    sb.append(node.val + " ");
+                }
             }
         }
         return sb.toString();
