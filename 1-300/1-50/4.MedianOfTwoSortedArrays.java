@@ -14,6 +14,7 @@ nums2 = [3, 4]
 The median is (2 + 3)/2 = 2.5
 
 Solution:
+O(log(min(len1, len2)))
 Followed this tutorial: https://www.youtube.com/watch?v=LPFhl65R7ww
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
