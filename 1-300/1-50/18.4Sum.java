@@ -17,44 +17,6 @@ The solution set must not contain duplicate quadruplets.
 Answer:
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        //I feel very hard to understand this question
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if(nums == null || nums.length < 4){
-            return result;
-        }
-        Arrays.sort(nums);
-        for(int first = 0; first < nums.length -3; first++){
-            if(first>0 && nums[first] == nums[first-1] )  {continue;}
-            for(int second = first +1 ; second < nums.length-2; second++){
-                if(second > first+1 && nums[second] == nums[second-1] ) {continue;}
-                int third = second + 1, fourth = nums.length -1;
-                while(third < fourth){
-                    int value = nums[first] + nums[second] + nums[third] + nums[fourth];
-                    if(value == target){
-                        while(third < fourth && nums[third] == nums[third+1]){
-                          third++;
-                        }
-                        while(third < fourth && nums[fourth] == nums[fourth-1]){
-                          fourth--;
-                        }
-                        result.add(Arrays.asList(nums[first],nums[second],nums[third],nums[fourth]));
-                        third++; fourth--;
-                    } else if(value > target){
-                        fourth--;
-                    } else {
-                        third++;
-                    }
-                }
-            }
-        }
-        return result;
-    }
-}
-//test case: [0,1,1,1,2,2,2,2,2,3,3,3,4],10; [-1,-5,-5,-3,2,5,0,4],-7;
-
-//My answer second round
-public class Solution {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         if(nums == null || nums.length < 4) return result; 
         Arrays.sort(nums);
