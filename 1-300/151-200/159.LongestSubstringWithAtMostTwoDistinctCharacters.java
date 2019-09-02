@@ -27,6 +27,7 @@ class Solution {
                 map.put(s.charAt(second), second);
                 second++;
             }
+            //注意这里不能写成else，因为上面如果操作了size变大了，下面就需要执行了
             if(map.size() > 2) {
                 int newStart = s.length() - 1;
                 for(int i : map.values()){
