@@ -20,42 +20,6 @@ Answer:
  *     ListNode(int x) { val = x; }
  * }
  */
-public class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        //Got inspired by this answer:
-        //https://leetcode.com/discuss/50398/my-one-pass-solution
-        ListNode first = head;
-        ListNode second = head;
-        int looper = 0;
-        while(looper <=n-1 && second != null){
-              second = second.next;
-              looper++;
-        }
-        //[1] 1, [1,2] 1, [1,2] 2, 
-        if(second ==null){
-            //it means before looper equal to n, second.next already == null
-            //or that means n is bigger or equal to the length of the list
-            //so here is actually remove the first node
-            ListNode tmp = first.next;
-            first.next = null;
-            return tmp;
-        }
-        //Now the window between first and second is n-1;
-        while(second.next != null){
-            second = second.next;
-            first = first.next;
-        }
-        
-        ListNode tmp = first.next.next;
-        first.next.next = null;
-        first.next = tmp;
-        
-        return head;
-    }
-}
-
-
-=========================One Round Solution But Cleaner========================
 //Better use test case [1,2,3,4,5] 2/5, and use 5 fingers to think
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
