@@ -11,32 +11,23 @@ Although the above answer is in lexicographical order, your answer could be in a
 Answer:
 //DFS + BFS两种解法
 class Solution {
+    private static final String[] NUMS = new String[]{"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
-        if(digits == null || digits.length() < 1 || digits.length() > 9) return result;
-        
-        getCombination(0, "", result, digits);
+        if(digits == null || digits.length() == 0) return result;
+        helper(result, digits, 0, "");
         return result;
     }
-    
-    public void getCombination(int start, String tmp, List<String> result, String digits){
-        if(start == digits.length()) {
+    public void helper(List<String> result, String digits, int idx, String tmp){
+        if(idx >= digits.length()) {
             result.add(tmp);
             return;
         }
-        String letters = getLetters(digits.charAt(start));
+        String letters = NUMS[digits.charAt(idx) - '0'];
         for(int i = 0; i < letters.length(); i++){
-            getCombination(start + 1, tmp + letters.charAt(i), result, digits);
+            char c = letters.charAt(i);
+            helper(result, digits, idx + 1, tmp + c);
         }
-    }
-    
-    public String getLetters(char c){
-        int number = c - '0';
-        if(number > 9 || number < 0) {
-            return "";
-        } 
-        String[] values = new String[]{" ","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-        return values[number];
     }
 }
 
