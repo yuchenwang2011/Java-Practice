@@ -35,20 +35,21 @@ class Solution {
     }
 }
 
-
+//O(4^n) for both time and space complexity
 class Solution {
-  public List<String> letterCombinations(String digits) {
-    LinkedList<String> ans = new LinkedList<String>();
-    if(digits.isEmpty()) return ans;
-    String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-    ans.add("");
-    while(ans.peek().length()!=digits.length()){
-        String remove = ans.remove();
-        String map = mapping[digits.charAt(remove.length())-'0'];
-	for(char c: map.toCharArray()){
-	    ans.addLast(remove+c);
-	}
+    private static final String[] NUMS = new String[]{"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    public List<String> letterCombinations(String digits) {
+        if(digits == null || digits.length() == 0) return new ArrayList<>();
+        Queue<String> queue = new LinkedList<>();
+        queue.offer("");
+        while(queue.peek().length() != digits.length()){
+            String tmp = queue.poll();
+            char c = digits.charAt(tmp.length());
+            String letters = NUMS[c - '0'];
+            for(int i = 0; i < letters.length(); i++){
+                queue.offer(tmp + letters.charAt(i));
+            }
+        }
+        return new ArrayList<>(queue);
     }
-    return ans;
-  }
 }
