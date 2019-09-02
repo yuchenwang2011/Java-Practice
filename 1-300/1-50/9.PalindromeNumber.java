@@ -15,31 +15,8 @@ you know that the reversed integer might overflow. How would you handle such cas
 There is a more generic way of solving this problem.
 
 Answer:
+//两个解法
 public class Solution {
-    //Test case 1001
-    public boolean isPalindrome(int x) {
-        if(x < 0) return false;
-        int backup = x; int digit = 0;
-        while(backup != 0){
-            backup = backup/10; 
-            digit++;
-        }
-        while(digit >= 1){ // 2 or 1 both ok
-            int a = x / (int) Math.pow(10,digit-1); //10000 / 10^4 when digit == 5
-            int b = x % 10;
-            if(a != b) return false;
-            x = (x % (int) Math.pow(10,digit-1) - x % 10) / 10; //12345 % 10^4 = 2345, 2345 - 5 = 2340, --> 234
-            digit -= 2;
-        }
-        return true;
-    }
-}
-
-public class Solution {
-    //This method is to construct a reverse int of x
-    //Got inspired by this answer, the second link is to just compare a half of x
-    //https://leetcode.com/discuss/12693/neat-ac-java-code-o-n-time-complexity, I will do it next round
-    //https://leetcode.com/discuss/23563/line-accepted-java-code-without-the-need-handling-overflow
     public boolean isPalindrome(int x) {
         if(x < 0) return false;
         int y = 0;
@@ -53,7 +30,6 @@ public class Solution {
     }
 }
 
-Solution: this is a new answer
 https://leetcode.com/problems/palindrome-number/discuss/5127/9-line-accepted-Java-code-without-the-need-of-handling-overflow
 public boolean isPalindrome(int x) {
     if (x<0 || (x!=0 && x%10==0)) return false;
@@ -65,7 +41,5 @@ public boolean isPalindrome(int x) {
     //Because a Palindrome Number's length() can be odd or even, 
     //when it's odd(such as 121, x = 1, rev = 12), x should be rev/10 for making sure it is a Palindrome Number; 
     //the same reason, when it's even(such as 1221, x = 12, rev = 12), x should be rev.
-
-
     return (x==rev || x==rev/10);
 }
