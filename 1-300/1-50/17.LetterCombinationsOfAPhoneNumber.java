@@ -9,6 +9,7 @@ Note:
 Although the above answer is in lexicographical order, your answer could be in any order you want.
 
 Answer:
+//DFS + BFS两种解法
 class Solution {
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
@@ -37,4 +38,23 @@ class Solution {
         String[] values = new String[]{" ","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
         return values[number];
     }
+}
+
+
+class Solution {
+    public List<String> letterCombinations(String digits) {
+		LinkedList<String> ans = new LinkedList<String>();
+		if(digits.isEmpty()) return ans;
+		String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+		ans.add("");
+		for(int i =0; i<digits.length();i++){
+			int x = Character.getNumericValue(digits.charAt(i));
+			while(ans.peek().length()==i){
+				String t = ans.remove();
+				for(char s : mapping[x].toCharArray())
+					ans.add(t+s);
+			}
+		}
+		return ans;
+	}
 }
