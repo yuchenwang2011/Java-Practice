@@ -5,25 +5,23 @@ The majority element is the element that appears more than n/2 times.
 You may assume that the array is non-empty and the majority element always exist in the array.
 
 Answer:
-public class Solution {
+class Solution {
     public int majorityElement(int[] nums) {
-        //inspired by the Moore Voting Algorithm
-        //https://leetcode.com/discuss/66546/moore-voting-algorithm
-        //There's also a devide-and-conquere method, but i don't understand, will do it next round
-        int major =0, count = 0;
-        for(int num : nums){
-            if (count == 0) {
-                major = num;
-                count ++;
-            } else if (count != 0) {
-                if(major == num) {
-                    count ++;
-                } else {
-                    count --;
-                }
+        if(nums == null || nums.length == 0) return 0;
+        int count = 1;
+        int result = nums[0];
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i] == result) {
+                count++;
+            } else if (nums[i] != result){
+                count--;
+            } 
+            if (count == 0){
+                result = nums[i];
+                count++;
             }
         }
-        return major;
+        return result;
     }
 }
 
