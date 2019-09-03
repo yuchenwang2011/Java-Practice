@@ -7,29 +7,27 @@ For example, given [0, 1, 3, 50, 75], lower = 0 and upper = 99,
 return ["2", "4->49", "51->74", "76->99"].
 
 Answer:
+//test case [0,1,3,50,75],0,99; [2]0,2;
 class Solution {
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {
         List<String> result = new ArrayList<>();
-        if(lower > upper) return result;
+        if(nums == null || lower > upper) return result;
         long left = (long) lower;
-        
-        for(int num : nums){
-            if(num == left) {
+
+        for(int i = 0; i < nums.length; i++){
+            if(left == nums[i]) {
                 left++;
-                continue;
-            } else if(left < num){
-                if(left + 1 == num) {
-                    result.add(String.valueOf(left));
-                } else {
-                    result.add(left + "->" + (num - 1));
-                }
-                left = (long) num + 1;
+            } else if (left == nums[i] - 1) {
+                result.add(left + "");
+                left = (long) nums[i] + 1;
+            } else if (left < nums[i]){
+                result.add(left + "->" + (nums[i] - 1));
+                left = (long) nums[i] + 1;
             }
         }
-        if(left == upper) result.add(String.valueOf(left));
-        else if(left < upper) result.add(left + "->" + (upper));
         
+        if(left == upper) result.add(left + "");
+        if(left < upper) result.add(left + "->" + upper);
         return result;
     }
 }
-//test case [0,1,3,50,75],0,99; [2]0,2;
