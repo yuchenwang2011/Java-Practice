@@ -88,6 +88,7 @@
 
 6. PriorityQueue<Integer> pq = new PriorityQueue<Integer>(); //Java use min priority queue, smallest in front
    pq.offer(); pq.add(); pq.remove(); pq.poll(); pq.peek();
+   PriorityQueue<ListNode> pq = new PriorityQueue<>(lists.length, (a,b) -> a.val - b.val);
 
 7. Integer.MAX_VALUE; //2^31 - 1
    Integer.MIN_VALUE; //-2^31
