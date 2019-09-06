@@ -20,6 +20,7 @@ Output: []
 
 Solution:
 //https://www.youtube.com/watch?v=L6NLra-rZoU
+先把所有的都存map里，然后复制个map，暴力循环，从新map里见到一次减一次
 class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> result = new ArrayList<>();
