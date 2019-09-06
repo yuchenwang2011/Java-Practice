@@ -19,13 +19,13 @@ public class Solution {
         
         while(a >= b) {
             long c = b;
-            int i = 0;
+            int digit = 0;
             
             while(a >= c){
                 a = a - c;
                 c = c << 1;
-                result = result + (1 << i); //count how many chunk of b has been subtracted, 0,1 ; 1,2
-                i ++;
+                result = result + (1 << digit); //count how many chunk of b has been subtracted, 0,1 ; 1,2
+                digit++;
             }
         }
         if( (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0) ) result = -result;
