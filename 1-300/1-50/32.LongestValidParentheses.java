@@ -24,27 +24,65 @@ class Solution {
     public int longestValidParentheses(String s) {
         if(s == null || s.length() < 1) return 0;
         int result = 0;
-        int start = -1;
+        //start的意义就是合理的括号的起点
+        int start = 0;
         
         Deque<Integer> stack = new ArrayDeque<>();
         for(int i = 0; i < s.length(); i++){
             if(s.charAt(i) == '('){
                 stack.push(i);
             } else {
+                //这里好理解，就是如果啥都没有，你这里还是结尾的括号，不合理啊，所以valid的开始要从你这里开始啊
                 if(stack.isEmpty()){
                     start = i;
                 } else {
+                    //这里是后括号和前括号抵消了，然后result的计算不是只有这一对啊，要看看更以前start那个合理的括号起点
                     stack.pop();
                     if(stack.isEmpty()){
+                        //如果stack啥都没有了，意味着你只能和之前的那个start相减来获得长度了
+                        //而且start是non-inclusive的，不用加1
                         //")()())"
                         result = Math.max(result, i - start);
                     } else {
+                        //说明你的后括号还没有能力完全抵消掉所有stack里的前括号，也就还不配用start这个起始点
+                        //你只能到上一个peek那里为止了。
                         //"(()"
                         result = Math.max(result, i - stack.peek());
                     }
                 }
             }
         }
+        return result;
+    }
+}
+
+//这个版本就是所有的都得+1的版本，方法和上面的一样的
+class Solution {
+    public int longestValidParentheses(String s) {
+        int result = 0;
+        if(s == null || s.length() == 0) return result;
+        
+        Stack<Integer> stack = new Stack<>();
+        int i = 0;
+        int start = 0;
+        while(i < s.length()){
+            char c = s.charAt(i);
+            if(c == '(') {
+                stack.push(i + 1);
+            } else {
+                if(stack.size() == 0) start = i + 1;
+                else {
+                    stack.pop();
+                    if(stack.isEmpty()) {
+                        result = Math.max(result, i - start + 1);
+                    } else {
+                        result  = Math.max(result, i - stack.peek() + 1);
+                    }
+                }
+            }
+            i++;
+        }
+        
         return result;
     }
 }
