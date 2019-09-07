@@ -44,17 +44,22 @@ public class Solution {
 }
 
 //时隔几年，大神又弄出来了个新方法
-public boolean isValidSudoku(char[][] board) {
-    Set seen = new HashSet();
-    for (int i=0; i<9; ++i) {
-        for (int j=0; j<9; ++j) {
-            char number = board[i][j];
-            if (number != '.')
-                if (!seen.add(number + " in row " + i) ||
-                    !seen.add(number + " in column " + j) ||
-                    !seen.add(number + " in block " + i/3 + "-" + j/3))
-                    return false;
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        if(board == null || board.length == 0 || board[0].length == 0) return false;
+        
+        Set<String> set = new HashSet<>();
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[i].length; j++){
+                char c = board[i][j];
+                if(c == '.') continue;
+                String row = c + " in row " + i;
+                String col = c + " in col " + j;
+                String box = c + " in box " + i / 3 + "-" + j / 3;
+                if(!set.add(row) || !set.add(col) || !set.add(box)) return false;
+            } 
         }
+        
+        return true;
     }
-    return true;
 }
