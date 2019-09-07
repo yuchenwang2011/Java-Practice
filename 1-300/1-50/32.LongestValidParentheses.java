@@ -24,12 +24,14 @@ class Solution {
     public int longestValidParentheses(String s) {
         if(s == null || s.length() < 1) return 0;
         int result = 0;
-        //start的意义就是合理的括号的起点
-        int start = 0;
+        //start的意义就是合理的括号的起点，就是意思是我本身不是valid的，我右边的那些都是valid
+        int start = -1;
         
         Deque<Integer> stack = new ArrayDeque<>();
         for(int i = 0; i < s.length(); i++){
             if(s.charAt(i) == '('){
+                //就是说我i右边的都是合理的，我本身并不是一个合理的，non-inclusive
+                //如果你要把我这里的左括号当做合理的值，你需要找start或者我前一个括号，反正就是我左边的那个值，来计算我
                 stack.push(i);
             } else {
                 //这里好理解，就是如果啥都没有，你这里还是结尾的括号，不合理啊，所以valid的开始要从你这里开始啊
