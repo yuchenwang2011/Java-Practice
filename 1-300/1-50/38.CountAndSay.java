@@ -18,14 +18,14 @@ class Solution {
         
         String last = countAndSay(n - 1);
         String result = "";
-        int start = 0;
-
-        while(start < last.length()){
+        
+        int i = 0;
+        while(i < last.length()){
             int count = 0;
-            char c = last.charAt(start);
-            while(start < last.length() && last.charAt(start) == c) {
+            char c = last.charAt(i);
+            while(i < last.length() && last.charAt(i) == c) {
                 count++;
-                start++;
+                i++;
             }
             result = result + count + c;
         }
