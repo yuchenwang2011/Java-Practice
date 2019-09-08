@@ -34,6 +34,8 @@ class Solution {
             for(int j = 1; j < prices.length; j++){
                 //here prices[j] means to sell at this price, so it's a positive cash flow
                 //cash income + balance = current money at hand
+                //这里不是[i - 1][j - 1]是因为如果少一次交易但是天数才少一天，到了今天，无法完成一次交易
+                //下面那里算balance的时候，就需要少一天少一次交易了，因为它是今天买了，等明天卖，明天的时候完成交易
                 dp[i][j] =  Math.max(dp[i][j - 1], maxBalanceAfterTransactionLastRound + prices[j]);
                 //dp[i - 1][j - 1] 意思是前一天手里的最大钱数，为什么i - 1呢，
                 //因为就是想比一下如果不操作，或者之前k - 1次操作但加上这次，等于k次操作，这两种哪个balance多
