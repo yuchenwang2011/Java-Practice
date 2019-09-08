@@ -27,7 +27,7 @@ class Solution {
         if(prices == null || prices.length == 0) return 0;
         if(k >= prices.length / 2) return unlimitedTransactionHelper(prices);
         
-        //k + 1是因为有0次交易的时候
+        //k + 1是因为有0次交易的时候，而且循环的时候要算i == k那次
         int[][] dp = new int[k + 1][prices.length];
         for(int i = 1; i <= k; i++){
             int maxBalanceAfterTransactionLastRound = 0 - prices[0];
