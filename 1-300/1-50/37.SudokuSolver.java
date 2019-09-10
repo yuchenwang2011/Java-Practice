@@ -13,7 +13,8 @@ The given board size is always 9x9.
 
 Answer:
 //https://www.youtube.com/watch?v=qKk--WUQKMQ
-//
+//time complexity: 9 ^ m (m represents the number of blanks to be filled in),
+//since each blank can have 9 choices
 class Solution {
     public void solveSudoku(char[][] board) {
         if(board == null || board.length == 0 || board[0].length == 0) return;
