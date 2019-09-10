@@ -67,9 +67,9 @@ class Solution {
                 pp++;
             } else if (star != -1){
                 //that means nothing matches for pp and sp, so now want to check if * still in effect
-                //把pp按住别动，因为现在一直在检查*，你就保持在星的下一个待着就行
+                //把pp按住别动，因为现在一直在检查*，你就保持在星的下一个待着就行，之前的作废了，重新再找
                 pp = star + 1;
-                match++;
+                match++; //"aa" "*"
                 //this sp = match is useful, because "abcde" matches "*bcee"
                 //at first after you find first *, then you keep going to first if equal condition
                 //突然到结尾你发现不好使了，后悔了就得回来看看找备胎*，找回当初match的位置，当然match得++
