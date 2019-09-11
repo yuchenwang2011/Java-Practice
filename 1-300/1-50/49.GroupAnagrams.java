@@ -15,6 +15,7 @@ For the return value, each inner list's elements must follow the lexicographic o
 All inputs will be in lower-case.
 
 Answer:
+//这个方法比Map<String, List<String>>要快
 class Solution {
     //https://www.youtube.com/watch?v=YQbjqVjOESk
     public List<List<String>> groupAnagrams(String[] strs) {
