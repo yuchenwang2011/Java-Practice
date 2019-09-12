@@ -18,7 +18,8 @@ Output: 1
 Your algorithm should run in O(n) time and not uses constant extra space.
 
 Answer:
-//https://www.youtube.com/watch?v=jfb72FfxWKU
+//it uses bucket sort
+//https://www.youtube.com/watch?v=jfb72FfxWKU 
 class Solution {
     public int firstMissingPositive(int[] nums) {
         if(nums == null || nums.length == 0) return 1;
