@@ -26,7 +26,7 @@ class Solution {
         
         for(int i = 0; i < nums.length; i++){
             //here you can't reduce it to nums[i] - 1 != i  try [1,1]
-            while(nums[i] > 0 && nums[i] - 1 < nums.length && nums[nums[i] - 1] != nums[i]){
+            while(nums[i] >= 1 && nums[i] - 1 < nums.length && nums[nums[i] - 1] != nums[i]){
                 //here is very tricky, you must save nums[nums[i] - 1] value first
                 //otherwise you will overide the nums[i], then nums[nums[i] - 1] index will be wrong
                 int tmp = nums[nums[i] - 1];
