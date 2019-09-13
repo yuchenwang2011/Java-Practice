@@ -66,6 +66,9 @@ class Solution {
                 //move pp to next digit, don't want it keep stay in * position
                 pp++;
             } else if (star != -1){
+                //这里其实包含两种情况，一个是pp已经到结尾了，这里就一直sp++到结束
+                //第二种情况就是下面说的，pp后面还有，所以一点一点的试sp++，然后让star下一位的pp一直试到s结尾
+                
                 //that means nothing matches for pp and sp, so now want to check if * still in effect
                 //把pp按住别动，因为现在一直在检查*，你就保持在星的下一个待着就行，之前的作废了，重新再找
                 pp = star + 1;
