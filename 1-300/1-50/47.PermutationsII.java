@@ -35,6 +35,7 @@ public class Solution {
         for(int i = 0; i < nums.length; i++){
             if(visited[i]) continue;
             //Test case: [1,1], here it's hard to understand, use another test case 1,2,2
+            //每个人占个位嘛，突然回头发现自己前面没人卡位了，不正常啊
             if(i > 0 && nums[i] == nums[i-1] && !visited[i-1] ) continue;
             visited[i] = true;
             tmp.add(nums[i]);
