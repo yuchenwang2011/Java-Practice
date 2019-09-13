@@ -87,6 +87,7 @@ class Solution {
                 return false;
             }
         }
+        //"" "a"
         return pp == p.length();
     }
 }
