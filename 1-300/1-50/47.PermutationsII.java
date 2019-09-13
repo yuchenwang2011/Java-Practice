@@ -1,11 +1,15 @@
 47. Permutations II   My Submissions QuestionEditorial Solution
 Total Accepted: 68663 Total Submissions: 245856 Difficulty: Medium
-Given a collection of numbers that might contain duplicates, 
-return all possible unique permutations.
+Given a collection of numbers that might contain duplicates, return all possible unique permutations.
 
-For example,
-[1,1,2] have the following unique permutations:
-[1,1,2], [1,2,1], and [2,1,1].
+Example:
+Input: [1,1,2]
+Output:
+[
+  [1,1,2],
+  [1,2,1],
+  [2,1,1]
+]
 
 Answer:
 public class Solution {
