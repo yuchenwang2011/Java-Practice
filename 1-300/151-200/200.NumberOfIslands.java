@@ -25,7 +25,7 @@ Output: 3
 
 Answer:
 //DFS + BFS + Union Find, you must know all of the 3 methods.同时要复习1162的解法
-//DFS:
+//DFS: 时间 O(NM) 空间 O(max(N,M)) 递归栈空间
 class Solution {
     public int numIslands(char[][] grid) {
         int result = 0;
