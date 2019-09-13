@@ -164,7 +164,7 @@ class Solution {
             int root2 = find(id2);
             if(root1 != root2) {
                 parent[root1] = root2;
-                //注意，这一行总忘
+                //注意，这一行总忘。而且它是在括号里面的
                 count--;
             }
         }
