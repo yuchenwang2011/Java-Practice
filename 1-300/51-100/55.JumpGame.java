@@ -12,19 +12,16 @@ A = [2,3,1,1,4], return true.
 A = [3,2,1,0,4], return false.
 
 Answer:
-public class Solution {
- public boolean canJump(int[] nums) {
-      //Inspired by this answer
-      //https://leetcode.com/discuss/48551/6-line-java-solution-in-o-n
-      int max = 0;
-      for(int i =0; i< nums.length; i++){
-          if (max < i){
-              return false;
-          } else {
-              max = Math.max(max, i + nums[i]);
-          }
-      }
-      return true;
+class Solution {
+    public boolean canJump(int[] nums) {
+        if(nums == null || nums.length == 0) return true;     
+        int max = 0;
+        for(int i = 0; i < nums.length; i++){
+            //注意，这里别想太多，就想着，只要现在i这个位置，你max到不了，就是false的
+            if(i > max) return false;
+            max = Math.max(max, i + nums[i]);
+        }
+        return true;
     }
 }
 //Test case: [2,0],[2,5,0,0],[1,0,2],[2,0,0]
