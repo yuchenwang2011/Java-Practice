@@ -33,6 +33,7 @@ public class Solution {
             colEnd--;
             
             //cautions here! rowStart and colEnd have changed
+            //这里是我后改的，其实应该是if(rowStart <= rowEnd)
             if(rowStart <= rowEnd && colStart <= colEnd){
               for(int i = colEnd; i >= colStart; i--){
                   result.add(matrix[rowEnd][i]);
