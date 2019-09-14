@@ -28,7 +28,8 @@ class Solution {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<List<String>>();
         if(n <= 0) return result;
-        
+      
+        //q[0] == 1 就是在第0 row，col==1那里是q
         int[] queens = new int[n];
         helper(result, queens, 0);
         return result;
