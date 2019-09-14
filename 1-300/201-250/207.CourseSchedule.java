@@ -85,13 +85,11 @@ class Solution {
             if(indegree[i] == 0) queue.offer(i);
         }
         
-        int result = 0;
         while(!queue.isEmpty()){
             int size = queue.size();
             //这个for loop可以不要，就每次while循环poll一个就行
             for(int i = 0; i < size; i++){
                 int tmp = queue.poll();
-                result++;
                 for(int[] pre : prerequisites){
                     if(pre[1] == tmp) {
                         indegree[pre[0]]--;
@@ -104,8 +102,6 @@ class Solution {
         for(int i = 0; i < indegree.length; i++){
             if(indegree[i] != 0) return false;
         }
-        
         return true;
     }
 }
-
