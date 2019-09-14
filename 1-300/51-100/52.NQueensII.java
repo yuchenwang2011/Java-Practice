@@ -27,6 +27,7 @@ Answer:
 // 40 41 42 43 44
 //you can tell, the substract on \ direction always same
 //the sum on / direction always same
+//看到有人说，感觉有些道理：时间 O(N^2) 空间 O(N)
 class Solution {
     int result = 0;
     public int totalNQueens(int n){
