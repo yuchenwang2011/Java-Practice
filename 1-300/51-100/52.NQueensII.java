@@ -61,3 +61,37 @@ class Solution {
          }
     }
 }
+
+
+//也可以用上一题的方法去做
+class Solution {
+    int result = 0;
+    public int totalNQueens(int n) {
+        if(n <= 0) return result;
+        
+        int[] queen = new int[n];
+        helper(queen, n, 0);
+        return result;
+    }
+    
+    public void helper(int[] queen, int n, int row){
+        if(row >= queen.length) {
+            result++;
+            return;
+        }
+        for(int col = 0; col < queen.length; col++){
+            queen[row] = col;
+            if(isValid(queen, row)) {
+                helper(queen, n, row + 1);
+            }
+        }
+    }
+    
+    public boolean isValid(int[] queen, int row){
+        for(int i = 0; i < row; i++){
+            if(queen[row] == queen[i]) return false;
+            if(Math.abs(queen[row] - queen[i]) == Math.abs(row - i)) return false;
+        }
+        return true;
+    }
+}
