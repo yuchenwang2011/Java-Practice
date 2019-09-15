@@ -34,6 +34,7 @@ public class Solution {
             
             //cautions here! rowStart and colEnd have changed
             //这里是我后改的，其实应该是if(rowStart <= rowEnd)
+            //因为for循环里是col的，如果col不合格也就不会执行的，所以就看row合不合格了
             if(rowStart <= rowEnd && colStart <= colEnd){
               for(int i = colEnd; i >= colStart; i--){
                   result.add(matrix[rowEnd][i]);
