@@ -13,6 +13,34 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
 
 Answer:
+//这个和下一题的风格是一样的
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        if(intervals == null || intervals.length == 0 || intervals[0].length < 2) return new int[0][0];
+        List<int[]> result = new ArrayList<>();
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        int[] tmp = intervals[0];
+        for(int i = 1; i < intervals.length; i++){
+            int[] cur = intervals[i];
+            if(tmp[1] >= cur[1]){
+                continue;
+            } else if(tmp[1] > cur[0]){
+                tmp[1] = cur[1];
+            } else {
+                result.add(tmp);
+                tmp = cur;
+            }
+        }
+        result.add(tmp);
+        int[][] resultArray = new int[result.size()][2];
+        for(int i = 0; i < result.size(); i++){
+            resultArray[i] = result.get(i);
+        }
+        return resultArray;
+    }
+}
+
+
 //my own solution
 class Solution {
     public int[][] merge(int[][] intervals) {
