@@ -64,7 +64,7 @@ public class Solution {
     //https://leetcode.com/discuss/8897/share-my-o-log-n-solution-using-bit-manipulation
     public int mySqrt(int x) {
         long bit = 1L << 16; //because bit ^2 needs to smaller than Integer.MAX_VALUE;
-        int result = 0;
+        int result = 0; //result must be 0
         while(bit > 0){
             result = result | bit; //bit can't be zero, if zero, here is useless
             System.out.println(Integer.toBinaryString(result));
