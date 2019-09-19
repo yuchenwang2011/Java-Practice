@@ -19,11 +19,8 @@ word = "SEE", -> returns true,
 word = "ABCB", -> returns false.
 
 Answer: 
+//O(M * N * 4^L)
 public class Solution {
-    //I was inspired by these 3 answers
-    //https://leetcode.com/discuss/23165/accepted-very-short-java-solution-no-additional-space
-    //https://leetcode.com/discuss/60857/simple-solution
-    //https://leetcode.com/discuss/51379/my-java-solution
     public boolean exist(char[][] board, String word) {
         if(board == null || board.length == 0) return false;
         if(word == null ||word.length() == 0) return true;
