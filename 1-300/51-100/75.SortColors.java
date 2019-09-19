@@ -39,18 +39,18 @@ public class Solution {
 class Solution {
     public void sortColors(int[] nums) {
         if(nums == null || nums.length == 0) return;
-        
-        int zeroStarts = 0;
-        int twoEnds = nums.length - 1;
-
+        int start = 0;
+        int end = nums.length - 1;
         int i = 0;
-        while(i <= twoEnds){
-            if(i >= zeroStarts && nums[i] == 0){
-                nums[i] = nums[zeroStarts];
-                nums[zeroStarts++] = 0;
-            } else if(i <= twoEnds && nums[i] == 2){
-                nums[i] = nums[twoEnds];
-                nums[twoEnds--] = 2;
+        
+        //must has == end case
+        while(i <= end){
+            if(i >= start && nums[i] == 0) {
+                nums[i] = nums[start];
+                nums[start++] = 0;
+            } else if(nums[i] == 2){
+                nums[i] = nums[end];
+                nums[end--] = 2;
             } else {
                 i++;
             }
