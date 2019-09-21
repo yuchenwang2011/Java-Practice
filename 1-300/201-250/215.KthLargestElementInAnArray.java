@@ -39,6 +39,7 @@ class Solution {
         if(k <= 0 || nums == null || nums.length == 0 || k > nums.length) return 0;
         int start = 0;
         int end = nums.length - 1;
+        //这里必须是true，而且true了以后最后就不需要，也不能有return statement了
         while(true){
             int pos = partition(nums, start, end);
             //k is not array index
