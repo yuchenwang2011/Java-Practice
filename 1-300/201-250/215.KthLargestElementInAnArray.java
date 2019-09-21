@@ -54,7 +54,7 @@ class Solution {
     }
     
     public int partition(int[] nums, int start, int end){
-        if(start == end) return start;
+        if(start >= end) return start;
         int pivot = nums[start];
         while(start < end){
             //从大到小quick sort
