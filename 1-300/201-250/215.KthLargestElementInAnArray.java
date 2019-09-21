@@ -33,7 +33,6 @@ public class Solution {
 }
 
 class Solution {
-    //this answer sorts from big to small
     public int findKthLargest(int[] nums, int k) {
         if(k <= 0 || nums == null || nums.length == 0 || k > nums.length) return 0;
         int start = 0;
@@ -55,6 +54,7 @@ class Solution {
         if(start == end) return start;
         int pivot = nums[start];
         while(start < end){
+            //从大到小quick sort
             //alert: here must first process end, second start, because we need return start at end
             while(start < end && nums[end] <= pivot) end--;
             if(start < end) swap(nums, start, end);
