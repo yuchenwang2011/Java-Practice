@@ -10,6 +10,7 @@ Note:
 You may assume k is always valid, 1 ≤ k ≤ array's length.
 
 Answer:
+//O(N lg K) running time + O(K) memory
 public class Solution {
     //The first answer uses priority queue to solve it
     public int findKthLargest(int[] nums, int k) {
@@ -32,6 +33,7 @@ public class Solution {
     }
 }
 
+//O(N) best case / O(N^2) worst case running time + O(1) memory
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         if(k <= 0 || nums == null || nums.length == 0 || k > nums.length) return 0;
