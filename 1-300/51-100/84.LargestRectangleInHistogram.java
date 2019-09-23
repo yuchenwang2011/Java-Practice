@@ -78,6 +78,12 @@ class Solution {
             
             while(!stack.isEmpty() && currentHeight < heights[stack.peek()]){
                 int top = stack.pop();
+                //当初觉得这里很难，其实很简单
+                //stack不空:因为循环到i的时候，i实际上是current的位置啊，所以前一个height的位置肯定是i - 1啊
+                //i - 1的前一个，就是stack的peek，比如一个4，一个3，4-3=1嘛
+                
+                //然后stack空的时候，就是height值们4,3,2,1各种递减的时候，所以没存下来都pop走了
+                //所以现在是1，我们一直在算前一个长条的宽，也就是2的宽。就是3一直到最左边嘛，就是2 + 1 = 3，恰好是1的位置而已
                 int length = stack.isEmpty() ? i : i - 1 - stack.peek();
                 maxArea = Math.max(maxArea, heights[top] * length);
             }
