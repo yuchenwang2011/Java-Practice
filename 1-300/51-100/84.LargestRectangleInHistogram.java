@@ -8,6 +8,36 @@ Input: [2,1,5,6,2,3]
 Output: 10
 
 Answer:
+//第二遍复习我觉得思路就是简单的，
+//因为我们求最大面积嘛，所以一个一个height往stack放，如果当前height没有之前那个大
+//那就说明前面那个大，就有算一下他面积的必要.于是就开始高乘以长
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        int result = 0;
+        if(heights == null || heights.length == 0) return result;
+        
+        Deque<Integer> stack = new ArrayDeque<>();
+        for(int i = 0; i <= heights.length; i++){
+            int current = i == heights.length ? 0 : heights[i];
+            while(!stack.isEmpty() && current < heights[stack.peek()]) {
+                int height = heights[stack.pop()];
+                //当初觉得这里很难，其实很简单
+                //stack不空:因为循环到i的时候，i实际上是current的位置啊，所以前一个height的位置肯定是i - 1啊
+                //i - 1的前一个，就是stack的peek，比如一个4，一个3，4-3=1嘛
+                
+                //然后stack空的时候，就是height值们4,3,2,1各种递减的时候，所以没存下来都pop走了
+                //所以现在是1，我们一直在算前一个长条的宽，也就是2的宽。就是3一直到最左边嘛，就是2 + 1 = 3，恰好是1的位置而已
+                int width = stack.isEmpty() ? i : i - 1 - stack.peek();
+                result = Math.max(result, height * width);
+            }
+            stack.push(i);
+        }
+        return result;
+    }
+}
+
+
+
 Some dicussion help to understand this question
 I would like to explain i - 1 - stack.peek() in this way:
 
@@ -61,36 +91,3 @@ So the idea is that:
 2(The second top bar in stack) is always the first bar lower than (the top bar in stack) on the left.
 3(The bar that i points to) is always the first bar lower than (the top bar in stack) on the right.
 4After step 2 and 3, we know the left and right boundaries, then know the width, then know the area.
-
-//第二遍复习我觉得思路就是简单的，
-//因为我们求最大面积嘛，所以一个一个height往stack放，如果当前height没有之前那个大
-//那就说明前面那个大，就有算一下他面积的必要.于是就开始高乘以长
-class Solution {
-    public int largestRectangleArea(int[] heights) {
-        int maxArea = 0;
-        if(heights == null || heights.length == 0) return maxArea;
-        
-        Deque<Integer> stack = new ArrayDeque<>();
-        
-        //Alert: here you must use <= 
-        for(int i = 0; i <= heights.length; i++){
-            int currentHeight = i == heights.length ? 0 : heights[i];
-            
-            while(!stack.isEmpty() && currentHeight < heights[stack.peek()]){
-                int top = stack.pop();
-                //当初觉得这里很难，其实很简单
-                //stack不空:因为循环到i的时候，i实际上是current的位置啊，所以前一个height的位置肯定是i - 1啊
-                //i - 1的前一个，就是stack的peek，比如一个4，一个3，4-3=1嘛
-                
-                //然后stack空的时候，就是height值们4,3,2,1各种递减的时候，所以没存下来都pop走了
-                //所以现在是1，我们一直在算前一个长条的宽，也就是2的宽。就是3一直到最左边嘛，就是2 + 1 = 3，恰好是1的位置而已
-                int length = stack.isEmpty() ? i : i - 1 - stack.peek();
-                maxArea = Math.max(maxArea, heights[top] * length);
-            }
-            
-            stack.push(i);
-        }
-        
-        return maxArea;
-    }
-}
