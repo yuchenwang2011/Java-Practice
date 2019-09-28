@@ -9,10 +9,6 @@ return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
 
 Answer:
 public class Solution {
-    //I will try to copy the 3 answers one by one
-    //https://leetcode.com/discuss/15098/very-simple-dfs-solution
-    //https://leetcode.com/discuss/12790/my-code-in-java
-    //https://leetcode.com/discuss/19296/my-concise-ac-java-code
     public List<String> restoreIpAddresses(String str) {
         List<String> result = new ArrayList<String>();
         if(str == null || str.length() < 4 || str.length() > 12) return result;
@@ -34,5 +30,30 @@ public class Solution {
             process(str, result, idx + i, count + 1, tmp + s + (count == 3 ? "" : "."));
         }
         
+    }
+}
+
+//my answer sep 28 2019
+class Solution {
+    public List<String> restoreIpAddresses(String s) {
+        List<String> result = new ArrayList<>();
+        if(s == null || s.length() < 4 || s.length() > 12) return result;
+        helper(result, s, "", 0, 0);
+        return result;
+    }
+    
+    public void helper(List<String> result, String s, String tmp, int idx, int count){
+        if(count == 4 && idx == s.length()) {
+            result.add(tmp);
+            return;
+        }
+        
+        for(int i = idx; i < idx + 3; i++){
+            if(i >= s.length()) break;
+            String str = s.substring(idx, i + 1);
+            if(Integer.valueOf(str) > 255) continue;
+            if(str.length() > 1 && str.charAt(0) == '0') break;
+            helper(result, s, count == 3 ? tmp + str: tmp + str + ".", i + 1, count + 1);
+        }
     }
 }
