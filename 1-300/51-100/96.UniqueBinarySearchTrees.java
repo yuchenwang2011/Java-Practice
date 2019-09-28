@@ -21,7 +21,7 @@ public class Solution {
         dp[0] = dp[1] = 1;
         for(int i = 2; i <= n; i++){ //this for loop is to save dp elements
             for(int j = 0; j <= i-1; j++){
-                dp[i] = dp[i] + dp[j]*dp[i-1-j];
+                dp[i] = dp[i] + dp[j] * dp[i - j - 1];
             }
         }
         return dp[n];
