@@ -91,7 +91,7 @@ class Solution {
     public void recoverTree(TreeNode root) {
         if(root == null) return;
         helper(root);
-        if(first != null) {
+        if(first != null) { //写成first != null && second != null 也可以
             int tmp = first.val;
             first.val = second.val;
             second.val = tmp;
