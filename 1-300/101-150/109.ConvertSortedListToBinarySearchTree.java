@@ -43,3 +43,34 @@ class Solution {
         return root;
     }
 }
+
+//my own solution oct 1, 2019
+class Solution {
+    public TreeNode sortedListToBST(ListNode head) {
+        if(head == null) return null;
+        return helper(head);
+    }
+    
+    public TreeNode helper(ListNode head){
+        if(head == null) return null;
+        if(head.next == null) return new TreeNode(head.val);
+        ListNode pre = new ListNode(-1);
+        pre.next = head;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
+            pre = pre.next;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        TreeNode root = new TreeNode(slow.val);
+        ListNode next = slow.next;
+        slow.next = null;
+        root.right = helper(next);
+        
+        pre.next = null;
+        root.left = helper(head);   
+        return root;
+    }
+}
