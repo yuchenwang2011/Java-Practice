@@ -41,7 +41,7 @@ public class Solution {
     }
     
     public TreeNode construct(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder){
-        if(preStart > preorder.length - 1 || inStart > inEnd ) return null;
+        if(preStart > preorder.length - 1 || inStart > inEnd ) return null; //这行必须的
         int inRoot = 0;
         for(int i = inStart; i <= inEnd; i++){
             if(preorder[preStart] == inorder[i]) {
@@ -49,13 +49,13 @@ public class Solution {
                 break;
             }
         }
-        int inLength = inRoot - inStart + 1; 
-        TreeNode root = new TreeNode(preorder[preStart]);
+        TreeNode root = new TreeNode(preorder[preStart]); //inorder[inRoot]也行
         root.left = construct(preStart+1, inStart, inRoot-1, preorder, inorder);
         //As for why preStart must go to the other side? Why all elements before that are in left tree?
         //Because preorder is to root first, left elements first, then right. So length of all left elements 
         //must be the same as the inorder left elements length
-        root.right = construct(preStart + inLength, inRoot + 1, inEnd, preorder, inorder);
+        int length = inRoot - inStart; 
+        root.right = construct(preStart + inLength + 1, inRoot + 1, inEnd, preorder, inorder);
         return root;
     }
 }
