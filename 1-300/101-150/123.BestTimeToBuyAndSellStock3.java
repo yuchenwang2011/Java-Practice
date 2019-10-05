@@ -30,8 +30,8 @@ Answer:
 class Solution {
     public int maxProfit(int[] prices) {
         if(prices == null || prices.length < 2) return 0;
-        int firstBuyPrice = prices[0]; // can be Integer.MAX_VALUE;
-        int secondBuyPrice = prices[0]; // can be Integer.MAX_VALUE;
+        int firstBuyPrice = Integer.MAX_VALUE;
+        int secondBuyPrice = Integer.MAX_VALUE;
         int firstProfit = 0;
         int secondProfit = 0;
         
