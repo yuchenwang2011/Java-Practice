@@ -23,28 +23,26 @@ Any 'O' that is not on the border and it is not connected to an 'O' on the borde
 Two cells are connected if they are adjacent cells connected horizontally or vertically.
 
 Answer:
+//先把四条边上的ODFS改成#，然后见到O就变X，同时把#还原成X
 class Solution {
     public void solve(char[][] board) {
         if(board == null || board.length == 0 || board[0].length == 0) return;
         int row = board.length;
         int col = board[0].length;
         for(int i = 0; i < row; i++){
-            if(board[i][0] =='O') {
-               helper(board, i , 0); 
-            }
-            
-            if(board[i][col - 1] == 'O') {
-                helper(board, i, col - 1);
-            }
+            //第一列和最后一列
+            char a = board[i][0];
+            char b = board[i][col - 1];
+            if(a == 'O') helper(board, i, 0);
+            if(b == 'O') helper(board, i, col - 1);
         }
         
         for(int i = 0; i < col; i++){
-            if(board[0][i] == 'O'){
-                helper(board, 0, i);
-            } 
-            if(board[row - 1][i] == 'O'){
-                helper(board, row - 1, i);
-            }
+            //第一行和最后一行
+            char a = board[0][i];
+            char b = board[row - 1][i];
+            if(a == 'O') helper(board, 0, i);
+            if(b == 'O') helper(board, row - 1, i);
         }
         
         for(int i = 0; i < row; i++){
@@ -56,7 +54,7 @@ class Solution {
     }
     
     public void helper(char[][] board, int i, int j){
-        if(i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] != 'O') return;
+        if(i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] == 'X' || board[i][j] == '#') return;
         board[i][j] = '#';
         helper(board, i - 1, j);
         helper(board, i + 1, j);
