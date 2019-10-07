@@ -8,8 +8,32 @@ Input: "aab"
 Output: 1
 Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
 
+//this question is same as question 5, try to understand them together
 class Solution {
-    //this question is same as question 5, try to understand them together
+    public int minCut(String s) {
+        if(s == null || s.length() == 0) return 0;
+        //the min times of cuts needed to be able to realize cut total string
+        int[] result = new int[s.length()];
+        int[][] isPalindrome = new int[s.length()][s.length()];
+        
+        for(int i = 0; i < s.length(); i++){
+            int min = i;
+            for(int j = 0; j <= i; j++){
+                if(s.charAt(i) == s.charAt(j) && (i - j <= 1 || isPalindrome[j + 1][i - 1] == 1)) {
+                    isPalindrome[j][i] = 1;
+                    min = j == 0 ? 0 : Math.min(min, result[j - 1] + 1); 
+                }
+            }
+            result[i] = min;
+        }
+        return result[result.length - 1];
+    }
+}
+
+
+
+//下面是打印debug版本
+class Solution {
     public int minCut(String s) {
         if(s == null || s.length() == 0) return 0;
         //the min times of cuts needed to be able to realize cut total string
