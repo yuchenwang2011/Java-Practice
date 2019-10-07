@@ -12,12 +12,12 @@ Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cu
 class Solution {
     public int minCut(String s) {
         if(s == null || s.length() == 0) return 0;
-        //the min times of cuts needed to be able to realize cut total string
+        //最少要砍几刀
         int[] result = new int[s.length()];
         int[][] isPalindrome = new int[s.length()][s.length()];
         
         for(int i = 0; i < s.length(); i++){
-            int min = i;
+            int min = i; //最多就是每个字母都是砍一刀
             for(int j = 0; j <= i; j++){
                 if(s.charAt(i) == s.charAt(j) && (i - j <= 1 || isPalindrome[j + 1][i - 1] == 1)) {
                     isPalindrome[j][i] = 1;
@@ -36,12 +36,12 @@ class Solution {
 class Solution {
     public int minCut(String s) {
         if(s == null || s.length() == 0) return 0;
-        //the min times of cuts needed to be able to realize cut total string
+        //最少要砍几刀
         int[] result = new int[s.length()];
         int[][] isPalindrome = new int[s.length()][s.length()];
         
         for(int i = 0; i < s.length(); i++){
-            int min = i;
+            int min = i; //最多就是每个字母都是砍一刀
             for(int j = 0; j <= i; j++){
                 if(s.charAt(i) == s.charAt(j) && (i - j <= 1 || isPalindrome[j + 1][i - 1] == 1)) {
                     isPalindrome[j][i] = 1;
