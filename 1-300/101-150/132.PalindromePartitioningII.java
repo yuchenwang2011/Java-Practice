@@ -22,7 +22,7 @@ class Solution {
                 if(s.charAt(i) == s.charAt(j) && (i - j <= 1 || isPalindrome[j + 1][i - 1] == 1)) {
                     isPalindrome[j][i] = 1;
                     //这里为啥是result[j - 1]呢，因为你现在求的比如是i = 3；
-                    //所以j就从0-3循环。结果大不了就是result[0] + 1, result[1] + 1, result[2] + 1
+                    //所以j就从0-3循环。结果大不了就是result[0] + 1, result[1] + 1, result[2] + 1里面最小的一个
                     min = j == 0 ? 0 : Math.min(min, result[j - 1] + 1); 
                 }
             }
