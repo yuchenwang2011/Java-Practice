@@ -93,19 +93,24 @@ class Solution {
     }
 }
 
-//DFS another version
+//My own answer
 class Solution {
-    Map<Node, Node> map = new HashMap<>();
     public Node cloneGraph(Node node) {
         if(node == null) return node;
-        if(map.containsKey(node)) return map.get(node);
-        Node dup = new Node(node.val, new ArrayList<>());
-        map.put(node, dup);
-        for(Node nei : node.neighbors){
-            Node neiDup = cloneGraph(nei);
-            dup.neighbors.add(neiDup);
+        Map<Node, Node> map = new HashMap<>();
+        helper(node, map);
+        return map.get(node);
+    }
+    
+    public void helper(Node node, Map<Node, Node> map){
+        if(map.containsKey(node)) return;
+        Node node2 = new Node(node.val);
+        node2.neighbors = new ArrayList<>();
+        map.put(node, node2);
+        for(Node n : node.neighbors){
+            helper(n, map);
+            node2.neighbors.add(map.get(n));
         }
-        return dup;
     }
 }
 
