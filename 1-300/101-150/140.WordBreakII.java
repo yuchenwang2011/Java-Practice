@@ -40,42 +40,33 @@ Output:
 
 Answer:
 class Solution {
-    //"pineapplepenapple"
-    //["apple","pen","applepen","pine","pineapple"]
     public List<String> wordBreak(String s, List<String> wordDict) {
         List<String> result = new ArrayList<>();
         if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return result;
-        Set<Integer> invalidIdx = new HashSet<>();
-        helper(s, wordDict, 0, result, invalidIdx, "");
+        
+        Set<Integer> invalid = new HashSet<>();
+        helper(s, wordDict, result, invalid, 0, "");
         return result;
     }
     
-    public void helper(String s, List<String> wordDict, int idx, List<String> result, Set<Integer> invalidIdx, String tmp){
+    public void helper(String s, List<String> wordDict, List<String> result, Set<Integer> invalid, int idx, String tmp){
         if(idx >= s.length()) {
-            //System.out.println("added tmp: " + tmp);
-            result.add(tmp); 
+            result.add(tmp);
             return;
         }
-        if(invalidIdx.contains(idx)) {
-            //System.out.println("idx is: " + idx + " invalid");
-            return;
-        }
+        if(invalid.contains(idx)) return;
+        
         int size = result.size();
         for(int i = idx + 1; i <= s.length(); i++){
-            String s1 = s.substring(idx, i);
-            //System.out.println(s1 + " i is: " + i);
-            if(wordDict.contains(s1)) {
-                if(i == s.length()) {
-                    //System.out.println("first == i is" + i);
-                    helper(s, wordDict, i, result, invalidIdx, tmp + s1);
-                    return;
-                } else {
-                    //System.out.println("second == i is" + i);
-                    helper(s, wordDict, i, result, invalidIdx, tmp + s1 + " ");
-                }
+            String sub = s.substring(idx, i);
+            if(!wordDict.contains(sub)) continue;
+            if(i == s.length()) {
+                helper(s, wordDict, result, invalid, i, tmp + sub);
+            } else {
+                helper(s, wordDict, result, invalid, i, tmp + sub + " ");
             }
         }
-        //System.out.println("finished one circle idx is: " + idx);
-        if(size == result.size()) invalidIdx.add(idx);
+        
+        if(result.size() == size) invalid.add(idx);
     }
 }
