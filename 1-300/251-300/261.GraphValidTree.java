@@ -36,8 +36,8 @@ class Solution {
         Set<Integer> visited = new HashSet<>();
         visited.add(0);
         boolean result = helper(graph, visited, 0, - 1);
-        if(result == false) return false;
-        return visited.size() == n ? true: false;
+        if(result == false) return result;
+        return visited.size() == n;
     }
     
     public boolean helper(List<List<Integer>> graph, Set<Integer> visited, int current, int parent){
