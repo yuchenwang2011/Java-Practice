@@ -83,7 +83,6 @@ class LRUCache {
             } else {
                 tail.next = newNode;
                 newNode.prev = tail;
-                newNode.next = null;
             }
             tail = newNode;
             map.put(key, newNode);
