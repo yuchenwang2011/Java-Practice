@@ -35,6 +35,20 @@ class Solution {
     }
 }
 
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        if(root == null || p == null) return root;
+        return helper(root, p, null);
+    }
+    
+    public TreeNode helper(TreeNode root, TreeNode p, TreeNode result){
+        if(root == null || p == null) return result;
+        if(root.val <= p.val) return helper(root.right, p, result);
+        
+        return helper(root.left, p, root);
+    }
+}
+
 public TreeNode predecessor(TreeNode root, TreeNode p) {
   if (root == null)
     return null;
