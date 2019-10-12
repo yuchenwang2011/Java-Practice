@@ -38,6 +38,7 @@ class Solution {
             int mid = (end - start) / 2 + start;
             int count = 0;
             for(int i = 0; i < nums.length; i++){
+                //注意，这里是mid，不是nums[mid]
                 if(nums[i] <= mid) count++;
             }
             //说明mid值选的不好，比mid小的数字太少了，mid不够大
