@@ -57,6 +57,7 @@ class Solution {
             String s = num.substring(idx, i + 1);
             long cur = Long.valueOf(s);
             if(i > idx && s.charAt(0) == '0') break;
+            //注意：这里是idx，不是i
             if(idx == 0) {
                 helper(num, target, result, s, i + 1, val + cur, cur);
             } else {
