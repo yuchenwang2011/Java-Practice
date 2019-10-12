@@ -37,6 +37,38 @@ a little trick is that we should save the value that is to be multiplied in the 
     
 // Inpuut: num = "105" target = 5
 // Output: ["1*0+5","10-5"]
+    
+//这个是去掉注释版,注释在后面第二个里，code基本一样，第一个好记一点
+class Solution {
+    public List<String> addOperators(String num, int target) {
+        List<String> result = new ArrayList<>();
+        if(num == null || num.length() == 0) return result;
+        helper(num, target, result, "", 0, 0, 0);
+        return result;
+    }
+    
+    public void helper(String num, int target, List<String> result, String tmp, int idx, long val, long last){
+        if(idx >= num.length()){
+            if(val == target) result.add(tmp);
+            return;
+        }
+        
+        for(int i = idx; i < num.length(); i++){
+            String s = num.substring(idx, i + 1);
+            long cur = Long.valueOf(s);
+            if(i > idx && s.charAt(0) == '0') break;
+            if(idx == 0) {
+                helper(num, target, result, s, i + 1, val + cur, cur);
+            } else {
+                helper(num, target, result, tmp + "+" + s, i + 1, val + cur, cur);
+                helper(num, target, result, tmp + "-" + s, i + 1, val - cur, -cur);
+                helper(num, target, result, tmp + "*" + s, i + 1, val - last + last * cur, last * cur);
+            }
+         }
+    }
+}    
+    
+   
 class Solution {
     public List<String> addOperators(String num, int target) {
         List<String> result = new ArrayList<String>();
