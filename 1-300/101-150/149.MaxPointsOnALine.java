@@ -66,8 +66,11 @@ class Solution {
         return result;
     }
 
+    //记忆方法，就是靠先判断是不是一个是0了，如果是，返回不是0的那个。
+    //求余数，换位置
     public int generateGcd(int x, int y){
-        if(y == 0) return x;
+        if(x == 0 || y == 0) return x == 0 ? y : x;
+        //if(y == 0) return x; 这么写对我不友好，按上面写。
         return generateGcd(y, x % y);
     }
 }
