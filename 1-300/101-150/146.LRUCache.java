@@ -31,20 +31,20 @@ cache.get(4);       // returns 4
  */
 class LRUCache {
     class Node{
+        Node pre;
+        Node next;
         int key;
         int val;
-        Node prev;
-        Node next;
         public Node(int key, int val){
             this.key = key;
             this.val = val;
         }
     }
     
-    private int capacity;
     private Map<Integer, Node> map;
     private Node head;
     private Node tail;
+    private int capacity;
     
     public LRUCache(int capacity) {
         map = new HashMap<>();
@@ -54,57 +54,51 @@ class LRUCache {
     }
     
     public int get(int key) {
+        if(!map.containsKey(key)) return -1;
         Node node = map.get(key);
-        if(node == null) {
-            return -1;
-        } 
-        reOrder(node);
+        reorder(node);
         return node.val;
     }
     
-    //we put most recent used node at tail, remove node at head;
     public void put(int key, int value) {
-        Node node = map.get(key);
-        if(node != null) {
-            node.val = value;
-            reOrder(node);
+        if(map.containsKey(key)) {
+            map.get(key).val = value;
+            reorder(map.get(key));
         } else {
-            Node newNode = new Node(key, value);
+            Node node = new Node(key, value);
             if(capacity == 0) {
-                Node tmp = head;
+                map.remove(head.key);
                 head = head.next;
-                //here we can't have head.prev = null; 
-                //it throughs null pointer
-                map.remove(tmp.key);
+                if(head != null) head.pre = null;
                 capacity++;
             }
+            
             if(head == null && tail == null) {
-                head = newNode;
+                head = node;
+                tail = node;
             } else {
-                tail.next = newNode;
-                newNode.prev = tail;
+                tail.next = node;
+                node.pre = tail;
+                tail = tail.next;
             }
-            tail = newNode;
-            map.put(key, newNode);
+            map.put(key, node);
             capacity--;
         }
     }
     
-    private void reOrder(Node node){
-        if(node != tail) {
-            if(node == head) {
-                head = head.next;
-                head.prev = null;
-            } else {
-                node.prev.next = node.next;
-                node.next.prev = node.prev;
-            }
-            tail.next = node;
-            node.prev = tail;
-            node.next = null;
-            tail = tail.next;
+    public void reorder(Node node){
+        if(node == tail) return;
+        
+        if(node == head) {
+            head = head.next;
+            head.pre = null;
+        } else {
+            node.pre.next = node.next;
+            node.next.pre = node.pre;
         }
+        tail.next = node;
+        node.pre = tail;
+        node.next = null;
+        tail = tail.next;
     }
 }
- 
- 
