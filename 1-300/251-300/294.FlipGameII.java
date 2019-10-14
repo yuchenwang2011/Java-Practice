@@ -27,6 +27,7 @@ class Solution {
             int start = s.indexOf("++", i);
             String flip = s.substring(0, start) + "--" + s.substring(start + 2);
             if(!canWin(flip, set)) return true;
+            //这里必须是+1,不是+2,因为你想啊，+++，第一个++不好使，你只是从第二个+开始重新试，不是第三个+
             i = start + 1;
         }
         set.add(s);
