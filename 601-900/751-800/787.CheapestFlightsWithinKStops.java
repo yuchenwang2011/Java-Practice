@@ -34,6 +34,7 @@ k is in the range of [0, n - 1].
 There will not be any duplicated flights or self cycles.
 
 Answer:
+//this question DFS + BFS, where BFS is much faster than DFS.
 //DFS solution
 class Solution {
     int result = Integer.MAX_VALUE;
@@ -63,5 +64,44 @@ class Solution {
             if(newCost > result) continue; 
             helper(graph, stop, dst, k - 1, newCost);
         }
+    }
+}
+
+//BFS
+class Solution {
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
+        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
+        for(int[] flight : flights){
+            if(!map.containsKey(flight[0])) map.put(flight[0], new HashMap<>());
+            map.get(flight[0]).put(flight[1], flight[2]);
+        }
+        
+        int result = Integer.MAX_VALUE;
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{src, 0});
+        
+        int step = 0;
+        while(!queue.isEmpty()){
+            if(step > K + 1) break;
+            System.out.println(step);
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                int[] stop = queue.poll();
+                if(stop[0] == dst) {
+                    result = Math.min(result, stop[1]);
+                    continue;
+                }
+                
+                if(!map.containsKey(stop[0])) continue;
+                Map<Integer, Integer> nodes = map.get(stop[0]);
+                for(int next : nodes.keySet()){
+                    int newCost = nodes.get(next) + stop[1];
+                    if(newCost > result) continue;
+                    queue.offer(new int[]{next, newCost});
+                }
+            }
+            step++;
+        }
+        return result == Integer.MAX_VALUE ? -1 : result;
     }
 }
