@@ -79,29 +79,26 @@ class Solution {
         int result = Integer.MAX_VALUE;
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[]{src, 0});
-        
-        int step = 0;
         while(!queue.isEmpty()){
-            if(step > K + 1) break;
-            System.out.println(step);
             int size = queue.size();
             for(int i = 0; i < size; i++){
                 int[] stop = queue.poll();
-                if(stop[0] == dst) {
-                    result = Math.min(result, stop[1]);
-                    continue;
-                }
-                
+                if(stop[1] > result) continue;
                 if(!map.containsKey(stop[0])) continue;
-                Map<Integer, Integer> nodes = map.get(stop[0]);
-                for(int next : nodes.keySet()){
-                    int newCost = nodes.get(next) + stop[1];
-                    if(newCost > result) continue;
-                    queue.offer(new int[]{next, newCost});
+                Map<Integer, Integer> neighbours = map.get(stop[0]);
+                for(int next : neighbours.keySet()){
+                    int cost = neighbours.get(next) + stop[1];
+                    if(next == dst) {
+                        result = Math.min(result, cost);
+                        continue;
+                    }
+                    queue.offer(new int[]{next, cost});
                 }
             }
-            step++;
+            K--;
+            if(K == -1) break; 
         }
+        
         return result == Integer.MAX_VALUE ? -1 : result;
     }
 }
