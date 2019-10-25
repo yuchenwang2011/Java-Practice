@@ -62,3 +62,39 @@ class Solution {
         }
     }
 }
+
+//我自己写的BFS
+class Solution {
+    public int countComponents(int n, int[][] edges) {
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for(int[] edge: edges){
+            graph.putIfAbsent(edge[0], new HashSet<>());
+            graph.putIfAbsent(edge[1], new HashSet<>());
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
+        }
+        int result = 0;
+        Set<Integer> visited = new HashSet<>();
+        Queue<Integer> queue = new LinkedList<>();
+        for(int key : graph.keySet()){
+            if(!visited.add(key)) continue;
+            queue.offer(key);
+            while(!queue.isEmpty()){
+                int size = queue.size();
+                for(int i = 0; i < size; i++){
+                    int node = queue.poll();
+                    Set<Integer> set = graph.get(node);
+                    for(int j : set){
+                        if(!visited.add(j)) continue;
+                        queue.offer(j);
+                    }
+                }
+            }
+            result++;
+        }
+        for(int i = 0; i < n; i++){
+            if(!graph.containsKey(i)) result++;
+        }
+        return result;
+    }
+}
