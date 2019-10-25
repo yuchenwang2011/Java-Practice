@@ -1,7 +1,6 @@
 310. Minimum Height Trees
 Medium
 
-
 For an undirected graph with tree characteristics, 
 we can choose any node as the root. The result graph is then a rooted tree. 
 Among all possible rooted trees, those with minimum height are called minimum height trees (MHTs). 
@@ -46,3 +45,38 @@ The height of a rooted tree is the number of edges on the longest downward path 
 Accepted 75,045 Submissions 242,274
 
 Answer:
+//time O(n) space O(n)
+class Solution {
+    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        List<Integer> result = new ArrayList<>();
+        if(n == 1) {
+            result.add(0);
+            return result;
+        }
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for(int[] edge : edges){
+            int a = edge[0];
+            int b = edge[1];
+            graph.putIfAbsent(a, new HashSet<>());
+            graph.putIfAbsent(b, new HashSet<>());
+            graph.get(a).add(b);
+            graph.get(b).add(a);
+        }
+        
+        for(int key : graph.keySet()){
+            if(graph.get(key).size() == 1) result.add(key);
+        }
+        
+        while(n > 2){
+            n -= result.size();
+            List<Integer> newLeaves = new ArrayList<>();
+            for(int i : result){
+                int j = graph.get(i).iterator().next();
+                graph.get(j).remove(i);
+                if(graph.get(j).size() == 1) newLeaves.add(j);
+            } 
+            result = newLeaves;
+        }
+        return result;
+    }
+}
