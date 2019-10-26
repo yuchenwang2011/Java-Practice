@@ -1,8 +1,9 @@
-i62. Unique Paths My Submissions Question
+62. Unique Paths My Submissions Question
 Total Accepted: 73839 Total Submissions: 211475 Difficulty: Medium
 A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
 
-The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+The robot can only move either down or right at any point in time.
+The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
 
 How many possible unique paths are there?
 oxxxxxx
