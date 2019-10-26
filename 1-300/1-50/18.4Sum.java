@@ -44,7 +44,7 @@ public class Solution {
 }
 
 
-=====================This is a K Sum solution=============
+=====================This is a K Sum KSum k sum ksum solution=============
 https://leetcode.com/problems/4sum/discuss/8609/My-solution-generalized-for-kSums-in-JAVA
 public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
