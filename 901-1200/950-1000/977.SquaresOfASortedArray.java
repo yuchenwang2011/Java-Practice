@@ -29,3 +29,24 @@ class Solution {
         return A;
     }
 }
+
+class Solution {
+    public int[] sortedSquares(int[] A) {
+        int start = 0;
+        int end = A.length - 1;
+        
+        int[] result = new int[A.length];
+        for(int i = result.length - 1; i >= 0; i--){
+            if(Math.abs(A[start]) < Math.abs(A[end])) {
+                long val = A[end] * A[end];
+                result[i] = val > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) val;
+                end--;
+            } else {
+                long val = A[start] * A[start];
+                result[i] = val > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) val;
+                start++;
+            }
+        }
+        return result;
+    }
+}
