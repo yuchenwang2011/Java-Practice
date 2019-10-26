@@ -72,7 +72,7 @@ class Solution {
             List<Integer> newLeaves = new ArrayList<>();
             for(int i : result){
                 int j = graph.get(i).iterator().next();
-                graph.get(j).remove(i);
+                graph.get(j).remove(i); //j单方面和i恩断义绝
                 if(graph.get(j).size() == 1) newLeaves.add(j);
             } 
             result = newLeaves;
