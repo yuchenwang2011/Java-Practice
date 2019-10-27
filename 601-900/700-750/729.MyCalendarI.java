@@ -30,12 +30,17 @@ In calls to MyCalendar.book(start, end), start and end are integers in the range
 Accepted 39,670 Submissions 81,001
 Answer:
 class MyCalendar {
-
+    private List<int[]> calendar;
     public MyCalendar() {
-        
+        calendar = new LinkedList<>();
     }
     
     public boolean book(int start, int end) {
-        
+        if(start > end) return false;
+        for(int[] book : calendar){
+            if(Math.max(start, book[0]) < Math.min(end, book[1])) return false;
+        }
+        calendar.add(new int[]{start, end});
+        return true;
     }
 }
