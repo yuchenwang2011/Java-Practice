@@ -29,6 +29,7 @@ In calls to MyCalendar.book(start, end), start and end are integers in the range
  
 Accepted 39,670 Submissions 81,001
 Answer:
+//两种方法都要掌握                                                               
 class MyCalendar {
     private List<int[]> calendar;
     public MyCalendar() {
@@ -41,6 +42,25 @@ class MyCalendar {
             if(Math.max(start, book[0]) < Math.min(end, book[1])) return false;
         }
         calendar.add(new int[]{start, end});
+        return true;
+    }
+}
+
+class MyCalendar {
+    TreeSet<int[]> calendar;
+    public MyCalendar() {
+        calendar = new TreeSet<>((a, b) -> a[0] - b[0]);
+    }
+    
+    public boolean book(int start, int end) {
+        if(start > end) return false;
+        int[] book = new int[]{start, end};
+        
+        int[] floor = calendar.floor(book);
+        if(floor != null && Math.max(floor[0], book[0]) < Math.min(floor[1], book[1])) return false;
+        int[] ceiling = calendar.ceiling(book);
+        if(ceiling != null && Math.max(ceiling[0], book[0]) < Math.min(ceiling[1], book[1])) return false;
+        calendar.add(book);
         return true;
     }
 }
