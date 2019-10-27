@@ -301,3 +301,7 @@
       myMethod("one", "two", "three");
       myMethod("solo");
       myMethod(new String[]{"a", "b", "c"});
+
+25. Random
+    Random ran = new Random();
+    int x = ran.nextInt(6) + 5; //outcome of 5-10
