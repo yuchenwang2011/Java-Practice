@@ -62,3 +62,45 @@ class MinStack {
         return min;
     }
 }
+
+//大神级思路
+class MinStack {
+    class Node{
+        int val;
+        int min;
+        Node next;
+        public Node(int val, int min){
+            this.val = val;
+            this.min = min;
+            this.next = null;
+        }
+    }
+    
+    private Node head;
+    
+    public MinStack() {
+        head = null;
+    }
+    
+    public void push(int x) {
+        if(head == null) {
+            head = new Node(x, x);
+        } else {
+            Node node = new Node(x, Math.min(x, head.min));
+            node.next = head;
+            head = node;
+        }
+    }
+    
+    public void pop() {
+        head = head.next;
+    }
+    
+    public int top() {
+        return head.val;
+    }
+    
+    public int getMin() {
+        return head.min;
+    }
+}
