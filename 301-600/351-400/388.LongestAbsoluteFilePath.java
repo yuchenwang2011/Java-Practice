@@ -40,3 +40,58 @@ Accepted 72,667 Submissions 181,282
 
 Answer:
 // \t or \n is escaped characters in String to represent tab or new line. So length of \t only counts as 1.
+class Solution {
+    public int lengthLongestPath(String input) {
+        int result = 0;
+        if(input == null || input.length() == 0) return result;
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.push(0); //a dummy root folder
+        String[] strings = input.split("\n");
+        for(String s : strings){
+            int numT = s.lastIndexOf("\t") + 1;
+            int level = numT + 1;
+            
+            while(level < stack.size()) stack.pop();
+            int len = stack.peek() + s.length() - numT + 1; //add a / at end
+            stack.push(len);
+            if(s.contains(".")) result = Math.max(result, len - 1); //remove the end /
+        }
+        return result;
+    }
+}
+
+//这是带注释版
+public class Solution {
+    public int lengthLongestPath(String input) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        String[] arr = input.split("\n");
+        int maxLen = 0;
+        stack.push(0); //dummy null length
+        for (String s: arr) {
+            /*
+            numOfTabs is the number of "\t", numOfTabs = 0 
+            when "\t" is not found, because s.lastIndexOf("\t") returns -1.
+            So normally, the first parent "dir" have numOfTabs 0.
+            */
+            int numOfTabs = s.lastIndexOf("\t") + 1;
+            /* Level is defined as numOfTabs + 1. 
+            For example, in "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext", 
+            dir is level 1, subdir1 and subdir2 are level 2, file.ext is level3
+            */
+            level = numOfTabs + 1;
+            /*
+            The following part of code is the case that we want to consider when there are
+            several subdirectories in a same level. We want to remove
+            the path length of the directory or the file of same level
+            that we added during previous step, and calculate 
+            the path length of current directory or file that we are currently looking at.
+            */
+            while (level < stack.size()) stack.poll(); 
+            int curLen = stack.peek() + s.length() - numOfTabs + 1;
+            stack.push(curLen);
+            if (s.contains(".")) maxLen = Math.max(maxLen, curLen - 1); //Only update the maxLen when a file is discovered, 
+            // And remove the "/" at the end of file
+        }
+        return maxLen;
+    }
+}
