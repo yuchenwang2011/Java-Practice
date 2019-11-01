@@ -82,15 +82,17 @@ class Solution {
         }
         
         public int maxCount(){
-            int max = 0;
+            int result = 0;
             int[] count = new int[parent.length];
-            for(int i = 0; i < parent.length; i++){
-                //这里就是找出带头大哥的出现次数
-                //每个小弟都挨个问一遍，你大哥是谁，然后把大哥票数加1,最后看哪个大哥票数最多
+            //这里就是找出带头大哥的出现次数
+            //每个小弟都挨个问一遍，你大哥是谁，然后把大哥票数加1,最后看哪个大哥票数最多
+            for(int i = 0; i < count.length; i++){
                 count[find(i)]++;
-                max = Math.max(max, count[find(i)]);
             }
-            return max;
+            for(int i = 0; i < count.length; i++){
+                result = Math.max(result, count[find(i)]);
+            }
+            return result;
         }
     }
 }
