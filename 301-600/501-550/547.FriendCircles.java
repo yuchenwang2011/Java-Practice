@@ -83,6 +83,8 @@ class Solution {
 }
 
 class Solution {
+//这个题的思路就是从0开始遍历，看看有没有0的朋友，一旦发现了，假如是0->2，就从2开始遍历
+//找到2的朋友，如果到2停止了，就返回。再从1开始遍历...
     public int findCircleNum(int[][] M) {
         int result = 0;
         if(M == null || M.length == 0 || M[0].length == 0 || M.length != M[0].length) return result;
