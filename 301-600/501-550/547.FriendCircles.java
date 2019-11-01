@@ -101,6 +101,7 @@ class Solution {
     }
     
     public void helper(int[][] M, int[] visited, int i){
+        //这里必须是M.length。因为从一开始就要找遍其他人
         for(int j = 0; j < M.length; j++){
             if(M[i][j] == 1 && visited[j] == 0) {
                 visited[j] = 1;
