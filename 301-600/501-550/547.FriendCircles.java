@@ -88,9 +88,12 @@ class Solution {
         if(M == null || M.length == 0 || M[0].length == 0 || M.length != M[0].length) return result;
         int[] visited = new int[M.length];
         for(int i = 0; i < M.length; i++){
+            //这里就是从第0个人开始，00,01,02,03;10,11,12,13;20,21,22,23;30,31,32,33
             if(visited[i] == 0) {
                 helper(M, visited, i);
-                result++;
+                result++; 
+                //为啥M[i][j]不是1只是没有visited也能++呢，
+                //因为这个说明这个人没有朋友啊，就他自己，虽然有个M[i][i]是1，但是没轮到那里，就已经知道他没朋友了
             }
         }
         return result;
