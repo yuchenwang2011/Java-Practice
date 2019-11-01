@@ -36,6 +36,7 @@ If M[i][j] = 1, then M[j][i] = 1.
 Accepted 113,584 Submissions 203,960
 
 Answer:
+//必须会两种方法
 class Solution {
     public int findCircleNum(int[][] M) {
         if(M == null || M.length == 0 || M[0].length == 0) return 0;
@@ -76,6 +77,30 @@ class Solution {
             if(root1 != root2) {
                 parent[root1] = root2;
                 count--;
+            }
+        }
+    }
+}
+
+class Solution {
+    public int findCircleNum(int[][] M) {
+        int result = 0;
+        if(M == null || M.length == 0 || M[0].length == 0 || M.length != M[0].length) return result;
+        int[] visited = new int[M.length];
+        for(int i = 0; i < M.length; i++){
+            if(visited[i] == 0) {
+                helper(M, visited, i);
+                result++;
+            }
+        }
+        return result;
+    }
+    
+    public void helper(int[][] M, int[] visited, int i){
+        for(int j = 0; j < M.length; j++){
+            if(M[i][j] == 1 && visited[j] == 0) {
+                visited[j] = 1;
+                helper(M, visited, j);
             }
         }
     }
