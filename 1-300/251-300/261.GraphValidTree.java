@@ -55,31 +55,45 @@ class Solution {
     }
 }
 
-
 class Solution {
-    //https://www.geeksforgeeks.org/union-find
     public boolean validTree(int n, int[][] edges) {
-        if(n == 1 && edges.length == 0) return true;
-        if(n < 1 || edges == null || edges.length != n - 1) return false;
-        int[] roots = new int[n];
-        Arrays.fill(roots, -1);
-        for(int[] pair : edges){
-            int x = find(roots, pair[0]);
-            int y = find(roots, pair[1]);
-            // if two vertices happen to be in the same set
-            // then there's a cycle
-            if (x == y) return false;
-            
-            // union
-            roots[x] = y;
+        if(edges == null || edges.length == 0) {
+            return n == 1;
+        } 
+        UnionFind uf = new UnionFind(n);
+        for(int[] edge : edges){
+            int id1 = uf.find(edge[0]);
+            int id2 = uf.find(edge[1]);
+            if(id1 == id2) return false;
+            uf.union(id1, id2);
         }
-        return true;
+        return uf.count == 1;
     }
     
-    public int find(int[] roots, int i){
-        while(roots[i] != -1){
-            i = roots[i];
+    public class UnionFind{
+        int count = 0;
+        int[] parent;
+        public UnionFind(int n){
+            parent = new int[n];
+            for(int i = 0; i < n; i++){
+                parent[i] = i;
+                count++;
+            }
         }
-        return i;
+        
+        public int find(int id){
+            if(id == parent[id]) return id;
+            parent[id] = find(parent[id]);
+            return parent[id];
+        }
+        
+        public void union(int id1, int id2){
+            int root1 = find(id1);
+            int root2 = find(id2);
+            if(root1 != root2) {
+                parent[root1] = root2;
+                count--;
+            }
+        }
     }
 }
