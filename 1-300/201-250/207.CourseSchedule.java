@@ -38,70 +38,36 @@ Answer:
 //very good tutorial video what is topoligy sort https://www.youtube.com/watch?v=ddTC4Zovtbc
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        if(numCourses < 0) return false;
-        if(prerequisites == null || prerequisites.length == 0 || prerequisites[0].length == 0) return true;
-        int[] indegree = new int[numCourses];
-        for(int[] pre : prerequisites){
-            indegree[pre[0]]++;
-        }
+        if(numCourses <= 0) return false;
+        if(prerequisites == null || prerequisites.length == 0) return true;
         
+        int[] indegree = new int[numCourses];
+        for(int[] prerequisite : prerequisites){
+            int a = prerequisite[0];
+            indegree[a]++;
+        }
+
+        int count = 0;
         Queue<Integer> queue = new LinkedList<>();
         for(int i = 0; i < indegree.length; i++){
-            if(indegree[i] == 0) queue.offer(i);
+            if(indegree[i] == 0) {
+                queue.offer(i);
+                count++;
+            }
         }
-        
-        int result = 0;
         while(!queue.isEmpty()){
-            int size = queue.size();
-            //这个for loop可以不要，就每次while循环poll一个就行
-            for(int i = 0; i < size; i++){
-                int tmp = queue.poll();
-                result++;
-                for(int[] pre : prerequisites){
-                    if(pre[1] == tmp) {
-                        indegree[pre[0]]--;
-                        if(indegree[pre[0]] == 0) queue.offer(pre[0]);
+            int node = queue.poll();
+            for(int[] prerequisite : prerequisites){
+                if(prerequisite[1] == node) {
+                    int tmp = prerequisite[0];
+                    indegree[tmp]--;
+                    if(indegree[tmp] == 0) {
+                        queue.offer(tmp);
+                        count++;
                     }
                 }
             }
         }
-
-        return result == numCourses;
-    }
-}
-
-//下面的这个我微微改了一下，因为感觉更好记
-class Solution {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-        if(numCourses < 0) return false;
-        if(prerequisites == null || prerequisites.length == 0 || prerequisites[0].length == 0) return true;
-        int[] indegree = new int[numCourses];
-        for(int[] pre : prerequisites){
-            indegree[pre[0]]++;
-        }
-        
-        Queue<Integer> queue = new LinkedList<>();
-        for(int i = 0; i < indegree.length; i++){
-            if(indegree[i] == 0) queue.offer(i);
-        }
-        
-        while(!queue.isEmpty()){
-            int size = queue.size();
-            //这个for loop可以不要，就每次while循环poll一个就行
-            for(int i = 0; i < size; i++){
-                int tmp = queue.poll();
-                for(int[] pre : prerequisites){
-                    if(pre[1] == tmp) {
-                        indegree[pre[0]]--;
-                        if(indegree[pre[0]] == 0) queue.offer(pre[0]);
-                    }
-                }
-            }
-        }
-
-        for(int i = 0; i < indegree.length; i++){
-            if(indegree[i] != 0) return false;
-        }
-        return true;
+        return count == numCourses;
     }
 }
