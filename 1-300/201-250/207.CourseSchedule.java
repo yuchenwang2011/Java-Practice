@@ -71,3 +71,36 @@ class Solution {
         return count == numCourses;
     }
 }
+
+
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        if(numCourses <= 0) return false;
+        if(prerequisites == null || prerequisites.length == 0) return true;
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for(int i = 0; i < prerequisites.length; i++){
+            int a = prerequisites[i][0];
+            int b = prerequisites[i][1];
+            graph.putIfAbsent(b, new HashSet<>());
+            graph.get(b).add(a);
+        }
+        Set<Integer> visited = new HashSet<>();
+        int start = graph.keySet().iterator().next();
+        boolean result = helper(graph, visited, start);
+        if(result == false) return false;
+        return true;
+    }
+    
+    public boolean helper(Map<Integer, Set<Integer>> graph, Set<Integer> visited, int current){
+        if(visited.contains(current)) return false;
+        visited.add(current);
+        Set<Integer> set = graph.get(current);
+        if(set != null && set.size() != 0){
+            for(int i : set){
+                if(!helper(graph, visited, i)) return false;
+            }
+        }
+        visited.remove(current);
+        return true;
+    }
+}
