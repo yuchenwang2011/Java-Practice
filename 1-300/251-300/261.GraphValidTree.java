@@ -24,29 +24,31 @@ Answer:
 //这题必须会，是个图的题，第一个dfs，第二个union find
 class Solution {
     public boolean validTree(int n, int[][] edges) {
-        //第一行不用测试null和0啥的
-        List<List<Integer>> graph = new ArrayList<>();
-        for(int i = 0; i < n; i++){
-            graph.add(new ArrayList<>());
+        if(edges == null || edges.length == 0){
+            return n == 1;   
         }
-        for(int i = 0; i < edges.length; i++){
-            graph.get(edges[i][0]).add(edges[i][1]);
-            graph.get(edges[i][1]).add(edges[i][0]);
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for(int[] edge : edges){
+            graph.putIfAbsent(edge[0], new HashSet<>());
+            graph.putIfAbsent(edge[1], new HashSet<>());
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
         }
         Set<Integer> visited = new HashSet<>();
-        visited.add(0);
-        boolean result = helper(graph, visited, 0, - 1);
-        if(result == false) return result;
+        boolean result = helper(graph, visited, edges[0][0], -1);
+        if(result == false) return false;
         return visited.size() == n;
     }
     
-    public boolean helper(List<List<Integer>> graph, Set<Integer> visited, int current, int parent){
-        List<Integer> nodes = graph.get(current);
-        for(int node : nodes){
-            if(node == parent) continue;
-            if(visited.contains(node)) return false;
-            visited.add(node);
-            boolean result = helper(graph, visited, node, current);
+    public boolean helper(Map<Integer, Set<Integer>> graph, Set<Integer> visited, int current, int last){
+        if(!graph.containsKey(current)) return false;
+        Set<Integer> set = graph.get(current);
+        
+        visited.add(current);
+        for(int next : set){
+            if(next == last) continue;
+            if(visited.contains(next)) return false;
+            boolean result = helper(graph, visited, next, current);
             if(result == false) return false;
         }
         return true;
