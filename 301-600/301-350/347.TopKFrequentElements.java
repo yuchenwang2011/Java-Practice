@@ -26,22 +26,17 @@ class Solution {
         for(int i = 0; i < nums.length; i++){
             map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
         }
-        
-        List<Integer>[] bucket = new ArrayList[nums.length + 1];
-        for(int key : map.keySet()){
-            int freq = map.get(key);
+        List<Integer> bucket[] = new ArrayList[nums.length + 1];
+        for(int num : map.keySet()){
+            int freq = map.get(num);
             if(bucket[freq] == null) bucket[freq] = new ArrayList<>();
-            bucket[freq].add(key);
+            bucket[freq].add(num);
         }
-        
-        int i = bucket.length - 1;
-        while(k > 0){
-            while(i >= 0 && bucket[i] == null) {
-                i--;
-            }
+        for(int i = bucket.length - 1; i >= 0; i--){
+            if(k <= 0) break;
+            if(bucket[i] == null) continue;
             result.addAll(bucket[i]);
-            k-= bucket[i].size();
-            i--;
+            k -= bucket[i].size();
         }
         
         return result;
