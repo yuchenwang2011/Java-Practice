@@ -36,6 +36,7 @@
     int j = entry.getValue();
   }
   for(int next : set)
+  int i = set.iterator().next();
   
   
 4.StringBuilder sb = new StringBuilder();
