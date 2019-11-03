@@ -42,3 +42,28 @@ class Solution {
         return result;
     }
 }
+
+
+class Solution {
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        List<Integer> result = new ArrayList<>();
+        if(nums == null || nums.length == 0 || k <= 0 || k > nums.length) return result;
+        
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i : nums){
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+        
+        PriorityQueue<int[]> pq = new PriorityQueue<>(k + 1, (a,b) -> a[0] - b[0]);
+        for(int key : map.keySet()){
+            pq.offer(new int[]{map.get(key), key});
+            while(pq.size() > k) pq.poll();
+        }
+        
+        for(int[] i : pq){
+            result.add(0, i[1]);
+        }
+        
+        return result;
+    }
+}
