@@ -17,6 +17,7 @@
   Integer[] integers = new Integer[5];
   Arrays.fill(integers, 0);
   List<Integer> list = Arrays.asList(integers);
+  List<Integer> bucket[] = new ArrayList[nums.length + 1];
 
 3.
   //讲hashmap怎么工作的https://www.youtube.com/watch?v=c3RVW3KGIIE
