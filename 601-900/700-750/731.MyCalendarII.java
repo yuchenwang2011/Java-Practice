@@ -47,6 +47,9 @@ class MyCalendarTwo {
     public boolean book(int start, int end) {
         MyCalendar overlap = new MyCalendar();
         for(int[] book : calendar){
+            //这里，第一段和第二段冲突了。把冲突那段拿出来，which is part of 第二段
+            //去看看这段，有没有和其他的冲突，如果有，意味着第二段就因为这里跟其他的段有冲突了
+            //所以不能再冲突一次了。所以第一段不能再要了
             if(Math.max(start, book[0]) < Math.min(end, book[1])) {
                 if(!overlap.book(Math.max(start, book[0]), Math.min(end, book[1]))) {
                     return false;
