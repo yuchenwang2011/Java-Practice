@@ -86,55 +86,48 @@ So roughly O(nk). Accurately O(nm) where m is the total "number of recursive cal
 or "nodes in the search tree". Then you need to relate m to n in the worst case.
 I wouldn't worry too much about the accurate complexity analysis of this problem.
 It would require more mathematics than an interview cares.
+     
                                                                                 
-                                                                                
-public class Solution {
+class Solution {
     public List<String> removeInvalidParentheses(String s) {
-      List<String> res = new ArrayList<>();
-      if (s == null) return res;
-      
-      Set<String> visited = new HashSet<>();
-      Queue<String> queue = new LinkedList<>();
-      
-      queue.add(s);
-      visited.add(s);
-      
-      boolean found = false;
-      while (!queue.isEmpty()) {
-        s = queue.poll();
-        if (isValid(s)) {
-          // found an answer, add to the result
-          res.add(s);
-          found = true;
+        List<String> result = new ArrayList<>();
+        Set<String> visited = new HashSet();
+        Queue<String> queue = new LinkedList<>();
+    
+        visited.add(s);
+        queue.offer(s);
+        
+        boolean found = false;
+        while(!queue.isEmpty()){
+            String tmp = queue.poll();
+            if(isValid(tmp)) {
+                found = true;
+                result.add(tmp);
+            }
+            //this ensures once we've found a valid parentheses pattern,
+            //we don't do any further bfs using items pending in the queue since any further bfs 
+            //would only yield strings of smaller length. However the items already in queue need 
+            //to be processed since there could be other solutions of the same length.
+            if(found) continue;
+            for(int i = 0; i < tmp.length(); i++){
+                char c = tmp.charAt(i);
+                if(c != '(' && c != ')') continue;
+                String newS = tmp.substring(0, i) + tmp.substring(i + 1);
+                if(!visited.contains(newS)) {
+                    queue.offer(newS);
+                    visited.add(newS);
+                }
+            }
         }
-        //this ensures once we've found a valid parentheses pattern,
-        //we don't do any further bfs using items pending in the queue since any further bfs 
-        //would only yield strings of smaller length. However the items already in queue need 
-        //to be processed since there could be other solutions of the same length.
-        if (found) continue;      
-        // generate all possible states
-        for (int i = 0; i < s.length(); i++) {
-          // we only try to remove left or right paren
-          if (s.charAt(i) != '(' && s.charAt(i) != ')') continue;
-          String t = s.substring(0, i) + s.substring(i + 1);
-          if (!visited.contains(t)) {
-            // for each state, if it's not visited, add it to the queue
-            queue.add(t);
-            visited.add(t);
-          }
-        }
-      }
-      return res;
+        return result;
     }
     
-    boolean isValid(String s) {
+    public boolean isValid(String s){
         int count = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '(') count++;
+        for(char c : s.toCharArray()){
+            if(c == '(') count++;
             if (c == ')') {
-                if (count == 0) return false;
+                if(count == 0) return false;
                 count--;
             }
         }
