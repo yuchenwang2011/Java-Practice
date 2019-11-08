@@ -107,6 +107,10 @@ public class Solution {
           res.add(s);
           found = true;
         }
+        //this ensures once we've found a valid parentheses pattern,
+        //we don't do any further bfs using items pending in the queue since any further bfs 
+        //would only yield strings of smaller length. However the items already in queue need 
+        //to be processed since there could be other solutions of the same length.
         if (found) continue;      
         // generate all possible states
         for (int i = 0; i < s.length(); i++) {
@@ -147,3 +151,8 @@ total time complexity is (n-2) x C(n, n-2), so on and so forth...
 
 Finally we have this formula:
 T(n) = n x C(n, n) + (n-1) x C(n, n-1) + ... + 1 x C(n, 1) = n x 2^(n-1).
+
+Time complexity: you have a length n string, every character have 2 states "keep/remove", 
+that is 2^n states and check valid is O(n). All together O(n*2^n). This means there is a lot of duplicates. 
+Ideally it should be O(C(n, k) + n) where k is the number of chars needs remove. 
+Use a O(n) time to preprocess and get the value k.
