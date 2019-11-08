@@ -108,6 +108,7 @@ class Solution {
             //we don't do any further bfs using items pending in the queue since any further bfs 
             //would only yield strings of smaller length. However the items already in queue need 
             //to be processed since there could be other solutions of the same length.
+            //这个题问的是Remove the minimum number of invalid parentheses
             if(found) continue;
             for(int i = 0; i < tmp.length(); i++){
                 char c = tmp.charAt(i);
