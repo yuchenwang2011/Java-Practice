@@ -24,30 +24,37 @@ Answer:
 //DFS roughly O(nk). Accurately O(nm) where m is the total "number of recursive calls" 
 class Solution {
     public List<String> removeInvalidParentheses(String s) {
-        List<String> output = new ArrayList<>();
-        removeHelper(s, output, 0, 0, '(', ')');
-        return output;
+        List<String> result = new ArrayList<>();
+        helper(s, result, 0, 0, '(', ')');
+        return result;
     }
-
-    public void removeHelper(String s, List<String> output, int iStart, int jStart, char openParen, char closedParen) {
-        int numOpenParen = 0, numClosedParen = 0;
-        for (int i = iStart; i < s.length(); i++) {
-            if (s.charAt(i) == openParen) numOpenParen++;
-            if (s.charAt(i) == closedParen) numClosedParen++;
-            if (numClosedParen > numOpenParen) { // We have an extra closed paren we need to remove
-                for (int j = jStart; j <= i; j++) // Try removing one at each position, skipping duplicates
-                    if (s.charAt(j) == closedParen && (j == jStart || s.charAt(j - 1) != closedParen))
-                    // Recursion: iStart = i since we now have valid # closed parenthesis thru i. jStart = j prevents duplicates
-                        removeHelper(s.substring(0, j) + s.substring(j + 1, s.length()), output, i, j, openParen, closedParen);
-                return; // Stop here. The recursive calls handle the rest of the string.
+    
+    public void helper(String s, List<String> result, int iStart, int jStart, char openP, char closeP){
+        int count1 = 0;
+        int count2 = 0;
+        for(int i = iStart; i < s.length(); i++){
+            char c = s.charAt(i);
+            if(c == openP) count1++;
+            if(c == closeP) count2++;
+            if(count1 < count2) {
+                for(int j = jStart; j <= i; j++){
+                    //要么就是起始位，要么就是前一位跟现在不一样，才能删除。因为我们总删除第一个出现的反括号
+                    //要是前面一位就已经是反括号了，那就应该删除前面那一位啊
+                    //注意不能==openP，必须是!=closeP，因为有字母
+                    if(s.charAt(j) == closeP && (j == jStart || s.charAt(j - 1) != closeP)) {
+                        String newS = s.substring(0, j) + s.substring(j + 1);
+                        helper(newS, result, i, j, openP, closeP);
+                    }
+                }
+                return;
             }
         }
-        // No invalid closed parenthesis detected. Now check opposite direction, or reverse back to original direction.
-        String reversed = new StringBuilder(s).reverse().toString();
-        if (openParen == '(')
-            removeHelper(reversed, output, 0, 0, ')','(');
-        else
-            output.add(reversed);
+        String reverseS = new StringBuilder(s).reverse().toString();
+        if(openP == '(') {
+            helper(reverseS, result, 0, 0, closeP, openP);
+        } else {
+            result.add(reverseS);
+        }
     }
 }
 
