@@ -124,13 +124,17 @@ public class Solution {
     }
     
     boolean isValid(String s) {
-      int count = 0;
-      for (int i = 0; i < s.length(); i++) {
-        char c = s.charAt(i);
-        if (c == '(') count++;
-        if (c == ')' && count-- == 0) return false;
-      }
-      return count == 0;
+        int count = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') count++;
+            if (c == ')') {
+                if (count == 0) return false;
+                count--;
+            }
+        }
+        return count == 0;
     }
 }
                                                            
