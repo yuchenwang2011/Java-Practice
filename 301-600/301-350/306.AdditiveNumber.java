@@ -61,3 +61,30 @@ class Solution {
         return isValid(num, s1, s2, start + s2.length());
     }
 }
+
+//Recursive Solution
+class Solution {
+    public boolean isAdditiveNumber(String num) {
+        if(num == null || num.length() < 3) return false;
+        for(int i = 1; i <= num.length() / 2; i++){
+            for(int j = 1; num.length() - i - j >= Math.max(i, j); j++){
+                if(isValid(num, i, j)) return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean isValid(String num, int i, int j){
+        if(num.charAt(0) == '0' && i > 1) return false;
+        if(num.charAt(i) == '0' && j > 1) return false;
+        String s1 = num.substring(0, i);
+        String s2 = num.substring(i, i + j);
+        for(int k = i + j; k < num.length(); k += s2.length()){
+            String tmp = s2;
+            s2 = Long.parseLong(s1) + Long.parseLong(s2) + "";
+            s1 = tmp;
+            if(!num.startsWith(s2, k)) return false;
+        }
+        return true;
+    }
+}
