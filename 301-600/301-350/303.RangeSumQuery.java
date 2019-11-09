@@ -13,25 +13,20 @@ You may assume that the array does not change.
 There are many calls to sumRange function.
 
 Answer:
-public class NumArray {
-
-    int[] sums;
-
+class NumArray {
+    private int[] nums;
     public NumArray(int[] nums) {
-        sums = nums;  //this is tricky here because nums can be length == 0
-        for(int i = 1; i < nums.length; i++){
-            sums[i] = sums[i - 1] + nums[i];
+        this.nums = nums;
+        int sum = 0;
+        for(int i = 0; i < nums.length; i++){
+            sum += nums[i];
+            this.nums[i] = sum;
         }
     }
-
+    
     public int sumRange(int i, int j) {
-        if(i == 0) return sums[j];
-        return sums[j] - sums[i -1];
+        if(i > j) return 0;
+        if(i == 0) return nums[j];
+        return nums[j] - nums[i - 1];
     }
 }
-
-
-// Your NumArray object will be instantiated and called as such:
-// NumArray numArray = new NumArray(nums);
-// numArray.sumRange(0, 1);
-// numArray.sumRange(1, 2);
