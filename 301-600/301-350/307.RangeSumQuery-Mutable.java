@@ -19,8 +19,8 @@ Answer:
 //必须会的一道题Binary Index Tree
 //https://www.jiuzhang.com/solution/range-sum-query-mutable/
 class NumArray {
-    private int[] nums;
     private int[] tree;
+    private int[] nums;
     
     public NumArray(int[] nums) {
         this.nums = new int[nums.length];
@@ -38,18 +38,20 @@ class NumArray {
         }
     }
     
-    private int lowbit(int x) {
-        return x & (-x);
-    }
-
-    public int sumRange(int left, int right) {
-        return getPrefixSum(right) - getPrefixSum(left - 1);
+    public int lowbit(int i){
+        return i & (-i);
     }
     
-    public int getPrefixSum(int index) {
+    public int sumRange(int i, int j) {
+        if(i == 0) return sum(j);
+        return sum(j) - sum(i - 1);
+    }
+    
+    public int sum(int i){
         int sum = 0;
-        for (int i = index + 1; i > 0; i = i - lowbit(i)) {
-            sum += tree[i];
+        //注意j 不能等于0，不然无限循环
+        for(int j = i + 1; j > 0; j -= lowbit(j)){
+            sum += tree[j];
         }
         return sum;
     }
