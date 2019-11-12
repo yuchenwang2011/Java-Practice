@@ -44,6 +44,7 @@ class Solution {
                 start = mid;
             }
         }
+        //因为想找的是最左边的，所以先看start
         if(hasBlack(image, start, isHorizon)) return start;
         return end;
     }
@@ -58,6 +59,7 @@ class Solution {
                 end = mid;
             }
         }
+        //因为想找的是最右边的，所以先看end
         if(hasBlack(image, end, isHorizon)) return end;
         return start;
     }
