@@ -17,11 +17,9 @@ transactions = [buy, sell, cooldown, buy, sell]
 Answer:
 public class Solution {
     public int maxProfit(int[] prices) {
-        //Got inspired by this answer
-        //https://leetcode.com/discuss/71469/my-java-1ms-solution
         //this answer just has 2 things to consider, for a day, buy or not buy, sell or not sell
         //And you only consider how much money you left now
-        //https://leetcode.com/discuss/71354/share-my-thinking-process
+        //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75927/Share-my-thinking-process
         if(prices == null || prices.length <= 1) return 0;
         int[] buy = new int[prices.length];
         int[] sell = new int[prices.length];
