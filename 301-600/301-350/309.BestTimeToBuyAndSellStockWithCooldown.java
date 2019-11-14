@@ -15,23 +15,26 @@ maxProfit = 3
 transactions = [buy, sell, cooldown, buy, sell]
 
 Answer:
-public class Solution {
+class Solution {
     public int maxProfit(int[] prices) {
-        //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75927/Share-my-thinking-process
-        if(prices == null || prices.length <= 1) return 0;
+        if(prices == null || prices.length < 2) return 0;
         int[] buy = new int[prices.length];
         int[] sell = new int[prices.length];
-        buy[0] = -prices[0];
-        buy[1] = Math.max(-prices[0], -prices[1]);
         
+        //在前两天，buy是在第i天以buy结尾
+        buy[0] = -prices[0];
+        buy[1] = Math.max(-prices[0], -prices[1]);       
         sell[0] = 0;
         sell[1] = Math.max(0, prices[1] - prices[0]);
         
         for(int i = 2; i < prices.length; i++){
-            buy[i] = Math.max(sell[i-2] - prices[i], buy[i-1]);
-            sell[i] = Math.max( buy[i-1] + prices[i] , sell[i-1] );
+            int price = prices[i];
+            //在两天以后，buy就是意味着buy还是不买了，要辩证的分段的看
+            //buy的意义不是一成不变的
+            buy[i] = Math.max(sell[i - 2] - price, buy[i - 1]);
+            sell[i] = Math.max(buy[i - 1] + price, sell[i - 1]);
         }
-        return sell[prices.length - 1];
+        return sell[sell.length - 1];
     }
 }
 
