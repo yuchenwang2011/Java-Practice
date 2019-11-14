@@ -38,22 +38,22 @@ class Solution {
     }
 }
 
-//So just change the above answer from space O(N) to O(N), it becomes
-public class Solution {
+//So just change the above answer from space O(N) to O(1), it becomes
+class Solution {
     public int maxProfit(int[] prices) {
-        if(prices == null || prices.length <= 1) return 0;
-
-        int firstSell = 0;
-        int lastBuy = Math.max(-prices[0], -prices[1]);
-        int secondSell = Math.max(0, prices[1] - prices[0]);
-        
+        if(prices == null || prices.length < 2) return 0;
+        int buy = Math.max(-prices[0], -prices[1]);
+        int prevSell = 0;
+        int sell = Math.max(0, prices[1] - prices[0]);
         for(int i = 2; i < prices.length; i++){
-            int buy = Math.max(firstSell - prices[i], lastBuy);
-            int sell = Math.max(secondSell, lastBuy + prices[i]);
-            lastBuy = buy;
-            firstSell = secondSell;
-            secondSell = sell;
+            int price = prices[i];
+            int tmpBuy = buy;
+            buy = Math.max(prevSell - price, buy);
+            
+            int tmpSell = sell;
+            sell = Math.max(tmpBuy + price, sell);
+            prevSell = tmpSell;
         }
-        return secondSell;
+        return sell;
     }
 }
