@@ -23,29 +23,26 @@ AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
                   | 0 0 1 |
 
 Answer:
-public class Solution {
-  //This image tells you how to do the matrix calculation
-  https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/311.gif
-  //https://patentimages.storage.googleapis.com/EP0480825A2/imgb0053.png
+class Solution {
+    //https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/311.gif
+    //https://patentimages.storage.googleapis.com/EP0480825A2/imgb0053.png
     public int[][] multiply(int[][] A, int[][] B) {
-        if(A == null || B == null) return null;
-        int aRow = A.length;
-        int aCol = A[0].length;
-        int bRow = B.length;
-        int bCol = B[0].length;
+        int rowA = A.length;
+        int colA = A[0].length;
+        int rowB = B.length;
+        int colB = B[0].length;
+        if(colA != rowB) return new int[0][0];
         
-        if(aCol != bRow) return null;
-        int[][] C = new int[aRow][bCol];
-        
-        for(int i = 0; i <aRow; i++){
-            for(int k = 0; k < aCol; k++){
-                if(A[i][k] != 0){
-                    for(int j = 0; j < bCol; j++){
-                        if(B[k][j] != 0) C[i][j] += A[i][k] * B[k][j];
-                    }
+        int[][] result = new int[rowA][colB];
+        for(int i = 0; i < rowA; i++){
+            for(int k = 0; k < colA; k++){
+                if(A[i][k] == 0) continue;
+                for(int j = 0; j < colB; j++){
+                    if(B[k][j] == 0) continue;
+                    result[i][j] += A[i][k] * B[k][j];
                 }
             }
         }
-        return C;
+        return result;
     }
 }
