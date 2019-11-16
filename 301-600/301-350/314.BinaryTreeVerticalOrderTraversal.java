@@ -34,40 +34,45 @@ return its vertical order traversal as:
 ]
 
 Answer:
-public class Solution {
+class Solution {
     //https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/314.jpg
     public List<List<Integer>> verticalOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
         if(root == null) return result;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        Queue<Integer> cols = new LinkedList<Integer>();
-        HashMap<Integer, ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>();
         
-        queue.add(root);
-        cols.add(0);
-        int min = 0, max = 0;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        Queue<Integer> cols = new LinkedList<>();
+        cols.offer(0);
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        
+        int min = 0;
+        int max = 0;
+        
         while(!queue.isEmpty()){
-            TreeNode node = queue.poll();
-            int col = cols.poll();
-            if(!map.containsKey(col)) map.put(col, new ArrayList<Integer>());
-            map.get(col).add(node.val);
-            
-            if(node.left != null){
-                queue.add(node.left);
-                cols.add(col-1);
-                if(col <= min) min = col - 1;
-            }
-            
-            if(node.right != null) {
-                queue.add(node.right);
-                cols.add(col+1);
-                if(col >= max) max = col + 1;
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                TreeNode node = queue.poll();
+                int col = cols.poll();
+                if(!map.containsKey(col)) map.put(col, new ArrayList<>());
+                map.get(col).add(node.val);
+                
+                if(node.left != null) {
+                    queue.offer(node.left);
+                    cols.offer(col - 1);
+                    if(col - 1 < min) min--; 
+                }
+                if(node.right != null) {
+                    queue.offer(node.right);
+                    cols.offer(col + 1);
+                    if(col + 1 > max) max++;
+                }
             }
         }
         
         for(int i = min; i <= max; i++){
             result.add(map.get(i));
-        }
+        }     
         return result;
     }
 }
