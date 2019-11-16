@@ -23,31 +23,9 @@ AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
                   | 0 0 1 |
 
 Answer:
-//This answer is TLE, but i think this is worthy to be recorded. 
-public class Solution {
-    //I got the hard way to calcualte the multiplication
-    //http://stackoverflow.com/questions/17623876/matrix-multiplication-using-arrays
-    public int[][] multiply(int[][] A, int[][] B) {
-        if(A == null || B == null) return null;
-        int aRow = A.length;
-        int aCol = A[0].length;
-        int bRow = B.length;
-        int bCol = B[0].length;
-        int[][] result = new int[aRow][bCol];
-        
-        for(int i = 0; i < aRow; i++){
-            for(int j = 0; j < bCol; j++){
-                for(int k = 0; k < aCol; k++){
-                    result[i][j] += A[i][k] * B[k][j];
-                }
-            }
-        }
-        return result;
-    }
-}
-
 public class Solution {
   //This image tells you how to do the matrix calculation
+  https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/311.gif
   //https://patentimages.storage.googleapis.com/EP0480825A2/imgb0053.png
     public int[][] multiply(int[][] A, int[][] B) {
         if(A == null || B == null) return null;
