@@ -34,18 +34,8 @@ return its vertical order traversal as:
 ]
 
 Answer:
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
 public class Solution {
-    //Got inpired by this answer:
-    //https://leetcode.com/discuss/75054/5ms-java-clean-solution
+    //https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/314.jpg
     public List<List<Integer>> verticalOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         if(root == null) return result;
