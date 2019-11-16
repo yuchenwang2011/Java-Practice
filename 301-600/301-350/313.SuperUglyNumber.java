@@ -13,6 +13,7 @@ Note:
 (3) 0 < k ≤ 100, 0 < n ≤ 106, 0 < primes[i] < 1000.
 
 Answer:
+//必须掌握两个方法，而且第二个方法每次都要练习写一遍
 class Solution {
     public int nthSuperUglyNumber(int n, int[] primes) {
         if(n <= 0 || primes == null || primes.length == 0) return 0;
@@ -32,5 +33,43 @@ class Solution {
             }
         }
         return result[result.length - 1];
+    }
+}
+
+//这个是O(nlogn)方法，但是实际提交结果还是慢
+class Solution {
+    public int nthSuperUglyNumber(int n, int[] primes) {
+        if(n <= 0 || primes == null || primes.length == 0) return 0;
+        PriorityQueue<Node> pq = new PriorityQueue<>();
+        
+        for(int i = 0; i < primes.length; i++){
+            pq.offer(new Node(primes[i], 1, primes[i]));
+        }
+        int[] result = new int[n];
+        result[0] = 1;
+        for(int i = 1; i < result.length; i++){
+            result[i] = pq.peek().val;
+            while(pq.peek().val == result[i]) {
+                Node node = pq.poll();
+                pq.offer(new Node(node.prime, node.idx + 1, node.prime * (result[node.idx])));
+            }
+        }
+        return result[result.length - 1];
+    }
+    
+    class Node implements Comparable<Node>{
+        int prime;
+        int idx;
+        int val;
+        public Node(int prime, int idx, int val){
+            this.prime = prime;
+            this.idx = idx;
+            this.val = val;
+        }
+        
+        @Override
+        public int compareTo(Node that){
+            return this.val - that.val;
+        }
     }
 }
