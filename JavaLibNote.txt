@@ -240,6 +240,10 @@
     int[] a = {1,2,3};
     int[] b = a.clone();
     System.out.println(Arrays.toString(a));
+    Arrays.copyOfRange(nodes, 0, mid);
+    Arrays.sort(nums);
+    Arrays.fill(integers, 0);
+    List<Integer> list = Arrays.asList(integers);
 
 20. public class Dog extends Canine implements Pet{...}
 
