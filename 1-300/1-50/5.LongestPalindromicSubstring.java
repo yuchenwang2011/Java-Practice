@@ -4,6 +4,7 @@ Given a string S, find the longest palindromic substring in S. You may assume th
 and there exists one unique longest palindromic substring.
 
 Answer:
+//这个题必须掌握下面两种解法
 //这个方法后面经常用到，为了防止记混，就记住一种方法就好了。132用同样的方法
 public class Solution {
     //First answer is dynamic programming
@@ -41,5 +42,30 @@ public class Solution {
             }
         }
         return s.substring(maxStart, maxStart + maxLength);
+    }
+}
+
+
+class Solution {
+    public String longestPalindrome(String s) {
+        if(s == null || s.length() == 0) return s;
+        String result = "";
+        for(int i = 0; i < s.length(); i++){
+            String s1 = extendFromCenter(s, i, i);
+            String s2 = extendFromCenter(s, i, i + 1);
+            if(s1.length() > result.length()) result = s1;
+            if(s2.length() > result.length()) result = s2; //如果s1 s2都大，刚才s1已经换过了result=s1了
+        }
+        return result;
+    }
+    
+    public String extendFromCenter(String s, int start, int end) {
+        while(start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)){
+            start--;
+            end++;
+        }
+        //因为最终start和end那俩不配对，所以substring从start + 1开始，因为start不配
+        //同时substring不要最后的那个end
+        return s.substring(start + 1, end);
     }
 }
