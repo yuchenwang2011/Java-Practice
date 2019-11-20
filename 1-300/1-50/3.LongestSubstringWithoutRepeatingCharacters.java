@@ -5,45 +5,43 @@ For example, the longest substring without repeating letters for "abcabcbb" is "
 For "bbbbb" the longest substring is "b", with the length of 1.
 
 Answer:
-public class Solution {
+//my own answer
+class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if(s == null || s.length() == 0) return 0;
-        int start = 0, result = 0;
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        for(int i =0 ; i < s.length(); i++){
+        int result = 0;
+        if(s == null || s.length() == 0) return result;
+        
+        int start = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
             if(map.containsKey(c)) {
-                if(map.get(c) >= start) {
-                    start = map.get(c) + 1;
-                }
+                if(map.get(c) >= start) start = map.get(c) + 1;
             }
             map.put(c, i);
             result = Math.max(result, i - start + 1);
-        }
+        }        
         return result;
     }
 }
 
-//this is another optimized answer using HashSet from this link
-//https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1812/Share-my-Java-solution-using-HashSet
+//my own answer
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if(s == null || s.length() == 0) return 0;
+        int result = 0;
+        if(s == null || s.length() == 0) return result;
         
-        int result = 1;
         int start = 0;
-        int end = 0;
-        Set<Character> set = new HashSet<Character>();
-        
-        while(start <= end && end < s.length()){
-            if(set.contains(s.charAt(end))) {
+        //tmmzuxt
+        Set<Character> set = new HashSet<>();
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            while(set.contains(c)) {
                 set.remove(s.charAt(start++));
-            } else {
-                set.add(s.charAt(end));
-                result = Math.max(result, set.size());
-                end++;
             }
-        }
+            set.add(c);
+            result = Math.max(result, i - start + 1);
+        }        
         return result;
     }
 }
