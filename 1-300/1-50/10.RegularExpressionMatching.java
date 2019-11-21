@@ -37,7 +37,8 @@ class Solution {
         if(p == null || s == null) return false;
         boolean[][] result = new boolean[s.length() + 1][p.length() + 1];
         result[0][0] = true;
-        //for case s= "aab", p = "c*a*b", which p matches any string
+        //s= "aab", p = "c*a*b",就是后面都能match，但是第一个不靠谱
+        //同理aab和c*aab
         for(int i = 1; i < result[0].length; i++){
             if(i >= 2 && p.charAt(i - 1) == '*'){
                 result[0][i] = result[0][i-2];
