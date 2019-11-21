@@ -39,9 +39,9 @@ class Solution {
         result[0][0] = true;
         //s= "aab", p = "c*a*b",就是后面都能match，但是第一个不靠谱
         //同理aab和c*aab
-        for(int i = 1; i < result[0].length; i++){
-            if(i >= 2 && p.charAt(i - 1) == '*'){
-                result[0][i] = result[0][i-2];
+        for(int i = 2; i < dp[0].length; i++){
+            if(p.charAt(i - 1) == '*') {
+                dp[0][i] = dp[0][i - 2];
             }
         }
         
