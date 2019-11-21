@@ -27,3 +27,59 @@ There will be at least one building. If it is not possible to build such house a
 Accepted 51,887 Submissions 131,335
 
 Answer:
+class Solution {
+    private int[][] directions = new int[][]{{0, 1},{0, -1},{-1, 0},{1,0}};
+    public int shortestDistance(int[][] grid) {
+        if(grid == null || grid.length == 0 || grid[0].length == 0) return 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        
+        int buildings = 0;
+        int[][] distances = new int[m][n]; //the total distance to reach all 1s for i, j
+        int[][] nums = new int[m][n];      //the total buildings for i, j, able to reach
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(grid[i][j] == 1) {
+                    buildings++;
+                    helper(grid, distances, nums, i, j);
+                }
+            }
+        }
+        int result = Integer.MAX_VALUE;
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(grid[i][j] == 0 && nums[i][j] == buildings && distances[i][j] != 0) {
+                    result = Math.min(result, distances[i][j]);   
+                }
+            }
+        }
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+    
+    public void helper(int[][] grid, int[][] distances, int[][] nums, int row, int col){
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{row, col});
+        int distance = 0;
+        
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            distance++; //每轮一圈肯定就distance+1了
+            for(int i = 0; i < size; i++){
+                int[] node = queue.poll();
+                int x = node[0];
+                int y = node[1];
+                for(int[] direction : directions){
+                    int a = x + direction[0];
+                    int b = y + direction[1];
+                    if(a >= 0 && b >= 0 && a < grid.length && b < grid[0].length && !visited[a][b] && grid[a][b] == 0) {
+                        visited[a][b] = true;
+                        queue.offer(new int[]{a, b});
+                        distances[a][b] += distance;
+                        nums[a][b]++; 
+                    }
+                }
+            }
+        }
+    }
+}
