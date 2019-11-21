@@ -26,16 +26,16 @@ public class Solution {
     }
 }
 
-https://leetcode.com/problems/palindrome-number/discuss/5127/9-line-accepted-Java-code-without-the-need-of-handling-overflow
-public boolean isPalindrome(int x) {
-    if (x<0 || (x!=0 && x%10==0)) return false;
-    int rev = 0;
-    while (x>rev){
-    	rev = rev*10 + x%10;
-    	x = x/10;
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x < 0 || (x != 0 && x % 10 == 0)) return false;      
+        int tmp = 0;
+        int backup = x;
+        while(x != 0){
+            tmp = tmp * 10 + x % 10;
+            x /= 10;
+            if(x == tmp || (x / 10 == tmp)) return true;
+        }
+        return tmp == backup;
     }
-    //Because a Palindrome Number's length() can be odd or even, 
-    //when it's odd(such as 121, x = 1, rev = 12), x should be rev/10 for making sure it is a Palindrome Number; 
-    //the same reason, when it's even(such as 1221, x = 12, rev = 12), x should be rev.
-    return (x==rev || x==rev/10);
 }
