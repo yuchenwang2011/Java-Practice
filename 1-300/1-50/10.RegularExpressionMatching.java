@@ -34,7 +34,6 @@ https://leetcode.com/problems/regular-expression-matching/discuss/5651/Easy-DP-J
 
 class Solution {
     public boolean isMatch(String s, String p) {
-        if(p == null || s == null) return false;
         boolean[][] result = new boolean[s.length() + 1][p.length() + 1];
         result[0][0] = true;
         //s= "aab", p = "c*a*b",就是后面都能match，但是第一个不靠谱
@@ -55,19 +54,13 @@ class Solution {
                     result[i][j] = result[i][j-2];
                     char c = p.charAt(j - 2);
                     if(a == c || c == '.'){
-                        //the last || result[i][j-1] is not necessary
+                        //the || result[i][j-1] is not necessary
                         result[i][j] = result[i][j] || result[i - 1][j] || result[i][j-1];
                     }
                 } else {
                     result[i][j] = false;
                 }
             }
-        }
-        for(int i = 0; i < result.length; i++){
-            for(int j = 0; j < result[0].length; j++){
-                System.out.print(result[i][j] ? 1 : 0);
-            }
-            System.out.println("");
         }
         return result[s.length()][p.length()];
     }
