@@ -6,22 +6,17 @@ Find two lines, which together with x-axis forms a container, such that the cont
 Note: You may not slant the container.
 
 Answer: 
-public class Solution {
+class Solution {
     public int maxArea(int[] height) {
-        int start = 0; int end = height.length-1;
-        int max = 0; 
-        if (height == null || height.length <=1 ) {
-            return max;
+        if(height == null || height.length < 2) return 0;
+        int start = 0;
+        int end = height.length - 1;
+        int result = 0;
+        while(start < end){
+            result = Math.max(result, (end - start) * Math.min(height[start], height[end]));
+            if(height[start] < height[end]) start++;
+            else end--;
         }
-        
-        while(start < end) {
-            max = Math.max(max,(end-start) * Math.min(height[start],height[end]));
-            if(height[start] <= height[end]) {
-                start++;
-            } else {
-                end--;
-            }
-        }
-        return max;
+        return result;
     }
 }
