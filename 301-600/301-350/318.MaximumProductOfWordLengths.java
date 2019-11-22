@@ -20,23 +20,23 @@ Return 0
 No such pair of words.
 
 Answer:
-public class Solution {
-    //Got inspired by this answer
-    //https://leetcode.com/discuss/76489/java-solution-with-comments
+class Solution {
     public int maxProduct(String[] words) {
         if(words == null || words.length < 2) return 0;
-        int[] checker = new int[words.length];
-        for(int i = 0; i < words.length; i++){
-            int val = 0;
-            for(int j = 0; j < words[i].length(); j++){
-                val |= 1 << (words[i].charAt(j) - 'a'); //give each appeared letter a '1' in the 32bits integer val
+        int[] bytes = new int[words.length];
+        for(int i = 0; i < bytes.length; i++){
+            String word = words[i];
+            for(int j = 0; j < word.length(); j++){
+                bytes[i] |= 1 << (word.charAt(j) - 'a');
             }
-            checker[i] = val;
         }
+        
         int result = 0;
-        for(int i = 0; i < words.length - 1; i++){
-            for(int j = i + 1; j < words.length; j++){
-                if( (checker[i] & checker[j]) == 0 ) result = Math.max(result, words[i].length() * words[j].length()); 
+        for(int i = 0; i < bytes.length - 1; i++){
+            for(int j = i + 1; j < bytes.length; j++){
+                if((bytes[i] & bytes[j]) == 0) {
+                    result = Math.max(result, words[i].length() * words[j].length());
+                }
             }
         }
         return result;
