@@ -27,6 +27,7 @@ There will be at least one building. If it is not possible to build such house a
 Accepted 51,887 Submissions 131,335
 
 Answer:
+//O(m^2*n^2), 一开始是俩for,所以m*n. 后来helper里最差情况就是一个点一直把所有其他点都循环遍了
 class Solution {
     private int[][] directions = new int[][]{{0, 1},{0, -1},{-1, 0},{1,0}};
     public int shortestDistance(int[][] grid) {
