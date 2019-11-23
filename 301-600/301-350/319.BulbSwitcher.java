@@ -17,15 +17,12 @@ After third round, the three bulbs are [on, off, off].
 So you should return 1, because there is only one bulb is on.
 
 Answer:
-public class Solution {
-    //Got inpired by this answer's explanation
+class Solution {
     public int bulbSwitch(int n) {
-        if(n <= 0 ) return 0;
+        if(n <= 0) return 0;
         return (int) Math.sqrt(n);
     }
 }
-
-
 
 Divisors come in pairs, like i=12 has divisors 1 and 12, 2 and 6, and 3 and 4. 
     Except when i is a square, like 36 has divisors 1 and 36, 2 and 18, 3 and 12, 4 and 9, 
