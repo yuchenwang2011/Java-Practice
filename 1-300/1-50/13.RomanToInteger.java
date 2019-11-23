@@ -69,36 +69,20 @@ class Solution {
     }
 }
 
-
 class Solution {
-    public  int romanToInt(String s) {
-        int res = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
+    public int romanToInt(String s) {
+        int result = 0;
+        if(s == null || s.length() == 0) return result;
+        for(int i = s.length() - 1; i >= 0; i--){
             char c = s.charAt(i);
-            switch (c) {
-            case 'I':
-                res += (res >= 5 ? -1 : 1);
-                break;
-            case 'V':
-                res += 5;
-                break;
-            case 'X':
-                res += 10 * (res >= 50 ? -1 : 1);
-                break;
-            case 'L':
-                res += 50;
-                break;
-            case 'C':
-                res += 100 * (res >= 500 ? -1 : 1);
-                break;
-            case 'D':
-                res += 500;
-                break;
-            case 'M':
-                res += 1000;
-                break;
-            }
-        }
-        return res;
+            if(c == 'I') result += result >= 5 ? -1 : 1;
+            if(c == 'V') result += 5;
+            if(c == 'X') result += result >= 50 ? -10 : 10;
+            if(c == 'L') result += 50;
+            if(c == 'C') result += result >= 500 ? -100 : 100;
+            if(c == 'D') result += 500;
+            if(c == 'M') result += 1000;
+        }     
+        return result;
     }
 }
