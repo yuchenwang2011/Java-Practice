@@ -15,23 +15,29 @@ Answer:
 // For this problem, if you press one button, you have 4 choice, if you press N times, 
 // you have to multiply N time to build the new String.
 class Solution {
-    private static final String[] NUMS = new String[]{"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
         if(digits == null || digits.length() == 0) return result;
-        helper(result, digits, 0, "");
+        helper(digits, result, 0, "");
         return result;
     }
-    public void helper(List<String> result, String digits, int idx, String tmp){
+    
+    public void helper(String digits, List<String> result, int idx, String tmp){
         if(idx >= digits.length()) {
             result.add(tmp);
             return;
         }
-        String letters = NUMS[digits.charAt(idx) - '0'];
+        String letters = getLetters(digits.charAt(idx));
         for(int i = 0; i < letters.length(); i++){
             char c = letters.charAt(i);
-            helper(result, digits, idx + 1, tmp + c);
+            helper(digits, result, idx + 1, tmp + c);
         }
+    }
+    
+    public String getLetters(char c){
+        if(!Character.isDigit(c)) return "";
+        String[] letters = new String[]{"","","abc","def","ghi","jkl","mno","pqrs", "tuv", "wxyz"};
+        return letters[c - '0'];
     }
 }
 
