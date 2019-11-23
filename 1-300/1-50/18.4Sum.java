@@ -46,42 +46,46 @@ public class Solution {
 
 =====================This is a K Sum KSum k sum ksum solution=============
 https://leetcode.com/problems/4sum/discuss/8609/My-solution-generalized-for-kSums-in-JAVA
-public List<List<Integer>> fourSum(int[] nums, int target) {
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(nums == null || nums.length < 4) return result; 
         Arrays.sort(nums);
-        return kSum(nums, 0, 4, target);
+        return nHelper(nums, 0, 4, target);
     }
-    private List<List<Integer>> kSum (int[] nums, int start, int k, int target) {
-        int len = nums.length;
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if(k == 2) { //two pointers from left and right
-            int left = start, right = len - 1;
-            while(left < right) {
-                int sum = nums[left] + nums[right];
-                if(sum == target) {
-                    List<Integer> path = new ArrayList<Integer>();
-                    path.add(nums[left]);
-                    path.add(nums[right]);
-                    res.add(path);
-                    while(left < right && nums[left] == nums[left + 1]) left++;
-                    while(left < right && nums[right] == nums[right - 1]) right--;
-                    left++;
-                    right--;
-                } else if (sum < target) { //move left
-                    left++;
-                } else { //move right
-                    right--;
-                }
-            }
-        } else {
-            for(int i = start; i < len - (k - 1); i++) {
-                if(i > start && nums[i] == nums[i - 1]) continue;
-                List<List<Integer>> temp = kSum(nums, i + 1, k - 1, target - nums[i]);
-                for(List<Integer> t : temp) {
-                   t.add(0, nums[i]);
-                }                    
-                res.addAll(temp);
+    
+    public List<List<Integer>> nHelper(int[] nums, int start, int k, int target){
+        if(k == 2) return twoHelper(nums, start, target);
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i = start; i < nums.length - (k - 1); i++){
+            if(i > start && nums[i] == nums[i - 1]) continue;
+            List<List<Integer>> last = nHelper(nums, i + 1, k - 1, target - nums[i]);
+            for(List<Integer> list : last){
+                list.add(0, nums[i]);
+                result.add(list);
             }
         }
-        return res;
+        return result;
+    }
+    
+    public List<List<Integer>> twoHelper(int[] nums, int start, int target){
+        List<List<Integer>> result = new ArrayList<>();
+        int i = start;
+        int j = nums.length - 1;
+        while(i < j){
+            int sum = nums[i] + nums[j];
+            if(sum > target) j--;
+            else if(sum < target) i++;
+            else {
+                while(i < j && nums[i] == nums[i + 1]) i++;
+                while(i < j && nums[j] == nums[j - 1]) j--;
+                List<Integer> tmp = new ArrayList<>();
+                tmp.add(nums[i]); 
+                tmp.add(nums[j]);
+                result.add(tmp);
+                i++; j--;
+            }
+        }
+        return result;
     }
 }
