@@ -48,44 +48,24 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 Answer:
 class Solution {
     public int romanToInt(String s) {
-        long result = 0;
+        int result = 0;
+        if(s == null || s.length() == 0) return result;
         
-        if(s.indexOf("IV") != -1) result-=2;
-        if(s.indexOf("IX") != -1) result-=2;
-        if(s.indexOf("XL") != -1) result-=20;
-        if(s.indexOf("XC") != -1) result-=20;
-        if(s.indexOf("CD") != -1) result-=200;
-        if(s.indexOf("CM") != -1) result-=200;
+        if(s.indexOf("IV") >= 0 || s.indexOf("IX") >= 0) result -= 2;
+        if(s.indexOf("XL") >= 0 || s.indexOf("XC") >= 0) result -= 20;
+        if(s.indexOf("CD") >= 0 || s.indexOf("CM") >= 0) result -= 200;
         
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
-            switch(c){
-                case 'I': 
-                    result+=1;
-                    break;
-                case 'V':
-                    result+=5;
-                    break;
-                case 'X':
-                    result+=10;
-                    break;
-                case 'L':
-                    result+=50;
-                    break;
-                case 'C':
-                    result+=100;
-                    break;
-                case 'D':
-                    result+=500;
-                    break;
-                case 'M':
-                    result+=1000;
-                    break;
-                default:
-                    break;    
-            }
+            if(c == 'I') result += 1;
+            if(c == 'V') result += 5;
+            if(c == 'X') result += 10;
+            if(c == 'L') result += 50;
+            if(c == 'C') result += 100;
+            if(c == 'D') result += 500;
+            if(c == 'M') result += 1000;
         }
-        return (int) result;        
+        return result;
     }
 }
 
