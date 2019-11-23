@@ -9,7 +9,6 @@ The brackets must close in the correct order,
 Answer
 //我自己会精神状态不稳定，不一定会写出来下面哪个答案。随机的看不懂另外一个，别删
 public class Solution {
-    //There seems to be a few good answers, but I don't understand them. I will check them again next round;
     public boolean isValid(String s) {
         Deque<Character> stack = new ArrayDeque<Character>();
         if(s.length() % 2 == 1) return false;
