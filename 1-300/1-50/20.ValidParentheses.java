@@ -24,7 +24,7 @@ public class Solution {
            }
            stack.push(s.charAt(i));
         }
-        return stack.isEmpty()? true : false;
+        return stack.isEmpty();
     }
 }
 //Test Case: "()",()[{}]", "()[{]}","{([])}","}}(]}}){)(])](}{{}[]","]]{}"
