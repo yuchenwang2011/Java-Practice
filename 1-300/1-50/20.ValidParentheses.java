@@ -7,7 +7,7 @@ The brackets must close in the correct order,
 "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 
 Answer
-//write on April 20, 2019: This answer is bad, not very intuitive for me
+//我自己会精神状态不稳定，不一定会写出来下面哪个答案。随机的看不懂另外一个，别删
 public class Solution {
     //There seems to be a few good answers, but I don't understand them. I will check them again next round;
     public boolean isValid(String s) {
@@ -27,10 +27,7 @@ public class Solution {
         return stack.isEmpty();
     }
 }
-//Test Case: "()",()[{}]", "()[{]}","{([])}","}}(]}}){)(])](}{{}[]","]]{}"
 
-///////////////////////Second solution
-https://leetcode.com/problems/valid-parentheses/discuss/9178/Short-java-solution
 class Solution {
     public boolean isValid(String s) {
         if(s == null || s.length() == 0) return true;
