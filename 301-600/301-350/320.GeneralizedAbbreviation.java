@@ -7,35 +7,30 @@ Given word = "word", return the following list (order does not matter):
 ["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
 
 Answer:
-public class Solution {
-    //Got inspired by this answer
-    //https://leetcode.com/discuss/75754/java-backtracking-solution
-    //The idea is to build a string from scratch and for each of the letter, you just need to think about
-    //letter or number, if use letter, current count++, if use number, clear count. of course, when count == 0
-    //means you just added a number, you cant add number any more.You can only add a number abbreviation
-    //when count == 0
+class Solution {
+    //这个题就是从无开始，一位一位的from scratch去build一个tmp，或者是数字，或者是letter
     public List<String> generateAbbreviations(String word) {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         if(word == null || word.length() == 0) {
             result.add("");
             return result;
         }
-        process(word, result, 0, "", 0); //first is idx, second is number how many letters are abbreviated
+        helper(word, result, 0, "", 0);
         return result;
     }
     
-    public void process(String word, List<String> result, int start, String tmp, int count){
-        if(start == word.length() ){
-            if(count > 0) tmp += count;
+    public void helper(String word, List<String> result, int start, String tmp, int count){
+        if(start == word.length()) {
+            if(count > 0) {
+                tmp += count;
+            }
             result.add(tmp);
             return;
         }
-        //一共两种情况
-        //接着憋，不加这个了，数字增加
-        process(word, result, start + 1, tmp, count + 1);   
-         
-        ////憋不住了，得加这个了,同时补上前几个的数字
-        String numTmp = (count == 0) ? "" : Integer.toString(count);
-        process(word, result, start + 1, tmp + numTmp + word.charAt(start), 0); 
+        //注意，这里总是自私的，就考虑自己这一位就好啦，后面的位别考虑，浪费脑细胞
+        //第一种选择，不要start这里的letter，然后count + 1
+        helper(word, result, start + 1, tmp, count + 1);
+        //第二种选择，留着start这里的letter，但是前面积攒的count清零
+        helper(word, result, start + 1, tmp + (count == 0 ? "" : count) + word.charAt(start), 0);
     }
 }
