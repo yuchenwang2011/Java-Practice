@@ -35,27 +35,14 @@ public class Solution {
     }
 }
 
-public class Solution {
-    public ListNode swapPairs(ListNode head) {
-        if(head == null || head.next == null) return head;
-        ListNode next = head.next;
-        head.next = swapPairs(head.next.next);
-        next.next = head;
-        return next;
-    }
-}
-
-//did it April 19, 2019, my own solution, I feel it's much easier to understand
 class Solution {
     public ListNode swapPairs(ListNode head) {
         if(head == null || head.next == null) return head;
-        ListNode first = head;
-        ListNode second = first.next;
+        ListNode second = head.next;
+        ListNode third = second.next;
         
-        first.next = second.next;
-        second.next = first;
-        first.next = swapPairs(first.next);
+        second.next = head;
+        head.next = swapPairs(third);
         return second;
     }
 }
-
