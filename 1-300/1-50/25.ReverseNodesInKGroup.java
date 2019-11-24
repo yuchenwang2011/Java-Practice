@@ -23,45 +23,59 @@ Solution:
  */
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
-        if(head == null || head.next == null || k <= 1) return head;
-        int length = 0;
-        ListNode iterator = head;
-        while(iterator != null){
-            iterator = iterator.next;
-            length++;
+        if(head == null || head.next == null || k == 1) return head;
+        
+        ListNode newHead = new ListNode(-1);
+        newHead.next = head;
+        
+        int i = 0;
+        ListNode begin = newHead;
+        while(head != null){
+            i++;
+            if(i % k == 0) {
+                begin = reverse(begin, head.next);
+                head = begin.next;
+            } else {
+                head = head.next;
+            }
         }
-        return reverseHelper(length, head, k);
+        return newHead.next;
     }
     
-    public ListNode reverseHelper(int length, ListNode head, int k){
-        if(k > length) return head;
+    //-1->1->2->3->4 变成 -1->3->2->1->4, return 1
+    public ListNode reverse(ListNode start, ListNode end){
+        ListNode backupStart = start;
+        ListNode result = start.next;
         
-        ListNode tail = head;
-        int i = 0;
-        while(i < k - 1){
-            tail = tail.next;
-            i++;
+        ListNode iter = start.next;
+        while(iter != end){
+            ListNode next = iter.next;
+            iter.next = start;
+        
+            start = iter;
+            iter = next;
         }
-        ListNode newHead = tail.next;
-        tail.next = null;
-        
-        ListNode result = reverseListNodes(head);
-        head.next = reverseHelper(length - k, newHead, k);
+        backupStart.next = start;
+        result.next = end;
         return result;
     }
-    
-    public ListNode reverseListNodes(ListNode head){
-        if(head == null || head.next == null) return head;
-        
-        ListNode prev = null;
-        ListNode current = head;
-        while(current != null){
-            ListNode next = current.next;
-            current.next = prev;
-    
-            prev = current;
-            current = next;            
-        }
-        return prev;
-    }
 }
+
+
+First, build a function reverse() to reverse the ListNode between begin and end. See the explanation below:
+
+   /**
+     * Reverse a link list between begin and end exclusively
+     * an example:
+     * a linked list:
+     * 0->1->2->3->4->5->6
+     * |           |   
+     * begin       end
+     * after call begin = reverse(begin, end)
+     * 
+     * 0->3->2->1->4->5->6
+     *          |  |
+     *      begin end
+     * @return the reversed list's 'begin' node, which is the precedence of node end
+     */
+Then walk thru the linked list and apply reverse() iteratively. See the code below.
