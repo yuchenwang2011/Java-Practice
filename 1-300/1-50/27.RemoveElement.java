@@ -14,7 +14,7 @@ public class Solution {
             if(nums[start] == val) nums[start] = nums[end--];
             else start++;
         }
-        return end + 1;
+        return start;
     }
 }
 
