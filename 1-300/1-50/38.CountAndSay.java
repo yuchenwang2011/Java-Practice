@@ -11,24 +11,23 @@ Given an integer n, generate the nth sequence.
 Note: The sequence of integers will be represented as a string.
 
 Answer:
-//Forget all above answers, my own solution May 1st 2019
 class Solution {
     public String countAndSay(int n) {
-        if(n <= 1) return "1";
-        
+        if(n <= 0) return "";
+        if(n == 1) return "1";
         String last = countAndSay(n - 1);
-        String result = "";
+        StringBuilder sb = new StringBuilder();
         
-        int i = 0;
-        while(i < last.length()){
-            int count = 0;
-            char c = last.charAt(i);
-            while(i < last.length() && last.charAt(i) == c) {
+        int count = 1;
+        for(int i = 0; i < last.length(); i++){
+            if(i == (last.length() - 1) || last.charAt(i) != last.charAt(i + 1)) {
+                sb.append(count + "");
+                sb.append(last.charAt(i));
+                count = 1;
+            } else {
                 count++;
-                i++;
             }
-            result = result + count + c;
-        }
-        return result;
+        }   
+        return sb.toString();
     }
 }
