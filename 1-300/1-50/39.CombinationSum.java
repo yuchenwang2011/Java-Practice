@@ -15,30 +15,26 @@ A solution set is:
 [2, 2, 3] 
 
 Answer:
-//I came up the idea myself but also got inspired by this answer
-//http://blog.csdn.net/u011095253/article/details/9158423
-public class Solution {
-    public List<List<Integer>> combinationSum(int[] nums, int target) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if(nums == null || nums.length == 0){
-            return result;
-        }
-        Arrays.sort(nums);
-        if(target < nums[0]) return result;
-        dfs(nums, target, result, new ArrayList<Integer>(),0);
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(candidates);
+        if(candidates == null || candidates.length == 0 || target < candidates[0]) return result;
+        helper(candidates, result, new ArrayList<>(), target, 0);
         return result;
     }
     
-    public void dfs(int[] nums,int target, List<List<Integer>> result,ArrayList<Integer> tmp,int idx){
-       if(target == 0 ){
-           result.add(new ArrayList<Integer>(tmp));
-           return;
-       }
-       if(target < 0) return;
-       for(int i = idx; i< nums.length; i++){
-          tmp.add(nums[i]);
-          dfs(nums, target-nums[i], result, tmp,i);
-          tmp.remove(tmp.size()-1);
-       }
+    public void helper(int[] nums, List<List<Integer>> result, List<Integer> tmp, int target, int idx){
+        if(idx >= nums.length) return;
+        if(target == 0) {
+            result.add(new ArrayList<>(tmp));
+            return;
+        }
+        if(target < 0) return;
+        for(int i = idx; i < nums.length; i++){
+            tmp.add(nums[i]);
+            helper(nums, result, tmp, target - nums[i], i);
+            tmp.remove(tmp.size() - 1);
+        }
     }
 }
