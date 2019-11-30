@@ -8,27 +8,22 @@ b = "1"
 Return "100".
 
 Answer:
-//https://leetcode.com/problems/add-binary/discuss/24488/Short-AC-solution-in-Java-with-explanation
 class Solution {
     public String addBinary(String a, String b) {
         if(a == null || a.length() == 0) return b;
         if(b == null || b.length() == 0) return a;
-        
         int i = a.length() - 1;
         int j = b.length() - 1;
+        String result = "";
         int carry = 0;
-        
-        StringBuilder sb = new StringBuilder();
-        while(i >=0 || j >=0){
-            int sum = carry;
-            if(i >= 0) sum += a.charAt(i) - '0';
-            if(j >= 0) sum += b.charAt(j) - '0';
-            sb.append(sum%2);
+        while(i >= 0 || j >= 0){
+            int char1 = i >= 0 ? a.charAt(i--) - '0' : 0;
+            int char2 = j >= 0 ? b.charAt(j--) - '0' : 0;
+            int sum = char1 + char2 + carry;
+            result = (sum % 2) + result;
             carry = sum / 2;
-            i--;
-            j--;
         }
-        if(carry == 1) sb.append(1);
-        return sb.reverse().toString();
+        if(carry != 0) result = "1" + result;
+        return result;
     }
 }
