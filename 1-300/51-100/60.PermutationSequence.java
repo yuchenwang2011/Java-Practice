@@ -27,27 +27,23 @@ Answer:
 class Solution {
     public String getPermutation(int n, int k) {
         String result = "";
-        if(n <= 0 || k <= 0) return result;
-        
-        int[] fact = new int[n];
-        fact[0] = 1;
+        if(n <= 0 || k <= 0) return "";
+        int[] perm = new int[n];
+        perm[0] = 1;
         for(int i = 1; i < n; i++){
-            fact[i] = fact[i - 1] * i;
+            perm[i] = perm[i - 1] * i;
         }
-        
-        List<Integer> nums = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         for(int i = 1; i <= n; i++){
-            nums.add(i);
+            list.add(i);
         }
         
-        k = k - 1;
         for(int i = n - 1; i >= 0; i--){
-            int id = k / fact[i];
-            result += nums.get(id);
-            nums.remove(id);
-            k -= id * fact[i];
+            int pos = (k - 1) / perm[i];
+            result += list.get(pos);
+            list.remove(pos);
+            k -= pos * perm[i];
         }
-        
         return result;
     }
 }
