@@ -31,18 +31,10 @@ public class Solution {
 }
 
 
-//may14 2019 from the video
-class Solution {
-    public int removeDuplicates(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
-        int result = 2;
-        if(nums.length <= 2) return result;
-        
-        for(int i = 2; i < nums.length; i++){
-            if(nums[i] != nums[result - 2]) {
-                nums[result++] = nums[i];
-            }
-        }
-        return result;
-    }
+public int removeDuplicates(int[] nums) {
+    int i = 0;
+    for (int n : nums)
+        if (i < 2 || n > nums[i-2])
+            nums[i++] = n;
+    return i;
 }
