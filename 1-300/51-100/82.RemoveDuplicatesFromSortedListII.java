@@ -32,29 +32,6 @@ class Solution {
     }
 }
 
-//this is the second round iterative method, quite hard
-public class Solution {
-    public ListNode deleteDuplicates(ListNode head) {
-        if(head == null || head.next == null) return head;
-        ListNode newHead = new ListNode(-1);
-        newHead.next = head;
-        ListNode current = head, last = newHead;
-        while(current != null && current.next != null){
-            if(current.next != null && current.val == current.next.val) {
-                while(current.next != null && current.val == current.next.val){
-                    current = current.next;
-                }
-                last.next = current.next;
-                current = current.next;
-            } else {
-                last = last.next;
-                current = current.next;
-            }
-        }
-        return newHead.next;
-    }
-}
-
 //Third round may16 2019, basically same as above answer
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
@@ -76,5 +53,29 @@ class Solution {
             prev.next = head;
         }
         return newHead.next;
+    }
+}
+
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode prevHead = new ListNode(-1);
+        
+        ListNode iter = prevHead;
+        while(head != null){
+            if(head.next != null && head.val == head.next.val) {
+                while(head.next != null && head.val == head.next.val){
+                    head = head.next;
+                }
+                head = head.next;
+            } else {
+                ListNode next = head.next;
+                iter.next = head;
+                iter = iter.next;
+                iter.next = null;    
+                head = next;
+            }    
+        }
+        return prevHead.next;
     }
 }
