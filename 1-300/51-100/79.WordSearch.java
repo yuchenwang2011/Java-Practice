@@ -20,33 +20,35 @@ word = "ABCB", -> returns false.
 
 Answer: 
 //O(M * N * 4^L)
-public class Solution {
+class Solution {
     public boolean exist(char[][] board, String word) {
-        if(board == null || board.length == 0) return false;
-        if(word == null ||word.length() == 0) return true;
-        
-        for(int i =0; i < board.length; i++){
-            for(int j= 0; j < board[i].length; j++){
-                if(search(board,i,j,word,0) == true) return true; 
+        if(board == null || board.length == 0 || board[0].length == 0) return false;
+        if(word == null || word.length() == 0) return true;
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[0].length; j++){
+                char c = word.charAt(0);
+                if(board[i][j] == c) {
+                    if(helper(board, word, i, j, 0)) return true;
+                }
             }
         }
         return false;
     }
-    public boolean search(char[][] board, int i, int j, String word, int idx){
+    
+    public boolean helper(char[][] board, String word, int i, int j, int idx){
         if(idx >= word.length()) return true;
-        if(i<0 || j<0|| i>=board.length || j>=board[0].length) return false;
-        if(board[i][j] == word.charAt(idx)){
-          idx++;
-          char tmp = board[i][j];
-          board[i][j] = '#'; //here we can also board[i][j] ^= 256
-          boolean result = search(board,i,j-1,word,idx) ||
-             search(board,i,j+1,word,idx) ||
-             search(board,i-1,j,word,idx) ||
-             search(board,i+1,j,word,idx);
-          board[i][j] = tmp;  //board[i][j] ^= 256
-          return result;
+        if(i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] == '#') return false;
+        char c = board[i][j];
+        board[i][j] = '#'; //here we can also board[i][j] ^= 256
+        
+        if(c == word.charAt(idx)) {
+            boolean result = helper(board, word, i - 1, j, idx + 1) 
+                || helper(board, word, i + 1, j, idx + 1) 
+                || helper(board, word, i, j - 1, idx + 1) 
+                || helper(board, word, i, j + 1, idx + 1);
+            if(result) return result;
         }
+        board[i][j] = c;
         return false;
     }
 }
-//Test case: ["ABCE","SFCS","ADEE"],"ABCCED"
