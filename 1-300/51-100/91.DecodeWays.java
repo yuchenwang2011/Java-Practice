@@ -52,14 +52,13 @@ public class Solution {
 //my O(1) solution May 22 2019
 class Solution {
     public int numDecodings(String s) {
-        int result = 0;
-        if(s == null || s.length() == 0 || s.charAt(0) == '0') return result;
+        if(s == null || s.length() == 0 || s.charAt(0) == '0') return 0;
         
         int first = 1;
         int second = 1;
-        result = second;
+
         for(int i = 1; i < s.length(); i++){
-            result = 0;
+            int result = 0;
             int val = s.charAt(i) - '0';
             if(val >= 1 && val <= 9) result += second;
             
@@ -68,6 +67,6 @@ class Solution {
             first = second;
             second = result;
         }
-        return result;
+        return second;
     }
 }
