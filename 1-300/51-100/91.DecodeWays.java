@@ -14,6 +14,7 @@ Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
 The number of ways decoding "12" is 2.
 
 Answer:
+//记住一旦碰上这种题，先稳住，把dp解法做出来，再优化，不然可能一下就迷糊了
 public class Solution {
     public int numDecodings(String s) {
         if(s == null || s.length() == 0 || s.charAt(0) == '0' ) return 0;
