@@ -10,17 +10,18 @@ and nums2 are m and n respectively.
 Answer: 
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if(nums1 == null || nums2 == null || nums1.length < m + n || m < 0 || n < 0) return;
-        int firstEnd = m - 1;
-        int secondEnd = n - 1;
-        int mergeEnd = m + n - 1;
-        
-        while(firstEnd >= 0 && secondEnd >= 0){
-            nums1[mergeEnd--] = nums1[firstEnd] > nums2[secondEnd] ? nums1[firstEnd--] : nums2[secondEnd--];
+        if(nums1 == null || nums1.length != m + n || nums2 == null || nums2.length != n) return;
+        m--;
+        n--;
+        while(m >= 0 && n >= 0){
+            nums1[m + n + 1] = nums1[m] >= nums2[n] ? nums1[m] : nums2[n];
+            if(nums1[m + n + 1] == nums1[m]) m--;
+            else n--;
         }
-        
-        while(secondEnd >= 0){
-            nums1[mergeEnd--] = nums2[secondEnd--];
+        if(m >= 0) return;
+        while(n >= 0){
+            nums1[n] = nums2[n];
+            n--;
         }
     }
 }
