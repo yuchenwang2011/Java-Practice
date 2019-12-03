@@ -16,7 +16,7 @@ Given n = 3, there are a total of 5 unique BST's.
 class Solution {
     public int numTrees(int n) {
         if(n <= 0) return 0;
-        int[] dp = new int[n + 1]; //比如5 代表n=5能一共组成多少个数组
+        int[] dp = new int[n + 1]; //比如5 代表n=5能一共组成多少个组合
         dp[0] = 1;
         for(int i = 1; i <= n; i++){
             //dp[6] = dp[0] * dp[5] + dp[1] * dp[4] + dp[2] * dp[3] + ......
