@@ -12,16 +12,16 @@ Given n = 3, there are a total of 5 unique BST's.
    2     1         2                 3
 
    Answer:
-//I got inspired by this video, it's amazing so good, though its code is bad
 //https://www.youtube.com/watch?v=JrTKVvYhT_k
-public class Solution {
+class Solution {
     public int numTrees(int n) {
-        if(n==0) return 1;
-        int[] dp = new int[n+1];
-        dp[0] = dp[1] = 1;
-        for(int i = 2; i <= n; i++){ //this for loop is to save dp elements
-            for(int j = 0; j <= i-1; j++){
-                dp[i] = dp[i] + dp[j] * dp[i - j - 1];
+        if(n <= 0) return 0;
+        int[] dp = new int[n + 1]; //比如5 代表n=5能一共组成多少个数组
+        dp[0] = 1;
+        for(int i = 1; i <= n; i++){
+            //dp[6] = dp[0] * dp[5] + dp[1] * dp[4] + dp[2] * dp[3] + ......
+            for(int j = 0; j < i; j++){
+                dp[i] += dp[j] * dp[i - j - 1];
             }
         }
         return dp[n];
