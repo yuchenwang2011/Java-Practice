@@ -70,14 +70,75 @@ Accepted 37,626 Submissions 90,795
 
 
 Answer:
-class AutocompleteSystem {
-
-    public AutocompleteSystem(String[] sentences, int[] times) {
-        
+public class AutocompleteSystem{
+    public class TrieNode{
+        Map<Character, TrieNode> children;
+        boolean isWord;
+        Map<String, Integer> count;
+        public TrieNode(){
+            children = new HashMap<>();
+            isWord = false;
+            count = new HashMap<>();
+        }
     }
-    
+
+    public void addTrieNode(String sentence, int time){
+        TrieNode tmp = root;
+        for(char c : sentence.toCharArray()){
+            if(tmp.children.get(c) == null) {
+                tmp.children.put(c, new TrieNode());
+            }
+            tmp = tmp.children.get(c);
+            tmp.count.put(sentence, tmp.count.getOrDefault(sentence, 0) + time);
+        }
+        tmp.isWord = true;
+    }
+
+    TrieNode root;
+    String prefix;
+    public AutocompleteSystem(String[] sentences, int[] times){
+        if(sentences == null || times == null || sentences.length != times.length) return;
+        root = new TrieNode();
+        for(int i = 0; i < sentences.length; i++){
+            addTrieNode(sentences[i], times[i]);
+        }
+        prefix = "";
+    }
+
     public List<String> input(char c) {
-        
+        List<String> result = new ArrayList<>();
+        if(c == '#') {
+            addTrieNode(prefix, 1);
+            prefix = "";
+            return result;
+        }
+
+        prefix = prefix + c;
+        TrieNode tmp = root;
+        for(char cc : prefix.toCharArray()){
+            if(tmp.children.get(cc) == null) return result;
+            tmp = tmp.children.get(cc);
+        }
+
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> a.count == b.count ? a.string.compareToIgnoreCase(b.string) : b.count - a.count);
+        for(String key : tmp.count.keySet()){
+            pq.offer(new Pair(key, tmp.count.get(key)));
+        }
+
+        for(int i = 0; i < 3; i++){
+            if(pq.isEmpty()) break;
+            result.add(pq.poll().string);
+        }
+        return result;
+    }
+
+    public class Pair{
+        String string;
+        int count;
+        public Pair(String string, int count){
+            this.string = string;
+            this.count = count;
+        }
     }
 }
 
