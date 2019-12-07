@@ -314,3 +314,8 @@
 25. Random
     Random ran = new Random();
     int x = ran.nextInt(6) + 5; //outcome of 5-10
+
+26. 辗转相除 Euclidean algorithm
+    private int gcd(int x, int y) {
+        return y == 0 ? x : gcd(y, x % y);
+    }
