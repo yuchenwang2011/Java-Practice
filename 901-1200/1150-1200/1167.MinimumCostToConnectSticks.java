@@ -20,28 +20,22 @@ Constraints:
 Accepted 9,086 Submissions 14,802
 
 Answer:
-//my own solution
 class Solution {
     public int connectSticks(int[] sticks) {
         int result = 0;
-        if(sticks == null || sticks.length <= 1) return result;
+        if(sticks == null || sticks.length < 1) return result;
         
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for(int i : sticks){
             pq.offer(i);
         }
         
-        while(!pq.isEmpty()){
-            if(pq.size() > 2) {
-                int cost = pq.poll() + pq.poll();
-                result += cost;
-                pq.offer(cost);
-            } else {
-                while(!pq.isEmpty()){
-                    result += pq.poll();
-                }
-            }
+        while(pq.size() > 1){
+            int cost = pq.poll() + pq.poll();
+            result += cost;
+            pq.offer(cost);
         }
+        
         return result;
     }
 }
