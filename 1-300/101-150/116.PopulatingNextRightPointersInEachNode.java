@@ -38,29 +38,62 @@ Answer:
  *     TreeLinkNode(int x) { val = x; }
  * }
  */
-//The answer below is more decent
-//https://leetcode.com/discuss/7327/a-simple-accepted-solution
+//统一用117的方法
+//iterative
 class Solution {
     public Node connect(Node root) {
         if(root == null) return root;
-        
-        Node rootBackUp = root;
-        Node secondLevel = root.left;
-        while(root != null && secondLevel != null){
-            if(root.left != null) root.left.next = root.right;
-            Node lastRight = root.right;
-            if(root.next != null) {
+        Node rootBackup = root;
+        while(root != null){
+            Node prev = new Node();
+            Node prevBackup = prev;
+            while(root != null){
+                if(root.left != null) {
+                    prev.next = root.left;
+                    prev = prev.next;
+                }
+                if(root.right != null) {
+                    prev.next = root.right;
+                    prev = prev.next;
+                }
                 root = root.next;
-                lastRight.next = root.left;
-            } else {
-                root = secondLevel;
-                secondLevel = root.left;
             }
+            root = prevBackup.next;
         }
-        return rootBackUp;
+        return rootBackup;
     }
 }
 
+//recursive
+class Solution {
+    public Node connect(Node root) {
+        if(root == null) return root;
+        helper(root);
+        return root;
+    }
+    
+    public void helper(Node root){
+        if(root == null) return;
+        Node prev = new Node();
+        Node prevBackup = prev;
+        while(root != null){
+            if(root.left != null) {
+                prev.next = root.left;
+                prev = prev.next;
+            }
+            if(root.right != null) {
+                prev.next = root.right;
+                prev = prev.next;
+            } 
+            root = root.next;
+        }
+        helper(prevBackup.next);
+    }
+}
+
+
+//后面的方法都当玩闹了 不要记忆了，该混了
+============================================================
 //Though Recursion is not constant space, I think this solution is very decent
 //https://leetcode.com/discuss/32318/my-recursive-solution-java
 public class Solution {
