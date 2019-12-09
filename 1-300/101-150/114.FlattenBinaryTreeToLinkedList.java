@@ -40,8 +40,8 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
+//记住前两个方法就行了
 //Same as this answer, but this is O(N^2)
-//https://leetcode.com/discuss/70059/easy-1ms-java-dfs-solution
 public class Solution {
     public void flatten(TreeNode root) {
         if(root == null) return;
@@ -55,27 +55,21 @@ public class Solution {
     }
 }
 
-//Got inspired by this answer, so hard to understand, write all the steps on paper
-//This idea is opposite from mine, this is move the right branch to the left side
-//相当于是只要是一个root有左右，就把右边的存起来，然后左边的找到最后一个点，把存起来的接到最右点的右边
-//https://leetcode.com/discuss/30719/my-short-post-order-traversal-java-solution-for-share
-public class Solution {
+class Solution {
     public void flatten(TreeNode root) {
         if(root == null) return;
-        helper(root,null);
+        helper(root, null);
     }
     
-    public TreeNode helper(TreeNode root, TreeNode prevRoot){
-        if(root == null) return prevRoot;
-        prevRoot = helper(root.right, prevRoot);
-        prevRoot = helper(root.left, prevRoot);
-        root.right = prevRoot;
+    public TreeNode helper(TreeNode root, TreeNode prev){
+        if(root == null) return prev;
+        prev = helper(root.right, prev);
+        prev = helper(root.left, prev);
+        root.right = prev;
         root.left = null;
-        prevRoot = root;
-        return prevRoot;
+        return root;
     }
 }
-
 
 
 //this is really smart, use example in question to manually go through it twice you will understand
