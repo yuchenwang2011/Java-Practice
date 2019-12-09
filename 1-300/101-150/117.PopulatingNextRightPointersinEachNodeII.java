@@ -50,3 +50,30 @@ class Solution {
         return backupRoot;
     }
 }
+
+
+class Solution {
+    public Node connect(Node root) {
+        if(root == null) return root;
+        helper(root);
+        return root;
+    }
+    
+    public void helper(Node root){
+        if(root == null) return;
+        Node prev = new Node();
+        Node prevBackup = prev;
+        while(root != null){
+            if(root.left != null) {
+                prev.next = root.left;
+                prev = prev.next;
+            }
+            if(root.right != null) {
+                prev.next = root.right;
+                prev = prev.next;
+            }
+            root = root.next;
+        }
+        helper(prevBackup.next);
+    }
+}
