@@ -98,26 +98,23 @@ class Solution {
 class Solution {
     public Node cloneGraph(Node node) {
         if(node == null) return node;
-        
-        Node newNode = new Node(node.val, new ArrayList<>());
         Map<Node, Node> map = new HashMap<>();
-        map.put(node, newNode);
+        map.put(node, new Node(node.val, new ArrayList<>()));
         
         Queue<Node> queue = new LinkedList<>();
         queue.offer(node);
         
         while(!queue.isEmpty()){
-            Node current = queue.poll();
-            for(Node nei : current.neighbors){
-                //拼了命把所有点都塞进map里
+            Node tmp = queue.poll();
+            Node tmp2 = map.get(tmp);
+            for(Node nei : tmp.neighbors){
                 if(!map.containsKey(nei)) {
-                   map.put(nei, new Node(nei.val, new ArrayList<>()));   
-                   queue.offer(nei);
+                    map.put(nei, new Node(nei.val, new ArrayList<>()));
+                    queue.offer(nei);
                 }
-                //相当于把上面的那些哪怕是刚加进map里的nei的dup都放进current的dup里
-                map.get(current).neighbors.add(map.get(nei));
+                tmp2.neighbors.add(map.get(nei));
             }
         }
-        return newNode;
+        return map.get(node);
     }
 }
