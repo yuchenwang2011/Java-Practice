@@ -74,27 +74,6 @@ class Node {
 
 //DFS
 class Solution {
-    Map<Node, Node> map = new HashMap<>();
-    public Node cloneGraph(Node node) {
-        return helper(node);
-    }
-    
-    public Node helper(Node node){
-        if(node == null) return node;
-        if(map.containsKey(node)) return map.get(node);
-        Node dup = new Node(node.val);
-        dup.neighbors = new ArrayList<>();
-        map.put(node, dup);
-        for(Node nei : node.neighbors){
-            Node neiDup = helper(nei);
-            dup.neighbors.add(neiDup);
-        }
-        return dup;
-    }
-}
-
-//My own answer
-class Solution {
     public Node cloneGraph(Node node) {
         if(node == null) return node;
         Map<Node, Node> map = new HashMap<>();
@@ -103,17 +82,16 @@ class Solution {
     }
     
     public void helper(Node node, Map<Node, Node> map){
-        if(map.containsKey(node)) return;
-        Node node2 = new Node(node.val);
-        node2.neighbors = new ArrayList<>();
+        Node node2 = new Node(node.val, new ArrayList<>());
         map.put(node, node2);
-        for(Node n : node.neighbors){
-            helper(n, map);
-            node2.neighbors.add(map.get(n));
+        for(Node nei: node.neighbors){
+            if(!map.containsKey(nei)) {
+                helper(nei, map);
+            }
+            node2.neighbors.add(map.get(nei));
         }
     }
 }
-
 
 
 //BFS
