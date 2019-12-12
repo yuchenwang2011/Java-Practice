@@ -15,31 +15,32 @@ Explanation: t is "aabbb" which its length is 5.
 Accepted 86,501 Submissions 179,089
     
 Answer:
-//跟着例子走一遍就行
+//我自己的方法
 class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
-        int result = 0;
-        if(s == null || s.length() == 0) return result;
+        if(s == null || s.length() == 0) return 0;
+        int maxLength = 1;
         
-        int first = 0;
-        int second = 0;
         Map<Character, Integer> map = new HashMap<>();
-        while(second < s.length()){
+        int start = 0;
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+
+            map.put(c, map.getOrDefault(c, 0) + 1);
+
             if(map.size() <= 2) {
-                map.put(s.charAt(second), second);
-                second++;
+                maxLength = Math.max(i - start + 1, maxLength);
             }
-            //注意这里不能写成else，因为上面如果操作了size变大了，下面就需要执行了
-            if(map.size() > 2) {
-                int newStart = s.length() - 1;
-                for(int i : map.values()){
-                    newStart = Math.min(newStart, i);
+            while(map.size() > 2){
+                char d = s.charAt(start);
+                if(map.get(d) == 1) {
+                    map.remove(d);
+                } else {
+                    map.put(d, map.get(d) - 1);
                 }
-                map.remove(s.charAt(newStart));
-                first = newStart + 1;
+                start++;
             }
-            result = Math.max(result, second - first);
-        }
-        return result;
+        }   
+        return maxLength;
     }
 }
