@@ -53,29 +53,24 @@ public class Solution {
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if(headA == null || headB == null) return null;
-        
-        ListNode a = headA;
-        ListNode b = headB;
-        int chanceA = 1;
-        int chanceB = 1;
-
-        while(a != b){
-            if(a == null) {
-                if(chanceA == 0) break;
-                a = headB;
-                chanceA--;
-            } else {
-                a = a.next;
+        ListNode h1 = headA;
+        ListNode h2 = headB;
+        int countA = 0;
+        int countB = 0;
+        while(h1 != h2){
+            if(countA == 1 && countB == 1 && (h1 == null || h2 == null)) return null;
+            if(countA == 0 && h1 == null) {
+                h1 = headB;
+                countA++;
             }
-            
-            if(b == null) {
-                if(chanceB == 0) break;
-                b = headA;
-                chanceB--;
-            } else {
-                b = b.next;
+            if(countB == 0 && h2 == null) {
+                h2 = headA;
+                countB++;
             }
+            if(h1 == h2) return h1;
+            h1 = h1.next;
+            h2 = h2.next;
         }
-        return a;
+        return h1;
     }
 }
