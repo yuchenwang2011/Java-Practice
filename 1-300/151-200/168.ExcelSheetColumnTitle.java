@@ -28,3 +28,16 @@ class Solution {
         return result;
     }
 }
+
+class Solution {
+    public String convertToTitle(int n) {
+        String result = "";
+        if(n <= 0) return result;
+        while(n > 0){
+            char c = (char) ((n - 1) % 26 + 'A');
+            result = c + result;
+            n = (n - 1) / 26;
+        }
+        return result;
+    }
+}
