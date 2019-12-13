@@ -11,28 +11,17 @@ Answer:
 //把变形的、打乱了两个形参顺序的b放到前面，你就需要b.compareTo(a)
 class Solution {
     public String largestNumber(int[] nums) {
-        if(nums == null || nums.length == 0) return "0";
-        
-        String[] strs = convertToString(nums);
-        Arrays.sort(strs, new Comparator<String>(){
-            public int compare(String s1, String s2){
-                return (s2 + s1).compareTo(s1 + s2);
-            }
-        });
-        
         String result = "";
-        for(String s : strs){
-            result += s;
+        if(nums == null || nums.length == 0) return result;
+        String[] strings = new String[nums.length];
+        for(int i = 0; i < nums.length; i++){
+            strings[i] = nums[i] + "";
+        }
+        Arrays.sort(strings, (a, b) -> (b + a).compareTo(a + b));
+        for(String string : strings){
+            result += string;
         }
         if(result.charAt(0) == '0') return "0";
         return result;
-    }
-    
-    private String[] convertToString(int[] nums){
-        String[] strs = new String[nums.length];
-        for(int i = 0; i < nums.length; i++){
-            strs[i] = String.valueOf(nums[i]);
-        }
-        return strs;
     }
 }
