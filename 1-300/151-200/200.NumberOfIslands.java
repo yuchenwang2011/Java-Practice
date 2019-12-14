@@ -59,7 +59,7 @@ class Solution {
     public int numIslands(char[][] grid) {
         int result = 0;
         if(grid == null || grid.length == 0 || grid[0].length == 0) return result;
-
+        
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[0].length; j++){
                 if(grid[i][j] == '1') {
@@ -68,38 +68,28 @@ class Solution {
                 }
             }
         }
-        
         return result;
     }
     
-    public void helper(char[][] grid, int x, int y){
-        grid[x][y] = '0';
-        int row = grid.length;
-        int col = grid[0].length;
-        
-        int elementId = x * col + y;
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(elementId);
-        
+    private int[][] directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
+    public void helper(char[][] grid, int row, int col){
+        //grid[row][col] = '#';
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{row,col});
         while(!queue.isEmpty()){
-            int id = queue.poll();
-            int i = id / col;
-            int j = id % col;
-            if(i > 0 && grid[i - 1][j] == '1') {
-                queue.offer((i - 1) * col + j);
-                grid[i - 1][j] = '0';
-            }
-            if(i < row - 1 && grid[i + 1][j] == '1'){
-                queue.offer((i + 1) * col + j);
-                grid[i + 1][j] = '0';
-            }
-            if(j > 0 && grid[i][j - 1] == '1'){
-                queue.offer(i * col + j - 1);
-                grid[i][j - 1] = '0';
-            }
-            if(j < col - 1 && grid[i][j + 1] == '1'){
-                queue.offer(i * col + j + 1);
-                grid[i][j + 1] = '0';
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                int[] tmp = queue.poll();
+                int a = tmp[0];
+                int b = tmp[1];
+                for(int[] direction : directions){
+                    int x = a + direction[0];
+                    int y = b + direction[1];
+                    if(x >= 0 && y >= 0 && x < grid.length && y < grid[0].length && grid[x][y] == '1') {
+                        grid[x][y] = '#';
+                        queue.offer(new int[]{x, y});
+                    }
+                }
             }
         }
     }
