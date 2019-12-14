@@ -31,18 +31,16 @@ Answer:
 class Solution {
     public int countPrimes(int n) {
         if(n <= 2) return 0;
-
         boolean[] isPrime = new boolean[n];
         Arrays.fill(isPrime, true);
         int count = 0;
         for(int i = 2; i < isPrime.length; i++){
-            if(isPrime[i] == true) count++;
-
-            //注意这里是i * j < n
-            for(int j = 0; i * j < n; j++){
-                isPrime[i * j] = false;
+            if(isPrime[i]) count++;
+            int j = i;
+            while(j < isPrime.length){
+                isPrime[j] = false;
+                j += i;
             }
-
         }
         return count;
     }
