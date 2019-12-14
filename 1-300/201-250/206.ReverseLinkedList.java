@@ -8,8 +8,8 @@ Hint:
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 
 Answer:
-//三种方法：记忆方法，头两个方法都用到一个pre node
-//额外一种recursive方法就是不需要
+//三种方法：记忆方法，头两个方法都用到一个pre node, 一次就改一个铁索
+//额外一种recursive方法就是不需要，需要改两个铁索
 public class Solution {
     public ListNode reverseList(ListNode head) {
       ListNode newHead = null;
