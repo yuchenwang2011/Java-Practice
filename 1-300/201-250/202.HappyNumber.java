@@ -16,26 +16,20 @@ Example: 19 is a happy number
 1^2 + 0^2 + 0^2 = 1
 
 Answer:
-public class Solution {
-    //Here is the proof of this question
-    //https://leetcode.com/discuss/71625/explanation-those-posted-algorithms-mathematically-valid
-    //Got inspired by this method, I will try the second method next round
-    //https://leetcode.com/discuss/59684/beat-easy-understand-java-solution-with-brief-explanation
-    //https://leetcode.com/discuss/33055/my-solution-in-c-o-1-space-and-no-magic-math-property-involved
+class Solution {
     public boolean isHappy(int n) {
-        n = Math.abs(n);
-        if(n == 0) return false;
-        if(n == 1) return true;
-        HashSet<Integer> set = new HashSet<Integer>();
-        while(n != 1) {
-            if(set.add(n) == false) return false;
-            int next = 0;
-            while(n > 0){
-                next = next + (int) Math.pow(n%10,2);
-                n = n/10;
+        if(n <= 0) return false;
+        Set<Integer> set = new HashSet<>();
+        while(n != 1){
+            int tmp = 0;
+            while(n != 0) {
+                tmp += (n % 10) * (n % 10);
+                n = n / 10;
             }
-            n = next;
-        }
+            if(set.contains(tmp)) return false;
+            set.add(tmp);
+            n = tmp;
+        } 
         return true;
     }
 }
