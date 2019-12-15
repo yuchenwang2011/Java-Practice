@@ -17,7 +17,7 @@ Answer:
  *     TreeNode(int x) { val = x; }
  * }
  */
-//this is the best answer for myself
+//我自己的解法，最好的
 class Solution {
     public int countNodes(TreeNode root) {
         if(root == null) return 0;
@@ -34,6 +34,32 @@ class Solution {
         return countNodes(root.left) + 1 + countNodes(root.right);
     }
 }
+
+//来自我自己的跟上面类似的解法
+class Solution {
+    public int countNodes(TreeNode root) {
+        if(root == null) return 0;
+        if(root.left == null && root.right == null) return 1;
+        TreeNode rootBackup = root;
+        
+        int levelLeft = 0;
+        while(root != null){
+            root = root.left;
+            levelLeft++;
+        }
+        
+        int levelRight = 0;
+        root = rootBackup;
+        while(root != null){
+            root = root.right;
+            levelRight++;
+        }
+        
+        if(levelLeft == levelRight) return (int) Math.pow(2, levelLeft) - 1;
+        return 1 + countNodes(rootBackup.left) + countNodes(rootBackup.right);
+    }
+}
+
 
 class Solution {
     public int countNodes(TreeNode root) {
