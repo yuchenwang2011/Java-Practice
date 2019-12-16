@@ -55,6 +55,9 @@ class Solution {
     }
 }
 
+//graph has V vertices and E edges, the find( ) function takes O(V) time 
+//because in the worst case it has to go through all the vertices, and from outside we loop through all the edges, 
+//so the time complexity should be O(V*E).
 class Solution {
     public boolean validTree(int n, int[][] edges) {
         if(edges == null || edges.length == 0) {
