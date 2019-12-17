@@ -24,16 +24,18 @@ Answer:
 
 class Solution {
     public int numSquares(int n) {
-        if(n <= 0) return n;
+        if(n <= 0) return 0;
+        int result = 0;
         int[] dp = new int[n + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
         for(int i = 1; i < dp.length; i++){
-            int min = Integer.MAX_VALUE;
-            for(int j = 1; j <= (i / j); j++){
-                min = Math.min(min, dp[i - j * j] + 1);
+            //dp[5] = dp[4] + 1 = dp[1] + dp[4];
+            //dp[6] = dp[5] + 1 = dp[2] + 4
+            for(int j = 1; j <= i / j; j++){
+                dp[i] = Math.min(dp[i - j * j] + 1, dp[i]);
             }
-            dp[i] = min;
         }
-        return dp[n];
+        return dp[dp.length - 1];
     }
 }
