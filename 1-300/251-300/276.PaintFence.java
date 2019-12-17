@@ -22,7 +22,7 @@ public class Solution {
         for(int i = 2; i <n ; i++){
             //你要么跟前一个不同(这种情况你啥都不不需要多操心)，要么就跟前一个相同
             //但是你要和前一个相同的话，你要前两个和前一个他俩是不同的，所以此时前一个的值你需要单独算。
-            dp[i] = dp[i-1] * (k-1) + dp[i-2] * (k - 1) * 1;
+            dp[i] = dp[i-1] * (k-1) + dp[i-2] * 1 * (k - 1);
         }
         return dp[n-1];
     }
@@ -37,7 +37,7 @@ public class Solution {
         int second = k * k;
         int result = 0;
         for(int i = 2; i < n; i++){
-            result = first * (k - 1) + second * (k - 1) * 1;
+            result = first * (k - 1) + second * 1 * (k - 1);
             first = second;
             second = result;
         }
