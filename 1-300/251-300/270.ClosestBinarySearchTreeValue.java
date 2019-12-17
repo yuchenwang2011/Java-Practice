@@ -41,3 +41,26 @@ class Solution {
         return helper(root, target, result);
     }
 }
+
+
+//我自己的解法
+class Solution {
+    int min;
+    public int closestValue(TreeNode root, double target) {
+        if(root == null) return 0;
+        min = root.val;
+        helper(root, target, Math.abs(root.val - target));
+        return min;
+    }
+    
+    public void helper(TreeNode root, double target, double diff){
+        if(root == null) return;
+        double currentDiff = Math.abs(root.val - target);
+        if(currentDiff < diff) min = root.val;
+        if(root.val < target) {
+            helper(root.right, target, Math.min(currentDiff, diff));            
+        } else {
+            helper(root.left, target, Math.min(currentDiff, diff));
+        }
+    }
+}
