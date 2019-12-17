@@ -5,7 +5,24 @@ Given a binary search tree and a node in it, find the in-order successor of that
 Note: If the given node has no in-order successor in the tree, return null.
 
 Answer:
-//这题必须掌握下面三种解法, iterative, recursive + Predecessor
+//我自己的方法
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        return helper(root, p, null);
+    }
+    
+    public TreeNode helper(TreeNode root, TreeNode p, TreeNode result){
+        if(root == null) return result;
+        if(root.val > p.val) {
+            if(result == null || root.val < result.val) result = root;
+            return helper(root.left, p, result);
+        } else {
+            return helper(root.right, p, result);
+        }
+    }
+}
+
+
 class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if(root == null || p == null) return root;
