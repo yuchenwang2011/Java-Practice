@@ -20,43 +20,35 @@ After running your function, the 2D grid should be:
   1  -1   2  -1
   0  -1   3   4
   
-  Answer:
-  public class Solution {
-    //Got inspired by this answer
-    //https://leetcode.com/discuss/60179/java-bfs-solution-o-mn-time
+Answer:
+//我自己的答案 bfs 模板
+class Solution {
     public void wallsAndGates(int[][] rooms) {
-        if(rooms == null || rooms.length ==0 || rooms[0].length == 0) return;
-        Queue<int[]> queue = new LinkedList<int[]>();
-        for(int i = 0; i < rooms.length; i++){
-            for(int j = 0; j < rooms[0].length; j++){
-                if(rooms[i][j] == 0) queue.offer(new int[]{i, j});
+        if(rooms == null || rooms.length == 0 || rooms[0].length == 0) return;
+        Queue<int[]> queue = new LinkedList<>();
+        int m = rooms.length;
+        int n = rooms[0].length;
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(rooms[i][j] == 0) queue.offer(new int[]{i,j});
             }
         }
-        //先把0附近的INF干掉，这样最近的一批房间全都没了
-        //再把这批房间附近的INF也干掉。如此循环，所有能通过INF到达gate的房间都没了
+        
+        int[][] directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
         while(!queue.isEmpty()){
-            int[] position = queue.poll();
-            int row = position[0];
-            int col = position[1];
-            //上边是不是房间，是就+1，同时把这个房间存起来，因为房间是相同的
-            if(row >= 1 && rooms[row-1][col] == Integer.MAX_VALUE) {
-                rooms[row-1][col] = rooms[row][col] + 1;
-                queue.offer(new int[]{row-1, col});
-            }
-            //下面是不是房间
-            if(row < rooms.length -1 && rooms[row+1][col] == Integer.MAX_VALUE) {
-                rooms[row+1][col] = rooms[row][col] + 1;
-                queue.offer(new int[]{row+1,col});
-            }
-            //左边是不是房间
-            if(col >=1 && rooms[row][col-1] == Integer.MAX_VALUE) {
-                rooms[row][col-1] = rooms[row][col] + 1;
-                queue.offer(new int[]{row,col-1});
-            }
-            //右边是不是房间
-            if(col < rooms[0].length -1 && rooms[row][col+1] == Integer.MAX_VALUE){
-                rooms[row][col+1] = rooms[row][col] + 1;
-                queue.offer(new int[]{row,col+1});
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                int[] tmp = queue.poll();
+                int a = tmp[0];
+                int b = tmp[1];
+                for(int[] direction : directions){
+                    int x = a + direction[0];
+                    int y = b + direction[1];
+                    if(x >= 0 && y >= 0 && x < m && y < n && rooms[x][y] == Integer.MAX_VALUE) {
+                        queue.offer(new int[]{x, y});
+                        rooms[x][y] = rooms[a][b] + 1;
+                    }
+                }
             }
         }
     }
