@@ -36,6 +36,8 @@ class Solution {
         int first = k;
         int second = k * k;
         for(int i = 3; i <= n; i++){
+            //same as previous, then first, the second day shouldn't be same as first day, so k - 1
+            //not same as previous : second * (k - 1)
             int third = first * (k - 1) * 1 + second * (k - 1);
             first = second;
             second = third;
