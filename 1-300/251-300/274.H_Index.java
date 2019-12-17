@@ -21,6 +21,22 @@ What are the possible values of h-index?
 A faster approach is to use extra space.
 
 Answer:
+//这次是我自己的理解，就是纯粹根据定义，h本身是个index，所以相当于i的循环
+//这个index h的citation也就是citations[h] >= N - h (根据定义no more than)
+class Solution {
+    public int hIndex(int[] citations) {
+        if(citations == null || citations.length == 0) return 0;
+        Arrays.sort(citations);
+        int n = citations.length; 
+        for(int h = 0; h < n; h++){
+            if(citations[h] >= n - h) return n - h;
+        }
+        return 0;
+    }
+}
+
+
+
 public class Solution {
     //This answer is inspired by this O(NlogN), no one can think up a O(N) in a real interview
     //https://leetcode.com/discuss/55958/my-easy-solution
