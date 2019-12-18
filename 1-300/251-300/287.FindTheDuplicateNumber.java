@@ -41,10 +41,9 @@ class Solution {
                 //注意，这里是mid，不是nums[mid]
                 if(nums[i] <= mid) count++;
             }
-            //说明mid值选的不好，比mid小的数字太少了，mid不够大
-            if(count <= mid) start = mid + 1; 
             //说明重复的数字肯定在[1,mid]，因为数出来的count多了起码一个
-            else end = mid;
+            if(count > mid) end = mid;
+            else start = mid + 1; //说明mid值选的不好，比mid小的数字太少了，mid不够大
         }
         return start;
     }
