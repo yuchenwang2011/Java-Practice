@@ -25,14 +25,15 @@ class Solution {
     public List<String> generatePossibleNextMoves(String s) {
         List<String> result = new ArrayList<>();
         if(s == null || s.length() < 2) return result;
-        
-        int i = 0;
-        while(i < s.length() && s.indexOf("++", i) != -1){
-            int start = s.indexOf("++", i);
-            result.add(s.substring(0,start) + "--" + s.substring(start + 2));
-            //这里必须是+1,不是+2,因为你想啊，+++，第一个++不好使，你只是从第二个+开始重新试，不是第三个+
-            i = start + 1;
+      
+        int idx = 0;
+        while(s.indexOf("++", idx) != -1){
+            idx = s.indexOf("++", idx);
+            String tmp = s.substring(0,idx) + "--" + s.substring(idx + 2);
+            result.add(tmp);
+            idx++;
         }
+        
         return result;
     }
 }
