@@ -77,3 +77,44 @@ class Solution {
         return matrix;
     }
 }
+
+
+//我自己的solution
+class Solution {
+    public int[][] updateMatrix(int[][] matrix) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return matrix;
+        Queue<int[]> queue = new LinkedList<>();
+        int m = matrix.length;
+        int n = matrix[0].length;
+        boolean[][] visited = new boolean[m][n];
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(matrix[i][j] == 0) {
+                    queue.offer(new int[]{i,j,0});
+                    visited[i][j] = true;
+                }
+            }
+        }
+        
+        int[][] directions = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                int[] tmp = queue.poll();
+                int a = tmp[0];
+                int b = tmp[1];
+                int c = tmp[2];
+                for(int[] direction : directions){
+                    int x = a + direction[0];
+                    int y = b + direction[1];
+                    if(x >= 0 && y >= 0 && x < m && y < n && matrix[x][y] != 0 && !visited[x][y]) {
+                        matrix[x][y] = c + 1;
+                        queue.offer(new int[]{x, y, matrix[x][y]});
+                        visited[x][y] = true;
+                    }
+                }
+            }
+        }
+        return matrix;
+    }
+}
