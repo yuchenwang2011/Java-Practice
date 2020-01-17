@@ -13,21 +13,18 @@ Follow Up:
 Can you do it in O(n) time and/or in-place with O(1) extra space?
 
 Answer:
-public class Solution {
-    //Got inspired by this answer, I will use the bad performance solution O(NLogN), 
-    //because O(N) is too difficult, I won't be able to come up this kind of answer in a real interview
-    //http://www.cnblogs.com/grandyang/p/5139057.html
+//有个O(n)解法，不报希望能自己想出来
+class Solution {
     public void wiggleSort(int[] nums) {
-        if(nums == null || nums.length == 0) return;
-        int[] result = new int[nums.length];
+        if(nums == null || nums.length <= 1) return;
         Arrays.sort(nums);
-        
-        int start = (nums.length % 2 == 0) ? nums.length / 2 - 1 : nums.length / 2,  end = nums.length - 1;
-        for(int i = 0; i < nums.length; i++){
-            result[i] = (i % 2 == 0) ? nums[start--] : nums[end--];
-        }
-        for(int i = 0; i < nums.length; i++){
-            nums[i] = result[i];
+        int mid = (nums.length - 1) / 2;
+        int right = nums.length - 1;
+        int[] result = nums.clone();
+        int i = 0;
+        while(mid >= 0 || right > (nums.length - 1) / 2){
+            nums[i] = i % 2 == 0 ? result[mid--] : result[right--];
+            i++;
         }
     }
 }
