@@ -16,46 +16,36 @@ Note:
 You may assume that you have an infinite number of each kind of coin.
 
 Answer:
-public class Solution {
-    //Got inspired by this answer
-    //https://leetcode.com/discuss/83289/understand-recursive-solution-using-java-with-explanations
-    //Code below is the first slow answer, second answer is O(N)
+//Time Limite exceeded
+class Solution {
     public int coinChange(int[] coins, int amount) {
-        if(coins == null || coins.length == 0 || amount < 0) return -1;
         if(amount == 0) return 0;
-        int result = amount + 1;
+        if(coins == null || coins.length == 0 || amount < 0) return -1;
+        int result = Integer.MAX_VALUE;
         for(int coin : coins){
-            int currentMin = 0;
-            if(amount >= coin){
-                int leftNum = coinChange(coins, amount - coin);
-                if(leftNum >= 0) currentMin = 1+ leftNum;
+            if(amount >= coin) {
+                int last = coinChange(coins, amount - coin);
+                if(last != -1) result = Math.min(result, last + 1);
             }
-            if(currentMin > 0) result = Math.min(result, currentMin);
-        }
-        return (result == amount + 1) ? -1 : result;
+        }    
+        return result == Integer.MAX_VALUE ? -1 : result;
     }
 }
 
-public class Solution {
-    //Read this cnb answer to understand how dp works
-    //http://www.cnblogs.com/grandyang/p/5138186.html
-    //https://leetcode.com/discuss/76204/simple-java-solution-o-amount-space-amount-time-complexity
+class Solution {
     public int coinChange(int[] coins, int amount) {
         if(coins == null || coins.length == 0 || amount < 0) return -1;
         if(amount == 0) return 0;
         int[] dp = new int[amount + 1];
-        
-        //use i instead of currentAmount for simplicity, here just to make the idea clearer
-        for(int currentAmount = 1; currentAmount <= amount; currentAmount++){
-            dp[currentAmount] = Integer.MAX_VALUE;
-            for(int j = 0; j < coins.length; j++){
-                //currentAmount's value is actually the current amount
-                if(currentAmount >= coins[j]) {
-                  int sub = currentAmount - coins[j];
-                  if(dp[sub] != Integer.MAX_VALUE) dp[currentAmount] = Math.min(dp[currentAmount], dp[sub] + 1);
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for(int i = 0; i < dp.length; i++){
+            for(int coin : coins){
+                if(i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
         }
-        return (dp[amount] == Integer.MAX_VALUE) ? -1 : dp[amount];
+        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
     }
 }
