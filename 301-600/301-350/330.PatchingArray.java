@@ -23,21 +23,19 @@ nums = [1, 2, 2], n = 5
 Return 0.
 
 Answer:
-public class Solution {
-    //Got inspired by first link's idea and the java code answer below, and the coding from second link
-    //https://leetcode.com/discuss/83272/share-my-thinking-process
-    //https://leetcode.com/discuss/82822/solution-explanation
+class Solution {
     public int minPatches(int[] nums, int n) {
-        if(nums == null || n == 0 ) return 0;
-        long range = 0;
-        int patch  = 0, i = 0;
-        while(range < n){
-            if(i < nums.length && nums[i] <= range + 1) range += nums[i++];
-            else {
-                range = range + 1 + range;
-                patch ++;
+        int result = 0;
+        long miss = 1;
+        int i = 0;
+        while(miss <= n){
+            if(i < nums.length && nums[i] <= miss) {
+                miss += nums[i++];
+            } else {
+                miss += miss;
+                result++;
             }
         }
-        return patch;
+        return result;
     }
 }
