@@ -42,6 +42,7 @@ class Solution {
         while(pq != null && !pq.isEmpty()){
             helper(graph, result, pq.poll());
         }
+        //因为要还原，所有的stop行程都得加进结果里
         result.add(0, stop);
     }
 }
