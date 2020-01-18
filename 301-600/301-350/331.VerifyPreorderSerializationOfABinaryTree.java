@@ -62,3 +62,19 @@ public class Solution {
         return stack.size() == 1 ? stack.peek().equals("#") : false;
     }
 }
+
+//大神的做法
+//讲解https://www.youtube.com/watch?v=_mbnPPHJmTQ 怕视频没了，看我存的截图
+//https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/331.VerifyPreorderSerialization.png
+class Solution {
+    public boolean isValidSerialization(String preorder) {
+        if(preorder == null || preorder.length() == 0) return false;
+        int edges = 1;
+        String[] nodes = preorder.split(",");
+        for(String node : nodes){
+            if(--edges < 0) return false;
+            if(!node.equals("#")) edges += 2;
+        }
+        return edges == 0;
+    }
+}
