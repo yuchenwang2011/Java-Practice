@@ -16,3 +16,11 @@ public class Solution {
         return (Math.log10(n) / Math.log10(3)) % 1 ==0;
     }
 }
+
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        int maxPow = (int) (Math.log10(Integer.MAX_VALUE) / Math.log10(3));
+        int limit = (int) Math.pow(3, maxPow);
+        return n > 0 && limit % n == 0;
+    }
+}
