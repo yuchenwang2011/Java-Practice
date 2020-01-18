@@ -22,20 +22,19 @@ Answer:
  *     ListNode(int x) { val = x; }
  * }
  */
-public class Solution {
+class Solution {
     public ListNode oddEvenList(ListNode head) {
-       //This answer is inspired by this
-       //https://leetcode.com/discuss/80315/simple-o-n-time-o-1-space-java-solution
-       if(head == null || head.next == null) return head;
-       ListNode odd = head, even = head.next, evenHead = even;
-       while(even != null && even.next != null){
-           odd.next = odd.next.next;
-           odd = odd.next;
-           
-           even.next = even.next.next;
-           even = even.next;
-       }
-       odd.next = evenHead;
-       return head;
+        if(head == null || head.next == null) return head;
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode even2 = even;
+        while(even != null && even.next != null){
+            odd.next = odd.next.next;
+            even.next = even.next.next;
+            odd = odd.next;
+            even = even.next;            
+        }
+        odd.next = even2;
+        return head;
     }
 }
