@@ -47,17 +47,18 @@ public class Solution {
     //剩下的坑用＃补上，然后B的parentA节点，A的右child也发现是个＃，然后咚一下这三个右炸了
     //最后的root也炸了，然后用一个＃补上了。最终整个stack就剩下一个＃
     public boolean isValidSerialization(String preorder) {
-        if(preorder == null || preorder.length() == 0 ) return true;
-        String[] strings = preorder.split(",");
+        if(preorder == null || preorder.length() == 0) return false;
+        if(preorder.length() == 1 && preorder.charAt(0) == '#') return true;
         Deque<String> stack = new ArrayDeque<>();
-        for(int i = 0; i < strings.length; i++){
-            while(stack.size() != 0 && strings[i].equals("#") && stack.peek().equals("#")) {
-                stack.pop(); //remove the "#"
-                if(stack.isEmpty()) return false;
-                stack.pop(); //remove the parent node
+        String[] nodes = preorder.split(",");
+        for(String node : nodes){
+            while(stack.size() != 0 && node.equals("#") && stack.peek().equals("#")){
+                stack.pop();
+                if(stack.size() == 0) return false;
+                stack.pop();
             }
-            stack.push(strings[i]);
+            stack.push(node);
         }
-        return (stack.size() == 1 && stack.peek().equals("#"));
+        return stack.size() == 1 ? stack.peek().equals("#") : false;
     }
 }
