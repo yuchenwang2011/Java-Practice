@@ -19,37 +19,40 @@ Follow up:
 Can you figure out ways to solve it with O(n) time complexity?
 
 Answer:
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-//I will first use this O(N^2) method to solve, because i don't understand other methods
-//I will do them in the next round
-//https://leetcode.com/discuss/86535/clean-and-easy-to-understand-java-solution
-public class Solution {
+class Solution {
+    class Node{
+        int size;
+        int lower;
+        int upper;
+        public Node(int size, int lower, int upper){
+            this.size = size;
+            this.lower = lower;
+            this.upper = upper;
+        }
+    }
+    
+    int result;
+    
     public int largestBSTSubtree(TreeNode root) {
-        if(root == null) return 0;
-        if(isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE)) return countNode(root);
-        return Math.max(largestBSTSubtree(root.left),largestBSTSubtree(root.right));
+        result = 0;
+        if(root == null) return result;
+        helper(root);
+        return result;
     }
     
-    public boolean isBST(TreeNode root, Integer lowerLimit, Integer upperLimit){
-        if(root == null) return true;
-        if(lowerLimit != null && root.val < lowerLimit) return false;
-        if(upperLimit != null && root.val > upperLimit) return false;
-        //no need think too much, only 1 value will be passed into isBST once, never 2 passed into it at the same time
-        //Because we only have 1 root
-        return isBST(root.left,lowerLimit,root.val) && isBST(root.right, root.val, upperLimit);
-    }
-    
-    public int countNode(TreeNode root){
-        if(root == null) return 0;
-        if(root.left == null && root.right == null) return 1;
-        else return countNode(root.left)+countNode(root.right)+1;
+    public Node helper(TreeNode root){
+        if(root == null) {
+            return new Node(0, Integer.MAX_VALUE, Integer.MIN_VALUE);
+        }
+        Node left = helper(root.left);
+        Node right = helper(root.right);
+        if(left.size == -1 || right.size == -1 || root.val <= left.upper || root.val >= right.lower) {
+            //right的lower，就是右边所有点的最小值，root肯定必须比右边最小值小才行
+            //left的upper,就是左边所有点的最大值，root肯定必须比左边最大值大才行
+            return new Node(-1, 0, 0);
+        }
+        int size = left.size + right.size + 1;
+        result = Math.max(result, size);
+        return new Node(size, Math.min(left.lower, root.val), Math.max(right.upper, root.val));
     }
 }
