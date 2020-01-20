@@ -27,6 +27,7 @@ Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is n
 Accepted 117,358 Submissions 280,195
 
 Answer:
+//这个是我自己风格的修改版
 class Solution {
     public int longestIncreasingPath(int[][] matrix) {
         if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
