@@ -15,6 +15,11 @@ Answer:
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation
  * public interface NestedInteger {
+ *     // Constructor initializes an empty nested list.
+ *     public NestedInteger();
+ *
+ *     // Constructor initializes a single integer.
+ *     public NestedInteger(int value);
  *
  *     // @return true if this NestedInteger holds a single integer, rather than a nested list.
  *     public boolean isInteger();
@@ -23,27 +28,32 @@ Answer:
  *     // Return null if this NestedInteger holds a nested list
  *     public Integer getInteger();
  *
+ *     // Set this NestedInteger to hold a single integer.
+ *     public void setInteger(int value);
+ *
+ *     // Set this NestedInteger to hold a nested list and adds a nested integer to it.
+ *     public void add(NestedInteger ni);
+ *
  *     // @return the nested list that this NestedInteger holds, if it holds a nested list
  *     // Return null if this NestedInteger holds a single integer
  *     public List<NestedInteger> getList();
  * }
  */
-public class Solution {
-    //https://leetcode.com/discuss/94956/2ms-easy-to-understand-java-solution
+class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
         if(nestedList == null || nestedList.size() == 0) return 0;
-        long[] result = new long[1]; 
-        result[0] = 0; 
-        process(nestedList, result, 1);
-        if(result[0] > Integer.MAX_VALUE) return Integer.MAX_VALUE;
-        if(result[0] < Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        return (int) result[0];
+        return helper(nestedList, 1);
     }
     
-    public void process(List<NestedInteger> list , long[] result, int depth){
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i).isInteger()) result[0] += depth * list.get(i).getInteger();
-            else process(list.get(i).getList(), result, depth + 1);
+    public int helper(List<NestedInteger> list, int level){
+        int result = 0;
+        for(NestedInteger ni : list){
+            if(ni.isInteger()) {
+                result += ni.getInteger() * level;
+            } else {
+                result += helper(ni.getList(), level + 1);
+            }
         }
+        return result;
     }
 }
