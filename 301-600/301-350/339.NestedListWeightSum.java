@@ -57,3 +57,29 @@ class Solution {
         return result;
     }
 }
+
+                                            
+                                            class Solution {
+    public int depthSum(List<NestedInteger> nestedList) {
+        if(nestedList == null || nestedList.size() == 0) return 0;
+        Queue<NestedInteger> queue = new LinkedList<>();
+        for(NestedInteger ni : nestedList){
+            queue.offer(ni);
+        }
+        
+        int result = 0;
+        int level = 1;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                NestedInteger tmp = queue.poll();
+                if(tmp.isInteger()) result += tmp.getInteger() * level;
+                else {
+                    queue.addAll(tmp.getList());
+                }
+            }
+            level++;
+        }
+        return result;
+    }
+}
