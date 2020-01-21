@@ -65,10 +65,10 @@ public class NestedIterator implements Iterator<Integer> {
 }
 
 public class NestedIterator implements Iterator<Integer> {
-    private Deque<NestedInteger> stack = new ArrayDeque<NestedInteger>();
-
+    Deque<NestedInteger> stack;
     public NestedIterator(List<NestedInteger> nestedList) {
-        for(int i = nestedList.size() -1 ; i >= 0 ; i--){
+        stack = new ArrayDeque<>();
+        for(int i = nestedList.size() - 1; i >= 0; i--){
             stack.push(nestedList.get(i));
         }
     }
@@ -81,11 +81,13 @@ public class NestedIterator implements Iterator<Integer> {
     @Override
     public boolean hasNext() {
         while(!stack.isEmpty()){
-            NestedInteger current = stack.peek();
-            if(current.isInteger()) return true;
+            NestedInteger ni = stack.peek();
+            if(ni.isInteger()) return true;
+            
             stack.pop();
-            for(int i = current.getList().size() - 1; i >=0 ; i--){
-                stack.push(current.getList().get(i));
+            List<NestedInteger> list = ni.getList();
+            for(int i = list.size() - 1; i >= 0; i--){
+                stack.push(list.get(i));
             }
         }
         return false;
