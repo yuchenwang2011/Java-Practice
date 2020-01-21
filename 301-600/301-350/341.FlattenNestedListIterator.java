@@ -18,6 +18,7 @@ By calling next repeatedly until hasNext returns false,
 the order of elements returned by next should be: [1,4,6].
 
 Answer:
+//My own idea
 /**
  * // This is the interface that allows for creating nested lists.
  * // You should not implement it, or speculate about its implementation
@@ -36,8 +37,34 @@ Answer:
  * }
  */
 public class NestedIterator implements Iterator<Integer> {
-    //Got inspired by this answer:
-    //https://leetcode.com/discuss/96316/simple-java-solution-using-a-stack-with-explanation
+    Queue<Integer> queue;
+    public NestedIterator(List<NestedInteger> nestedList) {
+        queue = new LinkedList<>();
+        helper(nestedList);
+    }
+
+    public void helper(List<NestedInteger> list){
+        for(NestedInteger ni : list){
+            if(ni.isInteger()) {
+                queue.offer(ni.getInteger());
+            } else {
+                helper(ni.getList());
+            }
+        }
+    }
+    
+    @Override
+    public Integer next() {
+        return queue.poll();
+    }
+
+    @Override
+    public boolean hasNext() {
+        return !queue.isEmpty();
+    }
+}
+
+public class NestedIterator implements Iterator<Integer> {
     private Deque<NestedInteger> stack = new ArrayDeque<NestedInteger>();
 
     public NestedIterator(List<NestedInteger> nestedList) {
