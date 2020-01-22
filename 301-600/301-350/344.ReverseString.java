@@ -1,36 +1,28 @@
-344. Reverse String   My Submissions QuestionEditorial Solution
-Total Accepted: 2919 Total Submissions: 4867 Difficulty: Easy
-Write a function that takes a string as input and returns the string reversed.
+344. Reverse String
+Easy
+Write a function that reverses a string. The input string is given as an array of characters char[].
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+You may assume all the characters consist of printable ascii characters.
 
-Example:
-Given s = "hello", return "olleh".
+Example 1:
+Input: ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+
+Example 2:
+Input: ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
+
+Accepted 575,914 Submissions 882,114
 
 Answer:
-public class Solution {
-    public String reverseString(String s) {
-        if(s == null || s.length() == 0) return "";
-        char[] c = s.toCharArray();
-        int start = 0, end = c.length-1;
-        while(start <= end){
-            char tmp = c[start];
-            c[start] = c[end];
-            c[end] = tmp;
-            start ++;
-            end --;
-        }
-        return new String(c);
-    }
-}
-
-//Second Solution Oct 6, 2017
 class Solution {
-    public String reverseString(String s) {
-        if(s == null || s.length() == 0) return "";
-        StringBuilder sb = new StringBuilder();
-        for(int i = s.length() - 1; i >= 0; i--){
-            char c = s.charAt(i);
-            sb.append(c);
+    public void reverseString(char[] s) {
+        int start = 0;
+        int end = s.length - 1;
+        while(start < end){
+            char tmp = s[start];
+            s[start++] = s[end];
+            s[end--] = tmp;
         }
-        return sb.toString();
     }
 }
