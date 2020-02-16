@@ -78,24 +78,23 @@ class Solution {
         if(numCourses <= 0) return false;
         if(prerequisites == null || prerequisites.length == 0) return true;
         Map<Integer, Set<Integer>> graph = new HashMap<>();
-        for(int i = 0; i < prerequisites.length; i++){
-            int a = prerequisites[i][0];
-            int b = prerequisites[i][1];
+        for(int[] prerequisite : prerequisites){
+            int a = prerequisite[0];
+            int b = prerequisite[1];
             graph.putIfAbsent(b, new HashSet<>());
             graph.get(b).add(a);
         }
+        
         Set<Integer> visited = new HashSet<>();
-        int start = graph.keySet().iterator().next();
-        boolean result = helper(graph, visited, start);
-        if(result == false) return false;
-        return true;
+        int current = graph.keySet().iterator().next();
+        return helper(graph, visited, current);
     }
     
     public boolean helper(Map<Integer, Set<Integer>> graph, Set<Integer> visited, int current){
-        if(visited.contains(current)) return false;
-        visited.add(current);
+        if(!visited.add(current)) return false;
+        
         Set<Integer> set = graph.get(current);
-        if(set != null && set.size() != 0){
+        if(set != null && !set.isEmpty()) {
             for(int i : set){
                 if(!helper(graph, visited, i)) return false;
             }
