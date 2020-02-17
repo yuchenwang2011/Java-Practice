@@ -48,3 +48,26 @@ class Solution {
         return -1;
     }
 }
+
+class Solution {
+    public int minDominoRotations(int[] A, int[] B) {
+        if(A == null || B == null || A.length != B.length) return -1;
+        int n = A.length;
+        int a = 0; 
+        int b = 0;
+        for(int i = 0; i < n; i++){
+            if(A[i] != A[0] && B[i] != A[0]) break;
+            if(A[i] != A[0]) a++;
+            if(B[i] != A[0]) b++;
+            if(i == n - 1) return Math.min(a, b);
+        }
+        a = b = 0;
+        for(int i = 0; i < n; i++){
+            if(A[i] != B[0] && B[i] != B[0]) break;
+            if(A[i] != B[0]) a++;
+            if(B[i] != B[0]) b++;
+            if(i == n - 1) return Math.min(a, b);
+        }
+        return -1;
+    }
+}
