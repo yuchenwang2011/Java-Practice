@@ -24,3 +24,30 @@ such that you cannot load all elements into the memory at once?
 Accepted 283,671 Submissions 565,060
 
 Answer:
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        if(nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0) 
+            return new int[0];
+        List<Integer> result = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num2 : nums2){
+           map.put(num2, map.getOrDefault(num2, 0) + 1);
+        }
+        
+        for(int num : nums1){
+            if(!map.containsKey(num)) continue;
+            result.add(num);
+            map.put(num, map.get(num) - 1);
+            if(map.get(num) == 0) map.remove(num);
+        }
+        return result.stream().mapToInt(i->i).toArray();
+    }
+}
+
+Follow up
+If only nums2 cannot fit in memory, put all elements of nums1 into a HashMap, 
+read chunks of array that fit into the memory, and record the intersections.
+
+If both nums1 and nums2 are so huge that neither fit into the memory, 
+sort them individually (external sort), then read 2 elements from each array 
+at a time in memory, record intersections.
