@@ -1,0 +1,3 @@
+1. int list to int array
+   int[] array = list.stream().mapToInt(i->i).toArray();
+   https://stackoverflow.com/questions/960431/how-to-convert-listinteger-to-int-in-java
