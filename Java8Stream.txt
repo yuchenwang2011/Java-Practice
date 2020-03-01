@@ -1,3 +1,9 @@
 1. int list to int array
    int[] array = list.stream().mapToInt(i->i).toArray();
    https://stackoverflow.com/questions/960431/how-to-convert-listinteger-to-int-in-java
+
+2. Method Reference, 4 types
+   a. Method reference to an instance method of an object – object::instanceMethod
+   b. Method reference to a static method of a class – Class::staticMethod
+   c. Method reference to an instance method of an arbitrary object of a particular type – Class::instanceMethod
+   d. Method reference to a constructor – Class::new
