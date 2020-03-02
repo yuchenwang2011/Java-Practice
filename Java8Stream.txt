@@ -7,3 +7,4 @@
    b. Method reference to a static method of a class – Class::staticMethod
    c. Method reference to an instance method of an arbitrary object of a particular type – Class::instanceMethod
    d. Method reference to a constructor – Class::new
+   https://www.javatpoint.com/java-8-method-reference
