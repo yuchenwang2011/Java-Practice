@@ -36,6 +36,7 @@ class Solution {
                     nums[start] = nums[i];
                     nums[i] = tmp;
                     start++;
+                    //break; the break is not necessary because this is a sorted interval now
                 }
             }
         }
