@@ -64,7 +64,7 @@ public class Solution {
             } else {
                 TreeNode current = stack.pop();
                 if(current.val <= tmp) return false;
-                //Since Inoder tranversal of BST is in sorted order, we need not check the other case of right side .
+                //we need not check the other case of right side because we have saved the last current (parent) node's value for the right node
                 tmp = current.val;//as the values should be larger and larger
                 root = current.right;
             }
