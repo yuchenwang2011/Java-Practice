@@ -55,27 +55,3 @@ class Solution {
         return newHead.next;
     }
 }
-
-class Solution {
-    public ListNode deleteDuplicates(ListNode head) {
-        if(head == null || head.next == null) return head;
-        ListNode prevHead = new ListNode(-1);
-        
-        ListNode iter = prevHead;
-        while(head != null){
-            if(head.next != null && head.val == head.next.val) {
-                while(head.next != null && head.val == head.next.val){
-                    head = head.next;
-                }
-                head = head.next;
-            } else {
-                ListNode next = head.next;
-                iter.next = head;
-                iter = iter.next;
-                iter.next = null;    
-                head = next;
-            }    
-        }
-        return prevHead.next;
-    }
-}
