@@ -10,10 +10,10 @@ class Solution {
         int result = 0;
         if(prices == null || prices.length < 2) return result;
 
-        int min = prices[0];
+        int minCost = prices[0];
         for(int price : prices){
-            min = Math.min(min, price);
-            result = Math.max(result, price - min);
+            minCost = Math.min(minCost, price);
+            result = Math.max(result, price - minCost);
         }
         return result;
     }
