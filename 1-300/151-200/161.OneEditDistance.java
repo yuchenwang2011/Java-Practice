@@ -17,7 +17,7 @@ public class Solution {
                 return s.substring(i + 1).equals(t.substring(i));
             }
         }
-        return s.length() - t.length() == 1;
+        return s.length() - t.length() == 1; //for case "1" and ""
     }
 }
 //Test case: "c" "c"
