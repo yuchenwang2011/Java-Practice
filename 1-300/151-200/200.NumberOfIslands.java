@@ -145,17 +145,17 @@ class Solution {
             }
         }        
         public int find(int id){
-            if(id == parent[id]) {
+            if(id == parent[id]) { //本身就是root
                 return id;
             }
-            parent[id] = find(parent[id]);
+            parent[id] = find(parent[id]); //不断地去寻找root
             return parent[id];
         }
         public void union(int id1, int id2){
             int root1 = find(id1);
             int root2 = find(id2);
             if(root1 != root2) {
-                parent[root1] = root2;
+                parent[root1] = root2; //反过来也行
                 //注意，这一行总忘。而且它是在括号里面的
                 count--;
             }
