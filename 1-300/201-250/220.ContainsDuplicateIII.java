@@ -19,28 +19,35 @@ Output: false
 
 Answer:
 class Solution {
+    //O(LgN solution as treeset sorting is O(logN) )
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        if(nums == null || nums.length == 0 || k <= 0 || t < 0) return false;
+        if(nums == null || nums.length < 2 || k <=0 || t < 0) return false;
         
-        TreeSet<Long> set = new TreeSet<>();
+        TreeSet<Long> set = new TreeSet<Long>();
         for(int i = 0; i < nums.length; i++){
-            //floor 就是找一个小于等于这个数的element
-            //ceiling就是找一个大于等于这个数的element
-            Long floor = set.floor((long) nums[i] + t);
-            Long ceiling = set.ceiling((long) nums[i] - t);
+            Long current = (long)nums[i];
             
-            //floor是一个小于等于+t的值，但是它没准比nums[i]也小呢，那这样的话，他们之间的距离就不只是t了
-            if((floor != null && floor >= nums[i]) 
-              || (ceiling != null && ceiling <= nums[i])) return true; 
+            //this is the first number in the set that is smaller than current number
+            //so if the difference between them are smaller than t, that is good
+            //that is the closest number already in the set
+            Long smaller = set.floor(current);
+            if(smaller != null && current - smaller <= t) return true;
             
+            //this is the first number in the set that is bigger than current number
+            //so if the different between them are smaller than t, that is good
+            Long bigger = set.ceiling(current);
+            if(bigger != null && bigger - current <= t) return true;
+            
+            //of course you are looping through the array, you have to save every number
+            //but the set only keeps k elements at most to make sure the distance between two numbers
+            //are at most k
             set.add((long)nums[i]);
-            
-            if(i >= k) {
-                //this will be used for next round, so it's just i - k
-                set.remove((long)nums[i - k]);
+            if(set.size() > k){
+                //for example, i, i+1, i+2, k = 2, so need to remove nums[i], which is i + 2 - k = i
+                Long tmp = (long) nums[i - k];
+                set.remove(tmp);
             }
         }
-        
         
         return false;
     }
