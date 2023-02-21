@@ -73,7 +73,7 @@ public class Solution {
             when "\t" is not found, because s.lastIndexOf("\t") returns -1.
             So normally, the first parent "dir" have numOfTabs 0.
             */
-            int numOfTabs = s.lastIndexOf("\t") + 1;
+            int numOfTabs = s.lastIndexOf("\t") + 1; //searching for \t counts the escape, so \t\t\t, last one returns 2, not 3, adding one makes it 3
             /* Level is defined as numOfTabs + 1. 
             For example, in "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext", 
             dir is level 1, subdir1 and subdir2 are level 2, file.ext is level3
