@@ -78,7 +78,7 @@ public class Solution {
             For example, in "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext", 
             dir is level 1, subdir1 and subdir2 are level 2, file.ext is level3
             */
-            level = numOfTabs + 1;
+            int level = numOfTabs + 1;
             /*
             The following part of code is the case that we want to consider when there are
             several subdirectories in a same level. We want to remove
