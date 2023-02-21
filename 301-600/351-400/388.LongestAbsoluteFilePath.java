@@ -87,10 +87,10 @@ public class Solution {
             the path length of current directory or file that we are currently looking at.
             */
             while (level < stack.size()) stack.poll(); 
-            int curLen = stack.peek() + (s.length() - numOfTabs) + 1;
+            int curLen = stack.peek() + (s.length() - numOfTabs) + 1; //the +1 in the end is to append the ending slash / if it was a directory.
             stack.push(curLen);
             if (s.contains(".")) maxLen = Math.max(maxLen, curLen - 1); //Only update the maxLen when a file is discovered, 
-            // And remove the "/" at the end of file
+            // And remove the "/" at the end of file because it's a file it doesn't need / as a directory
         }
         return maxLen;
     }
