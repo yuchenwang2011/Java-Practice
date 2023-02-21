@@ -32,6 +32,7 @@
   HashSet<String> s = new HashSet<String>();
   return new ArrayList<String>(s);
   map.put(number, map.containsKey(number) ? map.get(number) + 1 : 1);
+  map.put(sum, map.getOrDefault(sum, 0) + 1);
   for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
     int i = entry.getKey();
     int j = entry.getValue();
