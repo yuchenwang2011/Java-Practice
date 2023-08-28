@@ -37,3 +37,25 @@ word1 and word2 consist of lowercase English letters.
 Accepted 358.5K Submissions 449.2K Acceptance Rate 79.8%
 
 Answer:
+
+//my own solution
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+        if(word1 == null || word1.length() == 0) return word2;
+        if(word2 == null || word2.length() == 0) return word1;
+
+        String result = "";
+
+        for(int i = 0; i < Math.min(word1.length(), word2.length()); i++){
+            result += word1.charAt(i);
+            result += word2.charAt(i);
+        }
+
+        for(int i = Math.min(word1.length(), word2.length()); i < Math.max(word1.length(), word2.length()); i++){
+            result += i >= word1.length() ? "" : word1.charAt(i);
+            result += i >= word2.length() ? "" : word2.charAt(i);
+        }
+
+        return result;
+    }
+}
