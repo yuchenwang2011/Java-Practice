@@ -54,6 +54,7 @@ class Solution {
 }
 
 //https://leetcode.com/problems/greatest-common-divisor-of-strings/solutions/516621/java-clean-solution-0-ms-100/
+//辗转相除法
 class Solution {
     public String gcdOfStrings(String str1, String str2) {
         if(!(str1 + str2).equals(str2 + str1)) return "";
