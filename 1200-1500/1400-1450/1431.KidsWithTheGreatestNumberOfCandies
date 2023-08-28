@@ -36,3 +36,20 @@ n == candies.length
 Accepted 584.6K Submissions 667.6K Acceptance Rate 87.6%
 
 Answer:
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        List<Boolean> result = new ArrayList<>();
+        if(candies == null || candies.length == 0 || extraCandies < 0) return result;
+
+        int max = Integer.MIN_VALUE;
+        for(int candy : candies){
+            max = Math.max(candy, max);
+        }
+
+        for(int candy: candies){
+            result.add(candy + extraCandies >= max);
+        }
+
+        return result;
+    }
+}
