@@ -33,6 +33,7 @@ Accepted 103.3K Submissions 264.8K Acceptance Rate 39.0%
 
 
 Answer:
+//followed this link https://leetcode.com/problems/minimum-time-to-complete-trips/solutions/1802415/python3-java-c-binary-search-1-liner/
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
         if(time == null || time.length == 0 || totalTrips < 0) return Long.MAX_VALUE;
