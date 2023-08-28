@@ -49,7 +49,7 @@ class Solution {
             }
         }
 
-        return min;
+        return min; //also ok to return max;
     }
 
     public boolean SufficientForTrips(long timeSlice, int totalTrips, int[] time){
