@@ -11,4 +11,5 @@
 9.   (值得再写一遍)[443. String Compression](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/443.StringCompression)
 
 ### Two Pointeres
-1.  (值得再写一遍)[283. MoveZeroes](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/251-300/283.MoveZeroes.java)
+1.  (值得再写一遍)[283. Move Zeroes](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/251-300/283.MoveZeroes.java)
+2.  ()[392. Is Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/392.IsSubsequence)
