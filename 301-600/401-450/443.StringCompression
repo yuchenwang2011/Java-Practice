@@ -31,3 +31,30 @@ chars[i] is a lowercase English letter, uppercase English letter, digit, or symb
 Accepted 426.8K Submissions 806.8K Acceptance Rate 52.9%
 
 Answer: 
+//followed this link https://leetcode.com/problems/string-compression/solutions/92559/simple-easy-to-understand-java-solution/
+class Solution {
+    public int compress(char[] chars) {
+        if(chars == null || chars.length == 0) return 0;
+        int idx = 0; 
+        int start = 0;
+
+        while(start < chars.length){
+            char current = chars[start];
+            int count = 0;
+            
+            while(start < chars.length && chars[start] == current){
+                count++;
+                start++;
+            }
+            chars[idx++] = current;
+
+            if(count != 1){
+                for(char c : Integer.toString(count).toCharArray()){
+                    chars[idx++] = c;
+                }
+            }
+        }
+
+        return idx;
+    }
+}
