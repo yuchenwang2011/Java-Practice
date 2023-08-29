@@ -27,3 +27,26 @@ Constraints:
 Accepted 165.2K Submissions 294.7K Acceptance Rate 56.0%
 
 Answer:
+//https://leetcode.com/problems/max-number-of-k-sum-pairs/solutions/2007455/java-2-approaches-100-two-pointer-sorting-hashmap
+class Solution {
+    public int maxOperations(int[] nums, int k) {
+        Arrays.sort(nums);
+        int result = 0;
+        int start = 0;
+        int end = nums.length - 1;
+
+        while(start < end){
+            int sum = nums[start] + nums[end];
+            if(sum > k) {
+                end--;
+            } else if (sum < k){
+                start++;
+            } else {
+                result++;
+                start++;
+                end--;
+            }
+        }
+        return result;
+    }
+}
