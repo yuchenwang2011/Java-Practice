@@ -9,6 +9,7 @@ You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 
 Answer:
+//my own solution
 class Solution {
     public void moveZeroes(int[] nums) {
         if(nums == null || nums.length == 0) return;
@@ -23,3 +24,25 @@ class Solution {
         nums[end] = tmp;
     }
 }
+
+//my own solution second round
+class Solution {
+    public void moveZeroes(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        int idx = 0;
+        int i = 0;
+
+        while(i < nums.length){
+            int current = nums[i];
+            if(current != 0){
+                nums[idx++] = current;
+            }
+            i++;
+        }
+
+        while(idx < nums.length){
+            nums[idx++] = 0;
+        }
+    }
+}
+
