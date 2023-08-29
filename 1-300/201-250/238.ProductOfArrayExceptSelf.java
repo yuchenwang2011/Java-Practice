@@ -15,7 +15,7 @@ class Solution {
     public int[] productExceptSelf(int[] nums) {
         if(nums == null || nums.length == 0) return new int[0]; 
         int[] result = new int[nums.length];
-        Arrays.fill(result, 1);
+        Arrays.fill(result, 1); //it's also ok to have result[0] = 1;
         
         for(int i = 1; i < nums.length; i++){
             result[i] = result[i - 1] * nums[i - 1];
