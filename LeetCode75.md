@@ -19,4 +19,4 @@
 ### Sliding Window
 1.  (随便瞄二下)[643. Maximum Average Subarray I](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/643.MaximumAverageSubarrayI)
 2.  (随便瞄二下)[1456. Maximum Number of Vowels In A Substring of Given Length](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1456.MaximumNumberOfVowelsInASubstringOfGivenLength)
-3.  ()[1004. Max Consecutive Ones III](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1001-1050/1004.MaxConsecutiveOnesIII)
+3.  (背诵解法)[1004. Max Consecutive Ones III](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1001-1050/1004.MaxConsecutiveOnesIII)
