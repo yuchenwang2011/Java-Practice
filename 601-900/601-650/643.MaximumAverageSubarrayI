@@ -20,3 +20,26 @@ n == nums.length
 Accepted 272.8K Submissions 631.2K Acceptance Rate 43.2%
 
 Answer:
+//my own answer but fixed a test case after reading 
+//https://leetcode.com/problems/maximum-average-subarray-i/solutions/105432/java-solution-sum-of-sliding-window/
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        if(nums == null || nums.length == 0 || k < 0) return 0;
+        if(k >= nums.length) return Arrays.stream(nums).sum() / (double) nums.length;
+
+        int sum = 0;
+        for(int i = 0; i < k; i++){
+            sum += nums[i];
+        }
+
+        int maxSum = sum;
+        int i = 1;
+        while(i + k <= nums.length){
+            sum = sum - nums[i - 1] + nums[i + k - 1]; 
+            maxSum = Math.max(maxSum, sum);
+            i++;
+        }
+
+        return maxSum / (double) k;
+    }
+}
