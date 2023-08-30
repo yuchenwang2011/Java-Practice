@@ -59,6 +59,7 @@ class NumMatrix {
     private int[][] dp;
     public NumMatrix(int[][] matrix) {
         if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return;
+        //如果问为什么用一个大一圈的array，我会回答：是因为等会都是会用i - 1， j - 1之类的，大一圈就保证不会比0小容易写
         dp = new int[matrix.length + 1][matrix[0].length + 1];
         for(int i = 1; i < dp.length; i++){
             for(int j = 1; j < dp[0].length; j++){
