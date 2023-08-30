@@ -25,3 +25,29 @@ s consists of lowercase English letters.
 Accepted 180.9K Submissions 310.3K Acceptance Rate 58.3%
 
 Answer:
+//my own solution, same methdo as 643
+class Solution {
+    public int maxVowels(String s, int k) {
+        if(s == null || s.length() == 0 || k <= 0) return 0;
+        String vowels = "aeiou";
+        //the contraints says k <= s.length()
+
+        int sum = 0;
+        for(int i = 0; i < k; i++){
+            sum += vowels.contains(String.valueOf(s.charAt(i))) ? 1 : 0;
+        }
+
+        int i = 1;
+        int result = sum;
+
+        while(i + k <= s.length()){
+            int left = vowels.contains(String.valueOf(s.charAt(i - 1))) ? 1 : 0;
+            int right = vowels.contains(String.valueOf(s.charAt(i + k - 1))) ? 1 : 0;
+            sum = sum - left + right;
+
+            result = Math.max(result, sum); 
+            i++;           
+        }
+        return result;
+    }
+}
