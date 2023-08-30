@@ -35,7 +35,7 @@ class Solution {
                 left++;
             }
 
-            if(zeros <= k) {
+            if(zeros <= k) { //这个if可以不要，但是一下就理解不了了，所以还是加上
                 result = Math.max(result, right - left + 1);
             }
         }
