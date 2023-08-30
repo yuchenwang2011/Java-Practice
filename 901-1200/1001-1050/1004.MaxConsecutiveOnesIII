@@ -21,3 +21,25 @@ nums[i] is either 0 or 1.
 Accepted 354.4K Submissions 563.5K Acceptance Rate 62.9%
 
 Answer:
+//followed the comment in this answer https://leetcode.com/problems/max-consecutive-ones-iii/solutions/247564/java-c-python-sliding-window/
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+        int left = 0;
+        int result = 0;
+        int zeros = 0;
+
+        for(int right = 0; right < nums.length; right++){
+            if(nums[right] == 0) zeros++;
+            if(zeros > k){
+                if(nums[left] == 0) zeros--;
+                left++;
+            }
+
+            if(zeros <= k) {
+                result = Math.max(result, right - left + 1);
+            }
+        }
+
+        return result;
+    }
+}
