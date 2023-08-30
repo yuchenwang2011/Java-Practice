@@ -24,3 +24,29 @@ nums[i] is either 0 or 1.
 Accepted 170.3K Submissions 256.3K Acceptance Rate 66.5%
 
 Answer:
+//followed this answer https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/solutions/3719568/beat-s-100-c-java-python-beginner-friendly/
+class Solution {
+    public int longestSubarray(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        
+        int result = 0;
+        int left = 0;
+        int deleted = 0;
+
+        for(int right = 0; right < nums.length; right++){
+            if(nums[right] != 1) deleted++;
+
+            //这里直接用if也行，但是很不好理解，就用while好了
+            while(deleted > 1){ 
+                if(nums[left] != 1) deleted--;
+                left++;
+            }
+
+            if(deleted <= 1) {
+                result = Math.max(result, right - left + 1 - deleted);
+            }
+        }
+
+        return (result == nums.length) ? result - 1 : result;
+    }
+}
