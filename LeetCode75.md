@@ -17,4 +17,4 @@
 4.  (升级TwoSum，随便瞄一下)[1679. Max Number of K-Sum Pairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1650-1700/1679.MaxNumberOfK-SumPairs)
 
 ### Sliding Window
-1.  ()[643. Maximum Average Subarray I](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/643.MaximumAverageSubarrayI)
+1.  (随便瞄二下)[643. Maximum Average Subarray I](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/643.MaximumAverageSubarrayI)
