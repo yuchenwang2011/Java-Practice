@@ -22,3 +22,16 @@ n == gain.length
 Accepted 238.5K Submissions 289.5K Acceptance Rate 82.4%
 
 Answer:
+//my own solution
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int result = 0;
+        if(gain == null || gain.length == 0) return 0;
+        int sum = 0;
+        for(int g : gain){
+            sum += g;
+            result = Math.max(result, sum);
+        }
+        return result;
+    }
+}
