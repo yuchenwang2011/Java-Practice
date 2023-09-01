@@ -23,4 +23,4 @@
 4.  (和1004一起背诵)[1493. Longest Subarray of 1's After Deleting One Element](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1493.LongestSubarrayof1sAfterDeletingOneElement)
 
 ### Prefix Sum
-1.  ()[1732.FindTheHighestAltitude](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1700-1750/1732.FindTheHighestAltitude)
+1.  (没价值)[1732.FindTheHighestAltitude](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1700-1750/1732.FindTheHighestAltitude)
