@@ -24,3 +24,4 @@
 
 ### Prefix Sum
 1.  (没价值)[1732.FindTheHighestAltitude](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1700-1750/1732.FindTheHighestAltitude)
+2.  ()[724. Find Pivot Index](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/724.FindPivotIndex)
