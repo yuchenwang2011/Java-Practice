@@ -38,3 +38,30 @@ class Solution {
         return head;
     }
 }
+//my own solution
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if(head == null || head.next == null) return head;
+        int count = 1;
+        ListNode odd = new ListNode(-1);
+        ListNode even = new ListNode(-1);
+        ListNode oddBackup = odd;
+        ListNode evenBackup = even;
+
+        while(head != null){
+            if(count % 2 == 1){
+                odd.next = head;
+                odd = odd.next;
+            } else {
+                even.next = head;
+                even = even.next;
+            }
+            count++;
+            head = head.next;
+            odd.next = null;
+            even.next = null;
+        }
+        odd.next = evenBackup.next;
+        return oddBackup.next;
+    }
+}
