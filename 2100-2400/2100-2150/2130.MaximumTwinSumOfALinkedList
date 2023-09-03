@@ -35,3 +35,46 @@ The number of nodes in the list is an even integer in the range [2, 105].
 Accepted 190.9K Submissions 233K Acceptance Rate 81.9%
 
 Answer:
+//my own solution, there is no other solution
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int pairSum(ListNode head) {
+        if(head ==  null || head.next == null) return 0;
+        ListNode slow = head;
+        ListNode fast = head.next.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode head2 = slow.next;
+        slow.next = null;
+
+        head2 = reverseList(head2);
+        int result = 0;
+        while(head != null){
+            result = Math.max(result, head.val + head2.val);
+            head = head.next;
+            head2 = head2.next;
+        }
+        return result;
+    }
+
+    public ListNode reverseList(ListNode head){
+        if(head == null || head.next == null) return head;
+        ListNode next = head.next;
+        ListNode newHead = reverseList(head.next);
+        next.next = head;
+        head.next = null;
+        return newHead;
+    }
+}
