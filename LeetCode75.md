@@ -34,4 +34,4 @@
 
 ### Stack
 1.  (随便瞄一下)[2390. Removing Stars From a String](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2350-2400/2390.RemovingStarsFromAString)
-2.  ()[735. Asteroid Collision](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/735.AsteroidCollision)
+2.  (随便瞄一下)[735. Asteroid Collision](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/735.AsteroidCollision)
