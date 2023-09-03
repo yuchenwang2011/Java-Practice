@@ -21,3 +21,16 @@ Both of the given trees will have values in the range [0, 200].
 Accepted 284.5K Submissions 419.5K Acceptance Rate 67.8%
 
 Answer:
+//本来我用的是两个list存下来然后比较两个list，但是这个算法更妙
+//https://leetcode.com/problems/leaf-similar-trees/solutions/152358/simple-6-lines-java-stringbuilder-traverse-with-explanation
+class Solution {
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        return findLeafs(root1).equals(findLeafs(root2));
+    }
+
+    public String findLeafs(TreeNode root){
+        if(root == null) return "";
+        if(root.left == null && root.right == null) return root.val + "-";
+        return findLeafs(root.left) + findLeafs(root.right);
+    }
+}
