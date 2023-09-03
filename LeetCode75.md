@@ -50,3 +50,4 @@
 
 ### Binary Tree - DFS
 1.  (没价值)[104. Maximum Depth Of Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/104.MaximumDepthOfBinaryTree.java)
+2.  ()[872. Leaf-Similar Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/850-900/872.Leaf-SimilarTrees)
