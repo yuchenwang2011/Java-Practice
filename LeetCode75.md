@@ -43,4 +43,4 @@
 
 ### Linked List
 1.  (值得思考)[2095. Delete The Middle Node Of A LinkedList](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/2050-2100/2095.DeleteTheMiddleNodeOfALinkedList)
-2.  ()[328. Odd Even Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/328.OddEvenLInkedList.java)
+2.  (随便瞄二眼)[328. Odd Even Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/328.OddEvenLInkedList.java)
