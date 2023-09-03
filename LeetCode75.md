@@ -39,4 +39,4 @@
 
 ### Queue
 1.  (随便瞄一眼，想法挺新奇)[933. Number of Recent Calls](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/933.NumberOfRecentCalls)
-
+2.  ()[649. Dota2 Senate](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/649.Dota2Senate)
