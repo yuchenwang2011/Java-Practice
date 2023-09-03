@@ -29,3 +29,44 @@ All the integers in s are in the range [1, 300].
 Accepted 685.9K Submissions 1.2M Acceptance Rate 58.3%
 
 Answer:
+//followed this answer: https://leetcode.com/problems/decode-string/solutions/87570/simple-1-pass-java-solution-with-only-1-stack-with-explanation5
+class Solution {
+    public String decodeString(String s) {
+        Stack<Character> stack = new Stack<>();
+        for(char c : s.toCharArray()){
+            if(c != ']'){
+                stack.push(c); //push everything but ']'
+            } else {
+                //step 1: if a ']', retrieve the string
+                StringBuilder sb = new StringBuilder();
+                while(!stack.isEmpty() && Character.isLetter(stack.peek())){
+                    sb.insert(0, stack.pop());
+                }
+                String sub = sb.toString(); // this is the string in []
+                stack.pop(); //discard the '['
+
+                //step2: find the number to repeat
+                sb = new StringBuilder();
+                while(!stack.isEmpty() && Character.isDigit(stack.peek())){
+                    sb.insert(0, stack.pop());
+                }
+                int count = Integer.valueOf(sb.toString());
+
+                //step3: repeat the string in [] count times and push it to stack
+                while(count > 0){
+                    for(char ch : sub.toCharArray()){
+                        stack.push(ch);
+                    }
+                    count--;
+                }
+            }
+        }
+
+        //finally return the string
+        StringBuilder result = new StringBuilder();
+        while(!stack.isEmpty()){
+            result.insert(0, stack.pop());
+        }
+        return result.toString();
+    }
+}
