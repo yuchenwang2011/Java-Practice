@@ -38,5 +38,5 @@
 3.  (再抄一遍，不用自己写)[394. Decoding String](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/394.DecodingString)
 
 ### Queue
-1.  ()[937. Reorder Data In Log Files](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/937.ReorderDataInLogFiles.java)
+1.  (随便瞄一眼，想法挺新奇)[933. Number of Recent Calls](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/933.NumberOfRecentCalls)
 
