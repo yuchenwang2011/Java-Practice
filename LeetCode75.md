@@ -42,4 +42,4 @@
 2.  (没价值)[649. Dota2 Senate](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/649.Dota2Senate)
 
 ### Linked List
-1.  ()[2095. Delete The Middle Node Of A LinkedList](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/2050-2100/2095.DeleteTheMiddleNodeOfALinkedList)
+1.  (值得思考)[2095. Delete The Middle Node Of A LinkedList](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/2050-2100/2095.DeleteTheMiddleNodeOfALinkedList)
