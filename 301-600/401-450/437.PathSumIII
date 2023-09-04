@@ -21,3 +21,19 @@ The number of nodes in the tree is in the range [0, 1000].
 Accepted 484.4K Submissions 1M Acceptance Rate 47.3%
 
 Answer:
+//followed this link: https://www.jiakaobo.com/leetcode/437.%20Path%20Sum%20III.html
+class Solution {
+    public int pathSum(TreeNode root, int targetSum) {
+        if (root == null) return 0;
+
+        return (int)help(root, (long)targetSum) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);
+    }
+
+    private long help(TreeNode node, long targetSum) {
+        if (node == null) return 0;
+
+        return (node.val == targetSum ? 1 : 0)
+        + help(node.left, targetSum - node.val)
+        + help(node.right, targetSum - node.val);
+    }
+}
