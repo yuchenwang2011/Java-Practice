@@ -29,3 +29,16 @@ Each node's value is between [-10^4, 10^4].
 Accepted 367.6K Submissions 499.3K Acceptance Rate 73.6%
 
 Answer:
+//my own solution
+class Solution {
+    public int goodNodes(TreeNode root) {
+        if(root == null) return 0;
+        return 1 + helper(root.left, root.val) + helper(root.right, root.val);
+    }
+
+    public int helper(TreeNode root, int tmpMax){
+        if(root == null) return 0;
+        if(root.val >= tmpMax) return 1 + helper(root.left, root.val) + helper(root.right, root.val);
+        else return helper(root.left, tmpMax) + helper(root.right, tmpMax);
+    }
+}
