@@ -30,3 +30,17 @@ The number of nodes in the tree is in the range [1, 5 * 104].
 Accepted 118K Submissions 176.8K Acceptance Rate 66.8%
 
 Answer:
+//followed this anwer: https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/solutions/531867/java-python-dfs-solution
+class Solution {
+    public int longestZigZag(TreeNode root) {
+        return dfs(root)[2];
+    }
+
+    public int[] dfs(TreeNode root){
+        if(root == null) return new int[]{-1, -1, -1};
+        int[] left = dfs(root.left);
+        int[] right = dfs(root.right);
+        int result = Math.max(Math.max(left[1], right[0]) + 1, Math.max(left[2], right[2]));
+        return new int[]{left[1] + 1, right[0] + 1, result};
+    }
+}
