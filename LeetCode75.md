@@ -6,8 +6,8 @@
 4.   (没价值)[605. Can Place Flowers](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/605.CanPlaceFlowers)
 5.   (随便瞄一下)[345. Reverse Vowerls Of A String](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/345.ReverseVowelsOfAString.java)
 6.   (随便瞄一下)[151. Reverse Words In A String](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/151.ReverseWordsInAString.java)
-7.   (背诵解法)[238. Product Of Array Except Self](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/238.ProductOfArrayExceptSelf.java)
-8.   (背诵解法)[334. Increasing Triplet Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/334.IncreasingTripletSubsequence.java)
+7.   (背诵默写)[238. Product Of Array Except Self](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/238.ProductOfArrayExceptSelf.java)
+8.   (背诵默写)[334. Increasing Triplet Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/334.IncreasingTripletSubsequence.java)
 9.   (值得再写一遍)[443. String Compression](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/443.StringCompression)
 
 ### Two Pointeres
@@ -19,7 +19,7 @@
 ### Sliding Window
 1.  (随便瞄二下)[643. Maximum Average Subarray I](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/643.MaximumAverageSubarrayI)
 2.  (随便瞄二下)[1456. Maximum Number of Vowels In A Substring of Given Length](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1456.MaximumNumberOfVowelsInASubstringOfGivenLength)
-3.  (背诵解法)[1004. Max Consecutive Ones III](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1001-1050/1004.MaxConsecutiveOnesIII)
+3.  (背诵默写)[1004. Max Consecutive Ones III](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1001-1050/1004.MaxConsecutiveOnesIII)
 4.  (和1004一起背诵)[1493. Longest Subarray of 1's After Deleting One Element](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1493.LongestSubarrayof1sAfterDeletingOneElement)
 
 ### Prefix Sum
@@ -51,6 +51,6 @@
 1.  (没价值)[104. Maximum Depth Of Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/104.MaximumDepthOfBinaryTree.java)
 2.  (算法不错)[872. Leaf-Similar Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/850-900/872.Leaf-SimilarTrees)
 3.  (随便瞄一眼)[1448. Count Good Nodes In Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1400-1450/1448.CountGoodNodesInBinaryTree)
-4.  (背诵解法)[437. Path Sum III](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/437.PathSumIII)
-5.  (背诵解法)[1372. Longest ZigZag Path In A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1350-1400/1372.LongestZigZagPathInABinaryTree)
-6.  ()[23. Lowest Common Ancestor of A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/236.LowestCommonAncestorOfABinaryTree.java)
+4.  (背诵默写)[437. Path Sum III](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/437.PathSumIII)
+5.  (背诵默写)[1372. Longest ZigZag Path In A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1350-1400/1372.LongestZigZagPathInABinaryTree)
+6.  (背诵默写)[23. Lowest Common Ancestor of A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/236.LowestCommonAncestorOfABinaryTree.java)
