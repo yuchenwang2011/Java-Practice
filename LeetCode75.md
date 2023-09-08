@@ -53,3 +53,4 @@
 3.  (随便瞄一眼)[1448. Count Good Nodes In Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1400-1450/1448.CountGoodNodesInBinaryTree)
 4.  (背诵解法)[437. Path Sum III](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/437.PathSumIII)
 5.  (背诵解法)[1372. Longest ZigZag Path In A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1350-1400/1372.LongestZigZagPathInABinaryTree)
+6.  ()[23. Lowest Common Ancestor of A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/236.LowestCommonAncestorOfABinaryTree.java)
