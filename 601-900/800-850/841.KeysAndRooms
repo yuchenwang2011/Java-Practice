@@ -54,3 +54,22 @@ class Solution {
         }
     }
 }
+
+//简化了一下上面的答案就是
+class Solution {
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        if(rooms == null || rooms.size() == 0) return true;
+        Set<Integer> visited = new HashSet<>();
+        helper(rooms, 0, visited);
+        return visited.size() == rooms.size();
+    }
+
+    public void helper(List<List<Integer>> rooms, int start, Set<Integer> visited){
+        if(!visited.add(start)) return;
+        visited.add(start);
+        List<Integer> nodes = rooms.get(start);
+        for(int i = 0; i < nodes.size(); i++){
+            helper(rooms, nodes.get(i), visited);
+        }
+    }
+}
