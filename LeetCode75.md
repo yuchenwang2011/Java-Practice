@@ -57,4 +57,7 @@
 
 ### 10. Binary Tree - BFS
 1.  (经典每次刷题要再写一遍，但之后就脑子里过一遍就行)[199. Binary Tree Right Side View](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/199.BinaryTreeRightSideView.java)
-2.  ()[1161. Maximum Level Sum of A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1150-1200/1161.MaximumLevelSumOfABinaryTree.java)
+2.  (过了199以后这个题两种解法都一样，随便瞄二下)[1161. Maximum Level Sum of A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1150-1200/1161.MaximumLevelSumOfABinaryTree.java)
+
+## 11. Binary Search Tree
+1.  ()[700. Search In A Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/700.SearchInABinarySearchTree)
