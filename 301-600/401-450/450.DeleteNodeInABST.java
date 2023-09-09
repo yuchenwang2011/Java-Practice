@@ -82,7 +82,7 @@ class Solution {
                 node = node.left;
             }
             node.left = root.left;
-            return root.right;
+            return root.right;  //这里也可以写成root = root.right;
         }
         return root;
     }
