@@ -64,5 +64,5 @@
 2.  (背诵默写)[450. Delete Node In A BST](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/450.DeleteNodeInABST.java)
 
 ### 12. Graph - DFS
-1.  ()[841. Keys And Rooms](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/800-850/841.KeysAndRooms)
+1.  (经典每次刷题要再写一遍，但之后就脑子里过一遍就行)[841. Keys And Rooms](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/800-850/841.KeysAndRooms)
 
