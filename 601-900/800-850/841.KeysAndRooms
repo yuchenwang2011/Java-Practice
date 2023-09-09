@@ -32,3 +32,25 @@ All the values of rooms[i] are unique.
 Accepted 354.4K Submissions 491.6K Acceptance Rate 72.1%
 
 Answer:
+//my own answer
+class Solution {
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        if(rooms == null || rooms.size() == 0) return true;
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        for(int i = 0; i < rooms.size(); i++){
+            graph.put(i, rooms.get(i));
+        }
+        Set<Integer> visited = new HashSet<>();
+        helper(graph, 0, visited);
+        return visited.size() == graph.keySet().size();
+    }
+
+    public void helper(Map<Integer, List<Integer>> graph, int start, Set<Integer> visited){
+        if(!visited.add(start)) return;
+        visited.add(start);
+        List<Integer> nodes = graph.get(start);
+        for(int i = 0; i < nodes.size(); i++){
+            helper(graph, nodes.get(i), visited);
+        }
+    }
+}
