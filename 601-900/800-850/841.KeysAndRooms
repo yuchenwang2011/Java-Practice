@@ -73,3 +73,29 @@ class Solution {
         }
     }
 }
+
+//第二种BFS写法
+//参考了https://leetcode.com/problems/keys-and-rooms/solutions/2080113/java-beginners-solution
+class Solution {
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        if(rooms == null || rooms.size() == 0) return true;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
+        boolean[] visited = new boolean[rooms.size()];
+
+        while(!queue.isEmpty()){
+            int current = queue.poll();
+            if(visited[current]) continue;
+            visited[current] = true;
+            List<Integer> next = rooms.get(current);
+            for(int i = 0; i < next.size(); i++){
+                queue.offer(next.get(i));
+            }
+        }
+
+        for(boolean b : visited) {
+            if(!b) return false;
+        }
+        return true;
+    }
+}
