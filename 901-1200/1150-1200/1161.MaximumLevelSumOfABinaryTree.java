@@ -47,3 +47,27 @@ class Solution {
         return result;
     }
 }
+
+//inspired from this answer
+//https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/solutions/360968/java-python-3-two-codes-language-bfs-level-traversal-and-dfs-level-sum
+class Solution {
+    public int maxLevelSum(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        dfs(root, list, 0);
+        
+        int maxLevel = 0;
+        for (int i = 0; i < list.size(); ++i) {
+            if (list.get(maxLevel) < list.get(i)) {
+                maxLevel = i;
+            }
+        }
+        return maxLevel + 1;
+    }
+    private void dfs(TreeNode n, List<Integer> l, int level) {
+        if (n == null) { return; } 
+        if (l.size() == level) { l.add(n.val); } // never reach this level before, add first value.
+        else { l.set(level, l.get(level) + n.val); } // reached the level before, accumulate current value to old value.
+        dfs(n.left, l, level + 1);
+        dfs(n.right, l, level + 1);
+    }
+}
