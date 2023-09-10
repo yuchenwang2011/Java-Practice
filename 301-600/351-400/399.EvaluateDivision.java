@@ -24,6 +24,7 @@ The input is always valid. You may assume that evaluating the queries
 will result in no division by zero and there is no contradiction.
 
 Answer:
+ //inspired by comment in https://leetcode.com/problems/evaluate-division/solutions/88169/java-ac-solution-using-graph
 class Solution {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         Map<String, Map<String, Double>> graph = new HashMap<>();
