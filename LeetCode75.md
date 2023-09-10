@@ -68,3 +68,6 @@
 2.  (题目改名了，必须掌握两种解法)[547. Friend Circles / Number of Provinces](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/501-550/547.FriendCircles.java)
 3.  (背诵默写)[1466. Reorder Routes to Make All Paths Lead to The City Zero](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1466.ReorderRoutesToMakeAllPathsLeadToTheCityZero)
 4.  (背诵默写)[399. Evaluate Division](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/399.EvaluateDivision.java)
+
+### 13. Graph - BFS
+1.  (1926. Nearest Exists From Entrance In Maze)[](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/1900-1950/1926.NearestExistFromEntranceInMaze)
