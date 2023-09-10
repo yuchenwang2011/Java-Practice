@@ -31,3 +31,29 @@ ai != bi
 Accepted 143.4K Submissions 218.1K Acceptance Rate 65.7%
 
 Answer:
+class Solution {
+    public int minReorder(int n, int[][] connections) {
+        if(connections == null || connections.length == 0 || connections[0].length == 0) return 0;
+        int[] visited = new int[n];
+        List<List<Integer>> graph = new ArrayList<List<Integer>>();
+        for(int i = 0; i < n; i++){
+            graph.add(new ArrayList<Integer>());
+        }
+        for(int[] c : connections){
+            graph.get(c[0]).add(c[1]);
+            graph.get(c[1]).add(-c[0]);
+        }
+        return helper(graph, visited, 0);
+    }
+
+    public int helper(List<List<Integer>> graph, int[] visited, int start){
+        int change = 0;
+        visited[start] = 1;
+        for(int next : graph.get(start)){
+            if(visited[Math.abs(next)] != 1) {
+                change = change + helper(graph, visited, Math.abs(next)) + ((next > 0) ? 1 : 0);
+            }
+        }
+        return change;
+    }
+}
