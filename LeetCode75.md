@@ -74,4 +74,4 @@
 2.  (跟上一题一样，所以背诵默写上一题以后，尽量不看答案自己写)[994. Rotting Oranges](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/950-1000/994.RottingOranges.java)
 
 ### 14. Heap / Priority Queue
-1.  ()[215. Kth Largest Element In An Array](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/215.KthLargestElementInAnArray.java)
+1.  (背诵默写两种解法)[215. Kth Largest Element In An Array](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/215.KthLargestElementInAnArray.java)
