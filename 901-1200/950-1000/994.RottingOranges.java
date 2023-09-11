@@ -35,7 +35,6 @@ Answer:
 class Solution {
     public int orangesRotting(int[][] grid) {
         if(grid == null || grid.length == 0 || grid[0].length == 0) return -1;
-        int result = 0;
         Queue<int[]> queue = new LinkedList<>();
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[0].length; j++){
@@ -44,17 +43,16 @@ class Solution {
                 }
             }
         }
-        
+
+        int result = 0;
         int[][] directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
         while(!queue.isEmpty()){
             int size = queue.size();
             for(int i = 0; i < size; i++){
-                int[] tmp = queue.poll();
-                int a = tmp[0];
-                int b = tmp[1];
+                int[] current = queue.poll();
                 for(int[] direction : directions){
-                    int x = a + direction[0];
-                    int y = b + direction[1];
+                    int x = current[0] + direction[0];
+                    int y = current[1] + direction[1];
                     if(x >= 0 && y >= 0 && x < grid.length && y < grid[0].length && grid[x][y] == 1) {
                         grid[x][y] = 2;
                         queue.offer(new int[]{x, y});
@@ -74,6 +72,8 @@ class Solution {
         //why count need to be reduce by one?
         //Because we do count++ every time when queue is not empty. When there is no fresh orange, 
         //it still does count++ at the begin of the while loop.
+        //why result is 0 and why when it is 0 we need return 0? it is because for such as [[0]], 题里例子写的
+        //如果一开始里面就已经没有好橘子了，那就return 0
         return result == 0 ? 0 : result - 1;
     }
 }
