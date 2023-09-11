@@ -61,7 +61,7 @@ class Solution {
             //从大到小quick sort
             //alert: here must first process end, second start, because we need return start at end
             while(start < end && nums[end] <= pivot) end--;
-            if(start < end) swap(nums, start, end);
+            if(start < end) swap(nums, start, end); //这个就是上面的nums[end] <= pivot 不满足的时候
             while(start < end && nums[start] >= pivot) start++;
             if(start < end) swap(nums, start, end);
         }
