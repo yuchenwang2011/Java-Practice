@@ -70,4 +70,5 @@
 4.  (背诵默写)[399. Evaluate Division](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/399.EvaluateDivision.java)
 
 ### 13. Graph - BFS
-1.  ()[1926. Nearest Exists From Entrance In Maze](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/1900-1950/1926.NearestExistFromEntranceInMaze)
+1.  (背诵默写)[1926. Nearest Exists From Entrance In Maze](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/1900-1950/1926.NearestExistFromEntranceInMaze)
+2.  (背诵默写)[994. Rotting Oranges](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/950-1000/994.RottingOranges.java)
