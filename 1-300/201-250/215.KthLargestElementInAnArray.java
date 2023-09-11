@@ -34,6 +34,7 @@ public class Solution {
 }
 
 //O(N) best case / O(N^2) worst case running time + O(1) memory
+//https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/60294/solution-explained
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         if(k <= 0 || nums == null || nums.length == 0 || k > nums.length) return 0;
@@ -53,18 +54,32 @@ class Solution {
         }
     }
     
-    public int partition(int[] nums, int start, int end){
-        if(start >= end) return start;
-        int pivot = nums[start];
-        while(start < end){
-            //从大到小quick sort
-            //alert: here must first process end, second start, because we need return start at end
-            while(start < end && nums[end] <= pivot) end--;
-            if(start < end) swap(nums, start, end);
-            while(start < end && nums[start] >= pivot) start++;
-            if(start < end) swap(nums, start, end);
+    // public int partition(int[] nums, int start, int end){
+    //     if(start >= end) return start;
+    //     int pivot = nums[start];
+    //     while(start < end){
+    //         //从大到小quick sort
+    //         //alert: here must first process end, second start, because we need return start at end
+    //         while(start < end && nums[end] <= pivot) end--;
+    //         if(start < end) swap(nums, start, end);
+    //         while(start < end && nums[start] >= pivot) start++;
+    //         if(start < end) swap(nums, start, end);
+    //     }
+    //     return start;
+    // }
+
+    //这个是评论里原老师的答案
+    public int partition(int[] nums, int lo, int hi) {
+        int pivot = nums[hi];
+        int i = lo;
+        for (int j = lo; j < hi; j++) {
+            if (nums[j] <= pivot) {
+                swap(nums, i, j);
+                i++;
+            }
         }
-        return start;
+        swap(nums, i, hi);
+        return i;
     }
     
     public void swap(int[] nums, int start, int end){
