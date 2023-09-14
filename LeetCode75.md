@@ -76,4 +76,4 @@
 ### 14. Heap / Priority Queue
 1.  (背诵默写两种解法)[215. Kth Largest Element In An Array](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/215.KthLargestElementInAnArray.java)
 2.  (随便瞄一眼)[2336. Smallest Number in Infinite Set](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2336.SmallestNumberInInfiniteSet)
-3.  ()[2542. Maximum Subsequence Score](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2500-2550/2542.MaximumSubsequenceScore)
+3.  (背诵默写)[2542. Maximum Subsequence Score](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2500-2550/2542.MaximumSubsequenceScore)
