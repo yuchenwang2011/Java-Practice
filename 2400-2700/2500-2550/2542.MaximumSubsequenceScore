@@ -33,3 +33,34 @@ n == nums1.length == nums2.length
 Accepted 61.3K Submissions 111.1K Acceptance Rate 55.2%
 
 Answer:
+//get inspired by this video https://www.youtube.com/watch?v=ax1DKi5lJwk
+//all hot answers use this algorithm
+class Solution {
+    public long maxScore(int[] nums1, int[] nums2, int k) {
+        if(nums1 == null || nums2 == null || nums1.length != nums2.length || k < 0 || k > nums1.length) return 0L;
+        int[][] nums = new int[nums1.length][2];
+        for(int i = 0; i < nums1.length; i++){
+            nums[i] = new int[]{nums1[i], nums2[i]};
+        }
+        //因为我们想让乘数越大越好，但是呢他每次都是要min的值
+        //所以干脆把整个数组都按乘数来从大到小排序
+        //这样问题就转换成了，只需要思考sum of nums1就行了
+        Arrays.sort(nums, (a, b) -> b[1] - a[1]);
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k, (a, b) -> a - b);
+        long result = 0;
+        long sum = 0;
+
+        for(int[] current : nums){
+            sum += current[0];
+            pq.offer(current[0]);
+            //这里很多人都没有说过，其实里面有三种情况
+            //如果新进来的值是最小的，那这个pair无所谓，pq把num1poll掉，result因为小不产生影响
+            //如果新进来的值是中等的，那poll掉的值只能是之前的，所以result还用现在current的乘数，没问题
+            //如果新进来的值是最大的，那poll掉的值只能是之前的，所以result还用现在current的乘数，也没问题
+            if(pq.size() > k) sum -= pq.poll();
+            if(pq.size() == k) result = Math.max(result, sum * current[1]);
+        }
+        return result;
+    }
+}
