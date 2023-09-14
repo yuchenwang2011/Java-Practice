@@ -33,3 +33,27 @@ At most 1000 calls will be made in total to popSmallest and addBack.
 Accepted 99.9K Submissions 135.4K Acceptance Rate 73.7%
 
 Answer:
+//followed this answer https://leetcode.com/problems/smallest-number-in-infinite-set/solutions/3452140/easy-solution-explained-with-dry-run-minheap-counter-beginner-friendly
+class SmallestInfiniteSet {
+    private Integer min;
+    private PriorityQueue<Integer> heap;
+
+    public SmallestInfiniteSet() {
+        min = 1;
+        heap = new PriorityQueue<>();
+    }
+    
+    public int popSmallest() {
+        if(!heap.isEmpty()){
+            return heap.poll();
+        }
+        min++;
+        return min - 1;
+    }
+    
+    public void addBack(int num) {
+        if(min > num && !heap.contains(num)) {
+            heap.offer(num);
+        }
+    }
+}
