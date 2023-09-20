@@ -80,4 +80,5 @@
 4.  (比上一个容易，理解默写)[2462. Total Cost To Hire Workers](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2400-2450/2462.TotalCostToHireKWorkers)
 
 ### 15. Binary Search ###
-1. (没有价值)[374. Guess Number Higher Or Lower](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/374.GuessNumberHigherOrLower)
+1. (没价值)[374. Guess Number Higher Or Lower](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/374.GuessNumberHigherOrLower)
+2. ()[2300. Successful Pairs of Spells and Potions](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2300.SuccessfulPairsOfSpellsAndPotions)
