@@ -79,6 +79,6 @@
 3.  (背诵默写)[2542. Maximum Subsequence Score](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2500-2550/2542.MaximumSubsequenceScore)
 4.  (比上一个容易，理解默写)[2462. Total Cost To Hire Workers](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2400-2450/2462.TotalCostToHireKWorkers)
 
-### 15. Binary Search ###
-1. (没价值)[374. Guess Number Higher Or Lower](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/374.GuessNumberHigherOrLower)
-2. ()[2300. Successful Pairs of Spells and Potions](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2300.SuccessfulPairsOfSpellsAndPotions)
+### 15. Binary Search ### https://www.cnblogs.com/cnoodle/p/14267991.html
+1. (全封闭写法)[374. Guess Number Higher Or Lower](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/374.GuessNumberHigherOrLower)
+2. (转换成左闭右开的写法)[2300. Successful Pairs of Spells and Potions](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2300.SuccessfulPairsOfSpellsAndPotions)
