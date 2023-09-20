@@ -34,3 +34,31 @@ m == potions.length
 Accepted 106.4K Submissions 255.2K Acceptance Rate 41.7%
 
 Answer:
+//左闭右开的写法
+class Solution {
+    public int[] successfulPairs(int[] spells, int[] potions, long success) {
+        if(spells == null || potions == null || spells.length == 0 || potions.length == 0) return new int[0];
+        int[] result = new int[spells.length];
+        Arrays.sort(potions);
+        for(int i = 0; i < spells.length; i++){
+            int spell = spells[i];
+            int start = 0;
+            int end = potions.length;
+            while(start < end){
+                int mid = start + (end - start) / 2;
+                long strength = (long) spell * potions[mid];
+                if(strength < success) start = mid + 1;
+                else end = mid;
+            }
+
+            if(start == potions.length) {
+                continue;
+            }
+
+            long strengthLast = (long) spell * potions[start];
+            if(strengthLast >= success) result[i] = potions.length - start;
+            else result[i] = potions.length - start - 1; 
+        }
+        return result;
+    }
+}
