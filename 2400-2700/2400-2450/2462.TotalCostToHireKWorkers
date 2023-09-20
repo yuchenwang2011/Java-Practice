@@ -37,3 +37,40 @@ Constraints:
 Accepted 71K Submissions 159.3K Acceptance Rate 44.6%
 
 Answer:
+//followed this answer:
+//https://leetcode.com/problems/total-cost-to-hire-k-workers/solutions/3683067/beats-100-c-java-python-beginner-friendly/
+class Solution {
+    public long totalCost(int[] costs, int k, int candidates) {
+        long result = 0;
+        if(costs == null || costs.length == 0 || k < 0 || candidates < 0) return result;
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+
+        int i = 0; 
+        int j = costs.length - 1;
+
+        while(k > 0){
+            while(pq1.size() < candidates && i <= j){
+                pq1.offer(costs[i++]);
+            }
+            while(pq2.size() < candidates && i <= j){
+                pq2.offer(costs[j--]);
+            }
+
+            int cost1 = pq1.size() > 0 ? pq1.peek() : Integer.MAX_VALUE;
+            int cost2 = pq2.size() > 0 ? pq2.peek() : Integer.MAX_VALUE; 
+
+            if(cost1 <= cost2) {
+                result += cost1;
+                pq1.poll();
+            } else {
+                result += cost2;
+                pq2.poll();
+            }
+
+            k--;
+        }
+ 
+        return result; 
+    }
+}
