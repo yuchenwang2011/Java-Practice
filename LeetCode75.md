@@ -77,4 +77,7 @@
 1.  (背诵默写两种解法)[215. Kth Largest Element In An Array](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/215.KthLargestElementInAnArray.java)
 2.  (随便瞄一眼)[2336. Smallest Number in Infinite Set](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2336.SmallestNumberInInfiniteSet)
 3.  (背诵默写)[2542. Maximum Subsequence Score](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2500-2550/2542.MaximumSubsequenceScore)
-4.  ()[2462. Total Cost To Hire Workers](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2400-2450/2462.TotalCostToHireKWorkers)
+4.  (比上一个容易，理解默写)[2462. Total Cost To Hire Workers](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2400-2450/2462.TotalCostToHireKWorkers)
+
+### 15. Binary Search ###
+1. (没有价值)[374. Guess Number Higher Or Lower](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/374.GuessNumberHigherOrLower)
