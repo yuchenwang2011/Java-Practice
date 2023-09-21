@@ -26,3 +26,22 @@ piles.length <= h <= 109
 Accepted 453.2K Submissions 907.6K Acceptance Rate 49.9%
 
 Answer:
+//followed this answer:
+//https://leetcode.com/problems/koko-eating-bananas/solutions/152324/java-c-python-binary-search
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int start = 1;
+        int end = Integer.MAX_VALUE;
+        while(start < end){
+            int mid = start + (end - start) / 2;
+            int total = 0;
+            for(int p : piles){
+                total += Math.ceil(p * 1.0/ mid);
+            }
+
+            if(total > h) start = mid + 1;
+            else end = mid;
+        }
+        return start;
+    }
+}
