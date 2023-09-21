@@ -87,4 +87,7 @@
 
 ### 16. Backtracking ###
 1. (随便瞄一眼)[17. Letter Combination Of A Phone Number](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/17.LetterCombinationsOfAPhoneNumber.java)
-2. ()[216. Combination Sum III](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/216.CombinationSumIII.java)
+2. (随便瞄二眼)[216. Combination Sum III](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/216.CombinationSumIII.java)
+
+### DP - 1D ###
+1. (随便瞄一眼)[1147. N-th Tribonacci Number](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1137.N-thTribonacciNumber)
