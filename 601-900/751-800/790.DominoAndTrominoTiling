@@ -20,3 +20,25 @@ Constraints:
 Accepted 108.5K Submissions 209.6K Acceptance Rate 51.8%
 
 Answer:
+//followed this answer, the no.1 voted has a clear picture explaining the fomula
+//https://leetcode.com/problems/domino-and-tromino-tiling/solutions/116544/c-java-python-o-n-time-and-o-1-space
+class Solution {
+    public int numTilings(int n) {
+        if(n == 0) return 1;
+        int dp1 = 1;
+        int dp2 = 2;
+        int dp3 = 5;
+        if(n == 1) return dp1;
+        if(n == 2) return dp2;
+        if(n == 3) return dp3;
+
+        for(int i = 4; i <= n; i++){
+            int dp4 = (2 * dp3 % 1000000007+ dp1) % 1000000007;
+            dp1 = dp2;
+            dp2 = dp3;
+            dp3 = dp4;
+        }
+
+        return dp3;
+    }
+}
