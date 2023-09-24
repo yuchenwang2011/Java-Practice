@@ -30,6 +30,14 @@ Constraints:
 Accepted 919.8K Submissions 1.4M Acceptance Rate 64.1%
 
 Answer:
+//from this comment
+//https://leetcode.com/problems/min-cost-climbing-stairs/solutions/148907/doubt
+						                      __________
+				                   ___ | Final step
+                 ___ | 20
+            ___ | 15
+_________ | 10
+First step
 class Solution {
     public int minCostClimbingStairs(int[] cost) {
         int result = 0;
