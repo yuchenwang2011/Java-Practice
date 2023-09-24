@@ -91,3 +91,4 @@
 
 ### DP - 1D ###
 1. (随便瞄一眼)[1147. N-th Tribonacci Number](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1137.N-thTribonacciNumber)
+2. ()[746. Min Cost Climbing Stairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/746.MinCostClimbingStairs)
