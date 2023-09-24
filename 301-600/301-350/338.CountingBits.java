@@ -24,6 +24,8 @@ Answer:
 //then plus if the shifted rightmost big whether is 1
 //One more example, 1110 -> 111, you just need to know how many bits 111 has, then plus 
 //whether the shifted right most bit whether is 1
+//from this solution
+//https://leetcode.com/problems/counting-bits/solutions/79539/three-line-java-solution
 class Solution {
     public int[] countBits(int num) {
         if(num < 0) return new int[0];
