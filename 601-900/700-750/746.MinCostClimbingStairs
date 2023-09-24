@@ -30,3 +30,20 @@ Constraints:
 Accepted 919.8K Submissions 1.4M Acceptance Rate 64.1%
 
 Answer:
+class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+        int result = 0;
+        if(cost == null || cost.length == 0) return result;
+        if(cost.length == 1) return cost[0];
+
+        int first = cost[0];
+        int second = cost[1];
+        for(int i = 2; i < cost.length; i++){
+            int current = Math.min(first, second) + cost[i];
+            first = second;
+            second = current;
+        }
+
+        return Math.min(first, second);
+    }
+}
