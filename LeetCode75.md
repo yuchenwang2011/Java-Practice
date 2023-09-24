@@ -94,3 +94,7 @@
 2. (随便瞄二眼)[746. Min Cost Climbing Stairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/746.MinCostClimbingStairs)
 3. (重新写一遍)[198. House Robber](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/198.HouseRobber.java)
 4. (随便看一眼，很难但没有价值因为根本想不出来)[790. Domino and Tromino Tiling](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/751-800/790.DominoAndTrominoTiling)
+
+### 18. DP- Multidimentional ###
+1. (随便瞄一眼，不用看其他解法记不住的)[62. Unique Paths](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/62.UniquePaths.java)
+2. (背诵默写)[1143. Longest Common Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1143.LongestCommonSubsequence)
