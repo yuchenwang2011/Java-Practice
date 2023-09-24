@@ -98,3 +98,4 @@
 ### 18. DP- Multidimentional ###
 1. (随便瞄一眼，不用看其他解法记不住的)[62. Unique Paths](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/62.UniquePaths.java)
 2. (背诵默写)[1143. Longest Common Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1143.LongestCommonSubsequence)
+3. (重新写一遍)[714. Best Time to Buy and Sell Stock With Transaction Fees](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/714.BestTimeToBuyAndSellStockWithTransactionFee)
