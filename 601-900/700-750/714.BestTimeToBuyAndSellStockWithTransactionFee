@@ -28,3 +28,20 @@ Constraints:
 Accepted 311.5K Submissions 458K Acceptance Rate 68.0%
 
 Answer:
+//from this solution
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108871/2-solutions-2-states-dp-solutions-clear-explanation/
+class Solution {
+    public int maxProfit(int[] prices, int fee) {
+        if(prices == null || prices.length == 0) return 0;
+        int[] buy = new int[prices.length];
+        int[] sell = new int[prices.length];
+        buy[0] = -prices[0] - fee;
+        for(int i = 1; i < prices.length; i++){
+            //keep the same as day i - 1, or buy from sell status at day i - 1
+            buy[i] = Math.max(buy[i - 1], sell[i - 1] - prices[i] - fee);
+            //keep the same as day i - 1, or sell from buy status at day i - 1
+            sell[i] = Math.max(sell[i - 1], buy[i - 1] + prices[i]);
+        }
+        return sell[sell.length - 1];
+    }
+}
