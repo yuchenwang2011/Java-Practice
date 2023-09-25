@@ -30,3 +30,53 @@ searchWord consists of lowercase English letters.
 Accepted 261.2K Submissions 396.7K Acceptance Rate 65.8%
 
 Answer:
+//followed this answer:
+//https://leetcode.com/problems/search-suggestions-system/solutions/440474/java-trie-explained-clean-code-14ms
+class Solution {
+    class TrieNode{
+        TrieNode[] children;
+        List<String> words;
+        public TrieNode(){
+            children = new TrieNode[26];
+            words = new ArrayList<>();
+        }
+    }
+
+    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        List<List<String>> result = new ArrayList<>();
+        if(products == null || products.length == 0 || searchWord == null || searchWord.length() == 0) {
+            return result;
+        }
+
+        //all the constructions
+        TrieNode root = new TrieNode();
+        Arrays.sort(products);
+        for(String product : products){
+            TrieNode tmp = root;
+            for(int i = 0; i < product.length(); i++){
+                int idx = product.charAt(i) - 'a';
+                if(tmp.children[idx] == null) {
+                    tmp.children[idx] = new TrieNode();
+                }
+                tmp = tmp.children[idx];
+                if(tmp.words.size() < 3) tmp.words.add(product);
+            }
+        }
+
+        //start to return list for each char of the search word
+        TrieNode tmp = root;
+        for(int i = 0; i < searchWord.length(); i++){
+            int idx = searchWord.charAt(i) - 'a';
+            if(tmp.children[idx] == null) {
+                for(int j = i; j < searchWord.length(); j++){
+                    result.add(new ArrayList<String>());
+                }
+                break;
+            }
+            tmp = tmp.children[idx];
+            result.add(tmp.words);         
+        }
+
+        return result;
+    }
+}
