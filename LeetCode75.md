@@ -112,3 +112,4 @@
 
 ### 21. Intervals ###
 1. (背诵默写然后再看一下56题)[435. Non-Overlapping Intervals](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/435.Non-OverlappingIntervals)
+2. ()[452. Minimum Number of Arrows To Burst Balloons](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/450-500/452.MinimumNumberOfArrowsToBurstBalloons)
