@@ -100,3 +100,11 @@
 2. (背诵默写)[1143. Longest Common Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1143.LongestCommonSubsequence)
 3. (重新写一遍)[714. Best Time to Buy and Sell Stock With Transaction Fees](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/714.BestTimeToBuyAndSellStockWithTransactionFee)
 4. (跟1143一样背诵默写)[72. Simplify Path](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/71.SimplifyPath.java)
+
+### 19. Bit Manipulation ###
+1. (随便看一眼)[338. Counting Bits](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/338.CountingBits.java)
+2. (没价值)[136. Single Number](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/136.SingleNumber.java)
+3. (肯定记不住直接跳过)[1318]()
+
+### Trie ###
+1. ()[208. Implement Trie (Prefix Tree)](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/208.ImplementTrie(Prefix%20Tree).java)
