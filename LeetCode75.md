@@ -107,4 +107,5 @@
 3. (肯定记不住直接跳过)[1318]()
 
 ### Trie ###
-1. ()[208. Implement Trie (Prefix Tree)](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/208.ImplementTrie(Prefix%20Tree).java)
+1. (很啰嗦但还是得手写一遍)[208. Implement Trie (Prefix Tree)](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/208.ImplementTrie(Prefix%20Tree).java)
+2. ()[1268. Search Suggestion System](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1250-1300/1268.SearchSuggestionSystem)
