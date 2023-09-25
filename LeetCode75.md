@@ -111,4 +111,4 @@
 2. (很啰嗦但还是得手写一遍)[1268. Search Suggestion System](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1250-1300/1268.SearchSuggestionSystem)
 
 ### 21. Intervals ###
-1. ()[435. Non-Overlapping Intervals](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/435.Non-OverlappingIntervals)
+1. (背诵默写然后再看一下56题)[435. Non-Overlapping Intervals](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/435.Non-OverlappingIntervals)
