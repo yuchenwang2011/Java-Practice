@@ -24,3 +24,22 @@ intervals[i].length == 2
 Accepted 467.3K Submissions 895.1K Acceptance Rate 52.2%
 
 Answer:
+//https://leetcode.com/problems/non-overlapping-intervals/solutions/91713/java-least-is-most
+class Solution {
+    public int eraseOverlapIntervals(int[][] intervals) {
+        if(intervals == null || intervals.length == 0 || intervals[0].length == 0) return 0;
+        Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
+
+        int end = intervals[0][1];
+        int result = 0;
+
+        for(int i = 1; i < intervals.length; i++){
+            if(intervals[i][0] >= end){
+                end = intervals[i][1];
+            } else {
+                result++;
+            }
+        }
+        return result;
+    }
+}
