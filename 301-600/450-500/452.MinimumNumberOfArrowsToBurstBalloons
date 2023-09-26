@@ -37,3 +37,36 @@ points[i].length == 2
 Accepted 335K Submissions 602.9K Acceptance Rate 55.6%
 
 Answer:
+//my own answer
+class Solution {
+    public int findMinArrowShots(int[][] points) {
+        if(points == null || points.length == 0 || points[0].length == 0) return 0;
+        Arrays.sort(points, (a, b) -> a[0] - b[0]);
+        int start1 = points[0][0];
+        int end1 = points[0][1];
+        int result = points.length;
+        for(int i = 1; i < points.length; i++){
+            int start2 = points[i][0];
+            int end2 = points[i][1];
+
+            if(start1 <= start2 && end1 >= end2){
+                //______
+                //  __
+                start1 = start2;
+                end1 = end2; //keep the smaller one
+                result--;
+            } else if (end1 >= start2 && end1 <= end2){
+                //______
+                //    ____
+                start1 = start2; //keep the overlapping one
+                result--;
+            } else {
+                //______
+                //       __
+                start1 = start2;
+                end1 = end2;
+            }
+        }
+        return result;
+    }
+}
