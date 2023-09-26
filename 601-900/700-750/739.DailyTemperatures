@@ -22,3 +22,21 @@ Constraints:
 Accepted 700.9K Submissions 1.1M Acceptance Rate 65.9%
 
 Answer:
+//这个方法绝了
+//https://leetcode.com/problems/daily-temperatures/solutions/109832/java-easy-ac-solution-with-stack
+class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        if(temperatures == null || temperatures.length == 0) return new int[0];
+        int[] result = new int[temperatures.length];
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i < temperatures.length; i++){
+            while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]){
+                int idx = stack.pop();
+                result[idx] = i - idx;
+            }
+            
+            stack.push(i);
+        }
+        return result;
+    }
+}
