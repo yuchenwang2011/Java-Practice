@@ -115,4 +115,5 @@
 2. (值得思考)[452. Minimum Number of Arrows To Burst Balloons](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/450-500/452.MinimumNumberOfArrowsToBurstBalloons)
 
 ### 22. Monotonic Stack ###
-1. ()[739. Daily Temperatures](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/739.DailyTemperatures)
+1. (背诵默写)[739. Daily Temperatures](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/739.DailyTemperatures)
+2. (背诵默写)[901. Online Stock Plan](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/901.OnlineStockPlan)
