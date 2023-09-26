@@ -70,3 +70,4 @@ class Solution {
         return result;
     }
 }
+//有另外一种方法是按a[1] - b[1]排的，比较简洁，但是我应该只能记住自己的方法
