@@ -47,6 +47,7 @@ class Solution {
             }
         }
 
+        //因为题目要求必须减掉一位，所以如果全是1的话，就减掉一个
         return (result == nums.length) ? result - 1 : result;
     }
 }
