@@ -61,7 +61,7 @@
 
 ### 11. Binary Search Tree
 1.  (没价值)[700. Search In A Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/700.SearchInABinarySearchTree)
-2.  (背诵默写)[450. Delete Node In A BST](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/450.DeleteNodeInABST.java)
+2.  (背诵默写，只背第一个，背两个容易混)[450. Delete Node In A BST](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/450.DeleteNodeInABST.java)
 
 ### 12. Graph - DFS
 1.  (经典每次刷题要再写一遍，但之后就脑子里过一遍就行)[841. Keys And Rooms](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/800-850/841.KeysAndRooms)
