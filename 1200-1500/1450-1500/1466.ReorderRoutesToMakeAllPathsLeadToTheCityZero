@@ -31,6 +31,7 @@ ai != bi
 Accepted 143.4K Submissions 218.1K Acceptance Rate 65.7%
 
 Answer:
+//把这个改成我的风格了https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/solutions/661672/c-java-track-direction/
 class Solution {
     public int minReorder(int n, int[][] connections) {
         if(connections == null || connections.length == 0 || connections[0].length == 0) return 0;
