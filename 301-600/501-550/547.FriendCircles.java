@@ -68,7 +68,7 @@ class Solution {
         
         public int find(int id){
             if(id == parent[id]) return id;
-            parent[id] = find(parent[id]);
+            parent[id] = find(parent[id]); //这行应该就是传说中的路径压缩吧
             return parent[id];
         }
         
