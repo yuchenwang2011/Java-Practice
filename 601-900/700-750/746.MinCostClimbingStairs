@@ -52,6 +52,7 @@ class Solution {
             second = current;
         }
 
+	//因为现在second就是result，然后first是之前那一步可以一次走两个台阶，所以在他们之间选择
         return Math.min(first, second);
     }
 }
