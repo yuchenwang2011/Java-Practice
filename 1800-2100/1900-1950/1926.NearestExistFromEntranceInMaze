@@ -47,31 +47,29 @@ Answer:
 //https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/solutions/2834640/java-explained-in-detail-simple-fast-solution-bfs
 class Solution {
     public int nearestExit(char[][] maze, int[] entrance) {
+        if(maze == null || maze.length == 0 || maze[0].length == 0) return -1;
         int rows = maze.length;
-        int columns = maze[0].length;
-
+        int cols = maze[0].length;
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(entrance);
         maze[entrance[0]][entrance[1]] = '+';
 
-        int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-        int x, y;
         int steps = 0;
-
+        int[][] directions = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         while(!queue.isEmpty()){
             steps++;
             int size = queue.size();
             for(int i = 0; i < size; i++){
                 int[] current = queue.poll();
                 for(int[] direction : directions){
-                    x = current[0] + direction[0];
-                    y = current[1] + direction[1];
-                    if(x < 0 || x >= rows || y < 0 || y >= columns) continue;
-                    if(maze[x][y] == '+') continue;
-                    if(x == 0 || x == rows - 1 || y == 0 || y == columns - 1) return steps;
+                    int x = current[0] + direction[0];
+                    int y = current[1] + direction[1]; 
 
-                    maze[x][y] = '+';
+                    if(x < 0 || x >= rows || y < 0 || y >= cols) continue;
+                    if(maze[x][y] == '+') continue;
+                    if(x == 0 || x == rows - 1 || y == 0 || y == cols - 1) return steps;
                     queue.offer(new int[]{x, y});
+                    maze[x][y] = '+';
                 }
             }
         }
