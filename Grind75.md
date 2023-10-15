@@ -9,3 +9,5 @@
 6.  (重新写一遍)[15. 3 Sum](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/15.3Sum.java)
 7.  (背诵默写)[238. Product Of Array Except Self](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/238.ProductOfArrayExceptSelf.java)
 8.  (值得一看)[39. Combination Sum](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/39.CombinationSum.java)
+9.  (背诵默写)[56. Merge Intervals](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/56.MergeIntervals.java)
+10. ()[75. Sort Colors](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/75.SortColors.java)
