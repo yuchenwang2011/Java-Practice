@@ -18,8 +18,8 @@ Answer:
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(candidates);
         if(candidates == null || candidates.length == 0 || target < candidates[0]) return result;
+        Arrays.sort(candidates);
         helper(candidates, result, new ArrayList<>(), target, 0);
         return result;
     }
