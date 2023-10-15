@@ -5,23 +5,20 @@ The majority element is the element that appears more than n/2 times.
 You may assume that the array is non-empty and the majority element always exist in the array.
 
 Answer:
-class Solution {
-    public int majorityElement(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
-        int count = 1;
-        int result = nums[0];
-        for(int i = 1; i < nums.length; i++){
-            if(nums[i] == result) {
+public class Solution {
+    //理解就是一换一，最后人多的拼到最后还剩下了
+    public int majorityElement(int[] num) {
+        int major=num[0], count = 1;
+        for(int i=1; i<num.length;i++){
+            if(count==0){
                 count++;
-            } else if (nums[i] != result){
-                count--;
-            } 
-            if (count == 0){
-                result = nums[i];
+                major=num[i];
+            }else if(major==num[i]){
                 count++;
-            }
+            }else count--;
+            
         }
-        return result;
+        return major;
     }
 }
 
