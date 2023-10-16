@@ -12,6 +12,7 @@ Output: 6
 
 Answer:
 //https://www.youtube.com/watch?v=2LjNzbK2cmA&t=629s
+//https://leetcode.com/problems/trapping-rain-water/solutions/153992/java-o-n-time-and-o-1-space-with-explanations/
 class Solution {
     //就是当前单元能装多少水是取决于左右两边挡板最小值与当前值之差。之后就用双指针更新左右挡板就好了
     public int trap(int[] height) {
