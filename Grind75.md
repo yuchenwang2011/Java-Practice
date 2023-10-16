@@ -12,3 +12,6 @@
 9.  (背诵默写)[56. Merge Intervals](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/56.MergeIntervals.java)
 10. (背诵默写)[75. Sort Colors](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/75.SortColors.java)
 11. (随便瞄一眼)[11. Container With Most Water](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/11.ContainerWIthMostWater.java)
+
+### 2. Stack
+1.  (随便瞄一眼)[20. Valid Parentheses](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/20.ValidParentheses.java)
