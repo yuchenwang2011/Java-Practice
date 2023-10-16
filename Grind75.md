@@ -14,4 +14,6 @@
 11. (随便瞄一眼)[11. Container With Most Water](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/11.ContainerWIthMostWater.java)
 
 ### 2. Stack
-1.  (随便瞄一眼)[20. Valid Parentheses](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/20.ValidParentheses.java)
+1.  (随便瞄二眼)[20. Valid Parentheses](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/20.ValidParentheses.java)
+2.  (随便瞄一眼)[232. Implement Queue Using Stacks](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/232.ImplementQueueUsingStacks.java)
+3.  (我的笔记背诵默写)[155. Min Stack](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/155.MinStack.java)
