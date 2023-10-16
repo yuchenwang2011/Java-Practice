@@ -63,24 +63,21 @@ class Solution {
 //https://leetcode.com/problems/sort-colors/solutions/3464652/beats-100-c-java-python-javascript-two-pointer-dutch-national-flag-algorithm/
 class Solution {
     public void sortColors(int[] nums) {
-        int low = 0, mid = 0, high = nums.length - 1;
-        while (mid <= high) {
-            if (nums[mid] == 0) {
-                swap(nums, low, mid);
-                low++;
+        if(nums == null || nums.length == 0) return;
+        int start = 0;
+        int end = nums.length - 1;
+        int mid = 0;
+
+        while(mid <= end){
+            if(nums[mid] == 1) {
                 mid++;
-            } else if (nums[mid] == 1) {
-                mid++;
+            } else if (nums[mid] == 2) {
+                nums[mid] = nums[end];
+                nums[end--] = 2;
             } else {
-                swap(nums, mid, high);
-                high--;
+                nums[mid++] = nums[start];
+                nums[start++] = 0;
             }
         }
-    }
-    
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
     }
 }
