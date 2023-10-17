@@ -19,3 +19,5 @@
 3.  (我的笔记背诵默写)[155. Min Stack](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/155.MinStack.java)
 4.  (没有价值)[150. Evaluate Reverse Polish Notation](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/150.EvaluateReversePolishNotation.java)
 5.  (其实不难，背诵默写)[42. Trapping Rain Water](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/42.TrappingRainWater.java)
+6.  (其实不难，背诵默写)[224. Basic Calculator](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/224.BasicCalculator.java)
+7.  (其实不难，背诵默写)[84. Largest Rectangle In Histogram](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/84.LargestRectangleInHistogram.java)
