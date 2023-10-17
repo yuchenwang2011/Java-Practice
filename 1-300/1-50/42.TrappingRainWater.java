@@ -16,29 +16,25 @@ Answer:
 class Solution {
     //就是当前单元能装多少水是取决于左右两边挡板最小值与当前值之差。之后就用双指针更新左右挡板就好了
     public int trap(int[] height) {
-        if(height == null || height.length == 0) return 0;
-        
+        int result = 0;
+        if(height == null || height.length <= 1) return result;
+
         int start = 0;
         int end = height.length - 1;
-        
-        int leftMaxHeight = 0;
-        int rightMaxHeight = 0;
-        int result = 0;
-        
+
+        int leftMax = height[start];
+        int rightMax = height[end];
+
         while(start < end){
-            if(height[start] <= height[end]){
-                leftMaxHeight = Math.max(leftMaxHeight, height[start]);
-                result = result + (leftMaxHeight - height[start]);
-                //nums[start] too small, move it
-                //就像谚语里说的，能装多少水，完全取决于短板
-                start++;
+            if(height[start] <= height[end]) {
+                leftMax = Math.max(leftMax, height[start]);
+                result += leftMax - height[start++];
             } else {
-                rightMaxHeight = Math.max(rightMaxHeight, height[end]);
-                result = result + (rightMaxHeight - height[end]);
-                end--;
+                rightMax = Math.max(rightMax, height[end]);
+                result += rightMax - height[end--];
             }
         }
-        
+
         return result;
     }
 }
