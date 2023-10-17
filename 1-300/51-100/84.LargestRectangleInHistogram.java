@@ -27,6 +27,9 @@ class Solution {
                 
                 //然后stack空的时候，就是height值们4,3,2,1各种递减的时候，所以没存下来都pop走了
                 //所以现在是1，我们一直在算前一个长条的宽，也就是2的宽。就是3一直到最左边嘛，就是2 + 1 = 3，恰好是1的位置而已
+
+                //第三次刷的时候我这么理解，其实这个是个巧妙的方法，只要这些数组的上升趋势被打破了，我就算一下，然后怎么算长度的话，因为用stack算比较麻烦，只知道i，peek是前前个
+                //其实i - stack.peek() - 1比较好理解了，他算的是i 和 之前的那个上升趋势之间的差值，因为是index，所以最后减1
                 int width = stack.isEmpty() ? i : i - 1 - stack.peek();
                 result = Math.max(result, height * width);
             }
