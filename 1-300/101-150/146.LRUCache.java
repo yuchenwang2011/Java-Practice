@@ -70,6 +70,7 @@ class LRUCache {
                 map.remove(head.key);
                 head = head.next;
                 if(head != null) head.pre = null;
+                else tail = null; //注意！！这行是2023年增加的新test case，capacity是1的，然后连续put俩不同的值就会错
                 capacity++;
             }
             
