@@ -26,3 +26,4 @@
 1.  (重新写一遍)[21. Merge Two Sorted Lists](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/21.MergeTwoSortedLists.java)
 2.  (随便瞄一眼)[141. Linked List Cycle](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/141.LinkedListCycle.java)
 3.  (每个方法重新写)[206. Reverse Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/206.ReverseLinkedList.java)
+4.  (随便看一眼)[19. Remove Nth Node From End of List](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/19.RemoveNthNodeFromEndOfList.java)
