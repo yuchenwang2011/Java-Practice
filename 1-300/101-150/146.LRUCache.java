@@ -66,7 +66,7 @@ class LRUCache {
             reorder(map.get(key));
         } else {
             Node node = new Node(key, value);
-            if(capacity == 0) {
+            if(capacity == 0 && head != null) { //&& head != null这里可以不用，只是为了思路清晰
                 map.remove(head.key);
                 head = head.next;
                 if(head != null) head.pre = null;
