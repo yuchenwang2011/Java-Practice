@@ -28,3 +28,7 @@
 3.  (每个方法重新写)[206. Reverse Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/206.ReverseLinkedList.java)
 4.  (随便看一眼)[19. Remove Nth Node From End of List](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/19.RemoveNthNodeFromEndOfList.java)
 5.  (必须重新写一次)[146. LRU Cache](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/146.LRUCache.java)
+
+### 4. String
+1.  (随便看一眼熟悉一下API)[125. Valid Palindrome](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/125.ValidPalindrome.java)
+2.  ()[]()
