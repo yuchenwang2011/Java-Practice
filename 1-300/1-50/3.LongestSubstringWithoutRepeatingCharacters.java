@@ -37,7 +37,7 @@ class Solution {
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
             while(set.contains(c)) {
-                set.remove(s.charAt(start++));
+                set.remove(s.charAt(start++)); //start一直往前，直到删掉了c为止
             }
             set.add(c);
             result = Math.max(result, i - start + 1);
