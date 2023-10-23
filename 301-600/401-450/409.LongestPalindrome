@@ -20,3 +20,17 @@ s consists of lowercase and/or uppercase English letters only.
 Accepted 568.3K Submissions 1.1M Acceptance Rate 53.9%
 
 Answer:
+//inspired by the comment https://leetcode.com/problems/longest-palindrome/solutions/89604/simple-hashset-solution-java/
+class Solution {
+    public int longestPalindrome(String s) {
+        int result = 0;
+        if(s == null || s.length() == 0) return result;
+        Set<Character> set = new HashSet<>();
+        for(char c : s.toCharArray()){
+            if(!set.add(c)) set.remove(c);
+        }
+
+        int oddCount = set.size();
+        return result = s.length() - (oddCount == 0 ? 0 : oddCount - 1);
+    }
+}
