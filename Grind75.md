@@ -32,4 +32,5 @@
 ### 4. String
 1.  (随便看一眼熟悉一下API)[125. Valid Palindrome](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/125.ValidPalindrome.java)
 2.  (随便看一眼)[242. Valid Anagram](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/242.ValidAnagram.java)
-3.  ()[409. Longest Palindrome](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/409.LongestPalindrome)
+3.  (没有价值)[409. Longest Palindrome](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/409.LongestPalindrome)
+4.  (随便看一眼)[3. Longest Substring Without Repeating Characters](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/3.LongestSubstringWithoutRepeatingCharacters.java)
