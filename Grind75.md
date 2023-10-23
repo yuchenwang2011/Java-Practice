@@ -31,4 +31,4 @@
 
 ### 4. String
 1.  (随便看一眼熟悉一下API)[125. Valid Palindrome](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/125.ValidPalindrome.java)
-2.  ()[]()
+2.  (很久没刷的话旧随便看一眼，不然没价值)[232. Implement Queue Using Stacks](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/232.ImplementQueueUsingStacks.java)
