@@ -34,4 +34,5 @@
 2.  (随便看一眼)[242. Valid Anagram](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/242.ValidAnagram.java)
 3.  (没有价值)[409. Longest Palindrome](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/409.LongestPalindrome)
 4.  (最好重写一下)[3. Longest Substring Without Repeating Characters](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/3.LongestSubstringWithoutRepeatingCharacters.java)
-5.  ()[]()
+5.  (很罗嗦但是重写一遍比较好)[8. String to Integer](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/8.StringToInteger.java)
+6.  (背诵默写)[. Longest Palindromic Substring](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/5.LongestPalindromicSubstring.java) 
