@@ -8,31 +8,26 @@ Notes: It is intended for this problem to be specified vaguely (ie, no given inp
 
 Answer: 
 class Solution {
-    public int myAtoi(String str) {
-        if(str == null || str.length() == 0) return 0;
-        str = str.trim();
-        if(str.length() == 0) return 0;
-        int sign = 1;
-        int start = 0;
-        if(str.charAt(0) == '-'){
-            sign = -1 ;
-            start = 1;
-        } else if(str.charAt(0) == '+'){
-            sign = 1;
-            start = 1;
-        }
-        
+    public int myAtoi(String s) {
         long result = 0;
-        
-        for(int i = start; i < str.length(); i++){
-            int tmp = str.charAt(i) - '0';
-            if(tmp < 0 || tmp > 9) break;
-            
-            result = result * 10 + tmp;
-            if(sign * result > Integer.MAX_VALUE) return Integer.MAX_VALUE;
-            if(sign * result < Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        if(s == null || s.length() == 0) return (int)result;
+
+        s = s.trim();
+
+        int sign = 1;
+        for(int i = 0; i < s.length(); i++){
+            int tmp = s.charAt(i) - '0';
+            if(i == 0 && s.charAt(i) == '+') sign = 1;
+            else if(i == 0 && s.charAt(i) == '-') sign = -1;
+            else {
+                if(tmp < 0 || tmp > 9) break;
+                result = result * 10 + tmp;
+            }
+
+            if(sign > 0 && sign * result > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+            if(sign < 0 && sign * result < Integer.MIN_VALUE) return Integer.MIN_VALUE;
         }
-        
-        return (int) result * sign;
+
+        return (int)result * sign;
     }
 }
