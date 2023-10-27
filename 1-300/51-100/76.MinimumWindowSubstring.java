@@ -23,43 +23,47 @@ When the window is no longer valid, start expanding again using the right pointe
 Answer:
 //以后的sliding window都用这个模板来写
 ////https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem/
-public class Solution {
+class Solution {
     public String minWindow(String s, String t) {
-        if(t.length()> s.length()) return "";
+        if(s == null || s.length() == 0) return "";
+        if(t == null || t.length() == 0) return "";
+        if(t.length() > s.length()) return "";
+
         Map<Character, Integer> map = new HashMap<>();
         for(char c : t.toCharArray()){
-            map.put(c, map.getOrDefault(c,0) + 1);
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        int counter = map.size();
-        
-        int begin = 0, end = 0;
+        int count = map.size();
+
+        int start = 0;
+        int end = 0;
         int head = 0;
-        int len = Integer.MAX_VALUE;
-        
+        int length = Integer.MAX_VALUE;
+
         while(end < s.length()){
             char c = s.charAt(end);
-            if( map.containsKey(c) ){
-                map.put(c, map.get(c)-1);
-                if(map.get(c) == 0) counter--;
+            if(map.containsKey(c)) {
+                map.put(c, map.get(c) - 1);
+                if(map.get(c) == 0) count--;
             }
             end++;
-            
-            while(counter == 0){
-                char tempc = s.charAt(begin);
-                if(map.containsKey(tempc)){
-                    if(map.get(tempc) == 0) counter++;
-                    map.put(tempc, map.get(tempc) + 1);
+
+            while(count == 0){
+                char tmpc = s.charAt(start);
+                if(map.containsKey(tmpc)) {
+                    if(map.get(tmpc) == 0) count++;
+                    map.put(tmpc, map.get(tmpc) + 1);
                 }
-                if(end-begin < len){
-                    len = end - begin;
-                    head = begin;
+                if(end - start < length) {
+                    length = end - start;
+                    head = start;
                 }
-                begin++;
+                start++;
             }
-            
         }
-        if(len == Integer.MAX_VALUE) return "";
-        return s.substring(head, head+len);
+
+        if(length == Integer.MAX_VALUE) return "";
+        return s.substring(head, head + length);
     }
 }
 
