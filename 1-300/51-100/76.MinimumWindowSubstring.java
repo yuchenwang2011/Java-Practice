@@ -21,6 +21,61 @@ We found a smaller window that still contains all the characters in T
 When the window is no longer valid, start expanding again using the right pointer. 
 
 Answer:
+//以后的sliding window都用这个模板来写
+////https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem/
+public class Solution {
+    public String minWindow(String s, String t) {
+        if(t.length()> s.length()) return "";
+        Map<Character, Integer> map = new HashMap<>();
+        for(char c : t.toCharArray()){
+            map.put(c, map.getOrDefault(c,0) + 1);
+        }
+        int counter = map.size();
+        
+        int begin = 0, end = 0;
+        int head = 0;
+        int len = Integer.MAX_VALUE;
+        
+        while(end < s.length()){
+            char c = s.charAt(end);
+            if( map.containsKey(c) ){
+                map.put(c, map.get(c)-1);
+                if(map.get(c) == 0) counter--;
+            }
+            end++;
+            
+            while(counter == 0){
+                char tempc = s.charAt(begin);
+                if(map.containsKey(tempc)){
+                    if(map.get(tempc) == 0) counter++;
+                    map.put(tempc, map.get(tempc) + 1);
+                }
+                if(end-begin < len){
+                    len = end - begin;
+                    head = begin;
+                }
+                begin++;
+            }
+            
+        }
+        if(len == Integer.MAX_VALUE) return "";
+        return s.substring(head, head+len);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //all solutions are from discussions from this amazing template
 // https://leetcode.com/problems/minimum-window-substring/discuss/
 //  26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
