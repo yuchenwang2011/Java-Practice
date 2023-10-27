@@ -38,7 +38,7 @@
 
 ### 5. Sliding Window (Grind75没有,我自己弄出来这个topic)
 1.  (必须要背诵默写模板)[438. Find All Anagrams In A String](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/438.FindAllAnagramsInAString.java)
-2.  ()[76. Minimum Window Substring](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/76.MinimumWindowSubstring.java)
+2.  (用上一个题的模板试着自己写)[76. Minimum Window Substring](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/76.MinimumWindowSubstring.java)
 3.  (最好重写一下)[3. Longest Substring Without Repeating Characters](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/3.LongestSubstringWithoutRepeatingCharacters.java)
 4.  ()[30. Substring With Concatenation Of All Words](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/30.SubstringWithConcatenationOfAllWords.java)
 5.  ()[159. Longest Substring With At Most Two Distinct Characters](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/159.LongestSubstringWithAtMostTwoDistinctCharacters.java)
