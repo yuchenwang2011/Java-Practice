@@ -42,3 +42,8 @@
 3.  (最好重写一下)[3. Longest Substring Without Repeating Characters](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/3.LongestSubstringWithoutRepeatingCharacters.java)
 4.  (这个和模板不一样，重写一下吧)[30. Substring With Concatenation Of All Words](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/30.SubstringWithConcatenationOfAllWords.java)
 5.  (重写一遍)[159. Longest Substring With At Most Two Distinct Characters](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/159.LongestSubstringWithAtMostTwoDistinctCharacters.java)
+
+### 6. Binary Tree
+1.  (随便看一眼)[226. Invert Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/226.InvertBinaryTree.java)
+2.  (值得思考)[110. Balanced Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/110.BalancedBinaryTree.java)
+3.  (值得思考)[543. Diameter of Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/501-550/543.DiameterOfBinaryTree.java)
