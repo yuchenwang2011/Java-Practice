@@ -17,26 +17,32 @@ Accepted 86,501 Submissions 179,089
 Answer:
 //尽量用这个人的模板吧，思路差不多
 https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem/
-public class Solution {
+class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
-        Map<Character,Integer> map = new HashMap<>();
-        int start = 0, end = 0, counter = 0, len = 0;
+        if(s == null || s.length() == 0) return 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int start = 0;
+        int end = 0;
+        int count = 0;
+        int length = 0;
+
         while(end < s.length()){
             char c = s.charAt(end);
             map.put(c, map.getOrDefault(c, 0) + 1);
-            if(map.get(c) == 1) counter++;//new char
+            if(map.get(c) == 1) count++;
             end++;
-            while(counter > 2){
-                char cTemp = s.charAt(start);
-                map.put(cTemp, map.get(cTemp) - 1);
-                if(map.get(cTemp) == 0){
-                    counter--;
+
+            while(count > 2){
+                char tmpc = s.charAt(start);
+                if(map.get(tmpc) == 1) {
+                    count--;
                 }
+                map.put(tmpc, map.get(tmpc) - 1);
                 start++;
             }
-            len = Math.max(len, end-start);
+            length = Math.max(length, end - start);
         }
-        return len;
+        return length;
     }
 }
 
