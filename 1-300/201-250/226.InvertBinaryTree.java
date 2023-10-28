@@ -62,7 +62,7 @@ class Solution {
         TreeNode right = invertTree(root.right);
         
         root.left = right;
-        root.right = tmp;
+        root.right = left;
         return root;
     }
 }
