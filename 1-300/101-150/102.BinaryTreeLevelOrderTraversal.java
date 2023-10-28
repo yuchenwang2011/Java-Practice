@@ -70,8 +70,6 @@ public class Solution {
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if(root == null) return result;
-        
         helper(root, result, 0);
         return result;
     }
@@ -81,8 +79,7 @@ class Solution {
             return;
         }
         if(result.size() <= level) {
-            List<Integer> list = new ArrayList<>();
-            result.add(list);
+            result.add(new ArrayList<>());
         } 
         
         result.get(level).add(root.val);
