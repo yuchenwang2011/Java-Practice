@@ -24,26 +24,27 @@ Solution:
 class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> result = new ArrayList<>();
-        if(s == null || s.length() == 0 || words == null || words.length == 0) return result;
-        if(words[0] == null || s.length() < words[0].length() * words.length) return result;
-        
+        if(s == null || s.length() == 0) return result;
+        if(s.length() < words.length * words[0].length()) return result;
+
         Map<String, Integer> map = new HashMap<>();
-        for(String str : words){
-            map.put(str, map.getOrDefault(str, 0) + 1);
+        for(String w : words){
+            map.put(w, map.getOrDefault(w, 0) + 1);
         }
-        
-        int n = words.length;
-        int m = words[0].length();
-        for(int i = 0; i < s.length() - m * n + 1; i++){
+
+        for(int i = 0; i < s.length() - words.length * words[0].length() + 1; i++){
             int j = i;
-            int k = n;
-            Map<String, Integer> newMap = new HashMap<>(map);
+            int k = words.length;
+            Map<String, Integer> map2 = new HashMap<>(map);
             while(k > 0){
-                String tmp = s.substring(j, j + m);
-                if(!newMap.containsKey(tmp) || newMap.get(tmp) < 1) break;
-                newMap.put(tmp, newMap.get(tmp) - 1);
-                j = j + m;
-                k--;
+                String tmp = s.substring(j, j + words[0].length());
+                if(map2.containsKey(tmp) && map2.get(tmp) > 0) {
+                    map2.put(tmp, map2.get(tmp) - 1);
+                    j += words[0].length();
+                    k--;
+                } else {
+                    break;
+                }
             }
             if(k == 0) result.add(i);
         }
