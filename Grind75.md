@@ -50,3 +50,4 @@
 4.  (练习一下recursive写法)[102. Binary Tree Level Order Traveral](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/102.BinaryTreeLevelOrderTraversal.java)
 5.  (值得思考)[236. Lowest Common Ancestor Of Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/236.LowestCommonAncestorOfABinaryTree.java)
 6.  (两种方法都写一遍)[199. Binary Tree Right Side View](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/199.BinaryTreeRightSideView.java)
+7.  ()[105. Construct Binary Tree From Preorder And Inorder Traversal](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/105.ConstructBinaryTreeFromPreorderAndInorderTraversal.java)
