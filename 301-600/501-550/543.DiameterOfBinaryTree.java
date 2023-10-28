@@ -20,3 +20,22 @@ The number of nodes in the tree is in the range [1, 104].
 Accepted 1.2M Submissions 2.1M Acceptance Rate 58.2%
 
 Answer:
+ //from this answer:
+ //https://leetcode.com/problems/diameter-of-binary-tree/solutions/101132/java-solution-maxdepth/
+class Solution {
+    int max = 0;
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root == null) return 0;
+        getHeight(root);
+        return max;
+    }
+
+    public int getHeight(TreeNode root){
+        if(root == null) return 0;
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+        max = Math.max(max, leftHeight + rightHeight); //note, here doesn't add 1, it says between, consider as no root
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
+}
