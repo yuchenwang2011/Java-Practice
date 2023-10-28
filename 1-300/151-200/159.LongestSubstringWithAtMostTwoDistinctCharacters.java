@@ -34,10 +34,10 @@ class Solution {
 
             while(count > 2){
                 char tmpc = s.charAt(start);
-                if(map.get(tmpc) == 1) {
+                map.put(tmpc, map.get(tmpc) - 1);
+                if(map.get(tmpc) == 0) {
                     count--;
                 }
-                map.put(tmpc, map.get(tmpc) - 1);
                 start++;
             }
             length = Math.max(length, end - start);
