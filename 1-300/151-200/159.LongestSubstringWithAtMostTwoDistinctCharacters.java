@@ -15,6 +15,41 @@ Explanation: t is "aabbb" which its length is 5.
 Accepted 86,501 Submissions 179,089
     
 Answer:
+//尽量用这个人的模板吧，思路差不多
+https://leetcode.com/problems/find-all-anagrams-in-a-string/solutions/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem/
+public class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        Map<Character,Integer> map = new HashMap<>();
+        int start = 0, end = 0, counter = 0, len = 0;
+        while(end < s.length()){
+            char c = s.charAt(end);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            if(map.get(c) == 1) counter++;//new char
+            end++;
+            while(counter > 2){
+                char cTemp = s.charAt(start);
+                map.put(cTemp, map.get(cTemp) - 1);
+                if(map.get(cTemp) == 0){
+                    counter--;
+                }
+                start++;
+            }
+            len = Math.max(len, end-start);
+        }
+        return len;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 //我自己的方法
 class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
