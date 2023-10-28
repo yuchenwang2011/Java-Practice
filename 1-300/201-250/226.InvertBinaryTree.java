@@ -34,7 +34,10 @@ class Solution {
         TreeNode tmp = root.left;
         root.left = root.right;
         root.right = tmp;
-        
+
+        //below two lines can be exchanged to
+        //root.left = invertTree(root.left);
+        //root.right = invertTree(root.right);
         invertTree(root.left);
         invertTree(root.right);
         
