@@ -19,7 +19,7 @@ Answer:
 //pre，就是先从root开始撸，然后撸左右
 //In就是root在中间被撸，也就是先撸左边，再撸root，再撸右边
 //post就是先撸左右，再撸root。wikipedia上的例子图很好，其他网上的很多都是错的
-
+//https://en.wikipedia.org/wiki/Tree_traversal
 
 
 // The basic idea is here:
