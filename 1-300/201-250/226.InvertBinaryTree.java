@@ -27,7 +27,7 @@ tion for a binary tree node.
  *     TreeNode(int x) { val = x; }
  * }
  */
-//三种解法
+
 class Solution {
     public TreeNode invertTree(TreeNode root) {
         if(root == null) return root;
@@ -45,10 +45,19 @@ class Solution {
 class Solution {
     public TreeNode invertTree(TreeNode root) {
         if(root == null) return root;
+        TreeNode tmp = root.left;
+        root.left = invertTree(root.right);
+        root.right = invertTree(tmp);
+        return root;
+    }
+}
+
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null) return root;
         TreeNode left = invertTree(root.left);
         TreeNode right = invertTree(root.right);
         
-        TreeNode tmp = left;
         root.left = right;
         root.right = tmp;
         return root;
