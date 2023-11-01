@@ -46,7 +46,6 @@ public class Solution {
         for(int i = inStart; i <= inEnd; i++){
             if(preorder[preStart] == inorder[i]) {
                 inRoot = i;
-                break;
             }
         }
         TreeNode root = new TreeNode(preorder[preStart]); //inorder[inRoot]也行
