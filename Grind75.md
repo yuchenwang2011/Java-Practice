@@ -57,4 +57,4 @@
 
 ### 7. Binary Search
 1.  (没有价值)[704. Binary Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/704.BinarySearch.java)
-2.  ()[278. First Bad Version](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/251-300/278.FirstBadVersion.java)
+2.  (没有价值)[278. First Bad Version](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/251-300/278.FirstBadVersion.java)
