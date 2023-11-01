@@ -56,4 +56,4 @@
     https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/145.BinaryTreePostorderTraversal.java
 
 ### 7. Binary Search
-1.  ()[704. Binary Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/704.BinarySearch.java)
+1.  (没有价值)[704. Binary Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/704.BinarySearch.java)
