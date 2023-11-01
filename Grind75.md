@@ -54,3 +54,6 @@
     https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/144.BinaryTreePreorderTraversal.java 
     https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/94.BinaryTreeInorderTraversal.java
     https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/145.BinaryTreePostorderTraversal.java
+
+### 7. Binary Search
+1.  ()[704. Binary Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/704.BinarySearch.java)
