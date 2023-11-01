@@ -24,6 +24,7 @@ nums is sorted in ascending order.
 Accepted 2.1M Submissions 3.6M Acceptance Rate 56.8%
 
 Answer:
+//my own solution
 class Solution {
     public int search(int[] nums, int target) {
         if(nums == null || nums.length == 0) return -1;
@@ -40,6 +41,27 @@ class Solution {
         }
 
         if(nums[start] == target) return start;
+        return -1;
+    }
+}
+
+//回忆的左闭右开的写法
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return -1;
+        int start = 0;
+        int end = nums.length;
+        while(start < end){
+            int mid = start + (end - start) / 2;
+            if(nums[mid] == target) return mid;
+            else if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+
+        if(start < nums.length && nums[start] == target) return start;
         return -1;
     }
 }
