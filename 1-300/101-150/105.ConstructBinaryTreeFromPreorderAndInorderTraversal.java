@@ -41,7 +41,7 @@ public class Solution {
     }
     
     public TreeNode construct(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder){
-        if(preStart > preorder.length - 1 || inStart > inEnd ) return null; //这行必须的
+        if(preStart >= preorder.length || inStart > inEnd ) return null; //这行必须的
         int inRoot = 0;
         for(int i = inStart; i <= inEnd; i++){
             if(preorder[preStart] == inorder[i]) {
