@@ -33,9 +33,9 @@ public class Solution {
     
     public void process(TreeNode root, List<Integer> result){
         if(root == null) return;
-        if(root.left != null) process(root.left, result);
+        process(root.left, result);
         result.add(root.val);
-        if(root.right != null) process(root.right, result);
+        process(root.right, result);
     }
     
 }
