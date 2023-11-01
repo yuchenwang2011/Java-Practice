@@ -29,3 +29,20 @@ public class Solution extends VersionControl {
         return -1;
     }
 }
+
+//用的新的左闭右开的写法
+public class Solution extends VersionControl {
+    public int firstBadVersion(int n) {
+        if(n <= 0) return -1;
+        int start = 1;
+        int end = n;
+        while(start < end){
+            int mid = start + (end - start) / 2;
+            boolean isBad = isBadVersion(mid);
+            if(!isBad) start = mid + 1;
+            else end = mid;
+        }
+        if(isBadVersion(start)) return start;
+        return - 1;
+    }
+}
