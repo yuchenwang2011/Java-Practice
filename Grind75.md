@@ -61,4 +61,4 @@
 3.  (见一次重写一次不如记不住)[33. Search In Rotated Sorted Array](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/33.SearchInRotatedSortedArray.java)
 
 ### 8. Graph
-1.  ()[733. Flood Fill](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/733.FloodFill.java)
+1.  (必须两个方法都重新写一遍)[733. Flood Fill](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/733.FloodFill.java)
