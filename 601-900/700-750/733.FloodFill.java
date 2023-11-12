@@ -29,6 +29,7 @@ n == image[i].length
 Accepted 813.2K Submissions 1.3M Acceptance Rate 63.2%
 
 Answer:
+ //all my own solutions
 //BFS same as question 200
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
@@ -61,5 +62,28 @@ class Solution {
             }
         }
         return image;
+    }
+}
+
+//DFS same as question 200
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        if(image == null || image.length == 0 || image[0].length == 0) return image;
+        if(image[sr][sc] == color) return image;
+        int initialColor = image[sr][sc];
+
+        helper(image, sr, sc, color, initialColor);
+        return image;
+    }
+
+    public void helper(int[][] image, int sr, int sc, int color, int initialColor){
+        if(sr < 0 || sr >= image.length ||
+            sc < 0 || sc >= image[0].length || image[sr][sc] != initialColor) return;
+        image[sr][sc] = color;
+
+        helper(image, sr - 1, sc, color, initialColor);
+        helper(image, sr + 1, sc, color, initialColor);
+        helper(image, sr, sc - 1, color, initialColor);
+        helper(image, sr, sc + 1, color, initialColor);
     }
 }
