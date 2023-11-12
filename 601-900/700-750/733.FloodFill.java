@@ -29,3 +29,37 @@ n == image[i].length
 Accepted 813.2K Submissions 1.3M Acceptance Rate 63.2%
 
 Answer:
+//BFS same as question 200
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        if(image == null || image.length == 0 || image[0].length == 0) return image;
+        if(image[sr][sc] == color) return image; //this line is necessary to submit successfully
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{sr, sc});
+        int initialColor = image[sr][sc];
+        image[sr][sc] = color;
+
+        int[][] directions = new int[][]{{0,1},{0,-1},{1,0},{-1,0}};
+
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                int[] tmp = queue.poll();
+                int x = tmp[0];
+                int y = tmp[1];
+                for(int[] direction: directions){
+                    int row = x + direction[0];
+                    int col = y + direction[1];
+
+                    if(row < 0 || col < 0 || row >= image.length 
+                    || col >= image[0].length
+                    || image[row][col] != initialColor) continue;
+
+                    queue.offer(new int[]{row, col});
+                    image[row][col] = color;
+                }
+            }
+        }
+        return image;
+    }
+}
