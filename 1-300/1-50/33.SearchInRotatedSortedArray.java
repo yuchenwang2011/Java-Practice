@@ -13,6 +13,7 @@ Example 2:
 Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
 
+//改成第二种左闭右开写法
 class Solution {
     //https://www.youtube.com/watch?v=KSZfO65J6hg
     //this question is just to keep finding out the ascending half, otherwise not able to binary search
@@ -47,6 +48,36 @@ class Solution {
         
         if(nums[start] == target) return start;
         if(nums[end] == target) return end;
+        return -1;
+    }
+}
+
+//https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/14436/revised-binary-search/
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return -1;
+        int start = 0;
+        int end = nums.length - 1;
+        while(start < end){
+            int mid = start + (end - start) / 2;
+            if(nums[mid] == target) return mid;
+
+            //这里必须有等于，因为如果array就两个数的话，start == mid都是0，这时候start就得往后挪
+            if(nums[start] <= nums[mid]){
+                if(nums[start] <= target && nums[mid] > target) {
+                    end = mid;
+                } else {
+                    start = mid + 1;
+                }
+            } else {
+                if(nums[mid] < target && nums[end] >= target){
+                    start = mid + 1;
+                } else {
+                    end = mid;
+                }
+            }
+        }
+        if(nums[start] == target) return start;
         return -1;
     }
 }
