@@ -32,5 +32,6 @@ key and value consist of lowercase English letters and digits.
 All the timestamps timestamp of set are strictly increasing.
 At most 2 * 105 calls will be made to set and get.
 Accepted 374.3K Submissions 745.8K Acceptance Rate 50.2%
-
+原题的note：Note: 3. The timestamps for all TimeMap.set operations are strictly increasing.
 Answer:
+//https://leetcode.com/problems/time-based-key-value-store/solutions/244229/java-beats-100/
