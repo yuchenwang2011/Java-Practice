@@ -62,3 +62,4 @@
 
 ### 8. Graph
 1.  (必须两个方法都重新写一遍)[733. Flood Fill](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/733.FloodFill.java)
+2.  (看一下我自己的写法然后写一遍别人的写法)[542. 01 Matrix](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/501-550/542.01Matrix.java)
