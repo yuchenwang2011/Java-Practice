@@ -73,7 +73,7 @@ class Solution {
     }
 }
 
-
+//https://leetcode.com/problems/course-schedule/solutions/58524/java-dfs-and-bfs-solution/
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         if(numCourses <= 0) return false;
