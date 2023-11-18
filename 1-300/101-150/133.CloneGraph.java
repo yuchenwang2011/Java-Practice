@@ -57,19 +57,25 @@ Since the graph is undirected, if node p has node q as neighbor, then node q mus
 You must return the copy of the given node as a reference to the cloned graph.
          
 Answer:
+(这个defination后来改动变更方便了)
 /*
 // Definition for a Node.
 class Node {
     public int val;
     public List<Node> neighbors;
-
-    public Node() {}
-
-    public Node(int _val,List<Node> _neighbors) {
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    public Node(int _val, ArrayList<Node> _neighbors) {
         val = _val;
         neighbors = _neighbors;
     }
-};
+}
 */
 
 //DFS
@@ -89,6 +95,29 @@ class Solution {
                 helper(nei, map);
             }
             node2.neighbors.add(map.get(nei));
+        }
+    }
+}
+//后来我自己的做法, 感觉更好理解
+class Solution {
+    public Node cloneGraph(Node node) {
+        if(node == null) return node;
+        Map<Node, Node> map = new HashMap<>();
+        Set<Integer> visited = new HashSet<>();
+        helper(map, visited, node);
+        return map.get(node);
+    }
+
+    public void helper(Map<Node, Node> map, Set<Integer> visited, Node node){
+        if(!visited.add(node.val)) return;
+        Node node2 = new Node(node.val);
+        map.put(node, node2);
+
+        List<Node> neis = node.neighbors;
+        for(Node nei : neis){
+            helper(map, visited, nei);
+            Node nei2 = map.get(nei);
+            node2.neighbors.add(nei2);
         }
     }
 }
