@@ -83,17 +83,16 @@ class Solution {
     public Node cloneGraph(Node node) {
         if(node == null) return node;
         Map<Node, Node> map = new HashMap<>();
-        helper(node, map);
+        helper(map, node);
         return map.get(node);
     }
-    
-    public void helper(Node node, Map<Node, Node> map){
-        Node node2 = new Node(node.val, new ArrayList<>());
+
+    public void helper(Map<Node, Node> map, Node node){
+        if(map.containsKey(node)) return;
+        Node node2 = new Node(node.val);
         map.put(node, node2);
-        for(Node nei: node.neighbors){
-            if(!map.containsKey(nei)) {
-                helper(nei, map);
-            }
+        for(Node nei : node.neighbors){
+            helper(map, nei);
             node2.neighbors.add(map.get(nei));
         }
     }
