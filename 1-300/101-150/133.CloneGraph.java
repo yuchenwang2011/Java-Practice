@@ -102,23 +102,25 @@ class Solution {
 class Solution {
     public Node cloneGraph(Node node) {
         if(node == null) return node;
-        Map<Node, Node> map = new HashMap<>();
-        map.put(node, new Node(node.val, new ArrayList<>()));
-        
         Queue<Node> queue = new LinkedList<>();
+        Map<Node, Node> map = new HashMap<>();
+        Node node2 = new Node(node.val);
+        map.put(node, node2);
         queue.offer(node);
         
         while(!queue.isEmpty()){
             Node tmp = queue.poll();
             Node tmp2 = map.get(tmp);
             for(Node nei : tmp.neighbors){
-                if(!map.containsKey(nei)) {
-                    map.put(nei, new Node(nei.val, new ArrayList<>()));
+                if(!map.containsKey(nei)){
+                    Node nei2 = new Node(nei.val);
+                    map.put(nei, nei2);
                     queue.offer(nei);
                 }
                 tmp2.neighbors.add(map.get(nei));
             }
         }
-        return map.get(node);
+
+        return node2;
     }
 }
