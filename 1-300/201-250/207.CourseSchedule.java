@@ -36,6 +36,7 @@ Topological sort could also be done via BFS.
 
 Answer:
 //very good tutorial video what is topoligy sort https://www.youtube.com/watch?v=ddTC4Zovtbc
+//https://leetcode.com/problems/course-schedule/solutions/58516/easy-bfs-topological-sort-java/
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         if(numCourses <= 0) return false;
