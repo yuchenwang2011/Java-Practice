@@ -56,11 +56,10 @@ class Solution {
             }
         }
         while(!queue.isEmpty()){
-            int node = queue.poll();
+            int current = queue.poll();
             for(int[] prerequisite : prerequisites){
-                if(prerequisite[1] == node) {
-                    int tmp = prerequisite[0];
-                    indegree[tmp]--;
+                if(prerequisite[1] == current) {
+                    indegree[prerequisite[0]]--;
                     if(indegree[tmp] == 0) {
                         queue.offer(tmp);
                         count++;
