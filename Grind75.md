@@ -64,4 +64,4 @@
 1.  (必须两个方法都重新写一遍)[733. Flood Fill](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/733.FloodFill.java)
 2.  (看一下我自己的写法然后写一遍别人的写法)[542. 01 Matrix](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/501-550/542.01Matrix.java)
 3.  (两种写法都重写一下)[133. Clone Graph](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/133.CloneGraph.java)
-4.  (必须两种写法重新写)[207. Course Schedule](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/207.CourseSchedule.java)
+4.  (重中之重!必须两种写法重新写)[207. Course Schedule](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/207.CourseSchedule.java)
