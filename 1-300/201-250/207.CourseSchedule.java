@@ -38,35 +38,36 @@ Answer:
 //very good tutorial video what is topoligy sort https://www.youtube.com/watch?v=ddTC4Zovtbc
 //https://leetcode.com/problems/course-schedule/solutions/58516/easy-bfs-topological-sort-java/
 class Solution {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    public boolean canFinish(int numCourses, int[][] pres) {
         if(numCourses <= 0) return false;
-        if(prerequisites == null || prerequisites.length == 0) return true;
-        
+        if(pres == null || pres.length == 0) return true;
         int[] indegree = new int[numCourses];
-        for(int[] prerequisite : prerequisites){
-            indegree[prerequisite[0]]++;
+        for(int[] pre : pres){
+            indegree[pre[0]]++;
         }
 
         int count = 0;
         Queue<Integer> queue = new LinkedList<>();
         for(int i = 0; i < indegree.length; i++){
             if(indegree[i] == 0) {
-                queue.offer(i);
+                queue.offer(i); //note here is i
                 count++;
             }
         }
+
         while(!queue.isEmpty()){
-            int current = queue.poll();
-            for(int[] prerequisite : prerequisites){
-                if(prerequisite[1] == current) {
-                    indegree[prerequisite[0]]--;
-                    if(indegree[tmp] == 0) {
-                        queue.offer(tmp);
+            int node = queue.poll();
+            for(int[] pre : pres){
+                if(pre[1] == node) {
+                    indegree[pre[0]]--;
+                    if(indegree[pre[0]] == 0) {
+                        queue.offer(pre[0]);
                         count++;
                     }
                 }
             }
         }
+
         return count == numCourses;
     }
 }
