@@ -72,5 +72,38 @@ class Solution {
     }
 }
 
+//虽然是按照第一个答案的思路，但是更新了test case以后，从第二个答案得到了优化思路
 //https://leetcode.com/problems/course-schedule/solutions/58524/java-dfs-and-bfs-solution/
+//https://leetcode.com/problems/course-schedule/solutions/4287307/intuitive-dfs-solution/
+class Solution {
+    public boolean canFinish(int numCourses, int[][] pres) {
+        if(numCourses <= 0) return false;
+        if(pres == null || pres.length == 0) return true;
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for(int[] pre : pres){
+            graph.putIfAbsent(pre[1], new HashSet<>());
+            graph.get(pre[1]).add(pre[0]);
+        }
 
+        Set<Integer> visited = new HashSet<>();
+        for(int i = 0; i < numCourses; i++){
+            if(!helper(graph, visited, i)) return false;
+        }
+        return true;
+    }
+
+    public boolean helper(Map<Integer, Set<Integer>> graph, Set<Integer> visited, int current){
+        if(!visited.add(current)) return false;
+        Set<Integer> nexts = graph.get(current);
+        if(nexts != null && !nexts.isEmpty()) {
+            for(int next : nexts){
+                if(!helper(graph, visited, next)) return false;
+            }
+        }
+
+        visited.remove(current);
+        graph.put(current, new HashSet<>()); //this is important after new test cases added, time limite exceed otherwise
+        //it is to prevent the next for loop will check this node again, since the node has proved to be true, we skip it
+        return true;
+    }
+}
