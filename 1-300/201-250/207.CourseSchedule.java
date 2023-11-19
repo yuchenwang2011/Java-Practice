@@ -44,8 +44,7 @@ class Solution {
         
         int[] indegree = new int[numCourses];
         for(int[] prerequisite : prerequisites){
-            int a = prerequisite[0];
-            indegree[a]++;
+            indegree[prerequisite[0]]++;
         }
 
         int count = 0;
