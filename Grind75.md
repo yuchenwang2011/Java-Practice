@@ -66,3 +66,4 @@
 3.  (两种写法都重写一下)[133. Clone Graph](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/133.CloneGraph.java)
 4.  (重中之重!必须两种写法重新写)[207. Course Schedule](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/207.CourseSchedule.java)
 5.  (重中之重)[200. Number of Islands](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/200.NumberOfIslands.java)
+6.  (两种写法都琢磨一下)[994. Rotting Oranges](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/950-1000/994.RottingOranges.java)
