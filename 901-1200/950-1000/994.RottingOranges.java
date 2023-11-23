@@ -77,3 +77,40 @@ class Solution {
         return result == 0 ? 0 : result - 1;
     }
 }
+
+//DFS followed this answer: https://leetcode.com/problems/rotting-oranges/solutions/602284/java-dfs-beats-100/
+class Solution {
+    public int orangesRotting(int[][] grid) {
+        if(grid == null || grid.length == 0 || grid[0].length == 0) return 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == 2) {
+                    helper(grid, i, j, 2);
+                }
+            }
+        }
+
+        int result = 2; //note it is 2 here
+        for(int i =0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == 1) return -1;
+                result = Math.max(grid[i][j], result);
+            }
+        }
+
+        return result - 2;
+    }
+
+    public void helper(int[][] grid, int i, int j, int min){
+        if(i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) return;
+        if(grid[i][j] == 0) return;
+        //orange has been rotten by other cells
+        if(grid[i][j] > 1 && grid[i][j] < min) return;
+        
+        grid[i][j] = min++;
+        helper(grid, i - 1, j, min);
+        helper(grid, i + 1, j, min);
+        helper(grid, i, j - 1, min);
+        helper(grid, i, j + 1, min);
+    }
+}
