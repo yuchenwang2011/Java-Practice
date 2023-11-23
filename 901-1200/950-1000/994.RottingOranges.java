@@ -32,6 +32,7 @@ grid[i][j] is only 0, 1, or 2.
 Accepted 35,106 Submissions 75,280
 
 Answer:
+//from the comment of this: https://leetcode.com/problems/rotting-oranges/solutions/238681/java-clean-bfs-solution-with-comments
 class Solution {
     public int orangesRotting(int[][] grid) {
         if(grid == null || grid.length == 0 || grid[0].length == 0) return -1;
@@ -54,7 +55,7 @@ class Solution {
                     int x = current[0] + direction[0];
                     int y = current[1] + direction[1];
                     if(x >= 0 && y >= 0 && x < grid.length && y < grid[0].length && grid[x][y] == 1) {
-                        grid[x][y] = 2;
+                        grid[x][y] = 2; //it can be 0 or other values here except 1
                         queue.offer(new int[]{x, y});
                     }
                 }
