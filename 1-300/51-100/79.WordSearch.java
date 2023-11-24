@@ -28,6 +28,7 @@ class Solution {
             for(int j = 0; j < board[0].length; j++){
                 char c = word.charAt(0);
                 if(board[i][j] == c) {
+                    //note here is 0, because you give helper i and j, they match 0, not 1
                     if(helper(board, word, i, j, 0)) return true;
                 }
             }
