@@ -69,3 +69,6 @@
 6.  (两种写法都琢磨一下)[994. Rotting Oranges](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/950-1000/994.RottingOranges.java)
 7.  (值得思考)[79. Word Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/79.WordSearch.java)
 8.  (值得思考，但解法不普适)[310. Minimum Height Trees](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/310.MinimumHeightTrees.java)
+
+### 9. Dynamic Programming
+1.  ()[53. Maximum Subarray](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/53.MaximumSubarray.java)
