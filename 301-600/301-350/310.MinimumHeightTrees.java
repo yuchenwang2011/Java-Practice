@@ -51,34 +51,38 @@ Answer:
 class Solution {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         List<Integer> result = new ArrayList<>();
+        if(n <= 0) return result;
+        if(edges.length != n - 1) return result;
         if(n == 1) {
             result.add(0);
             return result;
         }
-        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        Map<Integer, Set<Integer>> map = new HashMap<>();
         for(int[] edge : edges){
-            int a = edge[0];
-            int b = edge[1];
-            graph.putIfAbsent(a, new HashSet<>());
-            graph.putIfAbsent(b, new HashSet<>());
-            graph.get(a).add(b);
-            graph.get(b).add(a);
+            map.putIfAbsent(edge[0], new HashSet<>());
+            map.putIfAbsent(edge[1], new HashSet<>());
+            map.get(edge[0]).add(edge[1]);
+            map.get(edge[1]).add(edge[0]);
         }
-        
-        for(int key : graph.keySet()){
-            if(graph.get(key).size() == 1) result.add(key);
+
+        List<Integer> leaves = new ArrayList<>();
+        for(int key : map.keySet()){
+            Set<Integer> tmp = map.get(key);
+            if(tmp.size() == 1) leaves.add(key);
         }
-        
+
         while(n > 2){
-            n -= result.size();
+            n -= leaves.size();
             List<Integer> newLeaves = new ArrayList<>();
-            for(int i : result){
-                int j = graph.get(i).iterator().next();
-                graph.get(j).remove(i); //j单方面和i恩断义绝
-                if(graph.get(j).size() == 1) newLeaves.add(j);
-            } 
-            result = newLeaves;
+            for(int leaf : leaves){
+                int next = map.get(leaf).iterator().next();
+                map.get(next).remove(leaf);
+                if(map.get(next).size() == 1) newLeaves.add(next);
+            }
+
+            leaves = newLeaves;
         }
-        return result;
+
+        return leaves;
     }
 }
