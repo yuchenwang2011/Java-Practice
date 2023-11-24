@@ -71,4 +71,4 @@
 8.  (值得思考，但解法不普适)[310. Minimum Height Trees](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/310.MinimumHeightTrees.java)
 
 ### 9. Dynamic Programming
-1.  ()[53. Maximum Subarray](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/53.MaximumSubarray.java)
+1.  (需掌握DP方法)[53. Maximum Subarray](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/53.MaximumSubarray.java)
