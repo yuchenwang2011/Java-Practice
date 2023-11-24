@@ -67,5 +67,5 @@
 4.  (重中之重!必须两种写法重新写)[207. Course Schedule](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/207.CourseSchedule.java)
 5.  (重中之重)[200. Number of Islands](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/200.NumberOfIslands.java)
 6.  (两种写法都琢磨一下)[994. Rotting Oranges](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/950-1000/994.RottingOranges.java)
-7.  ()[79. Word Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/79.WordSearch.java)
+7.  (值得思考)[79. Word Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/79.WordSearch.java)
 8.  ()[310. Minimum Height Trees](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/310.MinimumHeightTrees.java)
