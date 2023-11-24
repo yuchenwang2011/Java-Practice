@@ -45,6 +45,7 @@ The height of a rooted tree is the number of edges on the longest downward path 
 Accepted 75,045 Submissions 242,274
 
 Answer:
+//from this solution https://leetcode.com/problems/minimum-height-trees/solutions/76055/share-some-thoughts/
 //time O(n) space O(n)
 class Solution {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
