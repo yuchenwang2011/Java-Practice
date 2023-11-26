@@ -73,4 +73,5 @@
 ### 9. Dynamic Programming
 1.  (需掌握DP方法)[53. Maximum Subarray](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/53.MaximumSubarray.java)
 2.  (没有价值)[70. Climbing Stairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/70.ClimbingStairs.java)
-3.  ()[322. Coin Change](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/322.CoinChange.java)
+3.  (很烧脑)[322. Coin Change](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/322.CoinChange.java)
+4.  ()[62. Unique Paths](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/62.UniquePaths.java)
