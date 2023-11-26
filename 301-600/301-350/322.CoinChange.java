@@ -16,22 +16,7 @@ Note:
 You may assume that you have an infinite number of each kind of coin.
 
 Answer:
-//Time Limite exceeded
-class Solution {
-    public int coinChange(int[] coins, int amount) {
-        if(amount == 0) return 0;
-        if(coins == null || coins.length == 0 || amount < 0) return -1;
-        int result = Integer.MAX_VALUE;
-        for(int coin : coins){
-            if(amount >= coin) {
-                int last = coinChange(coins, amount - coin);
-                if(last != -1) result = Math.min(result, last + 1);
-            }
-        }    
-        return result == Integer.MAX_VALUE ? -1 : result;
-    }
-}
-
+//https://leetcode.com/problems/coin-change/solutions/778548/c-dp-solution-explained-100-time-100-space/
 class Solution {
     public int coinChange(int[] coins, int amount) {
         if(coins == null || coins.length == 0 || amount < 0) return -1;
@@ -41,6 +26,7 @@ class Solution {
         dp[0] = 0;
         for(int i = 0; i < dp.length; i++){
             for(int coin : coins){
+                //如果是max_value，不要管，不要改dp[i]的值，因为它可能被其他的coin改了
                 if(i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
                     dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
