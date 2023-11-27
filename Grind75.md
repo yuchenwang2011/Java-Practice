@@ -78,3 +78,4 @@
 
 ### 10. Binary Search Tree
 1.  (值得思考)[235. Lowest Common Ancestor of A Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/235.LowestCommonAncestorOfABinarySearchTree.java)
+2.  (都写一遍)[98. Validate Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/98.ValidateBinarySearchTree.java)
