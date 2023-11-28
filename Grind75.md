@@ -82,4 +82,10 @@
 3.  (都写一遍)[230. Kth Smallest Element In a BST](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/230.KthSmallestElementInaBST.java)
 
 ### 11. Hash Table
-1.  ()[383. Ransom Note](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/383.RansomNote.java)
+1.  (没价值)[383. Ransom Note](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/383.RansomNote.java)
+
+### 12. Binary
+1.  (随便看一眼)[67. Add Binary](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/67.AddBinary.java)
+
+### 13. Heap
+1.  (值得思考)[23. Merge K Sorted Lists](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/23.MergeKSortedLists.java)
