@@ -80,3 +80,6 @@
 1.  (值得思考)[235. Lowest Common Ancestor of A Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/235.LowestCommonAncestorOfABinarySearchTree.java)
 2.  (都写一遍)[98. Validate Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/98.ValidateBinarySearchTree.java)
 3.  (都写一遍)[230. Kth Smallest Element In a BST](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/230.KthSmallestElementInaBST.java)
+
+### 11. Hash Table
+1.  ()[383. Ransom Note](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/383.RansomNote.java)
