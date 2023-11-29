@@ -89,3 +89,6 @@
 
 ### 13. Heap
 1.  (值得思考)[23. Merge K Sorted Lists](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/23.MergeKSortedLists.java)
+
+### 14. Trie
+1.  (很麻烦但还是要写一遍)[208. Implement Trie](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/208.ImplementTrie(Prefix%20Tree).java)
