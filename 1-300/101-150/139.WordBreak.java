@@ -76,6 +76,7 @@ class Solution {
 }
 
 
+//comment in https://leetcode.com/problems/word-break/solutions/43790/java-implementation-using-dp-in-two-ways/ 
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return false;
