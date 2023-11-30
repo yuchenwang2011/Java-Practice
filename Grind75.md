@@ -92,3 +92,4 @@
 
 ### 14. Trie
 1.  (很麻烦但还是要写一遍)[208. Implement Trie](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/208.ImplementTrie(Prefix%20Tree).java)
+2.  (这题不用trie，但是要3种方法都会写)[139. Word Break](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/139.WordBreak.java)
