@@ -16,13 +16,13 @@ then 1's and followed by 2's.
 Could you come up with an one-pass algorithm using only constant space?
 
 Answer:
-//Here is the code I wrote in Second Round
+//以后就记这个了
 public class Solution {
     public void sortColors(int[] nums) {
         if(nums == null || nums.length == 0) return;
         int zeros = 0, twos = nums.length - 1;
         for(int i = 0; i < nums.length; i++){
-            if(nums[i] == 0){
+            if(nums[i] == 0 && i > zeros){
                 nums[i] = nums[zeros];
                 nums[zeros++] = 0;
             } else if (nums[i] == 2 && twos > i) {
