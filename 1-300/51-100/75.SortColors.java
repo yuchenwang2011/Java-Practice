@@ -25,6 +25,7 @@ public class Solution {
             if(nums[i] == 0 && i > zeros){
                 nums[i] = nums[zeros];
                 nums[zeros++] = 0;
+                i--;
             } else if (nums[i] == 2 && twos > i) {
                 nums[i] = nums[twos];
                 nums[twos--] = 2;
