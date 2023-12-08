@@ -11,6 +11,7 @@ Answer:
 //第二遍复习我觉得思路就是简单的，
 //因为我们求最大面积嘛，所以一个一个height往stack放，如果当前height没有之前那个大
 //那就说明前面那个大，就有算一下他面积的必要.于是就开始高乘以长
+//https://leetcode.com/problems/largest-rectangle-in-histogram/solutions/28900/short-and-clean-o-n-stack-based-java-solution/
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int result = 0;
