@@ -50,10 +50,14 @@
 4.  (练习一下recursive写法)[102. Binary Tree Level Order Traveral](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/102.BinaryTreeLevelOrderTraversal.java)
 5.  (值得思考)[236. Lowest Common Ancestor Of Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/236.LowestCommonAncestorOfABinaryTree.java)
 6.  (两种方法都写一遍)[199. Binary Tree Right Side View](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/199.BinaryTreeRightSideView.java)
-7.  (先看完144，94， 145以后再看这个题。逼自己写一遍)[105. Construct Binary Tree From Preorder And Inorder Traversal](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/105.ConstructBinaryTreeFromPreorderAndInorderTraversal.java) 
-    https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/144.BinaryTreePreorderTraversal.java 
+7.  (先看完144，94， 145以后再看这个题。逼自己写一遍)
+    https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/144.BinaryTreePreorderTraversal.java
+    
     https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/94.BinaryTreeInorderTraversal.java
+    
     https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/145.BinaryTreePostorderTraversal.java
+    
+    [105. Construct Binary Tree From Preorder And Inorder Traversal](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/105.ConstructBinaryTreeFromPreorderAndInorderTraversal.java) 
 
 ### 7. Binary Search
 1.  (没有价值)[704. Binary Search](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/704.BinarySearch.java)
