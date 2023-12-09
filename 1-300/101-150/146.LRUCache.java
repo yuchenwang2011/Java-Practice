@@ -92,7 +92,7 @@ class LRUCache {
         
         if(node == head) {
             head = head.next;
-            head.pre = null;
+            if(head != null) head.pre = null; //不加这个if也行，为了跟上面2023年新增的test case呼应，也写成这样比较好记
         } else {
             node.pre.next = node.next;
             node.next.pre = node.pre;
