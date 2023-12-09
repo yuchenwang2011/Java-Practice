@@ -57,6 +57,7 @@ public class Solution {
 
 //According to this answer, I can get an iterative template. It's a totally different idea
 //https://leetcode.com/discuss/71943/preorder-inorder-and-postorder-iteratively-summarization
+//为了便于理解，就记住一个例子就一个最小的123的树就好了
 public class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
