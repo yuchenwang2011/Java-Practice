@@ -30,11 +30,11 @@ class Solution {
         ListNode iterator = head;
         
         int i = 0;
-        while(i < n && iterator.next != null){
+        while(i < n && iterator != null){
             iterator = iterator.next;
             i++;
         }
-        if(i < n) return head.next;
+        if(iterator == null) return head.next;
         
         while(iterator.next != null){
             iterator = iterator.next;
