@@ -75,8 +75,8 @@ class Solution {
             n -= leaves.size();
             List<Integer> newLeaves = new ArrayList<>();
             for(int leaf : leaves){
-                int next = map.get(leaf).iterator().next();
-                map.get(next).remove(leaf);
+                int next = map.get(leaf).iterator().next(); //the set size is 1, so it's the only neighbor
+                map.get(next).remove(leaf);  //cut the edge from the other side, who has more than 1 edges
                 if(map.get(next).size() == 1) newLeaves.add(next);
             }
 
