@@ -71,7 +71,7 @@ class Solution {
             if(tmp.size() == 1) leaves.add(key);
         }
 
-        while(n > 2){
+        while(n > 2){ //final result is ok when there are two nodes left
             n -= leaves.size();
             List<Integer> newLeaves = new ArrayList<>();
             for(int leaf : leaves){
