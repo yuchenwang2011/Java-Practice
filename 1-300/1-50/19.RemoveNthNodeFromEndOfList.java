@@ -30,12 +30,14 @@ class Solution {
         ListNode iterator = head;
         
         int i = 0;
+        //先走n步
         while(i < n && iterator != null){
             iterator = iterator.next;
             i++;
         }
         if(iterator == null) return head.next;
-        
+
+        //把iterator变成最末尾的，这样长度就是n，head在n + 1，除掉head的下一位
         while(iterator.next != null){
             iterator = iterator.next;
             head = head.next;
