@@ -33,51 +33,42 @@ The cells are adjacent in only four directions: up, down, left and right.
 Accepted 61,083 Submissions 162,132
 
 Answer:
+//看这个方法就好了，别看我自己的了
 class Solution {
-    private int[][] directions = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
-    
-    public int[][] updateMatrix(int[][] matrix) {
-        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return matrix;
-        int m = matrix.length;
-        int n = matrix[0].length;     
-        boolean[][] visited = new boolean[m][n];
-        
+    public int[][] updateMatrix(int[][] mat) {
+        if(mat == null || mat.length == 0 || mat[0].length == 0) return mat;
         Queue<int[]> queue = new LinkedList<>();
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == 1) {
-                    matrix[i][j] = -1;
-                } else {
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[0].length; j++){
+                if(mat[i][j] == 0) {
                     queue.offer(new int[]{i, j});
+                } else {
+                    mat[i][j] = -1;
                 }
             }
         }
-        
-        int distance = 0;
+
+        int[][] directions = new int[][]{{1,0},{-1,0},{0,-1},{0,1}};
+        int distance = 1;
         while(!queue.isEmpty()){
             int size = queue.size();
             for(int i = 0; i < size; i++){
                 int[] tmp = queue.poll();
-                int a = tmp[0];
-                int b = tmp[1];
-                for(int [] direction : directions){
-                    int x = a + direction[0];
-                    int y = b + direction[1];
-                    if(x >= 0 && y >= 0 && x < matrix.length && y < matrix[0].length && visited[x][y] == false) {
-                        visited[x][y] = true;
-                        if(matrix[x][y] == -1) {
-                            matrix[x][y] = distance + 1;
-                            queue.offer(new int[]{x, y});
-                        }
+                for(int[] direction : directions){
+                    int x = tmp[0] + direction[0];
+                    int y = tmp[1] + direction[1];
+                    if(x >= 0 && x < mat.length && y >= 0 && y < mat[0].length && mat[x][y] == -1) {
+                        mat[x][y] = distance;
+                        queue.offer(new int[]{x, y});
                     }
                 }
             }
             distance++;
-        }   
-        return matrix;
+        }
+
+        return mat;
     }
 }
-
 
 //我自己的solution
 class Solution {
