@@ -80,6 +80,7 @@ class Solution {
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return false;
+        //dp[i] stands for whether subarray(0, i) can be segmented into words from the dictionary
         boolean[] result = new boolean[s.length() + 1];
         result[0] = true;
         for(int i = 1; i <= s.length(); i++){
