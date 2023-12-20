@@ -21,14 +21,15 @@ Accepted 120,591 Submissions 303,101
 Answer:
 class Solution {
     public boolean increasingTriplet(int[] nums) {
-        if(nums == null || nums.length < 2) return false;
-        int small = Integer.MAX_VALUE;
-        int big = Integer.MAX_VALUE;
-        for(int num : nums){
-            if(num <= small) small = num;
-            else if(num <= big) big = num;
-            else return true;
+        if(nums == null || nums.length < 3) return false;
+        int min = Integer.MAX_VALUE;
+        int secondMin = Integer.MAX_VALUE;
+        for(int n: nums){
+            if(n <= min) min = n; //found i
+            else if (n <= secondMin) secondMin = n; //found j
+            else return true; //found the k
         }
+
         return false;
     }
 }
