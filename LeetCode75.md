@@ -18,7 +18,7 @@
 
 ### 3. Sliding Window
 1.  (随便瞄二下)[643. Maximum Average Subarray I](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/643.MaximumAverageSubarrayI.java)
-2.  (随便瞄二下)[1456. Maximum Number of Vowels In A Substring of Given Length](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1456.MaximumNumberOfVowelsInASubstringOfGivenLengt.java)
+2.  (随便瞄二下)[1456. Maximum Number of Vowels In A Substring of Given Length](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1456.MaximumNumberOfVowelsInASubstringOfGivenLength.java)
 3.  (背诵默写)[1004. Max Consecutive Ones III](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1001-1050/1004.MaxConsecutiveOnesIII.java)
 4.  (和1004一起背诵)[1493. Longest Subarray of 1's After Deleting One Element](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1493.LongestSubarrayof1sAfterDeletingOneElement.java)
 
@@ -27,25 +27,25 @@
 2.  (没价值)[724. Find Pivot Index](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/724.FindPivotIndex.java)
 
 ### 5. Hash Map / Set
-1.  (没价值，看一下stream的语法)[2215. Find the Difference of Two Arrays](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2200-2250/2215.FindTheDifferenceOfTwoArrays)
-2.  (没价值)[1207. Unique Number of Occurrences](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1200-1250/1207.UniqueNumberOfOccurrences)
-3.  (随便瞄二下)[1657. Determine If two Strings Are Close](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1650-1700/1657.DetermineIfTwoStringsAreClose)
-4.  (再写一遍练习API)[2352. Equal Row And Column Pairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2350-2400/2352.EqualRowAndColumnPairs)
+1.  (没价值，看一下stream的语法)[2215. Find the Difference of Two Arrays](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2200-2250/2215.FindTheDifferenceOfTwoArrays.java)
+2.  (没价值)[1207. Unique Number of Occurrences](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1200-1250/1207.UniqueNumberOfOccurrences.java)
+3.  (随便瞄二下)[1657. Determine If two Strings Are Close](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1650-1700/1657.DetermineIfTwoStringsAreClose.java)
+4.  (再写一遍练习API)[2352. Equal Row And Column Pairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2350-2400/2352.EqualRowAndColumnPairs.java)
 
 ### 6. Stack
-1.  (随便瞄一下)[2390. Removing Stars From a String](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2350-2400/2390.RemovingStarsFromAString)
-2.  (随便瞄一下)[735. Asteroid Collision](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/735.AsteroidCollision)
-3.  (再抄一遍，不用自己写)[394. Decoding String](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/394.DecodingString)
+1.  (随便瞄一下)[2390. Removing Stars From a String](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2350-2400/2390.RemovingStarsFromAString.java)
+2.  (随便瞄一下)[735. Asteroid Collision](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/735.AsteroidCollision.java)
+3.  (再抄一遍，不用自己写)[394. Decoding String](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/394.DecodingString.java)
 
 ### 7. Queue
-1.  (随便瞄一眼，想法挺新奇)[933. Number of Recent Calls](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/933.NumberOfRecentCalls)
-2.  (没价值)[649. Dota2 Senate](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/649.Dota2Senate)
+1.  (随便瞄一眼，想法挺新奇)[933. Number of Recent Calls](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/933.NumberOfRecentCalls.java)
+2.  (没价值)[649. Dota2 Senate](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/601-650/649.Dota2Senate.java)
 
 ### 8. Linked List
-1.  (值得思考)[2095. Delete The Middle Node Of A LinkedList](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/2050-2100/2095.DeleteTheMiddleNodeOfALinkedList)
+1.  (值得思考)[2095. Delete The Middle Node Of A LinkedList](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/2050-2100/2095.DeleteTheMiddleNodeOfALinkedList.java)
 2.  (随便瞄二眼)[328. Odd Even Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/328.OddEvenLInkedList.java)
 3.  (经典3个写法都再写一遍)[206. Reverse Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/206.ReverseLinkedList.java)
-4.  (之前3个题的合体练习，再写一遍当练习了)[2130. Maximum Twin Sum of A Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2100-2150/2130.MaximumTwinSumOfALinkedList)
+4.  (之前3个题的合体练习，再写一遍当练习了)[2130. Maximum Twin Sum of A Linked List](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2100-2150/2130.MaximumTwinSumOfALinkedList.java)
 
 ### 9. Binary Tree - DFS
 1.  (没价值)[104. Maximum Depth Of Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/104.MaximumDepthOfBinaryTree.java)
