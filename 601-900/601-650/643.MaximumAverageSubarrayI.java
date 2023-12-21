@@ -34,7 +34,7 @@ class Solution {
 
         int maxSum = sum;
         int i = 1;
-        while(i + k <= nums.length){
+        while(i + k - 1 < nums.length){
             sum = sum - nums[i - 1] + nums[i + k - 1]; 
             maxSum = Math.max(maxSum, sum);
             i++;
