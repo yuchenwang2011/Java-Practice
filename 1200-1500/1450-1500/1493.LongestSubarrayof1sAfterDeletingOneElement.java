@@ -1,7 +1,8 @@
 1493. Longest Subarray of 1's After Deleting One Element
 Medium 3.4K 56
 Given a binary array nums, you should delete one element from it.
-Return the size of the longest non-empty subarray containing only 1's in the resulting array. Return 0 if there is no such subarray.
+Return the size of the longest non-empty subarray containing only 1's in the resulting array. 
+Return 0 if there is no such subarray.
 
 Example 1:
 Input: nums = [1,1,0,1]
@@ -24,30 +25,27 @@ nums[i] is either 0 or 1.
 Accepted 170.3K Submissions 256.3K Acceptance Rate 66.5%
 
 Answer:
-//followed this answer https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/solutions/3719568/beat-s-100-c-java-python-beginner-friendly/
+//根据我在grind75的sliding window里背的模板写的
 class Solution {
     public int longestSubarray(int[] nums) {
-        if(nums == null || nums.length == 0) return 0;
-        
         int result = 0;
-        int left = 0;
-        int deleted = 0;
+        if(nums == null || nums.length == 0) return result;
 
-        for(int right = 0; right < nums.length; right++){
-            if(nums[right] != 1) deleted++;
+        int start = 0;
+        int end = 0;
+        int count = 0;
 
-            //这里直接用if也行，但是很不好理解，就用while好了
-            while(deleted > 1){ 
-                if(nums[left] != 1) deleted--;
-                left++;
+        while(end < nums.length){
+            if(nums[end] == 0) count++;
+            end++;
+
+            while(count > 1){
+                if(nums[start++] == 0) count--;
             }
 
-            if(deleted <= 1) {
-                result = Math.max(result, right - left + 1 - deleted);
-            }
+            result = Math.max(result, end - start);
         }
 
-        //因为题目要求必须减掉一位，所以如果全是1的话，就减掉一个
-        return (result == nums.length) ? result - 1 : result;
+        return result - 1;
     }
 }
