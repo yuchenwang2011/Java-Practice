@@ -38,28 +38,19 @@ Note: This question is the same as 1991: https://leetcode.com/problems/find-the-
 Accepted 907.8K Submissions 1.6M Acceptance Rate 55.8%
 
 Answer:
-//my own solution
-//this solution similar to mine: https://leetcode.com/problems/find-pivot-index/solutions/2681701/java-easiest-solution-to-understand-100-faster/
+//https://leetcode.com/problems/find-pivot-index/solutions/2470014/very-easy-100-fully-explained-java-c-python-js-python3/
 class Solution {
     public int pivotIndex(int[] nums) {
-        int result = -1;
         if(nums == null || nums.length == 0) return -1;
-    
+        
+        int sum = 0;
         int total = Arrays.stream(nums).sum();
-        int previousSum = 0;
-        for(int i = 0; i < nums.length; i++) {
-            if(i == 0) 
-            {
-                if(total == nums[i]){
-                    return 0;
-                }
-            }
-            else {
-                previousSum += nums[i - 1];
-                if(previousSum == total - previousSum - nums[i]) return i;
-            }
+
+        for(int i = 0; i < nums.length; i++){
+            sum += nums[i];
+            if(sum * 2 == total + nums[i]) return i;
         }
 
-        return result;
+        return -1;
     }
 }
