@@ -24,7 +24,7 @@
 
 ### 4. Prefix Sum
 1.  (没价值)[1732.FindTheHighestAltitude](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1700-1750/1732.FindTheHighestAltitude.java)
-2.  (没价值)[724. Find Pivot Index](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/724.FindPivotIndex.java)
+2.  (需要看一眼)[724. Find Pivot Index](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/724.FindPivotIndex.java)
 
 ### 5. Hash Map / Set
 1.  (没价值，看一下stream的语法)[2215. Find the Difference of Two Arrays](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2200-2250/2215.FindTheDifferenceOfTwoArrays.java)
