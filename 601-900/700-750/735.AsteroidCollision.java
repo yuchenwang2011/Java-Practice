@@ -29,51 +29,27 @@ asteroids[i] != 0
 Accepted 381.7K Submissions 839.9K Acceptance Rate 45.4%
 
 Answer:
-//my own solution
-class Solution {
+//from comment of https://leetcode.com/problems/asteroid-collision/solutions/109694/java-c-clean-code/
+ class Solution {
     public int[] asteroidCollision(int[] asteroids) {
-        if(asteroids == null || asteroids.length == 0) return new int[0];
+        if (asteroids == null || asteroids.length <= 1) return asteroids;
+
         Stack<Integer> stack = new Stack<>();
-        for(int i = 0; i < asteroids.length; i++){
-            int current = asteroids[i];
-            if (i == 0 || stack.size() == 0) {
-                stack.push(current);
-                continue;
-            } 
-
-            while(stack.size() > 0){
-                int last = stack.peek();
-                if((last > 0 && current > 0) 
-                    || (last < 0 && current < 0) 
-                    || (last == 0 && current == 0)
-                    || (last <= 0 && current > 0)){
-                    stack.push(current);
-                    break;
-                }
-
-                if(Math.abs(current) > Math.abs(last)) {
-                    if(stack.size() > 0) {
-                        stack.pop();
-                        if(stack.size() == 0){
-                            stack.push(current);
-                            break;
-                        }
-                    } else {
-                        stack.push(current);
-                        break;
-                    }
-                } else if (Math.abs(current) == Math.abs(last)) {
+        for (int cur : asteroids) {
+            if (cur > 0) { // *+: previous one does not matter, no collision forever
+                stack.push(cur);
+            } else {
+                //+-
+                while (!stack.isEmpty() && stack.peek() > 0 && -cur > stack.peek()) {
                     stack.pop();
-                    break;
-                } else {
-                    break;
+                }
+                if (stack.isEmpty() || stack.peek() < 0) {
+                    stack.push(cur); // --
+                } else if (stack.peek() == -cur) {
+                    stack.pop(); // +- size same
                 }
             }
         }
-        int[] result = new int[stack.size()];
-        for(int i = result.length - 1; i >= 0; i--){
-            result[i] = stack.pop();
-        }
-        return result;
+        return stack.stream().mapToInt(i->i).toArray();
     }
 }
