@@ -49,10 +49,10 @@
 
 ### 9. Binary Tree - DFS
 1.  (没价值)[104. Maximum Depth Of Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/101-150/104.MaximumDepthOfBinaryTree.java)
-2.  (算法不错)[872. Leaf-Similar Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/850-900/872.Leaf-SimilarTrees)
-3.  (随便瞄一眼)[1448. Count Good Nodes In Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1400-1450/1448.CountGoodNodesInBinaryTree)
+2.  (算法不错)[872. Leaf-Similar Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/850-900/872.Leaf-SimilarTrees.java)
+3.  (随便瞄一眼)[1448. Count Good Nodes In Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1400-1450/1448.CountGoodNodesInBinaryTree.java)
 4.  (背诵默写)[437. Path Sum III](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/437.PathSumIII)
-5.  (背诵默写)[1372. Longest ZigZag Path In A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1350-1400/1372.LongestZigZagPathInABinaryTree)
+5.  (背诵默写)[1372. Longest ZigZag Path In A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1350-1400/1372.LongestZigZagPathInABinaryTree.java)
 6.  (背诵默写)[23. Lowest Common Ancestor of A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/236.LowestCommonAncestorOfABinaryTree.java)
 
 ### 10. Binary Tree - BFS
@@ -60,45 +60,45 @@
 2.  (过了199以后这个题两种解法都一样，随便瞄二下)[1161. Maximum Level Sum of A Binary Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1150-1200/1161.MaximumLevelSumOfABinaryTree.java)
 
 ### 11. Binary Search Tree
-1.  (没价值)[700. Search In A Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/700.SearchInABinarySearchTree)
+1.  (没价值)[700. Search In A Binary Search Tree](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/700.SearchInABinarySearchTree.java)
 2.  (背诵默写，只背第一个，背两个容易混)[450. Delete Node In A BST](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/450.DeleteNodeInABST.java)
 
 ### 12. Graph - DFS
-1.  (经典每次刷题要再写一遍，但之后就脑子里过一遍就行)[841. Keys And Rooms](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/800-850/841.KeysAndRooms)
+1.  (经典每次刷题要再写一遍，但之后就脑子里过一遍就行)[841. Keys And Rooms](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/800-850/841.KeysAndRooms.java)
 2.  (题目改名了，必须掌握两种解法)[547. Friend Circles / Number of Provinces](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/501-550/547.FriendCircles.java)
-3.  (背诵默写)[1466. Reorder Routes to Make All Paths Lead to The City Zero](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1466.ReorderRoutesToMakeAllPathsLeadToTheCityZero)
+3.  (背诵默写)[1466. Reorder Routes to Make All Paths Lead to The City Zero](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1450-1500/1466.ReorderRoutesToMakeAllPathsLeadToTheCityZero.java)
 4.  (背诵默写)[399. Evaluate Division](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/399.EvaluateDivision.java)
 
 ### 13. Graph - BFS
-1.  (背诵默写)[1926. Nearest Exists From Entrance In Maze](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/1900-1950/1926.NearestExistFromEntranceInMaze)
+1.  (背诵默写)[1926. Nearest Exists From Entrance In Maze](https://github.com/yuchenwang2011/Java-Practice/blob/master/1800-2100/1900-1950/1926.NearestExistFromEntranceInMaze.java)
 2.  (跟上一题一样，所以背诵默写上一题以后，尽量不看答案自己写)[994. Rotting Oranges](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/950-1000/994.RottingOranges.java)
 
 ### 14. Heap / Priority Queue
 1.  (背诵默写两种解法)[215. Kth Largest Element In An Array](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/215.KthLargestElementInAnArray.java)
-2.  (随便瞄一眼)[2336. Smallest Number in Infinite Set](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2336.SmallestNumberInInfiniteSet)
-3.  (背诵默写)[2542. Maximum Subsequence Score](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2500-2550/2542.MaximumSubsequenceScore)
-4.  (比上一个容易，理解默写)[2462. Total Cost To Hire Workers](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2400-2450/2462.TotalCostToHireKWorkers)
+2.  (随便瞄一眼)[2336. Smallest Number in Infinite Set](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2336.SmallestNumberInInfiniteSet.java)
+3.  (背诵默写)[2542. Maximum Subsequence Score](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2500-2550/2542.MaximumSubsequenceScore.java)
+4.  (比上一个容易，理解默写)[2462. Total Cost To Hire Workers](https://github.com/yuchenwang2011/Java-Practice/blob/master/2400-2700/2400-2450/2462.TotalCostToHireKWorkers.java)
 
 ### 15. Binary Search ### https://www.cnblogs.com/cnoodle/p/14267991.html
-1. (左闭右开)[374. Guess Number Higher Or Lower](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/374.GuessNumberHigherOrLower)
-2. (背诵默写左闭右开的写法)[2300. Successful Pairs of Spells and Potions](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2300.SuccessfulPairsOfSpellsAndPotions)
+1. (左闭右开)[374. Guess Number Higher Or Lower](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/351-400/374.GuessNumberHigherOrLower.java)
+2. (背诵默写左闭右开的写法)[2300. Successful Pairs of Spells and Potions](https://github.com/yuchenwang2011/Java-Practice/blob/master/2100-2400/2300-2350/2300.SuccessfulPairsOfSpellsAndPotions.java)
 3. (背诵默写左闭右开的写法)[162. Find Peak Element](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/162.FindPeakElement.java)
-4. (背诵默写左闭右开的写法)[875. Koko Eating Bananas](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/850-900/875.KokoEatingBananas)
+4. (背诵默写左闭右开的写法)[875. Koko Eating Bananas](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/850-900/875.KokoEatingBananas.java)
 
 ### 16. Backtracking ###
 1. (随便瞄一眼)[17. Letter Combination Of A Phone Number](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/1-50/17.LetterCombinationsOfAPhoneNumber.java)
 2. (随便瞄二眼)[216. Combination Sum III](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/216.CombinationSumIII.java)
 
 ### 17. DP - 1D ###
-1. (随便瞄一眼)[1147. N-th Tribonacci Number](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1137.N-thTribonacciNumber)
-2. (随便瞄二眼)[746. Min Cost Climbing Stairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/746.MinCostClimbingStairs)
+1. (随便瞄一眼)[1147. N-th Tribonacci Number](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1137.N-thTribonacciNumber.java)
+2. (随便瞄二眼)[746. Min Cost Climbing Stairs](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/746.MinCostClimbingStairs.java)
 3. (重新写一遍)[198. House Robber](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/151-200/198.HouseRobber.java)
-4. (随便看一眼，很难但没有价值因为根本想不出来)[790. Domino and Tromino Tiling](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/751-800/790.DominoAndTrominoTiling)
+4. (随便看一眼，很难但没有价值因为根本想不出来)[790. Domino and Tromino Tiling](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/751-800/790.DominoAndTrominoTiling.java)
 
 ### 18. DP- Multidimentional ###
 1. (随便瞄一眼，不用看其他解法记不住的)[62. Unique Paths](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/62.UniquePaths.java)
-2. (背诵默写)[1143. Longest Common Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1143.LongestCommonSubsequence)
-3. (重新写一遍)[714. Best Time to Buy and Sell Stock With Transaction Fees](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/714.BestTimeToBuyAndSellStockWithTransactionFee)
+2. (背诵默写)[1143. Longest Common Subsequence](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/1100-1150/1143.LongestCommonSubsequence.java)
+3. (重新写一遍)[714. Best Time to Buy and Sell Stock With Transaction Fees](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/714.BestTimeToBuyAndSellStockWithTransactionFee.java)
 4. (跟1143一样背诵默写)[72. Simplify Path](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/51-100/72.EditDistance.java)
 
 ### 19. Bit Manipulation ###
@@ -108,12 +108,12 @@
 
 ### 20. Trie ###
 1. (很啰嗦但还是得手写一遍)[208. Implement Trie (Prefix Tree)](https://github.com/yuchenwang2011/Java-Practice/blob/master/1-300/201-250/208.ImplementTrie(Prefix%20Tree).java)
-2. (很啰嗦但还是得手写一遍)[1268. Search Suggestion System](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1250-1300/1268.SearchSuggestionSystem)
+2. (很啰嗦但还是得手写一遍)[1268. Search Suggestion System](https://github.com/yuchenwang2011/Java-Practice/blob/master/1200-1500/1250-1300/1268.SearchSuggestionSystem.java)
 
 ### 21. Intervals ###
-1. (背诵默写然后再看一下56题)[435. Non-Overlapping Intervals](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/435.Non-OverlappingIntervals)
-2. (值得思考)[452. Minimum Number of Arrows To Burst Balloons](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/450-500/452.MinimumNumberOfArrowsToBurstBalloons)
+1. (背诵默写然后再看一下56题)[435. Non-Overlapping Intervals](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/401-450/435.Non-OverlappingIntervals.java)
+2. (值得思考)[452. Minimum Number of Arrows To Burst Balloons](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/450-500/452.MinimumNumberOfArrowsToBurstBalloons.java)
 
 ### 22. Monotonic Stack ###
-1. (背诵默写)[739. Daily Temperatures](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/739.DailyTemperatures)
-2. (背诵默写)[901. Online Stock Plan](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/901.OnlineStockPlan)
+1. (背诵默写)[739. Daily Temperatures](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/700-750/739.DailyTemperatures.java)
+2. (背诵默写)[901. Online Stock Plan](https://github.com/yuchenwang2011/Java-Practice/blob/master/901-1200/901-950/901.OnlineStockPlan.java)
