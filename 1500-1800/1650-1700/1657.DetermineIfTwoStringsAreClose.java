@@ -63,6 +63,7 @@ class Solution {
         }
         Arrays.sort(array1);
         Arrays.sort(array2);
+        // 那些字母的出现次数得一样，哪怕怎么变
         for(int i = 0; i < 26; i++){
             if(array1[i] != array2[i]) return false;
         }
