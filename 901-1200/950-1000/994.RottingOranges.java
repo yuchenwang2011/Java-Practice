@@ -72,7 +72,7 @@ class Solution {
         }
         //why count need to be reduce by one?
         //Because we do count++ every time when queue is not empty. When there is no fresh orange, 
-        //it still does count++ at the begin of the while loop.
+        //it still does count++ at the end of the while loop.
         //why result is 0 and why when it is 0 we need return 0? it is because for such as [[0]], 题里例子写的
         //如果一开始里面就已经没有好橘子了，那就return 0
         return result == 0 ? 0 : result - 1;
