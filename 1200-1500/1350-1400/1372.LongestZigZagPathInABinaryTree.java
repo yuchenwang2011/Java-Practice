@@ -40,7 +40,7 @@ class Solution {
         if(root == null) return new int[]{-1, -1, -1};
         int[] left = dfs(root.left);
         int[] right = dfs(root.right);
-        int result = Math.max(Math.max(left[1], right[0]) + 1, Math.max(left[2], right[2]));
-        return new int[]{left[1] + 1, right[0] + 1, result};
+        int rootMax = Math.max(Math.max(left[1], right[0]) + 1, Math.max(left[2], right[2]));
+        return new int[]{left[1] + 1, right[0] + 1, rootMax};
     }
 }
