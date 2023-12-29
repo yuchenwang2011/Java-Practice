@@ -38,8 +38,12 @@ class Solution {
     }
 }
 
-//https://leetcode.com/problems/path-sum-iii/solutions/91878/17-ms-o-n-java-prefix-sum-method/
-//https://leetcode.com/problems/path-sum-iii/solutions/1525060/easy-solution-using-java-dfs-map
+//from the comment of https://leetcode.com/problems/path-sum-iii/solutions/91878/17-ms-o-n-java-prefix-sum-method/
+//The map stores the frequency of all possible sum in the path to the current node.
+//If the difference between the current sum and the target value exists in the map, there must exist a node in the middle of the path, 
+//such that from this node to the current node, the sum is equal to the target value.
+//举个例子，从1->2->3, current = 6, target = 5; 如果map里包括了现在current - target = 1的值，那么也就是说，从存了那个值的点，那个点到现在这个点，加起来等于target
+//所以有多少路到那个点，就result多出那么多选择
 class Solution {
     public int pathSum(TreeNode root, int targetSum) {
         if(root == null) return 0;
