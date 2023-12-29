@@ -58,10 +58,9 @@ class Solution {
         }
 
         current += root.val;
-        int result = 0;
         //这里为什么是current被减而不是反过来呢，因为current是so far所有的node的和，
         //current - target是想看看之前的current值们有没有可能被收录过，反过来target被减是没有意义的
-        result += map.getOrDefault(current - targetSum, 0);
+        int result = map.getOrDefault(current - targetSum, 0);
         map.put(current, map.getOrDefault(current, 0) + 1);
 
         result += helper(root.left, map, current, targetSum);
