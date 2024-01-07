@@ -53,8 +53,8 @@ public class Solution {
         //As for why preStart must go to the other side? Why all elements before that are in left tree?
         //Because preorder is to root first, left elements first, then right. So length of all left elements 
         //must be the same as the inorder left elements length
-        int length = inRoot - inStart; 
-        root.right = construct(preStart + inLength + 1, inRoot + 1, inEnd, preorder, inorder);
+        int length = inRoot - inStart + 1; 
+        root.right = construct(preStart + inLength, inRoot + 1, inEnd, preorder, inorder);
         return root;
     }
 }
