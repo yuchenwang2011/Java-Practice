@@ -33,7 +33,7 @@ class Solution {
 
         int sIdx = 0;
         for(int i = 0; i < t.length(); i++){
-            if(sIdx >= s.length()) {
+            if(sIdx >= s.length()) { //这个判定放到前面和后面都行
                 return true;
             }
             char currentT = t.charAt(i);
