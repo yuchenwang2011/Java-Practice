@@ -14,7 +14,7 @@ class Solution {
     public void moveZeroes(int[] nums) {
         if(nums == null || nums.length == 0) return;
         int start = 0;
-        for(int i =  0; i < nums.length; i++){
+        for(int i =  0; i < nums.length; i++){ //i不是1 因为leetcode的test case不让
             if(nums[i] != 0) swap(nums, start++, i);
         }
     }
