@@ -47,7 +47,6 @@ class Solution {
 
     public void helper(Map<Integer, List<Integer>> graph, int start, Set<Integer> visited){
         if(!visited.add(start)) return;
-        visited.add(start);
         List<Integer> nodes = graph.get(start);
         for(int i = 0; i < nodes.size(); i++){
             helper(graph, nodes.get(i), visited);
@@ -66,7 +65,6 @@ class Solution {
 
     public void helper(List<List<Integer>> rooms, int start, Set<Integer> visited){
         if(!visited.add(start)) return;
-        visited.add(start);
         List<Integer> nodes = rooms.get(start);
         for(int i = 0; i < nodes.size(); i++){
             helper(rooms, nodes.get(i), visited);
