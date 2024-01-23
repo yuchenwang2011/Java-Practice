@@ -44,7 +44,7 @@ class Solution {
         UnionFind uf = new UnionFind(M);
         for(int i = 0; i < M.length; i++){
             //for(int j = 0; j < i; j++){ 之前抄的是这么写但很不符合我思路，改成下面的便于我理解
-            for(int j = 0; j < M.length; j++){
+            for(int j = 0; j < M[0].length; j++){
                 if(M[i][j] == 1) {
                     uf.union(i,j);
                 }
