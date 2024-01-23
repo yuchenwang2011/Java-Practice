@@ -104,11 +104,9 @@ class Solution {
     }
     
     public void helper(int[][] M, int[] visited, int i){
-        visited[i] = 1; //这句不加也行的，加了只是为了我自己好记忆
-        //这里必须是M.length。因为从一开始就要找遍其他人
+        visited[i] = 1; //这句放这里和放for里都行，两个都放也行，其实就是把所有的人都过一遍
         for(int j = 0; j < M.length; j++){
             if(M[i][j] == 1 && visited[j] == 0) {
-                visited[j] = 1;
                 helper(M, visited, j);
             }
         }
