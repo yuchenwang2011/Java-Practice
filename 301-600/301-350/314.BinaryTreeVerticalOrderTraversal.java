@@ -35,6 +35,7 @@ return its vertical order traversal as:
 
 Answer:
 class Solution {
+    //https://leetcode.com/problems/binary-tree-vertical-order-traversal/solutions/76401/5ms-java-clean-solution/
     //https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/314.jpg
     public List<List<Integer>> verticalOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
