@@ -34,3 +34,31 @@ abbr consists of lowercase English letters and digits.
 All the integers in abbr will fit in a 32-bit integer.
 
 Answer:
+//https://leetcode.com/problems/valid-word-abbreviation/solutions/89523/short-and-easy-to-understand-java-solution/
+class Solution {
+    public boolean validWordAbbreviation(String word, String abbr) {
+        if(word == null || word.length() == 0 || abbr == null || abbr.length() == 0) return false;
+        int i = 0;
+        int j = 0;
+        while(i < word.length() && j < abbr.length()){
+            if(word.charAt(i) == abbr.charAt(j)){
+                i++;
+                j++;
+                continue;
+            }
+
+            if(abbr.charAt(j) <= '0' || abbr.charAt(j) > '9'){
+                return false;
+            }
+
+            int start = j;
+            while(j < abbr.length() && Character.isDigit(abbr.charAt(j))){
+                j++;
+            }
+            int num = Integer.valueOf(abbr.substring(start, j));
+            i += num;
+        }
+
+        return i == word.length() && j == abbr.length();
+    }
+}
