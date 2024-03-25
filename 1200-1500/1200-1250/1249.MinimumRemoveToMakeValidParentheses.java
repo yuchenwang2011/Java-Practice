@@ -29,3 +29,25 @@ s[i] is either'(' , ')', or lowercase English letter.
 Accepted 589.1K Submissions 875.9K Acceptance Rate 67.3%
 
 Answer:
+//https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/solutions/419402/java-c-stack/
+class Solution {
+    public String minRemoveToMakeValid(String s) {
+        if(s == null || s.length() == 0) return s;
+        StringBuilder sb = new StringBuilder(s);
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i < sb.length(); i++){
+            if(sb.charAt(i) == '('){
+                stack.push(i);
+            }
+            if(sb.charAt(i) == ')'){
+                if(!stack.isEmpty()) stack.pop();
+                else sb.setCharAt(i, '*');
+            }
+        }
+        
+        while(!stack.isEmpty()){
+            sb.setCharAt(stack.pop(), '*');
+        }
+        return sb.toString().replaceAll("\\*", "");
+    }
+}
