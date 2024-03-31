@@ -29,3 +29,22 @@ Constraints:
 Accepted 200.2K Submissions 251.7K Acceptance Rate 79.5%
 
 Answer:
+//https://leetcode.com/problems/buildings-with-an-ocean-view/solutions/1123778/java-trick-is-to-traverse-from-right-to-left/
+class Solution {
+    public int[] findBuildings(int[] heights) {
+        List<Integer> list = new ArrayList<>();
+        int tall = Integer.MIN_VALUE;
+        for(int i = heights.length - 1; i >= 0; i--){
+            if(heights[i] > tall) {
+                list.add(i);
+                tall = heights[i];
+            }
+        }
+
+        int[] result = new int[list.size()];
+        for(int i = list.size() - 1; i >= 0; i--){
+            result[list.size() -1 - i] = list.get(i);
+        }
+        return result;
+    }
+}
