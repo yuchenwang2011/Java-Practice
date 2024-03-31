@@ -34,3 +34,24 @@ p and q exist in the tree.
 Accepted 219.6K Submissions 276.8K Acceptance Rate 79.3%
 
 Answer:
+//https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/solutions/932914/java-in-6-lines/
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node parent;
+};
+*/
+
+class Solution {
+    public Node lowestCommonAncestor(Node p, Node q) {
+        Node a = p, b = q;
+        while(a != b){
+            a = a == null ? q : a.parent;
+            b = b == null ? p : b.parent;
+        }
+        return a;
+    }
+}
