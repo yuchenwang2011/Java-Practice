@@ -4,3 +4,4 @@
 4. (Medium)[1650. Lowest Common Ancestor of A binary Tree III](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1600-1650/1650.LowestCommonAncestorOfABinaryTreeIII.java)
 5. (Medium)[1570. Dot Product Of Two Sparse Vectors](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1550-1600/1570.DotProductOfTwoSparseVectors.java)
 6. (Easy)[680. Valid Palindrome II](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/650-700/680.ValidPalindromeII.java)
+7. (Medium)[1762. Buildings with An Ocean View](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1750-1800/1762.BuildingsWithAnOceanView.java)
