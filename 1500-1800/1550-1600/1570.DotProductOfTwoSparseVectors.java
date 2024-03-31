@@ -32,3 +32,36 @@ n == nums1.length == nums2.length
 Accepted 242.6K Submissions 269.9K Acceptance Rate 89.9%
 
 Answer:
+//https://leetcode.com/problems/dot-product-of-two-sparse-vectors/solutions/1522271/java-o-n-solution-using-two-pointers-with-detailed-explanation-and-follow-up/
+class SparseVector {
+    List<int[]> list;
+
+    SparseVector(int[] nums) {
+        list = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++){
+            list.add(new int[]{i, nums[i]});
+        }
+    }
+    
+	// Return the dotProduct of two sparse vectors
+    public int dotProduct(SparseVector vec) {
+        int result = 0;
+        int p = 0, q = 0;
+        while(p < list.size() && q < vec.list.size()){
+            if(list.get(p)[0] == vec.list.get(q)[0]){
+                result += list.get(p)[1] * vec.list.get(q)[1];
+                p++; q++;
+            } else if (list.get(p)[0] < vec.list.get(q)[0]){
+                p++;
+            } else {
+                q++;
+            }
+        }
+        return result;
+    }
+}
+
+// Your SparseVector object will be instantiated and called as such:
+// SparseVector v1 = new SparseVector(nums1);
+// SparseVector v2 = new SparseVector(nums2);
+// int ans = v1.dotProduct(v2);
