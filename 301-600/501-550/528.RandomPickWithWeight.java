@@ -27,37 +27,7 @@ Arguments are always wrapped with a list, even if there aren't any.
 
 Accepted 40,597 Submissions 94,011
 Answer:
-class Solution {
-    //这题问的是随机出来一个index出来，based on权重
-    //所以我们按照权重随机出来一个数字，然后看看能落在什么权重区域里,就是最后的index
-    private int[] w;
-    
-    public Solution(int[] w) {
-        for(int i = 1; i < w.length; i++){
-            w[i] += w[i - 1];
-        }
-        this.w = w;
-    }
-    
-    public int pickIndex() {
-        //w[] = {2,5,3,4} => wsum[] = {2,7,10,14}
-        //then get random val random.nextInt(14)+1, idx is in range [1,14]
-        int random = new Random().nextInt(w[w.length - 1]) + 1;
-        int start = 0;
-        int end = w.length - 1;
-        while(start < end){
-            int mid = (end - start) / 2 + start;
-            if(w[mid] == random) return mid;
-            else if(w[mid] < random) start = mid + 1;
-            else end = mid;
-        }
-        //如果出来个3-6的数字，其实都是归index = 1也就是end，只有2以下的才归start
-        if(w[start] > random) return start;
-        return end;
-    }
-}
-
-//用另外一个模板好懂一些但是缺点是不会太细想
+//https://leetcode.com/problems/random-pick-with-weight/solutions/154044/java-accumulated-freq-sum-binary-search/
 class Solution {
     //这题问的是随机出来一个index出来，based on权重
     //所以我们按照权重随机出来一个数字，然后看看能落在什么权重区域里,就是最后的index
