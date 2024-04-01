@@ -6,3 +6,4 @@
 6. (Easy)[680. Valid Palindrome II](https://github.com/yuchenwang2011/Java-Practice/blob/master/601-900/650-700/680.ValidPalindromeII.java)
 7. (Medium)[1762. Buildings with An Ocean View](https://github.com/yuchenwang2011/Java-Practice/blob/master/1500-1800/1750-1800/1762.BuildingsWithAnOceanView.java)
 8. (Medium)[339. Nested List Weight Sum](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/301-350/339.NestedListWeightSum.java)
+9. (Medium)[528. Random Pick With Weight](https://github.com/yuchenwang2011/Java-Practice/blob/master/301-600/501-550/528.RandomPickWithWeight.java)
