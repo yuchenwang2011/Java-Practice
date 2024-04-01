@@ -39,6 +39,7 @@ Answer:
  *     public List<NestedInteger> getList();
  * }
  */
+//https://leetcode.com/problems/nested-list-weight-sum/solutions/79957/2ms-easy-to-understand-java-solution/
 class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
         if(nestedList == null || nestedList.size() == 0) return 0;
@@ -58,8 +59,8 @@ class Solution {
     }
 }
 
-                                            
-                                            class Solution {
+//https://leetcode.com/problems/nested-list-weight-sum/solutions/79933/java-solution-similar-to-tree-level-order-traversal/                                            
+class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
         if(nestedList == null || nestedList.size() == 0) return 0;
         Queue<NestedInteger> queue = new LinkedList<>();
