@@ -22,11 +22,17 @@ class Solution {
         int[] tmp = intervals[0];
         for(int i = 1; i < intervals.length; i++){
             int[] cur = intervals[i];
+            //a |________|
+            //b   |__|
             if(tmp[1] >= cur[1]){
                 continue;
+            //a |___|
+            //b   |____|
             } else if(tmp[1] > cur[0]){
                 tmp[1] = cur[1];
             } else {
+            //a |___|
+            //b        |____|
                 result.add(tmp);
                 tmp = cur;
             }
@@ -36,43 +42,6 @@ class Solution {
         for(int i = 0; i < result.size(); i++){
             resultArray[i] = result.get(i);
         }
-        return resultArray;
-    }
-}
-
-
-//my own solution
-class Solution {
-    public int[][] merge(int[][] intervals) {
-        if(intervals == null || intervals.length == 0 || intervals[0].length < 2) return intervals;
-        Arrays.sort(intervals, (a,b) -> a[0] - b[0]);
-        List<int[]> result = new ArrayList<>();
-        result.add(intervals[0]);
-        
-        for(int i = 1; i < intervals.length; i++){
-            int[] a = result.get(result.size() - 1);
-            int[] b = intervals[i];
-            //a |________|
-            //b   |__|
-            //alert: they are all integers, so must <= or >=
-            if(a[0] <= b[0] && a[1] >= b[1]) {
-                continue;   
-            } else if (a[1] >= b[0]){
-                //a |___|
-                //b   |____|
-                a[1] = b[1];
-            } else {
-                //a |___|
-                //b        |____|
-                result.add(b);
-            }
-        }
-        
-        int[][] resultArray = new int[result.size()][2];
-        for(int i = 0; i < result.size(); i++){
-            resultArray[i] = result.get(i);
-        }
-        
         return resultArray;
     }
 }
