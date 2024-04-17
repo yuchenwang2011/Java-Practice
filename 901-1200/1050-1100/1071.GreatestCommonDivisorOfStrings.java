@@ -22,37 +22,6 @@ str1 and str2 consist of English uppercase letters.
 Accepted 241.5K Submissions 456.5K Acceptance Rate 52.9%
 
 Answer:
-//my own answer:
-class Solution {
-    public String gcdOfStrings(String str1, String str2) {
-        if(str1 == null || str1.length() == 0 || str2 == null || str2.length() == 0) return null;
-
-        String gcd = "";
-        String tmp = "";
-
-        for(int i = 0; i < Math.min(str1.length(), str2.length()); i++){
-            tmp += str1.charAt(i);
-            if(dividesString(tmp, str1) && dividesString(tmp, str2)){
-                gcd = tmp;
-            }
-        }
-
-        return gcd;
-    }
-
-    public boolean dividesString(String gcd, String s){
-        if(gcd == null || gcd.length() == 0 || s == null || s.length() == 0){
-            return false;
-        }
-
-        if(gcd.equals(s)) return true;
-        if(gcd.length() < s.length() && gcd.equals(s.substring(0, gcd.length()))){
-            return dividesString(gcd, s.substring(gcd.length()));
-        }
-        return false;
-    }
-}
-
 //https://leetcode.com/problems/greatest-common-divisor-of-strings/solutions/516621/java-clean-solution-0-ms-100/
 //辗转相除法
 class Solution {
