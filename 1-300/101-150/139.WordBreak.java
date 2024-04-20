@@ -24,7 +24,7 @@ Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false
 
 Answer:
-//3 solutions, DFS + BFS + DP. Need to know all these 3 methods
+//3 solutions, DFS + BFS + DP. 还是只记dfs吧，不然精神都错乱了
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         if(s == null || s.length() == 0 || wordDict == null || wordDict.size() == 0) return false;
