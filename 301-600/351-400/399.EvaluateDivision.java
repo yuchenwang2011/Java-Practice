@@ -45,7 +45,7 @@ class Solution {
     }
     
     public double helper(Map<String , Map<String, Double>> graph, String a, String b, double val, Set<String> set){
-        if(!graph.containsKey(a)) return -1; //这一行比如说之前graph里都是abc，结果query想求xyz;另外主要的就是比如有一个c/f的值，但是你想要g，这个岔路就没有就得返回找其他的路了
+        if(!graph.containsKey(a)) return -1; //这一行比如说之前graph里都是abc，结果query想求xyz;
         if(!set.add(a)) return -1; //你想啊，第一个node肯定是没visited，它去循环第二个的话，肯定又没有visited。后来乱起来了以后，发现visited，那后面就不用再计算了，直接就return不算了
         //至于这里return的-1，其实不是想要它的值，而是因为必须return，所以就return一个-1。因为最后还会对结果检查是不是-1，不是-1的话，那就说明有正确答案。
         //而且题里说的，万一没有就return -1
