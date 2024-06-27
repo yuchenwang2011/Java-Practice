@@ -22,6 +22,7 @@ Accepted 484.4K Submissions 1M Acceptance Rate 47.3%
 
 Answer:
 //followed this link: https://www.jiakaobo.com/leetcode/437.%20Path%20Sum%20III.html
+//https://leetcode.com/problems/path-sum-iii/solutions/91889/simple-java-dfs/
 class Solution {
     public int pathSum(TreeNode root, int targetSum) {
         if (root == null) return 0;
