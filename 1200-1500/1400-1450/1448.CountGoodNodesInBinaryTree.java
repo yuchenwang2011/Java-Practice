@@ -37,9 +37,9 @@ class Solution {
         return 1 + helper(root.left, root.val) + helper(root.right, root.val);
     }
 
-    public int helper(TreeNode root, int tmpMax){
-        if(root == null) return 0;
-        if(root.val >= tmpMax) return 1 + helper(root.left, root.val) + helper(root.right, root.val);
-        else return helper(root.left, tmpMax) + helper(root.right, tmpMax);
+    public int helper(TreeNode node, int tmpMax){
+        if(node == null) return 0;
+        if(node.val >= tmpMax) return 1 + helper(node.left, root.val) + helper(node.right, node.val);
+        else return helper(node.left, tmpMax) + helper(node.right, tmpMax);
     }
 }
