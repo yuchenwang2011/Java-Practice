@@ -12,7 +12,7 @@ Some hints:
 5.There is a more generic way of solving this problem.
 
 Answer:
-//两个解法
+//两个解法,第二个不好记就别看了
 public class Solution {
     public boolean isPalindrome(int x) {
         if(x < 0) return false;
